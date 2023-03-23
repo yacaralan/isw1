@@ -1,0 +1,254 @@
+
+
+----QUIT----(20 March 2023 11:15:29) CuisUniversity-5706.image priorSource: 4313282!
+
+----STARTUP---- (20 March 2023 11:15:29) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5706.image!
+
+
+----QUIT----(20 March 2023 11:15:30) CuisUniversity-5706.image priorSource: 8712809!
+
+----STARTUP---- (20 March 2023 21:02:43) as /home/alanyacar/smallTalk/CuisUniversity-5706.image!
+
+
+----SNAPSHOT----(20 March 2023 21:05:00) CuisUniversity-5706.image priorSource: 8713034!
+
+1 + 1!
+
+1 + 1!
+
+1 + 1!
+
+1 + a!
+
+----STARTUP---- (20 March 2023 21:10:43) as /home/alanyacar/smallTalk/CuisUniversity-5706.image!
+
+
+1 + 1!
+
+ObjectBuilder create: #nuestroObjeto asChildOf: DenotativeObject collaboratorNames: '' in: 'DenotativeObject-Morph'!
+
+----STARTUP---- (20 March 2023 21:24:22) as /home/alanyacar/smallTalk/CuisUniversity-5706.image!
+
+
+ObjectBuilder create: #nuestroObjeto asChildOf: DenotativeObject collaboratorNames: '' in: 'DenotativeObject-Morph'!
+
+!classDefinition: #nuestroObjeto category: 'DenotativeObject-Morph' stamp: 'ay 3/20/2023 21:25:48'!
+DenotativeObject subclass: #nuestroObjeto
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DenotativeObject-Morph'!
+
+!classDefinition: 'nuestroObjeto class' category: 'DenotativeObject-Morph' stamp: 'ay 3/20/2023 21:25:48'!
+nuestroObjeto class
+	instanceVariableNames: ''!
+
+!classRemoval: #nuestroObjeto stamp: 'ay 3/20/2023 21:26:00'!
+DenotativeObject subclass: #nuestroObjeto
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DenotativeObject-Morph'!
+
+ObjectBuilder create: #nuestroObjeto asChildOf: DenotativeObject collaboratorNames: '' in: 'clase1'!
+
+!classDefinition: #nuestroObjeto category: 'clase1' stamp: 'ay 3/20/2023 21:26:26'!
+DenotativeObject subclass: #nuestroObjeto
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'clase1'!
+
+!classDefinition: 'nuestroObjeto class' category: 'clase1' stamp: 'ay 3/20/2023 21:26:26'!
+nuestroObjeto class
+	instanceVariableNames: ''!
+
+ObjectBuilder create: #otroObjeto asChildOf: DenotativeObject collaboratorNames: '' in: 'clase1'!
+
+!classDefinition: #otroObjeto category: 'clase1' stamp: 'ay 3/20/2023 21:26:41'!
+DenotativeObject subclass: #otroObjeto
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'clase1'!
+
+!classDefinition: 'otroObjeto class' category: 'clase1' stamp: 'ay 3/20/2023 21:26:41'!
+otroObjeto class
+	instanceVariableNames: ''!
+
+ObjectBuilder create: #tercerObjeto
+	collaboratorNames: ''
+	in: 'clase1'
+	
+	!
+
+!classDefinition: #tercerObjeto category: 'clase1' stamp: 'ay 3/20/2023 21:27:20'!
+DenotativeObject subclass: #tercerObjeto
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'clase1'!
+
+!classDefinition: 'tercerObjeto class' category: 'clase1' stamp: 'ay 3/20/2023 21:27:20'!
+tercerObjeto class
+	instanceVariableNames: ''!
+
+nuestroObjeto saludar!
+
+nuestroObjeto saludar!
+!nuestroObjeto class methodsFor: 'saludos' stamp: 'ay 3/20/2023 21:38:55'!
+saludar
+	
+	^'hola'! !
+
+nuestroObjeto saludar!
+
+nuestroObjeto saludar!
+
+nuestroObjeto saludar!
+
+nuestroObjeto saludar!
+
+nuestroObjeto saludar!
+!nuestroObjeto class methodsFor: 'saludos' stamp: 'ay 3/20/2023 21:39:59' prior: 50604012!
+saludar
+	
+	^'boca la concha de la lora'! !
+
+nuestroObjeto saludar
+!
+!nuestroObjeto class methodsFor: 'saludos' stamp: 'ay 3/20/2023 21:40:35' prior: 50604020!
+saludar
+	
+	^'hola'! !
+
+nuestroObjeto saludar
+!
+!nuestroObjeto class methodsFor: 'saludos' stamp: 'ay 3/20/2023 21:41:30' prior: 50604025!
+saludar
+	
+	^'Shalom'! !
+
+nuestroObjeto saludar
+!
+!nuestroObjeto class methodsFor: 'saludos' stamp: 'ay 3/20/2023 21:41:50' prior: 50604030!
+saludar
+	
+	^'Hola!!'! !
+
+nuestroObjeto saludar
+!
+
+nuestroObjeto saludar
+!
+
+ObjectBuilder create: #bill asChildOf: DenotativeObject collaboratorNames: '' in: 'Zombies'!
+
+!classDefinition: #bill category: 'Zombies' stamp: 'ay 3/20/2023 21:49:06'!
+DenotativeObject subclass: #bill
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Zombies'!
+
+!classDefinition: 'bill class' category: 'Zombies' stamp: 'ay 3/20/2023 21:49:06'!
+bill class
+	instanceVariableNames: ''!
+
+!classRenamed: #bill as: #Bill stamp: 'ay 3/20/2023 21:55:32'!
+Smalltalk renameClassNamed: #bill as: #Bill!
+!Bill class methodsFor: 'getters' stamp: 'ay 3/20/2023 21:56:11'!
+energia
+	
+	^28! !
+!Bill class methodsFor: 'acciones' stamp: 'ay 3/20/2023 21:58:24'!
+caminar: unaCantidadDeKilometros
+	! !
+
+Bill
+	collaboratorNames: 'caminado energia'
+	in: 'Zombies'!
+
+!classDefinition: 'Bill class' category: 'Zombies' stamp: 'ay 3/20/2023 22:01:57'!
+Bill class
+	instanceVariableNames: 'caminado energia'!
+
+!classDefinition: #Bill category: 'Zombies' stamp: 'ay 3/20/2023 22:01:57'!
+DenotativeObject subclass: #Bill
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Zombies'!
+
+!classDefinition: 'Bill class' category: 'Zombies' stamp: 'ay 3/20/2023 22:01:57'!
+Bill class
+	instanceVariableNames: 'caminado energia'!
+!Bill class methodsFor: 'acciones' stamp: 'ay 3/20/2023 22:03:04' prior: 50604059!
+caminar: unaCantidadDeKilometros
+	^self energia! !
+!Bill class methodsFor: 'getters' stamp: 'ay 3/20/2023 22:03:13' prior: 50604056!
+energia
+	
+	^energia! !
+!Bill class methodsFor: 'acciones' stamp: 'ay 3/20/2023 22:04:32' prior: 50604080!
+caminar: unaCantidadDeKilometros
+	energia := energia - (3 + unaCantidadDeKilometros * 4)! !
+!Bill class methodsFor: 'acciones' stamp: 'ay 3/20/2023 22:06:02'!
+comer: unaCantidadDekilos
+	energia :=  energia + (4 * unaCantidadDekilos )! !
+
+----SNAPSHOT----(20 March 2023 22:06:21) CuisUniversity-5706.image priorSource: 8713219!
+
+----SNAPSHOT----(20 March 2023 22:06:37) CuisUniversity-5706.image priorSource: 8718349!
+
+----SNAPSHOT----(20 March 2023 22:06:51) CuisUniversity-5706.image priorSource: 8718439!
+
+----SNAPSHOT----(20 March 2023 22:07:10) CuisUniversity-5706.image priorSource: 8718529!
+
+----STARTUP---- (20 March 2023 22:55:49) as /home/alanyacar/smallTalk/CuisUniversity-5706.image!
+
+
+Bill
+	collaboratorNames: 'energia'
+	in: 'Zombies'!
+
+!classDefinition: 'Bill class' category: 'Zombies' stamp: 'ay 3/20/2023 22:57:10'!
+Bill class
+	instanceVariableNames: 'energia'!
+
+!classDefinition: #Bill category: 'Zombies' stamp: 'ay 3/20/2023 22:57:10'!
+DenotativeObject subclass: #Bill
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Zombies'!
+
+!classDefinition: 'Bill class' category: 'Zombies' stamp: 'ay 3/20/2023 22:57:10'!
+Bill class
+	instanceVariableNames: 'energia'!
+
+Bill!
+
+Bill!
+
+Bill energia !
+
+Bill energia !
+
+Bill comer: 1!
+
+Bill comer: 1!
+
+Bill energia!
+
+Bill energia!
+
+Bill energia!
+
+ 36 !
+
+Bill energia !
+
+Bill!
+
+----SNAPSHOT----(20 March 2023 23:16:07) CuisUniversity-5706.image priorSource: 8718619!
