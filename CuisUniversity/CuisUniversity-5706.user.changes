@@ -252,3 +252,366 @@ Bill energia !
 Bill!
 
 ----SNAPSHOT----(20 March 2023 23:16:07) CuisUniversity-5706.image priorSource: 8718619!
+
+----STARTUP---- (23 March 2023 16:05:32) as /home/alanyacar/Desktop/isw1/smallTalk/CuisUniversity-5706.image!
+
+!Bill class methodsFor: 'acciones' stamp: 'sa 3/23/2023 16:06:22' prior: 50604089!
+caminar: unaCantidadDeKilometros
+	energia := energia - (3 + unaCantidadDeKilometros)! !
+!Bill class methodsFor: 'acciones' stamp: 'as 3/23/2023 16:06:26' prior: 50604141!
+caminar: unaCantidadDeKilometros
+	energia := energia - (3 + unaCantidadDeKilometros)! !
+
+----QUIT----(23 March 2023 16:06:56) CuisUniversity-5706.image priorSource: 8719478!
+
+----STARTUP---- (23 March 2023 20:08:56) as /home/alanyacar/Desktop/isw1/smallTalk/CuisUniversity-5706.image!
+
+
+Bill caminar: 5!
+
+Bill caminar: 5!
+
+Bill caminar: 5!
+
+Bill caminar: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+Bill comer: 5!
+
+----STARTUP---- (27 March 2023 15:02:45) as /home/alanyacar/Desktop/isw1/smallTalk/CuisUniversity-5706.image!
+
+
+!classRemoval: #tercerObjeto stamp: 'as 3/27/2023 15:12:06'!
+DenotativeObject subclass: #tercerObjeto
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Clase1'!
+
+!classRemoval: #otroObjeto stamp: 'as 3/27/2023 15:12:17'!
+DenotativeObject subclass: #otroObjeto
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Clase1'!
+
+!classRemoval: #nuestroObjeto stamp: 'as 3/27/2023 15:12:20'!
+DenotativeObject subclass: #nuestroObjeto
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Clase1'!
+
+ObjectBuilder create: #Verdadero asChildOf: DenotativeObject collaboratorNames: '' in: 'Booleanos'!
+
+!classDefinition: #Verdadero category: 'Booleanos' stamp: 'as 3/27/2023 15:12:44'!
+DenotativeObject subclass: #Verdadero
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Booleanos'!
+
+!classDefinition: 'Verdadero class' category: 'Booleanos' stamp: 'as 3/27/2023 15:12:44'!
+Verdadero class
+	instanceVariableNames: ''!
+
+ObjectBuilder create: #Falso asChildOf: DenotativeObject collaboratorNames: '' in: 'Booleanos'!
+
+!classDefinition: #Falso category: 'Booleanos' stamp: 'as 3/27/2023 15:12:54'!
+DenotativeObject subclass: #Falso
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Booleanos'!
+
+!classDefinition: 'Falso class' category: 'Booleanos' stamp: 'as 3/27/2023 15:12:55'!
+Falso class
+	instanceVariableNames: ''!
+
+ObjectBuilder create: #BooleanTests asChildOf: DenotativeObject collaboratorNames: '' in: 'Booleanos'!
+
+!classDefinition: #BooleanTests category: 'Booleanos' stamp: 'as 3/27/2023 16:57:16'!
+DenotativeObject subclass: #BooleanTests
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Booleanos'!
+
+!classDefinition: 'BooleanTests class' category: 'Booleanos' stamp: 'as 3/27/2023 16:57:16'!
+BooleanTests class
+	instanceVariableNames: ''!
+!BooleanTests class methodsFor: 'Tests' stamp: 'as 3/27/2023 17:01:37'!
+test01NoFlasoDevuelveVerdadero
+	Assert that: Falso no isEqualTo: Verdadero! !
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 'as 3/27/2023 17:01:47'!
+ERROR!
+!Falso class methodsFor: 'operators' stamp: 'as 3/27/2023 17:02:11'!
+no
+	self shouldBeImplemented.! !
+!Falso class methodsFor: 'operators' stamp: 'as 3/27/2023 17:02:34' prior: 50604228!
+no
+	^Verdadero.! !
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 'as 3/27/2023 17:03:09'!
+PASSED!
+!BooleanTests class methodsFor: 'Tests' stamp: 'as 3/27/2023 17:04:39'!
+test02NoVerdaderoDevuelveFalso
+	Assert that: Verdadero no isEqualTo: Falso! !
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 'as 3/27/2023 17:04:41'!
+ERROR!
+!Verdadero class methodsFor: 'operators' stamp: 'as 3/27/2023 17:05:03'!
+no
+	self shouldBeImplemented.! !
+!Verdadero class methodsFor: 'operators' stamp: 'as 3/27/2023 17:05:21' prior: 50604246!
+no
+	^Falso! !
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 'as 3/27/2023 17:05:30'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 'as 3/27/2023 17:05:33'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 'as 3/27/2023 17:05:33'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 'as 3/27/2023 17:05:36'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 'as 3/27/2023 17:05:36'!
+PASSED!
+!BooleanTests class methodsFor: 'Tests' stamp: 'as 3/27/2023 17:07:52'!
+test03VerdaderoYVerdaderoDevuelveVerdadero
+	Assert that: Verdadero y: Verdadero isEqualTo: Verdadero! !
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 'as 3/27/2023 17:08:00'!
+ERROR!
+!BooleanTests class methodsFor: 'Tests' stamp: 'as 3/27/2023 17:08:23' prior: 50604268!
+test03VerdaderoYVerdaderoDevuelveVerdadero
+	Assert that: (Verdadero y: Verdadero) isEqualTo: Verdadero! !
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 'as 3/27/2023 17:08:26'!
+ERROR!
+!Verdadero class methodsFor: 'operators' stamp: 'as 3/27/2023 17:08:29'!
+y: Verdadero 
+	self shouldBeImplemented.! !
+!Verdadero class methodsFor: 'operators' stamp: 'as 3/27/2023 17:09:42' prior: 50604286!
+y: Verdadero 
+	^Verdadero! !
+
+----QUIT----(27 March 2023 17:18:07) CuisUniversity-5706.image priorSource: 8720055!
