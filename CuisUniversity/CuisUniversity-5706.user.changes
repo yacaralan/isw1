@@ -615,3 +615,604 @@ y: Verdadero
 	^Verdadero! !
 
 ----QUIT----(27 March 2023 17:18:07) CuisUniversity-5706.image priorSource: 8720055!
+
+----STARTUP---- (27 March 2023 17:26:01) as /home/clinux01/Escritorio/CuisUniversity/CuisUniversity-5706.image!
+
+
+True!
+
+Boolean!
+!Verdadero class methodsFor: 'operators' stamp: 's 3/27/2023 17:40:11' prior: 50604291!
+y: Booleano
+	^ Booleano! !
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:40:31'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:40:31'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:40:31'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:40:31'!
+PASSED!
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 17:41:42'!
+test04VerdaderoYFalsoDevuelveFalso
+	Assert
+		that: (Verdadero y: Falso)
+		isEqualTo: Falso.! !
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:41:44'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:41:44'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:41:44'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:41:44'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:41:44'!
+PASSED!
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 17:42:15'!
+test05FalsoYVerdaderoDevuelveFalso
+	Assert
+		that: (Falso y: Verdadero)
+		isEqualTo: Falso.! !
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:42:17'!
+ERROR!
+!Falso class methodsFor: 'operators' stamp: 's 3/27/2023 17:42:20'!
+y: Verdadero 
+	self shouldBeImplemented.! !
+!Falso class methodsFor: 'operators' stamp: 's 3/27/2023 17:43:11' prior: 50604126!
+y: Booleano 
+	^Falso! !
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:43:20'!
+PASSED!
+!Falso class methodsFor: 'operators' stamp: 's 3/27/2023 17:43:36' prior: 50604130!
+y: Booleano 
+	^self! !
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:43:44'!
+PASSED!
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 17:44:05'!
+test06FalsoYFalsoDevuelveFalso
+	Assert
+		that: (Falso y: Falso)
+		isEqualTo: Falso.! !
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:44:11'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:44:11'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:44:11'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:44:11'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:44:11'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:44:11'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:44:11'!
+PASSED!
+
+Smalltalk contributionsOf: 'di'!
+
+Smalltalk contributionsOf: 'di'!
+
+Smalltalk contributionsOf: 'di'!
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 17:52:54'!
+test07FalsoOFalsoDevuelveFalso
+	Assert
+		that: (Falso o: Falso)
+		isEqualTo: Falso.! !
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:52:56'!
+ERROR!
+!Falso class methodsFor: 'operators' stamp: 's 3/27/2023 17:53:15'!
+o: Falso 
+	self shouldBeImplemented.! !
+!Falso class methodsFor: 'operators' stamp: 's 3/27/2023 17:53:40' prior: 50604180!
+o: Booleano
+	^ Booleano! !
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:53:46'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:53:46'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:53:46'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:53:46'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:53:46'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:53:46'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:53:46'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:53:46'!
+PASSED!
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 17:54:35'!
+test07FalsoOVerdaderoDevuelveVerdadero
+	Assert
+		that: (Falso o: Verdadero)
+		isEqualTo: Verdadero.! !
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:54:37'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:54:37'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:54:37'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:54:37'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:54:37'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:54:37'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:54:37'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:54:37'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:54:37'!
+PASSED!
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 17:55:09'!
+test09VerdaderoOVerdaderoDevuelveVerdadero
+	Assert
+		that: (Verdadero o: Verdadero)
+		isEqualTo: Verdadero.! !
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:55:11'!
+ERROR!
+!Verdadero class methodsFor: 'operators' stamp: 's 3/27/2023 17:55:14'!
+o: Verdadero 
+	self shouldBeImplemented.! !
+!Verdadero class methodsFor: 'operators' stamp: 's 3/27/2023 17:57:02' prior: 50604252!
+o: Booleano
+	^ Verdadero! !
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:57:06'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:57:06'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:57:06'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:57:06'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:57:06'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:57:06'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:57:06'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:57:06'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:57:06'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:57:06'!
+PASSED!
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 17:57:16'!
+test08FalsoOVerdaderoDevuelveVerdadero
+	Assert
+		that: (Falso o: Verdadero)
+		isEqualTo: Verdadero.! !
+
+!methodRemoval: BooleanTests class #test07FalsoOVerdaderoDevuelveVerdadero stamp: 's 3/27/2023 17:57:31'!
+test07FalsoOVerdaderoDevuelveVerdadero
+	Assert
+		that: (Falso o: Verdadero)
+		isEqualTo: Verdadero.!
+!Verdadero class methodsFor: 'operators' stamp: 's 3/27/2023 17:57:47' prior: 50604257!
+o: Booleano
+	^ self! !
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 17:58:06'!
+test10VerdaderoOFalsoDevuelveVerdadero
+	Assert
+		that: (Verdadero o: Falso)
+		isEqualTo: Verdadero.! !
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:58:08'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:58:08'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:58:08'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:58:08'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:58:08'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:58:08'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:58:08'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:58:08'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:58:08'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:58:08'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 17:58:08'!
+PASSED!
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 17:59:08'!
+test01NoFalsoDevuelveVerdadero
+	Assert
+		that: Falso no
+		isEqualTo: Verdadero.! !
+
+!methodRemoval: BooleanTests class #test01NoFlasoDevuelveVerdadero stamp: 's 3/27/2023 17:59:08'!
+test01NoFlasoDevuelveVerdadero
+	Assert
+		that: Falso no
+		isEqualTo: Verdadero.!
+
+----STARTUP---- (27 March 2023 18:02:30) as /home/clinux01/Escritorio/CuisUniversity/CuisUniversity-5706.image!
+
+!Verdadero class methodsFor: 'operators' stamp: 's 3/27/2023 18:03:57' prior: 50604291!
+y: Booleano
+	^ Booleanos
+	s
+	! !
+!Verdadero class methodsFor: 'operators' stamp: 's 3/27/2023 18:04:03' prior: 50604083!
+y: Booleano
+	^ Booleano! !
+!Verdadero class methodsFor: 'operators' stamp: 's 3/27/2023 18:04:55'!
+o: Booleano
+	^self! !
+!Falso class methodsFor: 'operators' stamp: 's 3/27/2023 18:05:35'!
+y: Booleano
+	^self! !
+!Falso class methodsFor: 'operators' stamp: 's 3/27/2023 18:06:10'!
+o: Booleano
+	^Booleano ! !
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 18:06:32'!
+test04VerdaderoYFalsoDevuelveVerdadero
+	Assert
+		that: (Verdadero y: Falso)
+		isEqualTo: Verdadero.! !
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 18:06:39' prior: 50604101!
+test04VerdaderoYFalsoDevuelveVerdadero
+	Assert
+		that: (Verdadero y: Falso)
+		isEqualTo: Falso.! !
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 18:06:50'!
+test04VerdaderoYFalsoDevuelveFalso
+	Assert
+		that: (Verdadero y: Falso)
+		isEqualTo: Falso.! !
+
+!methodRemoval: BooleanTests class #test04VerdaderoYFalsoDevuelveVerdadero stamp: 's 3/27/2023 18:06:58'!
+test04VerdaderoYFalsoDevuelveVerdadero
+	Assert
+		that: (Verdadero y: Falso)
+		isEqualTo: Falso.!
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 18:07:42'!
+test05FalsoYFalsoDevuelveFalso
+	Assert
+		that: (Falso y: Falso)
+		isEqualTo: Falso.! !
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 18:07:56'!
+test06FalsoYVerdaderoDevuelveFalso
+	Assert
+		that: (Falso y: Verdadero)
+		isEqualTo: Falso.! !
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 18:08:30'!
+test07FalsoOVerdaderoDevuelveVerdadero
+	Assert
+		that: (Falso o: Verdadero)
+		isEqualTo: Verdadero.! !
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 18:08:49'!
+test07FalsoOFalsoDevuelveFalso
+	Assert
+		that: (Falso o: Falso)
+		isEqualTo: Falso.! !
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 18:09:02'!
+test08FalsoOFalsoDevuelveFalso
+	Assert
+		that: (Falso o: Falso)
+		isEqualTo: Falso.! !
+
+!methodRemoval: BooleanTests class #test07FalsoOFalsoDevuelveFalso stamp: 's 3/27/2023 18:09:02'!
+test07FalsoOFalsoDevuelveFalso
+	Assert
+		that: (Falso o: Falso)
+		isEqualTo: Falso.!
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 18:09:39'!
+test09VerdaderoOFalsoDevuelveVerdadero
+	Assert
+		that: (Verdadero o: Falso)
+		isEqualTo: Verdadero.! !
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 18:09:57'!
+test10VerdaderoOVerdaderoDevuelveVerdadero
+	Assert
+		that: (Verdadero o: Verdadero)
+		isEqualTo: Verdadero.! !
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:10:02'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:10:02'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:10:02'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:10:02'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:10:02'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:10:02'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:10:02'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:10:02'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:10:02'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:10:02'!
+PASSED!
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 18:17:35'!
+test11VerdaderoSiEsVerdadero
+	|n1 aClosure|
+	n1 := 0.
+	aClosure := [n1 := n1 + 5].
+	Assert that: (Verdadero siEsVerdadero: aClosure) isEqualTo: 5! !
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 18:17:59'!
+test12FalsoSiEsVerdadero
+	|n1 aClosure|
+	n1 := 0.
+	aClosure := [n1 := n1 + 5].
+	Assert that: (Falso siEsVerdadero: aClosure) isEqualTo: 0! !
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 18:18:38'!
+test12VerdaderoSiEsFalso
+	|n1 aClosure|
+	n1 := 0.
+	aClosure := [n1 := n1 + 5].
+	Assert that: (Verdadero siEsFalso: aClosure) isEqualTo: 0! !
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 18:18:56'!
+test13FalsoSiEsFalso
+	|n1 aClosure|
+	n1 := 0.
+	aClosure := [n1 := n1 + 5].
+	Assert that: (Falso siEsFalso: aClosure) isEqualTo: 5! !
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:19:47'!
+ERROR!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:19:47'!
+ERROR!
+!Falso class methodsFor: 'operators' stamp: 's 3/27/2023 18:19:50'!
+siEsVerdadero: aClosure 
+	self shouldBeImplemented.! !
+!Falso class methodsFor: 'operators' stamp: 's 3/27/2023 18:19:58' prior: 50604233!
+siEsVerdadero: aClosure! !
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:20:10'!
+ERROR!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:20:10'!
+ERROR!
+!Verdadero class methodsFor: 'operators' stamp: 's 3/27/2023 18:20:14'!
+siEsFalso: aClosure 
+	self shouldBeImplemented.! !
+!Verdadero class methodsFor: 'operators' stamp: 's 3/27/2023 18:20:19' prior: 50604247!
+siEsFalso: aClosure! !
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:20:26'!
+ERROR!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:20:26'!
+ERROR!
+!Verdadero class methodsFor: 'operators' stamp: 's 3/27/2023 18:20:29'!
+siEsVerdadero: aClosure 
+	self shouldBeImplemented.! !
+!Verdadero class methodsFor: 'operators' stamp: 's 3/27/2023 18:20:41' prior: 50604261!
+siEsVerdadero: aClosure 
+	aClosure value! !
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:20:46'!
+ERROR!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:20:46'!
+ERROR!
+!Falso class methodsFor: 'operators' stamp: 's 3/27/2023 18:20:48'!
+siEsFalso: aClosure 
+	self shouldBeImplemented.! !
+!Falso class methodsFor: 'operators' stamp: 's 3/27/2023 18:20:58' prior: 50604276!
+siEsFalso: aClosure 
+	aClosure value! !
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:21:02'!
+ERROR!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:21:02'!
+ERROR!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:21:11'!
+ERROR!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:21:11'!
+ERROR!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:21:45'!
+ERROR!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:21:45'!
+ERROR!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:21:48'!
+ERROR!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:21:48'!
+ERROR!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:21:50'!
+ERROR!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:21:50'!
+ERROR!
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 18:27:36' prior: 50604220!
+test13FalsoSiEsFalso
+	|n1 aClosure|
+	n1 := 0.
+	aClosure := [n1 := n1 + 5].
+	Falso siEsFalso: aClosure.
+	Assert that: 5 isEqualTo: n1! !
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 18:28:10'!
+test14FalsoSiEsVerdadero
+	|n1 aClosure|
+	n1 := 0.
+	aClosure := [n1 := n1 + 5].
+	Assert that: (Falso siEsVerdadero: aClosure) isEqualTo: 0! !
+
+!methodRemoval: BooleanTests class #test12FalsoSiEsVerdadero stamp: 's 3/27/2023 18:28:10'!
+test12FalsoSiEsVerdadero
+	|n1 aClosure|
+	n1 := 0.
+	aClosure := [n1 := n1 + 5].
+	Assert that: (Falso siEsVerdadero: aClosure) isEqualTo: 0!
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 18:28:56' prior: 50604321!
+test14FalsoSiEsVerdadero
+	|n1 aClosure|
+	n1 := 0.
+	aClosure := [n1 := n1 + 5].
+	Falso siEsVerdadero: aClosure.
+	Assert that: 0 isEqualTo: n1! !
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 18:29:24' prior: 50604213!
+test12VerdaderoSiEsFalso
+	|n1 aClosure|
+	n1 := 0.
+	aClosure := [n1 := n1 + 5].
+	Falso siEsFalso: aClosure.
+	Assert that: 0 isEqualTo: n1! !
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 18:29:54' prior: 50604199!
+test11VerdaderoSiEsVerdadero
+	|n1 aClosure|
+	n1 := 0.
+	aClosure := [n1 := n1 + 5].
+	Verdadero siEsVerdadero: aClosure.
+	Assert that: 5 isEqualTo: n1! !
+!BooleanTests class methodsFor: 'Tests' stamp: 's 3/27/2023 18:30:02' prior: 50604344!
+test12VerdaderoSiEsFalso
+	|n1 aClosure|
+	n1 := 0.
+	aClosure := [n1 := n1 + 5].
+	Verdadero siEsFalso: aClosure.
+	Assert that: 0 isEqualTo: n1! !
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:30:27'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:30:30'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:30:35'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:30:39'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:30:44'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:30:49'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:30:49'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:30:49'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:30:49'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:30:49'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:30:49'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:30:49'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:30:49'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:30:49'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:30:49'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:30:49'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:30:49'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:30:49'!
+PASSED!
+
+!testRun: #DenotativeObjectTestCase #performRealTest stamp: 's 3/27/2023 18:30:49'!
+PASSED!
+
+Falso y: 5!
+
+Verdadero y: 5!
+
+----SNAPSHOT----(27 March 2023 18:38:43) CuisUniversity-5706.image priorSource: 8724604!
+
+----SNAPSHOT----(27 March 2023 18:39:17) CuisUniversity-5706.image priorSource: 8728724!
+
+----QUIT----(27 March 2023 19:49:34) CuisUniversity-5706.image priorSource: 8728814!
