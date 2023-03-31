@@ -20,7 +20,7 @@ prender
 	color := Color yellow! !
 
 
-!LuzAmarilla class methodsFor: '--** private fileout/in **--' stamp: 's 3/30/2023 20:00:38'!
+!LuzAmarilla class methodsFor: '--** private fileout/in **--' stamp: 's 3/30/2023 21:57:11'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
@@ -76,7 +76,7 @@ titilarLuzAmarilla
 	(Delay for: 0.5 * second) wait! !
 
 
-!SemaforoDeMaipuYCorrientes class methodsFor: '--** private fileout/in **--' stamp: 's 3/30/2023 20:00:38'!
+!SemaforoDeMaipuYCorrientes class methodsFor: '--** private fileout/in **--' stamp: 's 3/30/2023 21:57:11'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
