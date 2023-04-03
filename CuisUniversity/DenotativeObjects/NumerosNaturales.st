@@ -43,9 +43,6 @@ next
 		next previous: self ].
 	^ next.! !
 
-!I class methodsFor: 'Operations'!
-! !
-
 !I class methodsFor: 'Operations' stamp: 's 3/30/2023 21:28:24'!
 previous: previous
 	prev := previous.! !
@@ -59,7 +56,7 @@ timesDivideTo: aNaturalNumber
 	^aNaturalNumber ! !
 
 
-!I class methodsFor: '--** private fileout/in **--' stamp: 's 3/30/2023 21:57:03'!
+!I class methodsFor: '--** private fileout/in **--' stamp: 's 4/3/2023 17:15:57'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
@@ -83,9 +80,6 @@ II class
 !II class methodsFor: 'Operations' stamp: 's 3/30/2023 20:29:06'!
 * aNaturalNumber
 	^aNaturalNumber multiplyByBiggerThanOne: self! !
-
-!II class methodsFor: 'Operations'!
-! !
 
 !II class methodsFor: 'Operations' stamp: 's 3/30/2023 21:55:47'!
 - aNaturalNumber
@@ -112,9 +106,6 @@ next
 		next previous: self ].
 	^ next.! !
 
-!II class methodsFor: 'Operations'!
-! !
-
 !II class methodsFor: 'Operations' stamp: 's 3/30/2023 21:27:45'!
 previous: previous
 	prev := previous .! !
@@ -135,12 +126,34 @@ canNotDivideByBiggerNumberErrorDescription
 	^'La tenes muy chiquita para que te divida semejante magnitud'! !
 
 
-!II class methodsFor: '--** private fileout/in **--' stamp: 's 3/30/2023 21:57:03'!
+!II class methodsFor: '--** private fileout/in **--' stamp: 's 4/3/2023 17:15:57'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
-	next := AnObsoleteIII.
+	next := III.
 	prev := I.! !
+
+
+!classDefinition: #III category: 'NumerosNaturales'!
+II subclass: #III
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'NumerosNaturales'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'III class' category: 'NumerosNaturales'!
+III class
+	instanceVariableNames: ''!
+
+!III class methodsFor: '--** private fileout/in **--' stamp: 's 4/3/2023 17:15:57'!
+initializeCollaboratorsFromFile
+	"Auto generated method for loading purposes - Do not modify it"
+
+	next := nil.
+	prev := II.! !
 
 I initializeAfterFileIn!
 II initializeAfterFileIn!
+III initializeAfterFileIn!
