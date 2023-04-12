@@ -56,15 +56,6 @@ assertThatExecutionTimeInMilliseconds: aClosure shouldNotExceed: anAmountOfMilli
 	
 	self assert: millisecondsAfterRunning-millisecondsBeforeRunning < anAmountOfMilliseconds ! !
 
-!CustomerBookTest methodsFor: 'Assertions' stamp: 'a 4/11/2023 00:57:57'!
-assertThatYouCantSuspend: aName onCustomerBook: aCustomerBook
-
-	self assertThatExecution:  [ aCustomerBook suspendCustomerNamed: aName]
-	failsOn: CantSuspend
-	andChecksThat: [ :anError | 
-			self assert: aCustomerBook numberOfCustomers = 1.
-			self assert: (aCustomerBook includesCustomerNamed: aName) ]! !
-
 !CustomerBookTest methodsFor: 'Assertions' stamp: 'a 4/11/2023 01:01:38'!
 theCustomerBook: aCustomerBook hasOnly: aName
 
@@ -259,15 +250,16 @@ remove: aName from: anOrderedCollection
 				] 
 		].! !
 
-!CustomerBook methodsFor: 'customer management' stamp: 'a 4/11/2023 01:32:39'!
+!CustomerBook methodsFor: 'customer management' stamp: 'LMR 4/12/2023 15:06:56'!
 removeCustomerNamed: aName 
+
+	(self includesCustomerNamed: aName) ifFalse: [^ NotFound signal.].
 	
 	self remove: aName from: active.
 
 	self remove: aName from: suspended. 
-	
-	^ NotFound signal.
-! !
+
+	^aName.! !
 
 !CustomerBook methodsFor: 'customer management' stamp: 'HernanWilkinson 7/6/2011 17:52'!
 signalCustomerAlreadyExists 
