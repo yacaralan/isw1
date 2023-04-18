@@ -386,10 +386,10 @@ Numero subclass: #Entero
 
 	^aDivisor dividirAlEntero: self! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'HernanWilkinson 5/7/2016 21:55'!
+!Entero methodsFor: 'arithmetic operations' stamp: 'LMR 4/18/2023 00:39:57'!
 // aDivisor 
 	
-	^self class with: value // aDivisor integerValue! !
+	^Entero with: value // aDivisor integerValue! !
 
 !Entero methodsFor: 'arithmetic operations' stamp: 'a 4/17/2023 20:48:29'!
 dividirALaFraccion: unaFraccion
@@ -407,15 +407,15 @@ fibonacci
 	self subclassResponsibility 
 		! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'HernanWilkinson 5/7/2016 21:00'!
+!Entero methodsFor: 'arithmetic operations' stamp: 'LMR 4/18/2023 01:03:05'!
 greatestCommonDivisorWith: anEntero 
 	
-	^self class with: (value gcd: anEntero integerValue)! !
+	^Entero with: (value gcd: anEntero integerValue)! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'a 4/17/2023 20:17:33'!
+!Entero methodsFor: 'arithmetic operations' stamp: 'LMR 4/18/2023 01:02:58'!
 multiplicarPorElEntero: unEntero
 
-	^self class with: value * unEntero integerValue
+	^Entero with: value * unEntero integerValue
 	! !
 
 !Entero methodsFor: 'arithmetic operations' stamp: 'a 4/17/2023 20:17:03'!
@@ -431,15 +431,15 @@ restarALaFraccion: unaFraccion
 	denominator := unaFraccion denominator.
 	^ Fraccion with:  unaFraccion numerator - (self * denominator) over: denominator.! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 's 4/17/2023 19:27:07'!
+!Entero methodsFor: 'arithmetic operations' stamp: 'LMR 4/18/2023 01:02:48'!
 restarAlEntero: unEntero
 
-	^ self class with: unEntero integerValue - value.! !
+	^ Entero with: unEntero integerValue - value.! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 's 4/17/2023 19:15:09'!
+!Entero methodsFor: 'arithmetic operations' stamp: 'LMR 4/18/2023 01:03:27'!
 sumarleElEntero: unEntero
 	
-	^self class with: value + unEntero integerValue
+	^Entero with: value + unEntero integerValue
 ! !
 
 !Entero methodsFor: 'arithmetic operations' stamp: 's 4/17/2023 19:18:52'!
@@ -531,6 +531,11 @@ fibonacci
 !Cero methodsFor: 'as yet unclassified' stamp: 'a 4/17/2023 21:54:55'!
 initialize
 	value := 0! !
+
+!Cero methodsFor: 'as yet unclassified' stamp: 'LMR 4/18/2023 00:55:15'!
+integerValue
+	
+	^ 0! !
 
 
 !classDefinition: #Negatives category: 'Numeros-Exercise'!
