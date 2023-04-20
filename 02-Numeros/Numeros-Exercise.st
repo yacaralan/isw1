@@ -506,15 +506,15 @@ Entero class
 negativeFibonacciErrorDescription
 	^ ' Fibonacci no está definido aquí para Enteros Negativos!!!!!!'! !
 
-!Entero class methodsFor: 'instance creation' stamp: 'a 4/18/2023 17:29:10'!
+!Entero class methodsFor: 'instance creation' stamp: 'a 4/20/2023 14:20:14'!
 with: aValue 
 	"Esta verificacion esta puesta por si se equivocan y quieren crear un Entero pasando otra cosa que un Integer - Hernan"
 	aValue isInteger ifFalse: [  self error: 'aValue debe ser anInteger' ].
 	
 	aValue = 0 ifTrue: [^Cero new].
 	aValue = 1 ifTrue: [^Uno new].
-	aValue < 0 ifTrue: [^Negatives new initializeWith: aValue ].
-	aValue > 1 ifTrue: [^PositivosMayoresDeUno new initializeWith: aValue]! !
+	aValue < 0 ifTrue: [^Negativo new initializeWith: aValue ].
+	aValue > 1 ifTrue: [^PositivoMayorDeUno new initializeWith: aValue]! !
 
 
 !classDefinition: #Cero category: 'Numeros-Exercise'!
@@ -538,26 +538,26 @@ integerValue
 	^0! !
 
 
-!classDefinition: #Negatives category: 'Numeros-Exercise'!
-Entero subclass: #Negatives
+!classDefinition: #Negativo category: 'Numeros-Exercise'!
+Entero subclass: #Negativo
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Numeros-Exercise'!
 
-!Negatives methodsFor: 'as yet unclassified' stamp: 'a 4/17/2023 21:30:41'!
+!Negativo methodsFor: 'as yet unclassified' stamp: 'a 4/17/2023 21:30:41'!
 fibonacci
 	self error: Entero negativeFibonacciErrorDescription ! !
 
 
-!classDefinition: #PositivosMayoresDeUno category: 'Numeros-Exercise'!
-Entero subclass: #PositivosMayoresDeUno
+!classDefinition: #PositivoMayorDeUno category: 'Numeros-Exercise'!
+Entero subclass: #PositivoMayorDeUno
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Numeros-Exercise'!
 
-!PositivosMayoresDeUno methodsFor: 'as yet unclassified' stamp: 'a 4/17/2023 21:31:09'!
+!PositivoMayorDeUno methodsFor: 'as yet unclassified' stamp: 'a 4/17/2023 21:31:09'!
 fibonacci
 
 	| one two |
