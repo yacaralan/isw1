@@ -466,10 +466,10 @@ multiplicarPorElEntero: unEntero
 	^self class with: value * unEntero integerValue
 	! !
 
-!Entero methodsFor: 'auxiliary arithmetic operations' stamp: 'a 4/17/2023 20:17:03'!
+!Entero methodsFor: 'auxiliary arithmetic operations' stamp: 's 4/20/2023 18:18:41'!
 multiplicarPorLaFraccion: unaFraccion
 
-	^Fraccion with: self * unaFraccion numerator over: unaFraccion denominator
+	^unaFraccion multiplicarPorElEntero: self
 	! !
 
 !Entero methodsFor: 'auxiliary arithmetic operations' stamp: 'a 4/17/2023 21:02:08'!
@@ -490,11 +490,10 @@ sumarleElEntero: unEntero
 	^self class with: value + unEntero integerValue
 ! !
 
-!Entero methodsFor: 'auxiliary arithmetic operations' stamp: 's 4/17/2023 19:18:52'!
+!Entero methodsFor: 'auxiliary arithmetic operations' stamp: 's 4/20/2023 18:12:33'!
 sumarleLaFraccion: unaFraccion
-	|denominator| 
-	denominator := unaFraccion denominator.
-	^ Fraccion with: self * denominator + unaFraccion numerator over:denominator! !
+	
+	^ unaFraccion sumarleElEntero: self! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -674,15 +673,15 @@ dividirALaFraccion: unaFraccion
 
 	^(unaFraccion numerator * denominator ) / (unaFraccion denominator * numerator)! !
 
-!Fraccion methodsFor: 'auxiliary arithmetic operations' stamp: 'a 4/17/2023 20:52:04'!
+!Fraccion methodsFor: 'auxiliary arithmetic operations' stamp: 's 4/20/2023 18:24:56'!
 dividirAlEntero: unEntero
 
-	^Fraccion with: unEntero * self denominator over: self numerator! !
+	^self class with: unEntero * self denominator over: self numerator! !
 
-!Fraccion methodsFor: 'auxiliary arithmetic operations' stamp: 'a 4/17/2023 20:14:13'!
+!Fraccion methodsFor: 'auxiliary arithmetic operations' stamp: 's 4/20/2023 18:17:47'!
 multiplicarPorElEntero: unEntero
 	
-	^Fraccion with: unEntero * numerator over: denominator
+	^ unEntero * numerator / denominator
 	! !
 
 !Fraccion methodsFor: 'auxiliary arithmetic operations' stamp: 'a 4/17/2023 20:12:45'!
@@ -703,15 +702,15 @@ restarALaFraccion: unaFraccion
 	^newNumerator / newDenominator
 ! !
 
-!Fraccion methodsFor: 'auxiliary arithmetic operations' stamp: 's 4/17/2023 19:29:58'!
+!Fraccion methodsFor: 'auxiliary arithmetic operations' stamp: 's 4/20/2023 18:15:56'!
 restarAlEntero: unEntero
 	
-	^ Fraccion with: unEntero * denominator - numerator over: denominator.
+	^ self class with: unEntero * denominator - numerator over: denominator.
 ! !
 
-!Fraccion methodsFor: 'auxiliary arithmetic operations' stamp: 's 4/17/2023 19:12:02'!
+!Fraccion methodsFor: 'auxiliary arithmetic operations' stamp: 's 4/20/2023 18:11:53'!
 sumarleElEntero: unEntero
-	^Fraccion with: unEntero * denominator +  numerator over: denominator! !
+	^self class with: unEntero * denominator +  numerator over: denominator! !
 
 !Fraccion methodsFor: 'auxiliary arithmetic operations' stamp: 's 4/17/2023 19:10:49'!
 sumarleLaFraccion: unaFraccion
