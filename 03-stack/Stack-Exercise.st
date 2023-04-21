@@ -147,49 +147,54 @@ TestCase subclass: #SentenceFinderByPrefixTest
 
 !classDefinition: #OOStack category: 'Stack-Exercise'!
 Object subclass: #OOStack
-	instanceVariableNames: 'elements size isStackEmpty'
+	instanceVariableNames: 'elements stackState'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 's 4/20/2023 21:53:34'!
-initialize
-	elements := OrderedCollection new.
-	isStackEmpty := NotEmptyStack new.
-	size := 0! !
-
-!OOStack methodsFor: 'as yet unclassified' stamp: 's 4/20/2023 21:51:44'!
+!OOStack methodsFor: 'standar stack methods' stamp: 'a 4/20/2023 23:10:45'!
 isEmpty
 	
-	^isStackEmpty ! !
+	^stackState isEmpty! !
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 's 4/20/2023 21:51:44'!
+!OOStack methodsFor: 'standar stack methods' stamp: 'a 4/21/2023 00:12:34'!
 pop	
 
-	isStackEmpty ifTrue: [self error: self class stackEmptyErrorDescription].
-	size := size - 1.
+	stackState popStateOfStack: self.
 	^elements removeLast.
 	
  ! !
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 's 4/20/2023 21:51:44'!
+!OOStack methodsFor: 'standar stack methods' stamp: 'a 4/21/2023 00:15:23'!
 push: anElement
-	
+
+	stackState 	pushNextStateToStack: self.
 	elements addLast: anElement.
-	isStackEmpty := false.
-	size := size + 1.
-	
-	^anElement ! !
+! !
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 's 4/20/2023 21:19:03'!
+!OOStack methodsFor: 'standar stack methods' stamp: 'a 4/21/2023 00:09:44'!
 size
-	^size ! !
+	
+	^elements size ! !
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 's 4/20/2023 21:56:35'!
+!OOStack methodsFor: 'standar stack methods' stamp: 'a 4/21/2023 00:18:12'!
 top
 
-	isStackEmpty ifTrue: [self error: self class stackEmptyErrorDescription].
-	^elements at: size ! !
+	stackState errorIfEmptyState.
+	^elements at: elements size ! !
+
+
+!OOStack methodsFor: 'initializer' stamp: 'a 4/21/2023 00:25:23'!
+initialize
+	elements := OrderedCollection new.
+	stackState := EmptyStack new.
+! !
+
+
+!OOStack methodsFor: 'aux methods' stamp: 'a 4/21/2023 00:37:00'!
+setState: aStackState
+	
+	stackState := aStackState ! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -222,6 +227,26 @@ Object subclass: #StackState
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
+!StackState methodsFor: 'stack methods' stamp: 'a 4/21/2023 00:18:00'!
+errorIfEmptyState
+
+	self subclassResponsibility ! !
+
+!StackState methodsFor: 'stack methods' stamp: 'a 4/21/2023 00:16:06'!
+isEmpty
+
+	self subclassResponsibility ! !
+
+!StackState methodsFor: 'stack methods' stamp: 'a 4/21/2023 00:12:21'!
+popStateOfStack: aStack
+
+	self subclassResponsibility ! !
+
+!StackState methodsFor: 'stack methods' stamp: 'a 4/21/2023 00:38:27'!
+pushNextStateToStack: aStack
+
+	aStack setState: (NotEmptyStack newWithPreviousState: self)! !
+
 
 !classDefinition: #EmptyStack category: 'Stack-Exercise'!
 StackState subclass: #EmptyStack
@@ -229,6 +254,21 @@ StackState subclass: #EmptyStack
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
+
+!EmptyStack methodsFor: 'state methods' stamp: 'a 4/21/2023 00:17:11'!
+errorIfEmptyState
+
+	OOStack error: OOStack stackEmptyErrorDescription! !
+
+!EmptyStack methodsFor: 'state methods' stamp: 'a 4/20/2023 23:12:05'!
+isEmpty
+	
+	^true! !
+
+!EmptyStack methodsFor: 'state methods' stamp: 'a 4/21/2023 00:11:30'!
+popStateOfStack: aStack
+
+	aStack error: aStack class stackEmptyErrorDescription! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -244,10 +284,30 @@ new
 
 !classDefinition: #NotEmptyStack category: 'Stack-Exercise'!
 StackState subclass: #NotEmptyStack
-	instanceVariableNames: ''
+	instanceVariableNames: 'previousState'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
+
+!NotEmptyStack methodsFor: 'state methods' stamp: 'a 4/21/2023 00:17:35'!
+errorIfEmptyState! !
+
+!NotEmptyStack methodsFor: 'state methods' stamp: 'a 4/20/2023 23:12:15'!
+isEmpty
+	
+	^false! !
+
+!NotEmptyStack methodsFor: 'state methods' stamp: 'a 4/21/2023 00:37:23'!
+popStateOfStack: aStack
+
+	aStack setState: previousState 
+! !
+
+
+!NotEmptyStack methodsFor: 'initializer' stamp: 'a 4/20/2023 23:33:12'!
+initializeWithPreviousState: aStackState
+	
+	previousState := aStackState ! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -255,7 +315,7 @@ StackState subclass: #NotEmptyStack
 NotEmptyStack class
 	instanceVariableNames: ''!
 
-!NotEmptyStack class methodsFor: 'as yet unclassified' stamp: 's 4/20/2023 21:57:42'!
-new
+!NotEmptyStack class methodsFor: 'as yet unclassified' stamp: 'a 4/20/2023 23:30:41'!
+newWithPreviousState: aStackState
 	
-	^self basicNew initialize ! !
+	^self basicNew initializeWithPreviousState: aStackState ! !
