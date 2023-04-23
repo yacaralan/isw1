@@ -139,12 +139,12 @@ test10CanNotTopWhenThereAreNoObjectsInTheStack
 
 !classDefinition: #SentenceFinderByPrefixTest category: 'Stack-Exercise'!
 TestCase subclass: #SentenceFinderByPrefixTest
-	instanceVariableNames: 'aPrefixStartingWithLowerCase aPrefixStartingWithUpperCase prefixEndingWithWhiteSpace prefixStartingWithWhiteSpace prefixWithWhiteSpace emptyStack emptyPrefix finder emptyCollection'
+	instanceVariableNames: 'aPrefixStartingWithLowerCase aPrefixStartingWithUpperCase prefixEndingWithWhiteSpace prefixStartingWithWhiteSpace prefixWithWhiteSpace emptyStack emptyPrefix finder'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!SentenceFinderByPrefixTest methodsFor: 'setup' stamp: 'LMR 4/22/2023 20:14:25'!
+!SentenceFinderByPrefixTest methodsFor: 'setup' stamp: 'LMR 4/22/2023 21:06:30'!
 setUp
 
 	aPrefixStartingWithLowerCase := 'hola'.
@@ -156,106 +156,76 @@ setUp
 	
 	emptyStack := OOStack new.
 		
-	finder := SentenceFinderByPrefix new.
-	
-	emptyCollection := OrderedCollection new.! !
+	finder := SentenceFinderByPrefix new.! !
 
 
-!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'LMR 4/22/2023 20:12:20'!
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'LMR 4/22/2023 20:57:40'!
 test01EmptyPrefixShouldThrowError
 	
-	self
-		should: [ finder findSentencesWithPrefix: emptyPrefix inStack: emptyStack. ]
-		raise: Error - MessageNotUnderstood 
-		withExceptionDo: [ :anError |
-			self assert: anError messageText = SentenceFinderByPrefix emptyPrefixErrorDescription ]
+	self whenSearchingFor: emptyPrefix onStack: emptyStack shouldFailWithDescription: SentenceFinderByPrefix emptyPrefixErrorDescription.
 		
 ! !
 
-!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'LMR 4/22/2023 20:12:26'!
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'LMR 4/22/2023 20:57:00'!
 test02PrefixWithWhiteSpaceShouldThrowError	
 	
-	self
-		should: [ finder findSentencesWithPrefix: prefixWithWhiteSpace inStack: emptyStack. ]
-		raise: Error - MessageNotUnderstood 
-		withExceptionDo: [ :anError |
-			self assert: anError messageText = SentenceFinderByPrefix prefixContainsWhiteSpaceErrorDescription ].
-		
-! !
+	self whenSearchingFor: prefixWithWhiteSpace onStack: emptyStack shouldFailWithDescription: SentenceFinderByPrefix prefixContainsWhiteSpaceErrorDescription.! !
 
-!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'LMR 4/22/2023 20:14:46'!
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'LMR 4/22/2023 20:57:35'!
 test03PrefixStartingWithWhiteSpaceThrowsError
 	
-	self
-		should: [ finder findSentencesWithPrefix: prefixStartingWithWhiteSpace inStack: emptyStack. ]
-		raise: Error - MessageNotUnderstood 
-		withExceptionDo: [ :anError |
-			self assert: anError messageText = SentenceFinderByPrefix prefixContainsWhiteSpaceErrorDescription ].! !
+	self whenSearchingFor: prefixStartingWithWhiteSpace onStack: emptyStack shouldFailWithDescription: SentenceFinderByPrefix prefixContainsWhiteSpaceErrorDescription.! !
 
-!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'LMR 4/22/2023 20:14:40'!
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'LMR 4/22/2023 20:58:06'!
 test04PrefixEndingWithWhiteSpaceThrowsError
 	
-	self
-		should: [ finder findSentencesWithPrefix: prefixEndingWithWhiteSpace inStack: emptyStack. ]
-		raise: Error - MessageNotUnderstood 
-		withExceptionDo: [ :anError |
-			self assert: anError messageText = SentenceFinderByPrefix prefixContainsWhiteSpaceErrorDescription ].! !
+	self whenSearchingFor: prefixEndingWithWhiteSpace onStack: emptyStack shouldFailWithDescription: SentenceFinderByPrefix prefixContainsWhiteSpaceErrorDescription.! !
 
-!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'LMR 4/22/2023 20:14:01'!
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'LMR 4/22/2023 21:14:38'!
 test05ShouldNotFindSentencesWithEmptyStack
 	
-	| result |
-	
-	result := finder findSentencesWithPrefix: aPrefixStartingWithLowerCase inStack: emptyStack.
-	
-	self assert: result = emptyCollection.! !
+	self assertThat: aPrefixStartingWithLowerCase hasNoMatchesInStack: emptyStack.! !
 
-!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'LMR 4/22/2023 20:18:07'!
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'LMR 4/22/2023 21:14:55'!
 test06ShouldNotFindSentencesWhenPrefixDoesNotMatchAny
 	
-	| result aStack |
+	| aStack |
 	
 	aStack := OOStack new.
 	aStack push: 'no'.
 	aStack push: 'coincide'.
 	
-	result := finder findSentencesWithPrefix: aPrefixStartingWithLowerCase inStack: aStack.
-	
-	self assert: result = emptyCollection.! !
+	self assertThat: aPrefixStartingWithLowerCase hasNoMatchesInStack: aStack.! !
 
-!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'LMR 4/22/2023 20:26:51'!
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'LMR 4/22/2023 21:15:39'!
 test07ShouldNotFindSentencesWhenPrefixDoesNotMatchCasing
 	
-	| result aStack |
+	| aStack |
 	
 	aStack := OOStack new.
 	aStack push: 'hola'.
 	aStack push: 'este no coincide por casing'.
 	
-	result := finder findSentencesWithPrefix: aPrefixStartingWithUpperCase inStack: aStack.
-	
-	self assert: result = emptyCollection.! !
+	self assertThat: aPrefixStartingWithUpperCase hasNoMatchesInStack: aStack.! !
 
-!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'LMR 4/22/2023 20:25:16'!
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'LMR 4/22/2023 21:25:16'!
 test08ShouldFindSentencesWhenPrefixMatchesOneSentence
 	
-	| result aStack collectionWithLowerHola |
+	| aStack collectionWithLowerHola |
 	
 	aStack := OOStack new.
 	aStack push: 'holaaaa me encontraste'.
 	aStack push: 'este coincide'.
 	
-	result := finder findSentencesWithPrefix: aPrefixStartingWithLowerCase inStack: aStack.
-	
 	collectionWithLowerHola := OrderedCollection new.
 	collectionWithLowerHola add: 'holaaaa me encontraste'.
 	
-	self assert: result = collectionWithLowerHola.! !
+	self assertThatSearchingFor: aPrefixStartingWithLowerCase inStack: aStack findsExactly: collectionWithLowerHola.! !
 
-!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'LMR 4/22/2023 20:32:36'!
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'LMR 4/22/2023 21:25:00'!
 test09ShouldFindMoreThanOneSentenceWhenPrefixMatchesMoreThanOneSentence
 	
-	| result aStack collectionWithLowerHolaMatches |
+	| aStack collectionWithLowerHolaMatches |
 	
 	aStack := OOStack new.
 	aStack push: 'holaaaa me encontraste'.
@@ -264,48 +234,59 @@ test09ShouldFindMoreThanOneSentenceWhenPrefixMatchesMoreThanOneSentence
 	aStack push: 'hola y chau'.
 	aStack push: 'nos vemos'.
 	
-	result := finder findSentencesWithPrefix: aPrefixStartingWithLowerCase inStack: aStack.
-	
 	collectionWithLowerHolaMatches := OrderedCollection new.
 	collectionWithLowerHolaMatches add: 'holaaaa me encontraste'.
 	collectionWithLowerHolaMatches add: 'hola como estas yo bien y vos?'.
 	collectionWithLowerHolaMatches add: 'hola y chau'.
 	
-	self assert: result = collectionWithLowerHolaMatches.! !
+	self assertThatSearchingFor: aPrefixStartingWithLowerCase inStack: aStack findsExactly: collectionWithLowerHolaMatches.! !
 
-!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'LMR 4/22/2023 20:43:09'!
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'LMR 4/22/2023 21:33:40'!
 test10ShouldNotModifyStackWhenPrefixMatchesASentence
 	
-	| aStack |
-	
-	aStack := OOStack new.
-	aStack push: 'hola soy el primero'.
-	aStack push: 'Hola soy el segundo'.	
-	aStack push: 'hola soy el tercero'.
-	
-	finder findSentencesWithPrefix: aPrefixStartingWithUpperCase inStack: aStack.
-	
-	self assert: aStack pop = 'hola soy el tercero'.
-	self assert: aStack pop = 'Hola soy el segundo'.
-	self assert: aStack pop = 'hola soy el primero'.
-	self assert: aStack isEmpty.! !
+	self assertThatAStackWith: 'hola soy el primero' and: 'Hola soy el segundo' and: 'hola soy el tercero' shouldNotChangeAfterSearchingFor: aPrefixStartingWithUpperCase.! !
 
-!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'LMR 4/22/2023 20:43:27'!
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'LMR 4/22/2023 21:33:46'!
 test11ShouldNotModifyStackWhenPrefixDoesNotMatchASentence
 	
+	self assertThatAStackWith: 'hola soy el primero' and: 'hola soy el segundo' and: 'hola soy el tercero' shouldNotChangeAfterSearchingFor: aPrefixStartingWithUpperCase.! !
+
+
+!SentenceFinderByPrefixTest methodsFor: 'aux methods' stamp: 'LMR 4/22/2023 21:24:43'!
+assertThat: aPrefixBeingSearched hasNoMatchesInStack: aStack
+	
+	self assert: (finder findSentencesWithPrefix: aPrefixBeingSearched inStack: aStack) isEmpty.! !
+
+!SentenceFinderByPrefixTest methodsFor: 'aux methods' stamp: 'LMR 4/22/2023 21:32:29'!
+assertThatAStackWith: firstElement and: secondElement and: thirdElement shouldNotChangeAfterSearchingFor: aPrefixBeingSearched
+
 	| aStack |
 	
 	aStack := OOStack new.
-	aStack push: 'hola soy el primero'.
-	aStack push: 'hola soy el segundo'.	
-	aStack push: 'hola soy el tercero'.
+	aStack push: firstElement.
+	aStack push: secondElement.	
+	aStack push: thirdElement.
 	
-	finder findSentencesWithPrefix: aPrefixStartingWithUpperCase inStack: aStack.
+	finder findSentencesWithPrefix: aPrefixBeingSearched inStack: aStack.
 	
-	self assert: aStack pop = 'hola soy el tercero'.
-	self assert: aStack pop = 'hola soy el segundo'.
-	self assert: aStack pop = 'hola soy el primero'.
+	self assert: aStack pop = thirdElement.
+	self assert: aStack pop = secondElement.
+	self assert: aStack pop = firstElement.
 	self assert: aStack isEmpty.! !
+
+!SentenceFinderByPrefixTest methodsFor: 'aux methods' stamp: 'LMR 4/22/2023 21:24:36'!
+assertThatSearchingFor: aPrefixBeingSearched inStack: aStack findsExactly: collectionWithExpectedMatches 
+	
+	self assert: (finder findSentencesWithPrefix: aPrefixBeingSearched inStack: aStack) = collectionWithExpectedMatches.! !
+
+!SentenceFinderByPrefixTest methodsFor: 'aux methods' stamp: 'LMR 4/22/2023 20:53:00'!
+whenSearchingFor: aPrefix onStack: aStack shouldFailWithDescription: anErrorDescription
+
+	^ self
+		should: [ finder findSentencesWithPrefix: aPrefix inStack: aStack. ]
+		raise: Error - MessageNotUnderstood 
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = anErrorDescription ]! !
 
 
 !classDefinition: #OOStack category: 'Stack-Exercise'!
@@ -387,26 +368,52 @@ Object subclass: #SentenceFinderByPrefix
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!SentenceFinderByPrefix methodsFor: 'as yet unclassified' stamp: 'LMR 4/22/2023 20:34:16'!
-findSentencesWithPrefix: aPrefix inStack: aStack
+!SentenceFinderByPrefix methodsFor: 'aux methods' stamp: 'LMR 4/22/2023 21:55:37'!
+copySentencesThatMatchWith: aPrefixBeingSearched from: aStack to: aResultCollection
 
-	| value result |
-	aPrefix isEmpty ifTrue: [self error: self class emptyPrefixErrorDescription].
-	(aPrefix findString: ' ') = 0 ifFalse: [self error: self class prefixContainsWhiteSpaceErrorDescription].
-	result := OrderedCollection new.
-	
+	| value |
 	[aStack isEmpty] whileFalse: [ 
 	value := aStack pop.
 	internalStack push: value.
-	(value beginsWith: aPrefix) ifTrue: [result addFirst: value].
-	].
+	(value beginsWith: aPrefixBeingSearched) ifTrue: [aResultCollection addFirst: value].
+	].! !
 
+!SentenceFinderByPrefix methodsFor: 'aux methods' stamp: 'LMR 4/22/2023 21:58:03'!
+reconstructStack: aStack
+	
 	[internalStack isEmpty] whileFalse: [
 		aStack push: internalStack pop
-	].
-	^result! !
+	].! !
 
-!SentenceFinderByPrefix methodsFor: 'as yet unclassified' stamp: 'LMR 4/22/2023 19:26:30'!
+
+!SentenceFinderByPrefix methodsFor: 'finder' stamp: 'LMR 4/22/2023 22:04:29'!
+findSentencesWithPrefix: aPrefixBeingSearched inStack: aStack
+
+	| resultCollection |
+	self throwErrorIfPrefixIsEmpty: aPrefixBeingSearched.
+	self throwErrorIfPrefixContainsWhiteSpace: aPrefixBeingSearched.
+	
+	resultCollection := OrderedCollection new.
+	
+	self copySentencesThatMatchWith: aPrefixBeingSearched from: aStack to: resultCollection.
+
+	self reconstructStack: aStack.
+
+	^resultCollection! !
+
+
+!SentenceFinderByPrefix methodsFor: 'errors' stamp: 'LMR 4/22/2023 22:06:33'!
+throwErrorIfPrefixContainsWhiteSpace: aPrefix
+
+	(aPrefix includesSubString: ' ') ifTrue: [self error: self class prefixContainsWhiteSpaceErrorDescription].! !
+
+!SentenceFinderByPrefix methodsFor: 'errors' stamp: 'LMR 4/22/2023 22:01:58'!
+throwErrorIfPrefixIsEmpty: aPrefix
+
+	aPrefix isEmpty ifTrue: [self error: self class emptyPrefixErrorDescription].! !
+
+
+!SentenceFinderByPrefix methodsFor: 'initializer' stamp: 'LMR 4/22/2023 19:26:30'!
 initialize
 
 	internalStack := OOStack new.! !
