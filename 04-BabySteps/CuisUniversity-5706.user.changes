@@ -6,3 +6,1660 @@
 
 
 ----QUIT----(20 March 2023 11:15:30) CuisUniversity-5706.image priorSource: 8712809!
+
+----STARTUP---- (20 April 2023 17:27:17) as /home/clinux01/Descargas/linux64/CuisUniversity-5706.image!
+
+
+----End fileIn of /home/clinux01/Escritorio/2023-1c/03-Stack/Stack-Exercise.st----!
+
+!testRun: #OOStackTest #test01StackShouldBeEmptyWhenCreated stamp: 'L 4/20/2023 17:33:27'!
+ERROR!
+
+!testRun: #OOStackTest #test02PushAddElementsToTheStack stamp: 'L 4/20/2023 17:33:27'!
+ERROR!
+
+!testRun: #OOStackTest #test03PopRemovesElementsFromTheStack stamp: 'L 4/20/2023 17:33:27'!
+ERROR!
+
+!testRun: #OOStackTest #test04PopReturnsLastPushedObject stamp: 'L 4/20/2023 17:33:27'!
+ERROR!
+
+!testRun: #OOStackTest #test05StackBehavesLIFO stamp: 'L 4/20/2023 17:33:27'!
+ERROR!
+
+!testRun: #OOStackTest #test06TopReturnsLastPushedObject stamp: 'L 4/20/2023 17:33:27'!
+ERROR!
+
+!testRun: #OOStackTest #test07TopDoesNotRemoveObjectFromStack stamp: 'L 4/20/2023 17:33:27'!
+ERROR!
+
+!testRun: #OOStackTest #test08CanNotPopWhenThereAreNoObjectsInTheStack stamp: 'L 4/20/2023 17:33:27'!
+ERROR!
+
+!testRun: #OOStackTest #test09CanNotPopWhenThereAreNoObjectsInTheStackAndTheStackHadObjects stamp: 'L 4/20/2023 17:33:27'!
+ERROR!
+
+!testRun: #OOStackTest #test10CanNotTopWhenThereAreNoObjectsInTheStack stamp: 'L 4/20/2023 17:33:27'!
+ERROR!
+
+OOStack subclass: #OOStackEmpty
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Stack-Exercise'!
+
+!classDefinition: #OOStackEmpty category: 'Stack-Exercise' stamp: 'L 4/20/2023 21:28:00'!
+OOStack subclass: #OOStackEmpty
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Stack-Exercise'!
+
+OOStack subclass: #OOStackNotEmpty
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Stack-Exercise'!
+
+!classDefinition: #OOStackNotEmpty category: 'Stack-Exercise' stamp: 'L 4/20/2023 21:28:06'!
+OOStack subclass: #OOStackNotEmpty
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Stack-Exercise'!
+
+----STARTUP---- (27 April 2023 17:05:36) as /home/clinux01/Descargas/linux64/CuisUniversity-5706.image!
+
+
+----End fileIn of /home/clinux01/Descargas/linux64/Stack-Solution-3 caja gris.st----!
+
+!classRemoval: #SentenceFinderByPrefix stamp: 'LMR 4/27/2023 17:09:51'!
+Object subclass: #SentenceFinderByPrefix
+	instanceVariableNames: 'prefix stack auxiliaryReversedStack foundSentences'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Stack-Solution-3'!
+
+!classRemoval: #OOStack stamp: 'LMR 4/27/2023 17:09:51'!
+Object subclass: #OOStack
+	instanceVariableNames: 'contents'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Stack-Solution-3'!
+
+!classRemoval: #SentenceFinderByPrefixTest stamp: 'LMR 4/27/2023 17:09:51'!
+TestCase subclass: #SentenceFinderByPrefixTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Stack-Solution-3'!
+
+!classRemoval: #OOStackTest stamp: 'LMR 4/27/2023 17:09:51'!
+TestCase subclass: #OOStackTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Stack-Solution-3'!
+
+----End fileIn of /home/clinux01/Descargas/linux64/Stack-Solution-3 caja negra.st----!
+
+!classRemoval: #SentenceFinderByPrefix stamp: 'LMR 4/27/2023 17:10:33'!
+Object subclass: #SentenceFinderByPrefix
+	instanceVariableNames: 'prefix stack auxiliaryReversedStack foundSentences'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Stack-Solution-3'!
+
+!classRemoval: #OOStack stamp: 'LMR 4/27/2023 17:10:33'!
+Object subclass: #OOStack
+	instanceVariableNames: 'contents'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Stack-Solution-3'!
+
+!classRemoval: #SentenceFinderByPrefixTest stamp: 'LMR 4/27/2023 17:10:33'!
+TestCase subclass: #SentenceFinderByPrefixTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Stack-Solution-3'!
+
+!classRemoval: #OOStackTest stamp: 'LMR 4/27/2023 17:10:34'!
+TestCase subclass: #OOStackTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Stack-Solution-3'!
+
+----End fileIn of /home/clinux01/Descargas/linux64/TDDBabyStepsGame.st----!
+
+!classRemoval: #TDDBabyStepsGameView stamp: 'LMR 4/27/2023 17:12:36'!
+Object subclass: #TDDBabyStepsGameView
+	instanceVariableNames: 'model stepResult gameJourney'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TDDBabyStepsGame'!
+
+!classRemoval: #OnPrematureDecisionStep stamp: 'LMR 4/27/2023 17:12:37'!
+TDDBabyStepsGameState subclass: #OnPrematureDecisionStep
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TDDBabyStepsGame'!
+
+!classRemoval: #OnNormalStep stamp: 'LMR 4/27/2023 17:12:37'!
+TDDBabyStepsGameState subclass: #OnNormalStep
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TDDBabyStepsGame'!
+
+!classRemoval: #GameStarting stamp: 'LMR 4/27/2023 17:12:37'!
+TDDBabyStepsGameState subclass: #GameStarting
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TDDBabyStepsGame'!
+
+!classRemoval: #GameEnded stamp: 'LMR 4/27/2023 17:12:37'!
+TDDBabyStepsGameState subclass: #GameEnded
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TDDBabyStepsGame'!
+
+!classRemoval: #TDDBabyStepsGameState stamp: 'LMR 4/27/2023 17:12:37'!
+Object subclass: #TDDBabyStepsGameState
+	instanceVariableNames: 'game'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TDDBabyStepsGame'!
+
+!classRemoval: #TDDBabyStepsGameBase stamp: 'LMR 4/27/2023 17:12:37'!
+Object subclass: #TDDBabyStepsGameBase
+	instanceVariableNames: 'name casesToTest currentStep currentStepReturnMessage category score currentTest journey definition extraTest state prematureDecisionVerifierStrategy'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TDDBabyStepsGame'!
+
+!classRemoval: #TDDBabyStepsGameRot13 stamp: 'LMR 4/27/2023 17:12:38'!
+TDDBabyStepsGame subclass: #TDDBabyStepsGameRot13
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TDDBabyStepsGame'!
+
+!classRemoval: #TDDBabyStepsGamePrimeFactors stamp: 'LMR 4/27/2023 17:12:38'!
+TDDBabyStepsGame subclass: #TDDBabyStepsGamePrimeFactors
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TDDBabyStepsGame'!
+
+!classRemoval: #TDDBabyStepsGameDemo stamp: 'LMR 4/27/2023 17:12:38'!
+TDDBabyStepsGame subclass: #TDDBabyStepsGameDemo
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TDDBabyStepsGame'!
+
+!classRemoval: #TDDBabyStepsGameCuentaBancaria stamp: 'LMR 4/27/2023 17:12:38'!
+TDDBabyStepsGame subclass: #TDDBabyStepsGameCuentaBancaria
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TDDBabyStepsGame'!
+
+!classRemoval: #TDDBabyStepsGameContador stamp: 'LMR 4/27/2023 17:12:38'!
+TDDBabyStepsGame subclass: #TDDBabyStepsGameContador
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TDDBabyStepsGame'!
+
+!classRemoval: #TDDBabyStepsGameAnagrams stamp: 'LMR 4/27/2023 17:12:39'!
+TDDBabyStepsGame subclass: #TDDBabyStepsGameAnagrams
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TDDBabyStepsGame'!
+
+!classRemoval: #TDDBabyStepsGame stamp: 'LMR 4/27/2023 17:12:39'!
+Object subclass: #TDDBabyStepsGame
+	instanceVariableNames: 'game'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TDDBabyStepsGame'!
+
+!classRemoval: #TDDBabyStepsGameWindow stamp: 'LMR 4/27/2023 17:12:39'!
+SystemWindow subclass: #TDDBabyStepsGameWindow
+	instanceVariableNames: 'stepResultTextBoxMorph nextButtonMorph forceNextButtonMorph definitionButtonMorph gameJourneyTextBoxMorph testNumberLabel pointsLabel helpButtonMorph lastStepPoints'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TDDBabyStepsGame'!
+
+----STARTUP---- (27 April 2023 17:13:36) as /home/clinux01/.local/share/Trash/files/linux64/CuisUniversity-5706.image!
+
+
+----End fileIn of /home/clinux01/Descargas/TDDBabyStepsGame.st----!
+
+TDDBabyStepsGame start !
+
+TDDBabyStepsGameRot13 start !
+
+!classDefinition: #TDDBabyStepsRot13Test category: 'TDDBabyStepsGameRot13' stamp: 'LMR 4/27/2023 18:12:01'!
+TestCase subclass: #TDDBabyStepsRot13Test
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TDDBabyStepsGameRot13'!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 18:18:37'!
+test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet
+	
+	self assert: $n equals: $a asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:18:50'!
+ERROR!
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:18:50'!
+ERROR!
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 18:19:09'!
+asRot13
+	self shouldBeImplemented.! !
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:19:19'!
+ERROR!
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:19:48'!
+ERROR!
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:19:48'!
+ERROR!
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 18:20:13' prior: 50605763!
+asRot13
+	
+	^$n! !
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:20:16'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:20:19'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:20:19'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:20:29'!
+PASSED!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 18:20:29'!
+test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet
+	
+	self assert: $z equals: $m asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:20:29'!
+FAILURE!
+
+!methodRemoval: TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:20:29'!
+test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet
+	
+	self assert: $z equals: $m asRot13
+	!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 18:20:29'!
+test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet
+	
+	self assert: $z equals: $m asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:20:29'!
+FAILURE!
+
+$n asciiValue!
+
+$z asciiValue!
+
+$m asciiValue!
+
+$m asciiValue: (109 +13)!
+
+$m class asciiValue: (109 +13)!
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 18:30:21' prior: 50605781!
+asRot13
+	
+	^self asciiValue < 110 ifTrue: [^self class asciiValue: (self asciiValue + 13)].! !
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:30:32'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:30:32'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:30:47'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:30:47'!
+PASSED!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 18:30:47'!
+test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet
+	
+	self assert: $a equals: $n asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:30:47'!
+FAILURE!
+
+!methodRemoval: TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:30:47'!
+test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet
+	
+	self assert: $a equals: $n asRot13
+	!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 18:30:47'!
+test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet
+	
+	self assert: $a equals: $n asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:30:47'!
+FAILURE!
+
+$A asciiValue!
+
+$a asciiValue!
+
+$n asciiValue!
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 18:36:37' prior: 50605835!
+asRot13
+	
+	^(self asciiValue between: 97 and: 109) ifTrue: [^self class asciiValue: (self asciiValue + 13)].! !
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:36:48'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:36:48'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:36:48'!
+FAILURE!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:36:48'!
+FAILURE!
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 18:38:01' prior: 50605891!
+asRot13
+	
+	(self asciiValue between: 97 and: 109) ifTrue: [^self class asciiValue: (self asciiValue + 13)].
+	^$a.! !
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:38:06'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:38:06'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:38:06'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:38:11'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:38:11'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:38:11'!
+PASSED!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 18:38:11'!
+test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet
+	
+	self assert: $m equals: $z asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:38:11'!
+FAILURE!
+
+!methodRemoval: TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:38:11'!
+test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet
+	
+	self assert: $m equals: $z asRot13
+	!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 18:38:11'!
+test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet
+	
+	self assert: $m equals: $z asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:38:11'!
+FAILURE!
+
+$z asciiValue!
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 18:40:32' prior: 50605916!
+asRot13
+	
+	(self asciiValue between: 97 and: 109) ifTrue: [^self class asciiValue: (self asciiValue + 13)].
+	(self asciiValue between: 110 and: 122) ifTrue: [^self class asciiValue: (self asciiValue - 13)].! !
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:41:36'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:41:36'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:41:36'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:41:36'!
+PASSED!
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 18:49:13'!
+rotateRight13Characters
+
+	^self class asciiValue: (self asciiValue + 13)! !
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 18:49:22'!
+rotateLeft13Characters
+
+	^self class asciiValue: (self asciiValue - 13)! !
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 18:50:14' prior: 50605980!
+asRot13
+	
+	(self asciiValue between: 97 and: 109) ifTrue: [^self rotateRight13Characters].
+	(self asciiValue between: 110 and: 122) ifTrue: [^self rotateLeft13Characters].! !
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 18:53:05'!
+ifCharacterIsLowerCaseFirstHalfThen: aClosure
+	
+	^(self asciiValue between: 97 and: 109) ifTrue: aClosure value.! !
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 18:54:27' prior: 50606018!
+asRot13
+	
+	self ifCharacterIsLowerCaseFirstHalfThen: [^self rotateRight13Characters].
+	self ifCharacterIsLowerCaseSecondHalfThen: [^self rotateLeft13Characters].! !
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 18:54:45'!
+ifCharacterIsLowerCaseSecondHalfThen: aClosure
+	
+	^(self asciiValue between: 110 and: 122) ifTrue: aClosure value.! !
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:55:18'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:55:18'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:55:18'!
+FAILURE!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:55:18'!
+FAILURE!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 18:58:06'!
+FAILURE!
+
+$n asciiValue!
+
+self class asciiValue: (110 + 13)!
+
+self class asciiValue: (110 + 13)!
+
+self class asciiValue: 123 !
+
+Character asciiValue: 123!
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 19:01:44' prior: 50606026!
+ifCharacterIsLowerCaseFirstHalfThen: aClosure
+	
+	(self asciiValue between: 97 and: 109) ifTrue: [^aClosure value.].! !
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 19:02:08' prior: 50606041!
+ifCharacterIsLowerCaseSecondHalfThen: aClosure
+	
+	(self asciiValue between: 110 and: 122) ifTrue: [^aClosure value.].! !
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:02:18'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:02:18'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:02:18'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:02:18'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:02:35'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:02:35'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:02:35'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:02:35'!
+PASSED!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 19:02:35'!
+test05CharOnTheBelowRangeDoesntChange
+	
+	self assert: $` equals: $` asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:02:35'!
+PASSED!
+
+!methodRemoval: TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:02:35'!
+test05CharOnTheBelowRangeDoesntChange
+	
+	self assert: $` equals: $` asRot13
+	!
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 19:04:17' prior: 50606033!
+asRot13
+	
+	self ifCharacterIsLowerCaseFirstHalfThen: [^self rotateRight13Characters].
+	self ifCharacterIsLowerCaseSecondHalfThen: [^self rotateLeft13Characters].
+	^self class asciiValue: (self asciiValue + 13).! !
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:04:30'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:04:30'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:04:30'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:04:30'!
+PASSED!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 19:04:30'!
+test05CharOnTheBelowRangeDoesntChange
+	
+	self assert: $` equals: $` asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:04:30'!
+FAILURE!
+
+!methodRemoval: TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:04:30'!
+test05CharOnTheBelowRangeDoesntChange
+	
+	self assert: $` equals: $` asRot13
+	!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 19:04:30'!
+test05CharOnTheBelowRangeDoesntChange
+	
+	self assert: $` equals: $` asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:04:30'!
+FAILURE!
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 19:04:57' prior: 50606139!
+asRot13
+	
+	self ifCharacterIsLowerCaseFirstHalfThen: [^self rotateRight13Characters].
+	self ifCharacterIsLowerCaseSecondHalfThen: [^self rotateLeft13Characters].! !
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:05:33'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:05:33'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:05:33'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:05:33'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:05:33'!
+PASSED!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 19:05:33'!
+test06CharOnTheUpperRangeDoesntChange
+	
+	self assert: ${ equals: ${ asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 19:05:33'!
+PASSED!
+
+!methodRemoval: TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 19:05:33'!
+test06CharOnTheUpperRangeDoesntChange
+	
+	self assert: ${ equals: ${ asRot13
+	!
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 19:08:04' prior: 50606191!
+asRot13
+	
+	(self asciiValue >= 97 and: [self asciiValue <= 122])  ifTrue: [self ifCharacterIsLowerCaseFirstHalfThen: [^self rotateRight13Characters].
+	self ifCharacterIsLowerCaseSecondHalfThen: [^self rotateLeft13Characters].]
+	 ! !
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:08:23'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:08:23'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:08:23'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:08:23'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:08:23'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:08:27'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:08:27'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:08:27'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:08:27'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:08:27'!
+PASSED!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 19:08:27'!
+test06CharOnTheUpperRangeDoesntChange
+	
+	self assert: ${ equals: ${ asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 19:08:27'!
+PASSED!
+
+!methodRemoval: TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 19:08:27'!
+test06CharOnTheUpperRangeDoesntChange
+	
+	self assert: ${ equals: ${ asRot13
+	!
+
+$z asciiValue!
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 19:12:58' prior: 50606235!
+asRot13
+	
+	self ifCharacterIsLowerCaseFirstHalfThen: [^self rotateRight13Characters].
+	^self rotateLeft13Characters.
+	 ! !
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:13:04'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:13:04'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:13:04'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:13:04'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:13:04'!
+FAILURE!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:13:04'!
+FAILURE!
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 19:15:59' prior: 50606304!
+asRot13
+	
+	self ifCharacterIsLowerCaseFirstHalfThen: [^self rotateRight13Characters].
+	self asciiValue > 109 ifTrue: [^self rotateLeft13Characters.]
+	 ! !
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:16:27'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:16:27'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:16:27'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:16:27'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:16:27'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:16:30'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:16:30'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:16:30'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:16:30'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:16:30'!
+PASSED!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 19:16:30'!
+test06CharOnTheUpperRangeDoesntChange
+	
+	self assert: ${ equals: ${ asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 19:16:30'!
+FAILURE!
+
+!methodRemoval: TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 19:16:30'!
+test06CharOnTheUpperRangeDoesntChange
+	
+	self assert: ${ equals: ${ asRot13
+	!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 19:16:30'!
+test06CharOnTheUpperRangeDoesntChange
+	
+	self assert: ${ equals: ${ asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 19:16:30'!
+FAILURE!
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:17:17'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:17:17'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:17:17'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:17:17'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:17:17'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 19:17:17'!
+FAILURE!
+
+!testRun: #TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 19:17:17'!
+FAILURE!
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 19:17:34' prior: 50606336!
+asRot13
+	
+	self ifCharacterIsLowerCaseFirstHalfThen: [^self rotateRight13Characters].
+	self ifCharacterIsLowerCaseSecondHalfThen: [^self rotateLeft13Characters.]
+	 ! !
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 19:17:36' prior: 50606439!
+asRot13
+	
+	self ifCharacterIsLowerCaseFirstHalfThen: [^self rotateRight13Characters].
+	self ifCharacterIsLowerCaseSecondHalfThen: [^self rotateLeft13Characters.]! !
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:17:42'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:17:42'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:17:42'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:17:42'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:17:42'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 19:17:42'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:17:46'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:17:46'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:17:46'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:17:46'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:17:46'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 19:17:46'!
+PASSED!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 19:17:46'!
+test07CorrectlyEncodesAnUppercaseCharFromTheFirstPartOfTheAlphabet
+	
+	self assert: $N equals: $A asRot13.
+	self assert: $Z equals: $M asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test07CorrectlyEncodesAnUppercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:17:46'!
+FAILURE!
+
+!methodRemoval: TDDBabyStepsRot13Test #test07CorrectlyEncodesAnUppercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:17:46'!
+test07CorrectlyEncodesAnUppercaseCharFromTheFirstPartOfTheAlphabet
+	
+	self assert: $N equals: $A asRot13.
+	self assert: $Z equals: $M asRot13
+	!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 19:17:46'!
+test07CorrectlyEncodesAnUppercaseCharFromTheFirstPartOfTheAlphabet
+	
+	self assert: $N equals: $A asRot13.
+	self assert: $Z equals: $M asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test07CorrectlyEncodesAnUppercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:17:46'!
+FAILURE!
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 19:19:34' prior: 50606448!
+asRot13
+	
+	self ifCharacterIsLowerCaseFirstHalfThen: [^self rotateRight13Characters].
+	self ifCharacterIsLowerCaseSecondHalfThen: [^self rotateLeft13Characters].
+	self asciiValue = $A asciiValue ifTrue: [^$N].! !
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:19:39'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:19:39'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:19:39'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:19:39'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:19:39'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 19:19:39'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test07CorrectlyEncodesAnUppercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:19:39'!
+FAILURE!
+
+!testRun: #TDDBabyStepsRot13Test #test07CorrectlyEncodesAnUppercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:19:39'!
+FAILURE!
+
+$A asciiValue!
+
+$n asciiValue!
+
+$N asciiValue!
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 19:20:58'!
+ifCharacterIsUpperCaseFirstHalfThen: aClosure
+	
+	(self asciiValue between: 65 and: 77) ifTrue: [^aClosure value.].! !
+
+$N asciiValue!
+
+$Z asciiValue!
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 19:21:54'!
+ifCharacterIsUpperCaseSecondHalfThen: aClosure
+	
+	(self asciiValue between: 78 and: 90) ifTrue: [^aClosure value.].! !
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 19:22:20' prior: 50606540!
+asRot13
+	
+	self ifCharacterIsLowerCaseFirstHalfThen: [^self rotateRight13Characters].
+	self ifCharacterIsLowerCaseSecondHalfThen: [^self rotateLeft13Characters].
+	self ifCharacterIsUpperCaseFirstHalfThen: [^self rotateRight13Characters].! !
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:22:27'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:22:27'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:22:27'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:22:27'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:22:27'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 19:22:27'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test07CorrectlyEncodesAnUppercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:22:27'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:22:32'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:22:32'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:22:32'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:22:32'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:22:32'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 19:22:32'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test07CorrectlyEncodesAnUppercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:22:32'!
+PASSED!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 19:22:32'!
+test08CorrectlyEncodesAnUppercaseCharFromTheSecondPartOfTheAlphabet
+	
+	self assert: $A equals: $N asRot13.
+	self assert: $M equals: $Z asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test08CorrectlyEncodesAnUppercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:22:32'!
+FAILURE!
+
+!methodRemoval: TDDBabyStepsRot13Test #test08CorrectlyEncodesAnUppercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:22:32'!
+test08CorrectlyEncodesAnUppercaseCharFromTheSecondPartOfTheAlphabet
+	
+	self assert: $A equals: $N asRot13.
+	self assert: $M equals: $Z asRot13
+	!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 19:22:32'!
+test08CorrectlyEncodesAnUppercaseCharFromTheSecondPartOfTheAlphabet
+	
+	self assert: $A equals: $N asRot13.
+	self assert: $M equals: $Z asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test08CorrectlyEncodesAnUppercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:22:32'!
+FAILURE!
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 19:23:28' prior: 50606600!
+asRot13
+	
+	self ifCharacterIsLowerCaseFirstHalfThen: [^self rotateRight13Characters].
+	self ifCharacterIsLowerCaseSecondHalfThen: [^self rotateLeft13Characters].
+	self ifCharacterIsUpperCaseFirstHalfThen: [^self rotateRight13Characters].
+	self ifCharacterIsUpperCaseSecondHalfThen: [^self rotateLeft13Characters].! !
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:23:32'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:23:32'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:23:32'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:23:32'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:23:32'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 19:23:32'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test07CorrectlyEncodesAnUppercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:23:32'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test08CorrectlyEncodesAnUppercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:23:32'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:23:36'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:23:36'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:23:36'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:23:36'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:23:36'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 19:23:36'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test07CorrectlyEncodesAnUppercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:23:36'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test08CorrectlyEncodesAnUppercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:23:36'!
+PASSED!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 19:23:36'!
+test09TheEmptyStringDoesntChange
+	
+	self assert: '' equals: '' asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test09TheEmptyStringDoesntChange stamp: 'LMR 4/27/2023 19:23:36'!
+ERROR!
+
+!methodRemoval: TDDBabyStepsRot13Test #test09TheEmptyStringDoesntChange stamp: 'LMR 4/27/2023 19:23:36'!
+test09TheEmptyStringDoesntChange
+	
+	self assert: '' equals: '' asRot13
+	!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 19:23:36'!
+test09TheEmptyStringDoesntChange
+	
+	self assert: '' equals: '' asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test09TheEmptyStringDoesntChange stamp: 'LMR 4/27/2023 19:23:36'!
+ERROR!
+
+----SNAPSHOT----(27 April 2023 19:25:43) CuisUniversity-5706.image priorSource: 8713034!
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 19:26:21'!
+rotate13LowerCaseCharacters
+
+	self ifCharacterIsLowerCaseFirstHalfThen: [^self rotateRight13Characters].
+	self ifCharacterIsLowerCaseSecondHalfThen: [^self rotateLeft13Characters].! !
+!Character methodsFor: 'as yet unclassified' stamp: 'LMR 4/27/2023 19:26:51'!
+rotate13UpperCaseCharacters
+
+	self ifCharacterIsUpperCaseFirstHalfThen: [^self rotateRight13Characters].
+	self ifCharacterIsUpperCaseSecondHalfThen: [^self rotateLeft13Characters].! !
+
+!testRun: #TDDBabyStepsRot13Test #test09TheEmptyStringDoesntChange stamp: 'LMR 4/27/2023 19:29:19'!
+ERROR!
+
+!testRun: #TDDBabyStepsRot13Test #test09TheEmptyStringDoesntChange stamp: 'LMR 4/27/2023 19:29:19'!
+ERROR!
+!String methodsFor: 'Rot13' stamp: 'LMR 4/27/2023 19:29:38'!
+asRot13
+	self shouldBeImplemented.! !
+!String methodsFor: 'Rot13' stamp: 'LMR 4/27/2023 19:29:53' prior: 50606833!
+asRot13
+	
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test09TheEmptyStringDoesntChange stamp: 'LMR 4/27/2023 19:30:00'!
+PASSED!
+!String methodsFor: 'Rot13' stamp: 'LMR 4/27/2023 19:30:48' prior: 50606837!
+asRot13
+	
+	^''! !
+!String methodsFor: 'Rot13' stamp: 'LMR 4/27/2023 19:30:49' prior: 50606844!
+asRot13
+	
+	^''.! !
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:30:58'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:30:58'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:30:58'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:30:58'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:30:58'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 19:30:58'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test07CorrectlyEncodesAnUppercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:30:58'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test08CorrectlyEncodesAnUppercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:30:58'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test09TheEmptyStringDoesntChange stamp: 'LMR 4/27/2023 19:30:58'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:31:01'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:31:01'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:31:01'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:31:01'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:31:01'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 19:31:01'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test07CorrectlyEncodesAnUppercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:31:01'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test08CorrectlyEncodesAnUppercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:31:01'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test09TheEmptyStringDoesntChange stamp: 'LMR 4/27/2023 19:31:01'!
+PASSED!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 19:31:01'!
+test10CorrectlyEncodesAOneCharString
+	
+	self assert: 'n' equals: 'a' asRot13.
+	self assert: 'Z' equals: 'M' asRot13.
+	self assert: 'a' equals: 'n' asRot13.
+	self assert: '{' equals: '{' asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test10CorrectlyEncodesAOneCharString stamp: 'LMR 4/27/2023 19:31:01'!
+FAILURE!
+
+!methodRemoval: TDDBabyStepsRot13Test #test10CorrectlyEncodesAOneCharString stamp: 'LMR 4/27/2023 19:31:01'!
+test10CorrectlyEncodesAOneCharString
+	
+	self assert: 'n' equals: 'a' asRot13.
+	self assert: 'Z' equals: 'M' asRot13.
+	self assert: 'a' equals: 'n' asRot13.
+	self assert: '{' equals: '{' asRot13
+	!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 19:31:01'!
+test10CorrectlyEncodesAOneCharString
+	
+	self assert: 'n' equals: 'a' asRot13.
+	self assert: 'Z' equals: 'M' asRot13.
+	self assert: 'a' equals: 'n' asRot13.
+	self assert: '{' equals: '{' asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test10CorrectlyEncodesAOneCharString stamp: 'LMR 4/27/2023 19:31:01'!
+FAILURE!
+!String methodsFor: 'Rot13' stamp: 'LMR 4/27/2023 19:32:15' prior: 50606847!
+asRot13
+	
+	self size = 1 ifTrue: [^(self at: 1) asRot13].! !
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:32:22'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:32:22'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:32:22'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:32:22'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:32:22'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 19:32:22'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test07CorrectlyEncodesAnUppercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:32:22'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test08CorrectlyEncodesAnUppercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:32:22'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test09TheEmptyStringDoesntChange stamp: 'LMR 4/27/2023 19:32:22'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test10CorrectlyEncodesAOneCharString stamp: 'LMR 4/27/2023 19:32:22'!
+FAILURE!
+
+!testRun: #TDDBabyStepsRot13Test #test10CorrectlyEncodesAOneCharString stamp: 'LMR 4/27/2023 19:32:22'!
+FAILURE!
+
+!testRun: #TDDBabyStepsRot13Test #test10CorrectlyEncodesAOneCharString stamp: 'LMR 4/27/2023 19:33:52'!
+FAILURE!
+
+!testRun: #TDDBabyStepsRot13Test #test10CorrectlyEncodesAOneCharString stamp: 'LMR 4/27/2023 19:33:53'!
+FAILURE!
+!String methodsFor: 'Rot13' stamp: 'LMR 4/27/2023 19:34:32' prior: 50606960!
+asRot13
+	
+	self size = 1 ifTrue: [^((self at: 1) asRot13)].! !
+!String methodsFor: 'Rot13' stamp: 'LMR 4/27/2023 19:47:53' prior: 50607016!
+asRot13
+	
+	self size = 1 ifTrue: [^self at: 1 put: (self at: 1) asRot13].! !
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:47:59'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:47:59'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:47:59'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:47:59'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:47:59'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 19:47:59'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test07CorrectlyEncodesAnUppercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:47:59'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test08CorrectlyEncodesAnUppercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:47:59'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test09TheEmptyStringDoesntChange stamp: 'LMR 4/27/2023 19:47:59'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test10CorrectlyEncodesAOneCharString stamp: 'LMR 4/27/2023 19:47:59'!
+FAILURE!
+
+!testRun: #TDDBabyStepsRot13Test #test10CorrectlyEncodesAOneCharString stamp: 'LMR 4/27/2023 19:47:59'!
+FAILURE!
+
+'a' asRot13!
+!String methodsFor: 'Rot13' stamp: 'LMR 4/27/2023 19:48:53' prior: 50607021!
+asRot13
+	
+	self size = 1 ifTrue: [^self at: 1 put: ((self at: 1) asRot13)].! !
+
+!testRun: #TDDBabyStepsRot13Test #test10CorrectlyEncodesAOneCharString stamp: 'LMR 4/27/2023 19:49:12'!
+FAILURE!
+
+!testRun: #TDDBabyStepsRot13Test #test10CorrectlyEncodesAOneCharString stamp: 'LMR 4/27/2023 19:49:12'!
+FAILURE!
+
+$a asRot!
+
+$a asRot13!
+!String methodsFor: 'Rot13' stamp: 'LMR 4/27/2023 19:54:22' prior: 50607071!
+asRot13
+	
+	self isEmpty isTrue: [^''].
+	^self first asRot13 asString.! !
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:54:32'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:54:32'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:54:32'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:54:32'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:54:32'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 19:54:32'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test07CorrectlyEncodesAnUppercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:54:32'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test08CorrectlyEncodesAnUppercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:54:32'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test09TheEmptyStringDoesntChange stamp: 'LMR 4/27/2023 19:54:32'!
+ERROR!
+
+!testRun: #TDDBabyStepsRot13Test #test10CorrectlyEncodesAOneCharString stamp: 'LMR 4/27/2023 19:54:32'!
+ERROR!
+
+'' isEmpty!
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:55:50'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:55:50'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:55:50'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:55:50'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:55:50'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 19:55:50'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test07CorrectlyEncodesAnUppercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:55:50'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test08CorrectlyEncodesAnUppercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:55:50'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test09TheEmptyStringDoesntChange stamp: 'LMR 4/27/2023 19:55:50'!
+ERROR!
+
+!testRun: #TDDBabyStepsRot13Test #test10CorrectlyEncodesAOneCharString stamp: 'LMR 4/27/2023 19:55:50'!
+ERROR!
+
+!testRun: #TDDBabyStepsRot13Test #test09TheEmptyStringDoesntChange stamp: 'LMR 4/27/2023 19:55:56'!
+ERROR!
+!String methodsFor: 'Rot13' stamp: 'LMR 4/27/2023 19:56:29' prior: 50607084!
+asRot13
+	
+	(self isEmpty) isTrue: [^''].
+	^self first asRot13 asString.! !
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:56:38'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:56:38'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:56:38'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:56:38'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:56:38'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 19:56:38'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test07CorrectlyEncodesAnUppercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:56:38'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test08CorrectlyEncodesAnUppercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:56:38'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test09TheEmptyStringDoesntChange stamp: 'LMR 4/27/2023 19:56:38'!
+ERROR!
+
+!testRun: #TDDBabyStepsRot13Test #test10CorrectlyEncodesAOneCharString stamp: 'LMR 4/27/2023 19:56:38'!
+ERROR!
+
+!testRun: #TDDBabyStepsRot13Test #test09TheEmptyStringDoesntChange stamp: 'LMR 4/27/2023 19:56:45'!
+ERROR!
+!String methodsFor: 'Rot13' stamp: 'LMR 4/27/2023 19:57:02' prior: 50607175!
+asRot13
+	
+	(self isEmpty) ifTrue: [^''].
+	^self first asRot13 asString.! !
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:57:06'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:57:06'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:57:06'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:57:06'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:57:06'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 19:57:06'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test07CorrectlyEncodesAnUppercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:57:06'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test08CorrectlyEncodesAnUppercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:57:06'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test09TheEmptyStringDoesntChange stamp: 'LMR 4/27/2023 19:57:06'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test10CorrectlyEncodesAOneCharString stamp: 'LMR 4/27/2023 19:57:06'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:57:16'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:57:16'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:57:16'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:57:16'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:57:16'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 19:57:16'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test07CorrectlyEncodesAnUppercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:57:16'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test08CorrectlyEncodesAnUppercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:57:16'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test09TheEmptyStringDoesntChange stamp: 'LMR 4/27/2023 19:57:16'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test10CorrectlyEncodesAOneCharString stamp: 'LMR 4/27/2023 19:57:16'!
+PASSED!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 19:57:16'!
+test11CorrectlyEncodesATwoCharString
+	
+	self assert: 'nm' equals: 'az' asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test11CorrectlyEncodesATwoCharString stamp: 'LMR 4/27/2023 19:57:16'!
+FAILURE!
+
+!methodRemoval: TDDBabyStepsRot13Test #test11CorrectlyEncodesATwoCharString stamp: 'LMR 4/27/2023 19:57:16'!
+test11CorrectlyEncodesATwoCharString
+	
+	self assert: 'nm' equals: 'az' asRot13
+	!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 19:57:16'!
+test11CorrectlyEncodesATwoCharString
+	
+	self assert: 'nm' equals: 'az' asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test11CorrectlyEncodesATwoCharString stamp: 'LMR 4/27/2023 19:57:16'!
+FAILURE!
+!String methodsFor: 'Rot13' stamp: 'LMR 4/27/2023 19:59:35' prior: 50607224!
+asRot13
+	
+	(self isEmpty) ifTrue: [^''].
+	
+	(self size = 1) ifTrue: [^self first asRot13 asString].	
+	(self size = 2) ifTrue: [^(self first asRot13 asString, self second asRot13 asString)].! !
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:59:44'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:59:44'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:59:44'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:59:44'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 19:59:44'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 19:59:44'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test07CorrectlyEncodesAnUppercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:59:44'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test08CorrectlyEncodesAnUppercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 19:59:44'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test09TheEmptyStringDoesntChange stamp: 'LMR 4/27/2023 19:59:44'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test10CorrectlyEncodesAOneCharString stamp: 'LMR 4/27/2023 19:59:44'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test11CorrectlyEncodesATwoCharString stamp: 'LMR 4/27/2023 19:59:44'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 20:01:00'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 20:01:00'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 20:01:00'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 20:01:00'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 20:01:00'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 20:01:00'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test07CorrectlyEncodesAnUppercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 20:01:00'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test08CorrectlyEncodesAnUppercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 20:01:00'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test09TheEmptyStringDoesntChange stamp: 'LMR 4/27/2023 20:01:00'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test10CorrectlyEncodesAOneCharString stamp: 'LMR 4/27/2023 20:01:00'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test11CorrectlyEncodesATwoCharString stamp: 'LMR 4/27/2023 20:01:00'!
+PASSED!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 20:01:00'!
+test12CorrectlyEncodesMoreThanTwoCharString
+	
+	self assert: 'uByN!!' equals: 'hOlA!!' asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test12CorrectlyEncodesMoreThanTwoCharString stamp: 'LMR 4/27/2023 20:01:00'!
+FAILURE!
+
+!methodRemoval: TDDBabyStepsRot13Test #test12CorrectlyEncodesMoreThanTwoCharString stamp: 'LMR 4/27/2023 20:01:00'!
+test12CorrectlyEncodesMoreThanTwoCharString
+	
+	self assert: 'uByN!!' equals: 'hOlA!!' asRot13
+	!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 20:01:00'!
+test12CorrectlyEncodesMoreThanTwoCharString
+	
+	self assert: 'uByN!!' equals: 'hOlA!!' asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #test12CorrectlyEncodesMoreThanTwoCharString stamp: 'LMR 4/27/2023 20:01:00'!
+FAILURE!
+!String methodsFor: 'Rot13' stamp: 'LMR 4/27/2023 20:02:50' prior: 50607335!
+asRot13
+	
+	^self collect: [:aCharacter | aCharacter asRot13]! !
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 20:02:59'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 20:02:59'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 20:02:59'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 20:02:59'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 20:02:59'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 20:02:59'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test07CorrectlyEncodesAnUppercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 20:02:59'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test08CorrectlyEncodesAnUppercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 20:02:59'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test09TheEmptyStringDoesntChange stamp: 'LMR 4/27/2023 20:02:59'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test10CorrectlyEncodesAOneCharString stamp: 'LMR 4/27/2023 20:02:59'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test11CorrectlyEncodesATwoCharString stamp: 'LMR 4/27/2023 20:02:59'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test12CorrectlyEncodesMoreThanTwoCharString stamp: 'LMR 4/27/2023 20:02:59'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test01CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 20:03:03'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test02CorrectlyEncodesALowercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 20:03:03'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test03CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 20:03:03'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test04CorrectlyEncodesALowercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 20:03:03'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test05CharOnTheBelowRangeDoesntChange stamp: 'LMR 4/27/2023 20:03:03'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test06CharOnTheUpperRangeDoesntChange stamp: 'LMR 4/27/2023 20:03:03'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test07CorrectlyEncodesAnUppercaseCharFromTheFirstPartOfTheAlphabet stamp: 'LMR 4/27/2023 20:03:03'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test08CorrectlyEncodesAnUppercaseCharFromTheSecondPartOfTheAlphabet stamp: 'LMR 4/27/2023 20:03:03'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test09TheEmptyStringDoesntChange stamp: 'LMR 4/27/2023 20:03:03'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test10CorrectlyEncodesAOneCharString stamp: 'LMR 4/27/2023 20:03:03'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test11CorrectlyEncodesATwoCharString stamp: 'LMR 4/27/2023 20:03:03'!
+PASSED!
+
+!testRun: #TDDBabyStepsRot13Test #test12CorrectlyEncodesMoreThanTwoCharString stamp: 'LMR 4/27/2023 20:03:03'!
+PASSED!
+!TDDBabyStepsRot13Test methodsFor: 'tests' stamp: 'LMR 4/27/2023 20:03:03'!
+testExtraToCheckGeneralizationOnKata
+		
+	self assert: 'Ju3er j3 4e3 t01at j3 q0ag a3rq e04q$...' equals: 'Wh3re w3 4r3 g01ng w3 d0nt n3ed r04d$...' asRot13
+	! !
+
+!testRun: #TDDBabyStepsRot13Test #testExtraToCheckGeneralizationOnKata stamp: 'LMR 4/27/2023 20:03:03'!
+PASSED!
+
+----SNAPSHOT----(27 April 2023 20:03:16) CuisUniversity-5706.image priorSource: 8804983!
+
+TDDBabyStepsGamePrimeFactors start.!
+
+!classDefinition: #TDDBabyStepsPrimeFactorsTest category: 'TDDBabyStepsGamePrimeFactors' stamp: 'LMR 4/27/2023 20:10:15'!
+TestCase subclass: #TDDBabyStepsPrimeFactorsTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TDDBabyStepsGamePrimeFactors'!
+
+----SNAPSHOT----(27 April 2023 20:10:44) CuisUniversity-5706.image priorSource: 8829457!
+
+----SNAPSHOT----(27 April 2023 20:29:23) CuisUniversity-5706.image priorSource: 8829873!
+
+----QUIT----(27 April 2023 20:30:43) CuisUniversity-5706.image priorSource: 8829963!
+
+----STARTUP---- (27 April 2023 20:32:31) as /home/clinux01/.local/share/Trash/files/linux64/CuisUniversity-5706.image!
+
+
+----SNAPSHOT----(27 April 2023 20:34:28) CuisUniversity-5706.image priorSource: 8830053!
+
+----QUIT----(27 April 2023 20:35:25) CuisUniversity-5706.image priorSource: 8830260!
