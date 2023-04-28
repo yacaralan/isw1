@@ -1663,3 +1663,2487 @@ TestCase subclass: #TDDBabyStepsPrimeFactorsTest
 ----SNAPSHOT----(27 April 2023 20:34:28) CuisUniversity-5706.image priorSource: 8830053!
 
 ----QUIT----(27 April 2023 20:35:25) CuisUniversity-5706.image priorSource: 8830260!
+
+----STARTUP---- (27 April 2023 20:42:30) as /home/clinux01/Escritorio/CuisUniversity/CuisUniversity-5706.image!
+
+!TDDBabyStepsPrimeFactorsTest methodsFor: 'tests' stamp: 'ayac 4/27/2023 20:43:27'!
+test01OneHasNoPrimeFactors
+	
+	self assert: Bag new equals: 1 factorize
+	! !
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test01OneHasNoPrimeFactors stamp: 'ayac 4/27/2023 20:43:38'!
+ERROR!
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 20:44:17'!
+factorize
+	self shouldBeImplemented.! !
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 20:44:42' prior: 50607615!
+factorize
+	^Bag new.! !
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 20:44:46' prior: 50607619!
+factorize
+	
+	^Bag new.! !
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test01OneHasNoPrimeFactors stamp: 'ayac 4/27/2023 20:44:52'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test01OneHasNoPrimeFactors stamp: 'ayac 4/27/2023 20:44:52'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test01OneHasNoPrimeFactors stamp: 'ayac 4/27/2023 20:44:59'!
+PASSED!
+!TDDBabyStepsPrimeFactorsTest methodsFor: 'tests' stamp: 'ayac 4/27/2023 20:44:59'!
+test02FactorsOfAPrimeNumberAreThePrimeNumber
+
+	self assert: (Bag with: 2) equals: 2 factorize
+	! !
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test02FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 20:44:59'!
+FAILURE!
+
+!methodRemoval: TDDBabyStepsPrimeFactorsTest #test02FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 20:44:59'!
+test02FactorsOfAPrimeNumberAreThePrimeNumber
+
+	self assert: (Bag with: 2) equals: 2 factorize
+	!
+!TDDBabyStepsPrimeFactorsTest methodsFor: 'tests' stamp: 'ayac 4/27/2023 20:44:59'!
+test02FactorsOfAPrimeNumberAreThePrimeNumber
+
+	self assert: (Bag with: 2) equals: 2 factorize
+	! !
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test02FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 20:44:59'!
+FAILURE!
+
+----End fileIn of /home/clinux01/Escritorio/CuisUniversity/Packages/TerseGuide.pck.st----!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test02FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 20:46:04'!
+FAILURE!
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 20:48:55' prior: 50607623!
+factorize
+	self = 2 ifTrue: [^Bag with: 2].
+	^Bag new.! !
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test02FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 20:49:01'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test01OneHasNoPrimeFactors stamp: 'ayac 4/27/2023 20:49:01'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test02FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 20:49:01'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test01OneHasNoPrimeFactors stamp: 'ayac 4/27/2023 20:49:13'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test02FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 20:49:13'!
+PASSED!
+!TDDBabyStepsPrimeFactorsTest methodsFor: 'tests' stamp: 'ayac 4/27/2023 20:49:13'!
+test03FactorsOfAPrimeNumberAreThePrimeNumber
+
+	self assert: (Bag with: 3) equals: 3 factorize
+	! !
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test03FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 20:49:13'!
+FAILURE!
+
+!methodRemoval: TDDBabyStepsPrimeFactorsTest #test03FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 20:49:13'!
+test03FactorsOfAPrimeNumberAreThePrimeNumber
+
+	self assert: (Bag with: 3) equals: 3 factorize
+	!
+!TDDBabyStepsPrimeFactorsTest methodsFor: 'tests' stamp: 'ayac 4/27/2023 20:49:13'!
+test03FactorsOfAPrimeNumberAreThePrimeNumber
+
+	self assert: (Bag with: 3) equals: 3 factorize
+	! !
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test03FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 20:49:13'!
+FAILURE!
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 20:49:47' prior: 50610588!
+factorize
+	self = 2 ifTrue: [^Bag with: 2].
+	self = 3 ifTrue: [^Bag with: 2].
+	^Bag new.! !
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test03FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 20:49:49'!
+FAILURE!
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 20:49:54' prior: 50610639!
+factorize
+	self = 2 ifTrue: [^Bag with: 2].
+	self = 3 ifTrue: [^Bag with: 3].
+	^Bag new.! !
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test03FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 20:49:56'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test01OneHasNoPrimeFactors stamp: 'ayac 4/27/2023 20:49:56'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test02FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 20:49:56'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test03FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 20:49:56'!
+PASSED!
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 20:51:02' prior: 50610649!
+factorize
+	self = 1 ifTrue: [^Bag new.].
+	^Bag with: self! !
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test03FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 20:51:05'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test01OneHasNoPrimeFactors stamp: 'ayac 4/27/2023 20:51:05'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test02FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 20:51:05'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test03FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 20:51:05'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test01OneHasNoPrimeFactors stamp: 'ayac 4/27/2023 20:51:08'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test02FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 20:51:08'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test03FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 20:51:08'!
+PASSED!
+!TDDBabyStepsPrimeFactorsTest methodsFor: 'tests' stamp: 'ayac 4/27/2023 20:51:08'!
+test04CorrectlyFactorizesACompositeNumberWithTwoFactors2
+	
+	self assert: (Bag with: 2 with: 2) equals: 4 factorize
+	! !
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test04CorrectlyFactorizesACompositeNumberWithTwoFactors2 stamp: 'ayac 4/27/2023 20:51:08'!
+FAILURE!
+
+!methodRemoval: TDDBabyStepsPrimeFactorsTest #test04CorrectlyFactorizesACompositeNumberWithTwoFactors2 stamp: 'ayac 4/27/2023 20:51:08'!
+test04CorrectlyFactorizesACompositeNumberWithTwoFactors2
+	
+	self assert: (Bag with: 2 with: 2) equals: 4 factorize
+	!
+!TDDBabyStepsPrimeFactorsTest methodsFor: 'tests' stamp: 'ayac 4/27/2023 20:51:08'!
+test04CorrectlyFactorizesACompositeNumberWithTwoFactors2
+	
+	self assert: (Bag with: 2 with: 2) equals: 4 factorize
+	! !
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test04CorrectlyFactorizesACompositeNumberWithTwoFactors2 stamp: 'ayac 4/27/2023 20:51:08'!
+FAILURE!
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 20:52:19' prior: 50610671!
+factorize
+	self = 1 ifTrue: [^Bag new.].
+	self = 4 ifTrue: [^Bag with:2 with: 2].
+	^Bag with: self! !
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test04CorrectlyFactorizesACompositeNumberWithTwoFactors2 stamp: 'ayac 4/27/2023 20:52:23'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test01OneHasNoPrimeFactors stamp: 'ayac 4/27/2023 20:52:23'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test02FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 20:52:23'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test03FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 20:52:23'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test04CorrectlyFactorizesACompositeNumberWithTwoFactors2 stamp: 'ayac 4/27/2023 20:52:23'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test01OneHasNoPrimeFactors stamp: 'ayac 4/27/2023 20:53:07'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test02FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 20:53:07'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test03FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 20:53:07'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test04CorrectlyFactorizesACompositeNumberWithTwoFactors2 stamp: 'ayac 4/27/2023 20:53:07'!
+PASSED!
+!TDDBabyStepsPrimeFactorsTest methodsFor: 'tests' stamp: 'ayac 4/27/2023 20:53:07'!
+test08CorrectlyFactorizesACompositeNumberWithMoreThanTwoFactors2
+	
+	self assert: (Bag with: 2 with: 2 with: 2) equals: 8 factorize
+	! !
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test08CorrectlyFactorizesACompositeNumberWithMoreThanTwoFactors2 stamp: 'ayac 4/27/2023 20:53:07'!
+FAILURE!
+
+!methodRemoval: TDDBabyStepsPrimeFactorsTest #test08CorrectlyFactorizesACompositeNumberWithMoreThanTwoFactors2 stamp: 'ayac 4/27/2023 20:53:07'!
+test08CorrectlyFactorizesACompositeNumberWithMoreThanTwoFactors2
+	
+	self assert: (Bag with: 2 with: 2 with: 2) equals: 8 factorize
+	!
+!TDDBabyStepsPrimeFactorsTest methodsFor: 'tests' stamp: 'ayac 4/27/2023 20:53:07'!
+test08CorrectlyFactorizesACompositeNumberWithMoreThanTwoFactors2
+	
+	self assert: (Bag with: 2 with: 2 with: 2) equals: 8 factorize
+	! !
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test08CorrectlyFactorizesACompositeNumberWithMoreThanTwoFactors2 stamp: 'ayac 4/27/2023 20:53:07'!
+FAILURE!
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 20:53:59' prior: 50610733!
+factorize
+	self = 1 ifTrue: [^Bag new.].
+	self = 4 ifTrue: [^Bag with:2 with: 2].
+	self = 8 ifTrue: [^Bag with: 2 with: 2 with: 2].
+	^Bag with: self! !
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test08CorrectlyFactorizesACompositeNumberWithMoreThanTwoFactors2 stamp: 'ayac 4/27/2023 20:54:00'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test01OneHasNoPrimeFactors stamp: 'ayac 4/27/2023 20:54:00'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test02FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 20:54:01'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test03FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 20:54:01'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test04CorrectlyFactorizesACompositeNumberWithTwoFactors2 stamp: 'ayac 4/27/2023 20:54:01'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test08CorrectlyFactorizesACompositeNumberWithMoreThanTwoFactors2 stamp: 'ayac 4/27/2023 20:54:01'!
+PASSED!
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 20:57:01' prior: 50610809!
+factorize
+	|bag|
+	bag := Bag new.
+	self = 1 ifTrue: [^bag.].
+	(self isDivisibleBy: 2) ifTrue: [].
+	^Bag with: self! !
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 20:57:21' prior: 50610842!
+factorize
+	|bag|
+	bag := Bag new.
+	self = 1 ifTrue: [^bag.].
+	(self isDivisibleBy: 2) whileTrue: [].
+	^Bag with: self! !
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 20:57:31' prior: 50610849!
+factorize
+	|bag|
+	bag := Bag new.
+	self = 1 ifTrue: [^bag.].
+	(self isDivisibleBy: 2) whileTrue: [bag add: 2].
+	^Bag with: self! !
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 20:58:54' prior: 50610856!
+factorize
+	self = 1 ifTrue: [^Bag new.].
+	self = 4 ifTrue: [^Bag with:2 with: 2].
+	self = 8 ifTrue: [^Bag with: 2 with: 2 with: 2].
+	^Bag with: self! !
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 21:02:12' prior: 50610863!
+factorize
+	|bag|
+	bag := Bag new.
+	self = 1 ifTrue: [^bag.].
+	(self isDivisibleBy: 2) ifTrue: [^(self / 2) factorize add: 2].
+	^bag with: self! !
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test08CorrectlyFactorizesACompositeNumberWithMoreThanTwoFactors2 stamp: 'ayac 4/27/2023 21:02:20'!
+ERROR!
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 21:05:28' prior: 50610871!
+factorize
+	|bag|
+	bag := Bag new.
+	self = 1 ifTrue: [^bag.].
+	(self isDivisibleBy: 2) ifTrue: [bag :=(self / 2) factorize add: 2.
+		^bag].
+	^bag with: self! !
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test08CorrectlyFactorizesACompositeNumberWithMoreThanTwoFactors2 stamp: 'ayac 4/27/2023 21:05:38'!
+ERROR!
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 21:06:02' prior: 50610883!
+factorize
+	|bag|
+	bag := Bag new.
+	self = 1 ifTrue: [^bag.].
+	(self isDivisibleBy: 2) ifTrue: [bag :=(self / 2) factorize .
+		bag add: 2.
+		^bag].
+	^bag with: self! !
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test08CorrectlyFactorizesACompositeNumberWithMoreThanTwoFactors2 stamp: 'ayac 4/27/2023 21:06:04'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test01OneHasNoPrimeFactors stamp: 'ayac 4/27/2023 21:06:04'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test02FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 21:06:04'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test03FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 21:06:04'!
+ERROR!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test04CorrectlyFactorizesACompositeNumberWithTwoFactors2 stamp: 'ayac 4/27/2023 21:06:04'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test08CorrectlyFactorizesACompositeNumberWithMoreThanTwoFactors2 stamp: 'ayac 4/27/2023 21:06:04'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test03FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 21:06:04'!
+ERROR!
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 21:06:29' prior: 50610896!
+factorize
+	|bag|
+	bag := Bag new.
+	self = 1 ifTrue: [^bag.].
+	(self isDivisibleBy: 2) ifTrue: [bag :=(self / 2) factorize .
+		bag add: 2.
+		^bag].
+	^bag add: self! !
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test08CorrectlyFactorizesACompositeNumberWithMoreThanTwoFactors2 stamp: 'ayac 4/27/2023 21:06:31'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test01OneHasNoPrimeFactors stamp: 'ayac 4/27/2023 21:06:31'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test02FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 21:06:31'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test03FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 21:06:31'!
+FAILURE!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test04CorrectlyFactorizesACompositeNumberWithTwoFactors2 stamp: 'ayac 4/27/2023 21:06:31'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test08CorrectlyFactorizesACompositeNumberWithMoreThanTwoFactors2 stamp: 'ayac 4/27/2023 21:06:31'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test03FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 21:06:31'!
+FAILURE!
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 21:07:13' prior: 50610934!
+factorize
+	|bag|
+	bag := Bag new.
+	self = 1 ifTrue: [^bag.].
+	(self isDivisibleBy: 2) ifTrue: [
+		bag :=(self / 2) factorize .
+		bag add: 2.
+		^bag].
+	^bag add: self! !
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 21:07:58' prior: 50610972!
+factorize
+	|bag|
+	bag := Bag new.
+	self = 1 ifTrue: [^bag.].
+	(self isDivisibleBy: 2) ifTrue: [
+		bag :=(self / 2) factorize .
+		bag add: 2.
+		^bag].
+	bag add: self
+	^bag! !
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 21:08:03' prior: 50610980!
+factorize
+	|bag|
+	bag := Bag new.
+	self = 1 ifTrue: [^bag.].
+	(self isDivisibleBy: 2) ifTrue: [
+		bag :=(self / 2) factorize .
+		bag add: 2.
+		^bag].
+	bag add: self.
+	^bag! !
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test08CorrectlyFactorizesACompositeNumberWithMoreThanTwoFactors2 stamp: 'ayac 4/27/2023 21:08:05'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test01OneHasNoPrimeFactors stamp: 'ayac 4/27/2023 21:08:05'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test02FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 21:08:05'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test03FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 21:08:05'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test04CorrectlyFactorizesACompositeNumberWithTwoFactors2 stamp: 'ayac 4/27/2023 21:08:05'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test08CorrectlyFactorizesACompositeNumberWithMoreThanTwoFactors2 stamp: 'ayac 4/27/2023 21:08:05'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test01OneHasNoPrimeFactors stamp: 'ayac 4/27/2023 21:08:37'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test02FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 21:08:37'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test03FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 21:08:37'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test04CorrectlyFactorizesACompositeNumberWithTwoFactors2 stamp: 'ayac 4/27/2023 21:08:37'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test08CorrectlyFactorizesACompositeNumberWithMoreThanTwoFactors2 stamp: 'ayac 4/27/2023 21:08:37'!
+PASSED!
+!TDDBabyStepsPrimeFactorsTest methodsFor: 'tests' stamp: 'ayac 4/27/2023 21:08:37'!
+test09CorrectlyFactorizesACompositeNumberWithMoreThanOneFactorsDifferentThan2
+	
+	self assert: (Bag with: 3 with: 3) equals: 9 factorize
+	! !
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test09CorrectlyFactorizesACompositeNumberWithMoreThanOneFactorsDifferentThan2 stamp: 'ayac 4/27/2023 21:08:37'!
+FAILURE!
+
+!methodRemoval: TDDBabyStepsPrimeFactorsTest #test09CorrectlyFactorizesACompositeNumberWithMoreThanOneFactorsDifferentThan2 stamp: 'ayac 4/27/2023 21:08:37'!
+test09CorrectlyFactorizesACompositeNumberWithMoreThanOneFactorsDifferentThan2
+	
+	self assert: (Bag with: 3 with: 3) equals: 9 factorize
+	!
+!TDDBabyStepsPrimeFactorsTest methodsFor: 'tests' stamp: 'ayac 4/27/2023 21:08:37'!
+test09CorrectlyFactorizesACompositeNumberWithMoreThanOneFactorsDifferentThan2
+	
+	self assert: (Bag with: 3 with: 3) equals: 9 factorize
+	! !
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test09CorrectlyFactorizesACompositeNumberWithMoreThanOneFactorsDifferentThan2 stamp: 'ayac 4/27/2023 21:08:37'!
+FAILURE!
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 21:13:13' prior: 50610989!
+factorize
+	|factors|
+	factors := Bag new.
+	self = 1 ifTrue: [^factors.].
+	(self isDivisibleBy: 2) ifTrue: [
+		factors :=(self / 2) factorize .
+		factors add: 2.
+		^factors].
+	factors add: self.
+	^factors! !
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 21:16:40' prior: 50611078!
+factorize
+	|factors|
+	factors := Bag new.
+	self = 1 ifTrue: [^factors.].
+	(self isDivisibleBy: 2) ifTrue: [
+		factors := (self / 2) factorize .
+		factors add: 2.
+		^factors].
+	factors add: self.
+	^factors! !
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 21:16:57' prior: 50611088!
+factorize
+	|factors|
+	factors := Bag new.
+	self = 1 ifTrue: [^factors.].
+	(self isDivisibleBy: 2) ifTrue: [
+		factors := (self / 2) factorize .
+		factors add: 2.
+		^factors].
+	(self isDivisibleBy: 3) ifTrue: [
+		factors := (self / 3) factorize .
+		factors add: 3.
+		^factors].
+	factors add: self.
+	^factors! !
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test09CorrectlyFactorizesACompositeNumberWithMoreThanOneFactorsDifferentThan2 stamp: 'ayac 4/27/2023 21:16:58'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test01OneHasNoPrimeFactors stamp: 'ayac 4/27/2023 21:16:58'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test02FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 21:16:58'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test03FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 21:16:58'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test04CorrectlyFactorizesACompositeNumberWithTwoFactors2 stamp: 'ayac 4/27/2023 21:16:58'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test08CorrectlyFactorizesACompositeNumberWithMoreThanTwoFactors2 stamp: 'ayac 4/27/2023 21:16:58'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test09CorrectlyFactorizesACompositeNumberWithMoreThanOneFactorsDifferentThan2 stamp: 'ayac 4/27/2023 21:16:58'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test01OneHasNoPrimeFactors stamp: 'ayac 4/27/2023 21:17:03'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test02FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 21:17:03'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test03FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 21:17:03'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test04CorrectlyFactorizesACompositeNumberWithTwoFactors2 stamp: 'ayac 4/27/2023 21:17:03'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test08CorrectlyFactorizesACompositeNumberWithMoreThanTwoFactors2 stamp: 'ayac 4/27/2023 21:17:03'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test09CorrectlyFactorizesACompositeNumberWithMoreThanOneFactorsDifferentThan2 stamp: 'ayac 4/27/2023 21:17:03'!
+PASSED!
+!TDDBabyStepsPrimeFactorsTest methodsFor: 'tests' stamp: 'ayac 4/27/2023 21:17:03'!
+testExtraToCheckGeneralizationOnKata
+	
+	self assert: (Bag with: 2 with: 2 with: 3 with: 3 with: 5 with: 13) equals: (2*2*3*3*5*13) factorize
+	! !
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #testExtraToCheckGeneralizationOnKata stamp: 'ayac 4/27/2023 21:17:03'!
+FAILURE!
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 21:18:06' prior: 50611098!
+factorize
+	|factors|
+	factors := Bag new.
+	self = 1 ifTrue: [^factors.].
+	(self isDivisibleBy: 2) ifTrue: [
+		factors :=(self / 2) factorize .
+		factors add: 2.
+		^factors].
+	factors add: self.
+	^factors! !
+
+!testRun: #FloatTest #test32bitConversion stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #test32bitConversion2 stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #test32bitGradualUnderflow stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #test32bitInfinities stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #test32bitNaN stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #test32bitRoundingMode stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #test32bitZeros stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testAdd stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testArCosh stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testArSinh stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testArTanh stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testArcTan stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testArcTanNonPrimitive stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testAsTrueFraction stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testCeiling stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testCharacterization stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testComparisonWhenPrimitiveFails stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testComparisonWithFraction stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testCopy stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testCopySign stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testCos stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testCosh stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testDegreeCos stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testDegreeCosForExceptionalValues stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testDegreeSin stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testDegreeSinForExceptionalValues stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testDivide stamp: 'ayac 4/27/2023 21:18:06'!
+ERROR!
+
+!testRun: #FloatTest #testDivide stamp: 'ayac 4/27/2023 21:18:06'!
+ERROR!
+
+!testRun: #FloatTest #testDivide stamp: 'ayac 4/27/2023 21:18:06'!
+ERROR!
+
+!testRun: #FloatTest #testDivide stamp: 'ayac 4/27/2023 21:18:06'!
+ERROR!
+
+!testRun: #FloatTest #testDivide stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testE stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testEqualityComparison stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testEquals stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testExactAsString stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testExactAsString2 stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testExactStoreString stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testExactStoreString2 stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testExp stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testExpNonPrimitive stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testFloatRounded stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testFloatTruncated stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testFloatsAwayFrom stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testFloatsAwayFromWithPowersOfTwo stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testFloor stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testFloorLog2 stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testFractionAsFloat stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testFractionAsFloat2 stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testFractionAsFloatRoundsHalfToEven stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testFractionAsFloatWithUnderflow stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testFromStringDoesNotUnderflow stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testHashWithBigNegativeSmallInteger stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testHashWithBigSmallInteger stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testHashWithFraction stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testHashWithLargeNegativeInteger stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testHashWithLargePositiveInteger stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testHashWithSmallishLargeNegativeInteger stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testHashWithSmallishLargeNegativeInteger2 stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testHashWithSmallishLargePositiveInteger stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testHashWithSmallishLargePositiveInteger2 stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testHugeValues stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testInfinity1 stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testInfinity2 stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testInfinityTruncated stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testIntegerAsFloat stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testIsDenormalized stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testIsZero stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testLiteralEqualityOfNan stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testLiteralEqualityOfZeroAndNegativeZero stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testLn stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testLnForExceptionalValues stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testLnNonPrimitive stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testMaxExactInteger stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testMinimalAsString stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testMixedTypeArithmetic stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testMixedTypeComparison stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testMultiply stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testNaN1 stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testNaN2 stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testNaN3 stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testNaN4 stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testNaNCompare stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testNaNPropagationBinary stamp: 'ayac 4/27/2023 21:18:06'!
+FAILURE!
+
+!testRun: #FloatTest #testNaNPropagationUnary stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testNaNTruncated stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testNaNisLiteral stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testNextAwayFromZero stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testNextTowardsZero stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testNoIntegerHash stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testPartBits stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testPi stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testPositiveAndNegativeZero stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testPredecessorSuccessor stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testPredecessorSuccessor2 stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testPrimAdd stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testPrimArcTan stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testPrimDivideBy stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testPrimEqual stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testPrimExpAndLn stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testPrimExponent stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testPrimGreater stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testPrimGreaterEqual stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testPrimLess stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testPrimLessEqual stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testPrimMultiplyBy stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testPrimNotEqual stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testPrimSin stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testPrimSmallIntegerAsFloat stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testPrimSqrt stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testPrimSubtract stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testPrimTimesTwoPower stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testPrimTruncated stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testPrintShowingDecimalPlaces4 stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testPrintStringStress stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testReadFromManyDigits stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testReciprocal stamp: 'ayac 4/27/2023 21:18:06'!
+ERROR!
+
+!testRun: #FloatTest #testReciprocal stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testRoundHalfAwayFromZero stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testRoundHalfToEven stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testRounded stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testSetOfFloat stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testSignificandAndExponent stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testSignificandAsInteger stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testSin stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testSinNonPrimitive stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testSinh stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testSomeNines stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testSqrt stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testSqrtNonPrimitive stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testStoreBase16 stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testStoreOn stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testStringAsFloatRoundsHalfToEven stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testStringAsFloatRoundsHalfToEven2 stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testStringAsNumber stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testStringAsNumber2 stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testSubtract stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testTanh stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testTimesTwoPowerGradualUnderflow stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testTimesTwoPowerOverflow stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testTimesTwoPowerUnderflow stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testTruncated stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testUlp stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testZeroAbs stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testZeroDividedByZero stamp: 'ayac 4/27/2023 21:18:06'!
+ERROR!
+
+!testRun: #FloatTest #testZeroDividedByZero stamp: 'ayac 4/27/2023 21:18:06'!
+ERROR!
+
+!testRun: #FloatTest #testZeroDividedByZero stamp: 'ayac 4/27/2023 21:18:06'!
+ERROR!
+
+!testRun: #FloatTest #testZeroDividedByZero stamp: 'ayac 4/27/2023 21:18:06'!
+ERROR!
+
+!testRun: #FloatTest #testZeroDividedByZero stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testZeroRaisedToNegativePower stamp: 'ayac 4/27/2023 21:18:06'!
+ERROR!
+
+!testRun: #FloatTest #testZeroRaisedToNegativePower stamp: 'ayac 4/27/2023 21:18:06'!
+ERROR!
+
+!testRun: #FloatTest #testZeroRaisedToNegativePower stamp: 'ayac 4/27/2023 21:18:06'!
+ERROR!
+
+!testRun: #FloatTest #testZeroRaisedToNegativePower stamp: 'ayac 4/27/2023 21:18:06'!
+ERROR!
+
+!testRun: #FloatTest #testZeroRaisedToNegativePower stamp: 'ayac 4/27/2023 21:18:06'!
+ERROR!
+
+!testRun: #FloatTest #testZeroRaisedToNegativePower stamp: 'ayac 4/27/2023 21:18:06'!
+ERROR!
+
+!testRun: #FloatTest #testZeroRaisedToNegativePower stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testZeroSign stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #FloatTest #testZeroSignificandAsInteger stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #NumberTest #test01readFromWhenTheInitilValueIsNaNTheResultIsNaN stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #NumberTest #test02readFromWhenTheInitilValueIsInfinityTheResultIsInfinity stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #NumberTest #test03readFromWhenTheInitilValueIsMinusInfinityTheResultIsNegativeInfinity stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #NumberTest #test04readFromWhenTheInitilValueIsANegativeNumberTheResultIsThatNumberNegated stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #NumberTest #test05readFromWhenTheInitilValueIsJustANumberTheResultIsThatNumber stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #NumberTest #test06readFromWhenTheInitialValueIncludesRadixItIsConvertedWithTheIndicatedRadixBase stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #NumberTest #test07readFromWhenTheInitialValueIncludesAnInvalidRadixItRaisesAnError stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #NumberTest #test08readFromWhenTheInitialValueIncludesANegativeRadixItConvertsTheNumberWithTheIndicatedRadixBase stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #NumberTest #test09readFromWhenTheInitialValueIsEmptyItRaisesAnError stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #NumberTest #testFractionPart stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #NumberTest #testHash1 stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #NumberTest #testHash2 stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #NumberTest #testHash3 stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #NumberTest #testIntegerPart stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #NumberTest #testOne stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #NumberTest #testPrintShowingDecimalPlaces stamp: 'ayac 4/27/2023 21:18:06'!
+PASSED!
+
+!testRun: #NumberTest #testPrintShowingDecimalPlaces2 stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #NumberTest #testPrintShowingDecimalPlaces3 stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #NumberTest #testRaisedTo stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #NumberTest #testRaisedToInteger stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #NumberTest #testRaisedToIntegerWithFloats stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #NumberTest #testReadFrom stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #NumberTest #testReciprocal stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #NumberTest #testZeroDivideHandler stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testCeiling stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testDegreeCos2 stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testDegreeSin2 stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testExactRaisedTo stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testExactSqrt stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testFloor stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testFloorLog stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testFloorLogExactness stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testFractionPrinting stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testHash stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testInexactRaisedTo stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testInexactSqrt stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testIntegerWholeDivision stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testIntegerWholeMultiplication stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testIsType stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testLn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testLog stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testNthRoot stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testReciprocal stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testRoundHalfAwayFromZero stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testRoundHalfToEven stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testRounded stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testThatFractionDenominatorIsPositive stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testThatFractionIsReduced stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testTruncated stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testWholeDifference stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testWholeDivision stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testWholeMultiplication stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #FractionTest #testWholeSum stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #test01readFromWithEmptyStringRaisesAnError stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #test02readFromWithInvalidStringRaisesAnError stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashLnLn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashLnLp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashLnSn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashLnSp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashLpLn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashLpLp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashLpSn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashLpSp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashSnLn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashSnLp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashSnSn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashSnSp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashSpLn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashSpLp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashSpSn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashSpSp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testBenchFib stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testBigReceiverInexactNthRoot stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testBigReceiverInexactSqrt stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testBitAt stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testBitLogic stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testBitReversal stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testBitReversalCorrectClass stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testCrossSumBase stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testDifferentBases stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testDivLnLn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testDivLnLp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testDivLnSn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testDivLnSp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testDivLpLn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testDivLpLp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testDivLpSn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testDivLpSp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testDivSnLn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testDivSnLp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testDivSnSn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testDivSnSp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testDivSpLn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testDivSpLp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testDivSpSn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testDivSpSp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testEven stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testExactRaisedTo stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testExactSqrt stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testFloorLog stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testFloorLogExactness stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testGCDAndLCM stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testGCDExample stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testGCDProperties stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testHighBit stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testHighBitOfMagnitude stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testIntegerDivision stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testIntegerPadding stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testIntegerReadFrom stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testIsInteger stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testIsPowerOfTwo stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testIsPowerOfTwoM6873 stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testIsPrime stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testIsProbablyPrime stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testLCMExample stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testLCMProperties stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testLargePrimesUpTo stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testLn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testLog stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testLowBit stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testModLnLn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testModLnLp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testModLnSn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testModLnSp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testModLpLn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testModLpLp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testModLpSn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testModLpSp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testModSnLn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testModSnLp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testModSnSn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testModSnSp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testModSpLn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testModSpLp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testModSpSn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testModSpSp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testMontgomeryMultiplication stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testNegativeIntegerPrinting stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testNew stamp: 'ayac 4/27/2023 21:18:07'!
+ERROR!
+
+!testRun: #IntegerTest #testNew stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testNthRoot stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testNthRootErrorConditions stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testNthRootExactness stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testNthRootExactnessForHugeValue stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testNthRootImmuneToDoubleRounding stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testNthRootTruncated stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testNumberOfDigits stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testPositiveIntegerPrinting stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testPrimesUpTo stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testPrintOnBaseShowRadix stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testPrintStringBase stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoLnLn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoLnLp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoLnSn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoLnSp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoLpLn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoLpLp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoLpSn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoLpSp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoRem stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoSnLn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoSnLp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoSnSn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoSnSp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoSpLn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoSpLp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoSpSn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoSpSp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testRaisedToModulo stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testRange stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testReadFrom stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testRemLnLn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testRemLnLp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testRemLnSn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testRemLnSp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testRemLpLn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testRemLpLp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testRemLpSn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testRemLpSp stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testRemSnLn stamp: 'ayac 4/27/2023 21:18:07'!
+PASSED!
+
+!testRun: #IntegerTest #testRemSnLp stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testRemSnSn stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testRemSnSp stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testRemSpLn stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testRemSpLp stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testRemSpSn stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testRemSpSp stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testRomanPrinting stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashLnLn stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashLnLp stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashLnSn stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashLnSp stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashLpLn stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashLpLp stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashLpSn stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashLpSp stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashSnLn stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashSnLp stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashSnSn stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashSnSp stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashSpLn stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashSpLp stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashSpSn stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashSpSp stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testSqrtFloor stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testStringAsNumber stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testTwoComplementBitLogicWithCarry stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #IntegerTest #testTwoComplementRightShift stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #LaggedFibonacciRandomTest #testNext stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #LaggedFibonacciRandomTest #testNextBits stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #LaggedFibonacciRandomTest #testNextBitsInvalid stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #LaggedFibonacciRandomTest #testNextInteger stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #LaggedFibonacciRandomTest #testNextIntegerInvalid stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #LaggedFibonacciRandomTest #testRandomLargeInteger1 stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #LaggedFibonacciRandomTest #testRandomLargeInteger2 stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #LaggedFibonacciRandomTest #testSeedAndRepeatability stamp: 'ayac 4/27/2023 21:18:08'!
+PASSED!
+
+!testRun: #LaggedFibonacciRandomTest #testSetAtRandom stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #LaggedFibonacciRandomTest #testSimpleBuckets stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #LargeNegativeIntegerTest #testCompactClassIndex stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #LargeNegativeIntegerTest #testDenormalizedPrintString stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #LargeNegativeIntegerTest #testDigitAt stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #LargeNegativeIntegerTest #testDigitAtPut stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #LargeNegativeIntegerTest #testDigitLength stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #LargeNegativeIntegerTest #testEmptyTemplate stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #LargeNegativeIntegerTest #testMinimumNegativeIntegerArithmetic stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #LargeNegativeIntegerTest #testReplaceFromToWithStartingAt stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #LargePositiveIntegerTest #testBitShift stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #LargePositiveIntegerTest #testCompactClassIndex stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #LargePositiveIntegerTest #testDenormalizedPrintString stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #LargePositiveIntegerTest #testDigitAt stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #LargePositiveIntegerTest #testDigitAtPut stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #LargePositiveIntegerTest #testDigitLength stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #LargePositiveIntegerTest #testEmptyTemplate stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #LargePositiveIntegerTest #testLargeSqrtFloor stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #LargePositiveIntegerTest #testMultDicAddSub stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #LargePositiveIntegerTest #testNormalize stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #LargePositiveIntegerTest #testReplaceFromToWithStartingAt stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #ParkMiller88RandomTest #testNext stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #ParkMiller88RandomTest #testNextBits stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #ParkMiller88RandomTest #testNextBitsInvalid stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #ParkMiller88RandomTest #testNextInteger stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #ParkMiller88RandomTest #testNextIntegerInvalid stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #ParkMiller88RandomTest #testParkMillerCorrectness stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #ParkMiller88RandomTest #testParkMillerInitialValues stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #ParkMiller88RandomTest #testParkMillerSeedCornerCases stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #ParkMiller88RandomTest #testParkMillerSeedRange stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #ParkMiller88RandomTest #testRandomLargeInteger1 stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #ParkMiller88RandomTest #testRandomLargeInteger2 stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #ParkMiller88RandomTest #testSeedAndRepeatability stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #ParkMiller88RandomTest #testSetAtRandom stamp: 'ayac 4/27/2023 21:18:09'!
+PASSED!
+
+!testRun: #ParkMiller88RandomTest #testSimpleBuckets stamp: 'ayac 4/27/2023 21:18:10'!
+PASSED!
+
+!testRun: #ParkMiller93RandomTest #testNext stamp: 'ayac 4/27/2023 21:18:10'!
+PASSED!
+
+!testRun: #ParkMiller93RandomTest #testNextBits stamp: 'ayac 4/27/2023 21:18:10'!
+PASSED!
+
+!testRun: #ParkMiller93RandomTest #testNextBitsInvalid stamp: 'ayac 4/27/2023 21:18:10'!
+PASSED!
+
+!testRun: #ParkMiller93RandomTest #testNextInteger stamp: 'ayac 4/27/2023 21:18:10'!
+PASSED!
+
+!testRun: #ParkMiller93RandomTest #testNextIntegerInvalid stamp: 'ayac 4/27/2023 21:18:10'!
+PASSED!
+
+!testRun: #ParkMiller93RandomTest #testRandomLargeInteger1 stamp: 'ayac 4/27/2023 21:18:10'!
+PASSED!
+
+!testRun: #ParkMiller93RandomTest #testRandomLargeInteger2 stamp: 'ayac 4/27/2023 21:18:10'!
+PASSED!
+
+!testRun: #ParkMiller93RandomTest #testSeedAndRepeatability stamp: 'ayac 4/27/2023 21:18:10'!
+PASSED!
+
+!testRun: #ParkMiller93RandomTest #testSetAtRandom stamp: 'ayac 4/27/2023 21:18:10'!
+PASSED!
+
+!testRun: #ParkMiller93RandomTest #testSimpleBuckets stamp: 'ayac 4/27/2023 21:18:11'!
+PASSED!
+
+!testRun: #TrieUnicodeTest #test01 stamp: 'ayac 4/27/2023 21:18:11'!
+PASSED!
+
+!testRun: #TrieUnicodeTest #test02 stamp: 'ayac 4/27/2023 21:18:11'!
+PASSED!
+
+!testRun: #TrieUnicodeTest #test03 stamp: 'ayac 4/27/2023 21:18:11'!
+PASSED!
+
+!testRun: #SmallIntegerTest #testBasicNew stamp: 'ayac 4/27/2023 21:18:11'!
+ERROR!
+
+!testRun: #SmallIntegerTest #testBasicNew stamp: 'ayac 4/27/2023 21:18:11'!
+PASSED!
+
+!testRun: #SmallIntegerTest #testDivide stamp: 'ayac 4/27/2023 21:18:11'!
+PASSED!
+
+!testRun: #SmallIntegerTest #testEven stamp: 'ayac 4/27/2023 21:18:11'!
+PASSED!
+
+!testRun: #SmallIntegerTest #testMaxVal stamp: 'ayac 4/27/2023 21:18:11'!
+PASSED!
+
+!testRun: #SmallIntegerTest #testMinVal stamp: 'ayac 4/27/2023 21:18:11'!
+PASSED!
+
+!testRun: #SmallIntegerTest #testNew stamp: 'ayac 4/27/2023 21:18:11'!
+ERROR!
+
+!testRun: #SmallIntegerTest #testNew stamp: 'ayac 4/27/2023 21:18:11'!
+PASSED!
+
+!testRun: #SmallIntegerTest #testOdd stamp: 'ayac 4/27/2023 21:18:11'!
+PASSED!
+
+!testRun: #SmallIntegerTest #testPrintPaddedWith stamp: 'ayac 4/27/2023 21:18:11'!
+PASSED!
+
+!testRun: #SmallIntegerTest #testPrintString stamp: 'ayac 4/27/2023 21:18:11'!
+PASSED!
+
+!testRun: #SmallIntegerTest #testZeroRaisedToNegativePower stamp: 'ayac 4/27/2023 21:18:11'!
+PASSED!
+
+!testRun: #FloatTest #testNaNPropagationBinary stamp: 'ayac 4/27/2023 21:18:11'!
+FAILURE!
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 21:18:31' prior: 50611179!
+factorize
+	|factors|
+	factors := Bag new.
+	self = 1 ifTrue: [^factors.].
+	(self isDivisibleBy: 2) ifTrue: [
+		factors := (self / 2) factorize .
+		factors add: 2.
+		^factors].
+	factors add: self.
+	^factors! !
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 21:27:08' prior: 50612374!
+factorize
+	|factors remainingNumber |
+	factors := Bag new.
+	self = 1 ifTrue: [^factors.].
+	remainingNumber:= self.
+	(self isDivisibleBy: 2) whileTrue: [
+		factors := (self / 2) factorize .
+		factors add: 2.
+		^factors].
+	factors add: self.
+	^factors! !
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 21:27:24' prior: 50612384!
+factorize
+	|factors remainingNumber |
+	factors := Bag new.
+	self = 1 ifTrue: [^factors.].
+	remainingNumber:= self.
+	(remainingNumber isDivisibleBy: 2) whileTrue: [
+		factors := (self / 2) factorize .
+		factors add: 2.
+		^factors].
+	factors add: self.
+	^factors! !
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 21:28:07' prior: 50612395!
+factorize
+	|factors remainingNumber |
+	factors := Bag new.
+	self = 1 ifTrue: [^factors.].
+	remainingNumber:= self.
+	(remainingNumber isDivisibleBy: 2) whileTrue: [
+		factors add: 2.
+		remainingNumber := remainingNumber /2.
+		^factors].
+	factors add: self.
+	^factors! !
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 21:28:19' prior: 50612406!
+factorize
+	|factors remainingNumber |
+	factors := Bag new.
+	self = 1 ifTrue: [^factors.].
+	remainingNumber:= self.
+	(remainingNumber isDivisibleBy: 2) whileTrue: [
+		factors add: 2.
+		remainingNumber := remainingNumber /2.].
+	factors add: self.
+	^factors! !
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 21:28:33' prior: 50612418!
+factorize
+	|factors remainingNumber |
+	factors := Bag new.
+	self = 1 ifTrue: [^factors.].
+	remainingNumber:= self.
+	(remainingNumber isDivisibleBy: 2) whileTrue: 
+		[factors add: 2.
+		remainingNumber := remainingNumber /2.].
+	factors add: self.
+	^factors! !
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 21:30:08' prior: 50612429!
+factorize
+	|factors remainingNumber |
+	factors := Bag new.
+	self = 1 ifTrue: [^factors.].
+	remainingNumber:= self.
+	(remainingNumber isDivisibleBy: 2) whileTrue: 
+		[factors add: 2.
+		remainingNumber := remainingNumber /2.].
+	remainingNumber > 1 ifTrue: [factors add: remainingNumber ]. 
+	^factors! !
+
+!testRun: #IntegerTest #test01readFromWithEmptyStringRaisesAnError stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #test02readFromWithInvalidStringRaisesAnError stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashLnLn stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashLnLp stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashLnSn stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashLnSp stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashLpLn stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashLpLp stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashLpSn stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashLpSp stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashSnLn stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashSnLp stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashSnSn stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashSnSp stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashSpLn stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashSpLp stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashSpSn stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testBackslashBackslashSpSp stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testBenchFib stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testBigReceiverInexactNthRoot stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testBigReceiverInexactSqrt stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testBitAt stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testBitLogic stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testBitReversal stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testBitReversalCorrectClass stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testCrossSumBase stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testDifferentBases stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testDivLnLn stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testDivLnLp stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testDivLnSn stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testDivLnSp stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testDivLpLn stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testDivLpLp stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testDivLpSn stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testDivLpSp stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testDivSnLn stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testDivSnLp stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testDivSnSn stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testDivSnSp stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testDivSpLn stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testDivSpLp stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testDivSpSn stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testDivSpSp stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testEven stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testExactRaisedTo stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testExactSqrt stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testFloorLog stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testFloorLogExactness stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testGCDAndLCM stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testGCDExample stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testGCDProperties stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testHighBit stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testHighBitOfMagnitude stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testIntegerDivision stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testIntegerPadding stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testIntegerReadFrom stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testIsInteger stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testIsPowerOfTwo stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testIsPowerOfTwoM6873 stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testIsPrime stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testIsProbablyPrime stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testLCMExample stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testLCMProperties stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testLargePrimesUpTo stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testLn stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testLog stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testLowBit stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testModLnLn stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testModLnLp stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testModLnSn stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testModLnSp stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testModLpLn stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testModLpLp stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testModLpSn stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testModLpSp stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testModSnLn stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testModSnLp stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testModSnSn stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testModSnSp stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testModSpLn stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testModSpLp stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testModSpSn stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testModSpSp stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testMontgomeryMultiplication stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testNegativeIntegerPrinting stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testNew stamp: 'ayac 4/27/2023 21:30:10'!
+ERROR!
+
+!testRun: #IntegerTest #testNew stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testNthRoot stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testNthRootErrorConditions stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testNthRootExactness stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testNthRootExactnessForHugeValue stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testNthRootImmuneToDoubleRounding stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testNthRootTruncated stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testNumberOfDigits stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testPositiveIntegerPrinting stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testPrimesUpTo stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testPrintOnBaseShowRadix stamp: 'ayac 4/27/2023 21:30:10'!
+PASSED!
+
+!testRun: #IntegerTest #testPrintStringBase stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoLnLn stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoLnLp stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoLnSn stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoLnSp stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoLpLn stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoLpLp stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoLpSn stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoLpSp stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoRem stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoSnLn stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoSnLp stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoSnSn stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoSnSp stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoSpLn stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoSpLp stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoSpSn stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testQuoSpSp stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testRaisedToModulo stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testRange stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testReadFrom stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testRemLnLn stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testRemLnLp stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testRemLnSn stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testRemLnSp stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testRemLpLn stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testRemLpLp stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testRemLpSn stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testRemLpSp stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testRemSnLn stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testRemSnLp stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testRemSnSn stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testRemSnSp stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testRemSpLn stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testRemSpLp stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testRemSpSn stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testRemSpSp stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testRomanPrinting stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashLnLn stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashLnLp stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashLnSn stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashLnSp stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashLpLn stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashLpLp stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashLpSn stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashLpSp stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashSnLn stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashSnLp stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashSnSn stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashSnSp stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashSpLn stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashSpLp stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashSpSn stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testSlashSlashSpSp stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testSqrtFloor stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testStringAsNumber stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testTwoComplementBitLogicWithCarry stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #IntegerTest #testTwoComplementRightShift stamp: 'ayac 4/27/2023 21:30:11'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test09CorrectlyFactorizesACompositeNumberWithMoreThanOneFactorsDifferentThan2 stamp: 'ayac 4/27/2023 21:30:15'!
+ERROR!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test09CorrectlyFactorizesACompositeNumberWithMoreThanOneFactorsDifferentThan2 stamp: 'ayac 4/27/2023 21:30:39'!
+ERROR!
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 21:32:25' prior: 50612440!
+factorize
+	|factors remainingNumber factor |
+	factors := Bag new.
+	self = 1 ifTrue: [^factors.].
+	
+	remainingNumber:= self.
+	
+	factor := 2.
+	
+	(remainingNumber isDivisibleBy: 2) whileTrue: 
+		[factors add: 2.
+		remainingNumber := remainingNumber /2.].
+	remainingNumber > 1 ifTrue: [factors add: remainingNumber ]. 
+	^factors! !
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 21:35:26' prior: 50612870!
+factorize
+	|factors remainingNumber factor |
+	factors := Bag new.
+	self = 1 ifTrue: [^factors.].
+	
+	remainingNumber:= self.
+	
+	factor := 2.
+	
+	[remainingNumber > 1] whileTrue:[ 
+		[remainingNumber isDivisibleBy: factor] whileTrue:
+			[factors add: factor.
+			remainingNumber := remainingNumber /factor.].
+		factor := factor + 1.
+	remainingNumber > 1 ifTrue: [factors add: remainingNumber ]. ]
+	^factors! !
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 21:35:52' prior: 50612883!
+factorize
+	|factors remainingNumber factor |
+	factors := Bag new.
+	self = 1 ifTrue: [^factors.].
+	
+	remainingNumber:= self.
+	
+	factor := 2.
+	
+	[remainingNumber > 1] whileTrue:[ 
+		[remainingNumber isDivisibleBy: factor] whileTrue:
+			[factors add: factor.
+			remainingNumber := remainingNumber /factor.].
+		factor := factor + 1.]
+	^factors! !
+!Integer methodsFor: 'Prime Factors' stamp: 'ayac 4/27/2023 21:36:00' prior: 50612899!
+factorize
+	|factors remainingNumber factor |
+	factors := Bag new.
+	self = 1 ifTrue: [^factors.].
+	
+	remainingNumber:= self.
+	
+	factor := 2.
+	
+	[remainingNumber > 1] whileTrue:[ 
+		[remainingNumber isDivisibleBy: factor] whileTrue:
+			[factors add: factor.
+			remainingNumber := remainingNumber /factor.].
+		factor := factor + 1.
+		].
+	^factors! !
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test09CorrectlyFactorizesACompositeNumberWithMoreThanOneFactorsDifferentThan2 stamp: 'ayac 4/27/2023 21:36:03'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test01OneHasNoPrimeFactors stamp: 'ayac 4/27/2023 21:36:03'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test02FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 21:36:03'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test03FactorsOfAPrimeNumberAreThePrimeNumber stamp: 'ayac 4/27/2023 21:36:03'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test04CorrectlyFactorizesACompositeNumberWithTwoFactors2 stamp: 'ayac 4/27/2023 21:36:03'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test08CorrectlyFactorizesACompositeNumberWithMoreThanTwoFactors2 stamp: 'ayac 4/27/2023 21:36:03'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #test09CorrectlyFactorizesACompositeNumberWithMoreThanOneFactorsDifferentThan2 stamp: 'ayac 4/27/2023 21:36:03'!
+PASSED!
+
+!testRun: #TDDBabyStepsPrimeFactorsTest #testExtraToCheckGeneralizationOnKata stamp: 'ayac 4/27/2023 21:36:03'!
+PASSED!
+
+----SNAPSHOT----(27 April 2023 21:38:22) CuisUniversity-5706.image priorSource: 8830350!
+
+----QUIT----(27 April 2023 21:38:32) CuisUniversity-5706.image priorSource: 9001930!
