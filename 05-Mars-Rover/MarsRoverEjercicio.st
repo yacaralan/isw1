@@ -73,12 +73,15 @@ test10LeerMultiplesComandosMirandoCualquierCardinal
 	
 	self assertThat: roverStartingAt2x2facingNorth isInLocation: 3@3 facing: East new ! !
 
-!MarsRoverTDD methodsFor: 'tests' stamp: 'a 5/12/2023 01:28:23'!
+!MarsRoverTDD methodsFor: 'tests' stamp: 'LMR 5/15/2023 16:59:17'!
 test11TrasLeerComandoInvalidoIgnoraTodoLoDemas
 
-	roverStartingAt2x2facingNorth executeCommand: 'fffgfff'.
-	
-	self assertThat: roverStartingAt2x2facingNorth isInLocation: 2@5 facing: North new ! !
+	self
+		should: [roverStartingAt2x2facingNorth executeCommand: 'fffgfff'.]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [:anError | 
+			self assert: anError messageText equals: MarsRover invalidCommandErrorDescription .
+			self assertThat: roverStartingAt2x2facingNorth isInLocation: 2@5 facing: North new]! !
 
 
 !MarsRoverTDD methodsFor: 'set up' stamp: 'a 5/12/2023 01:29:06'!
@@ -209,11 +212,11 @@ initializeAt: aCoordinate facing: aCardinal
 	cardinal := aCardinal of: self.! !
 
 
-!MarsRover methodsFor: 'commands' stamp: 'a 5/12/2023 01:19:53'!
+!MarsRover methodsFor: 'commands' stamp: 'LMR 5/15/2023 16:56:30'!
 executeCommand: aStringOfCommands 
 
 	aStringOfCommands do: [:aCommand| 
-		(self isValidCommand: aCommand) ifFalse: [^self].
+		(self isValidCommand: aCommand) ifFalse: [^self error: self class invalidCommandErrorDescription ].
 		cardinal executeCommand: aCommand]
 	! !
 
@@ -264,6 +267,12 @@ location
 !classDefinition: 'MarsRover class' category: 'MarsRoverEjercicio'!
 MarsRover class
 	instanceVariableNames: ''!
+
+!MarsRover class methodsFor: 'error description' stamp: 'LMR 5/15/2023 16:55:53'!
+invalidCommandErrorDescription
+
+	^'Comando no valido'! !
+
 
 !MarsRover class methodsFor: 'instance creation' stamp: 'a 5/11/2023 23:33:29'!
 newAt: aCoordinate facing: aCardinal 
