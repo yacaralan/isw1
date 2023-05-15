@@ -1,0 +1,92 @@
+
+
+----QUIT----(12 May 2023 17:49:00) CuisUniversity-5799.image priorSource: 4801971!
+
+----STARTUP---- (12 May 2023 17:49:01) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5799.image!
+
+
+----QUIT----(12 May 2023 17:49:01) CuisUniversity-5799.image priorSource: 9222569!
+
+----STARTUP---- (15 May 2023 16:52:23) as /home/clinux01/Descargas/linux64/CuisUniversity-5799.image!
+
+
+----End fileIn of /home/clinux01/Descargas/isw1-main/05-Mars-Rover/MarsRoverEjercicio.st----!
+
+----SNAPSHOT----(15 May 2023 16:54:31) CuisUniversity-5799.image priorSource: 9222790!
+
+----STARTUP---- (15 May 2023 16:55:13) as /home/clinux01/Descargas/linux64/CuisUniversity-5799.image!
+
+!MarsRover class methodsFor: 'instance creation' stamp: 'LMR 5/15/2023 16:55:53'!
+invalidCommandErrorDescription
+
+	^'Comando no valido'! !
+!MarsRover methodsFor: 'commands' stamp: 'LMR 5/15/2023 16:56:30' prior: 50620126!
+executeCommand: aStringOfCommands 
+
+	aStringOfCommands do: [:aCommand| 
+		(self isValidCommand: aCommand) ifFalse: [^self error: self class invalidCommandErrorDescription ].
+		cardinal executeCommand: aCommand]
+	! !
+!MarsRoverTDD methodsFor: 'tests' stamp: 'LMR 5/15/2023 16:58:58' prior: 50619964!
+test11TrasLeerComandoInvalidoIgnoraTodoLoDemas
+
+	self
+		should: [roverStartingAt2x2facingNorth executeCommand: 'fffgfff'.]
+		raise: [Error - MessageNotUnderstood ]
+		withExceptionDo: [:anError | 
+			self assert: anError messageText equals: MarsRover invalidCommandErrorDescription .
+			self assertThat: roverStartingAt2x2facingNorth isInLocation: 2@5 facing: North new]! !
+!MarsRoverTDD methodsFor: 'tests' stamp: 'LMR 5/15/2023 16:59:17' prior: 50620203!
+test11TrasLeerComandoInvalidoIgnoraTodoLoDemas
+
+	self
+		should: [roverStartingAt2x2facingNorth executeCommand: 'fffgfff'.]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [:anError | 
+			self assert: anError messageText equals: MarsRover invalidCommandErrorDescription .
+			self assertThat: roverStartingAt2x2facingNorth isInLocation: 2@5 facing: North new]! !
+
+!testRun: #MarsRoverTDD #test11TrasLeerComandoInvalidoIgnoraTodoLoDemas stamp: 'LMR 5/15/2023 16:59:18'!
+PASSED!
+
+!testRun: #MarsRoverTDD #test01EmpiezaEnLaCordenadaYDireccionInicial stamp: 'LMR 5/15/2023 16:59:18'!
+PASSED!
+
+!testRun: #MarsRoverTDD #test02LeerComandoVacioNoHaceNada stamp: 'LMR 5/15/2023 16:59:18'!
+PASSED!
+
+!testRun: #MarsRoverTDD #test03Leer1ComandoFMirandoUnaDireccion stamp: 'LMR 5/15/2023 16:59:18'!
+PASSED!
+
+!testRun: #MarsRoverTDD #test04Leer1ComandoFMirandoCualquierCardinal stamp: 'LMR 5/15/2023 16:59:18'!
+PASSED!
+
+!testRun: #MarsRoverTDD #test05Leer1ComandoBMirandoCualquierCardinal stamp: 'LMR 5/15/2023 16:59:18'!
+PASSED!
+
+!testRun: #MarsRoverTDD #test06Leer1ComandoLMirandoUnCardinal stamp: 'LMR 5/15/2023 16:59:18'!
+PASSED!
+
+!testRun: #MarsRoverTDD #test07Leer1ComandoLMirandoCualquierCardinal stamp: 'LMR 5/15/2023 16:59:18'!
+PASSED!
+
+!testRun: #MarsRoverTDD #test08Leer1ComandoRMirandoCualquierCardinal stamp: 'LMR 5/15/2023 16:59:18'!
+PASSED!
+
+!testRun: #MarsRoverTDD #test09LeerMultiplesComandosMirandoUnCardinal stamp: 'LMR 5/15/2023 16:59:18'!
+PASSED!
+
+!testRun: #MarsRoverTDD #test10LeerMultiplesComandosMirandoCualquierCardinal stamp: 'LMR 5/15/2023 16:59:18'!
+PASSED!
+
+!testRun: #MarsRoverTDD #test11TrasLeerComandoInvalidoIgnoraTodoLoDemas stamp: 'LMR 5/15/2023 16:59:18'!
+PASSED!
+
+----SNAPSHOT----(15 May 2023 16:59:22) CuisUniversity-5799.image priorSource: 9232991!
+
+----QUIT----(15 May 2023 16:59:29) CuisUniversity-5799.image priorSource: 9235933!
+
+----STARTUP---- (15 May 2023 17:03:28) as /home/clinux01/Descargas/linux64/CuisUniversity-5799.image!
+
+
+----QUIT----(15 May 2023 17:03:40) CuisUniversity-5799.image priorSource: 9236021!
