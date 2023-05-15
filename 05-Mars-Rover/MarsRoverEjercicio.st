@@ -10,74 +10,74 @@ test01EmpiezaEnLaCordenadaYDireccionInicial
 	
 	self assertThat: roverStartingAt2x2facingNorth isInLocation: 2@2 facing: North new! !
 
-!MarsRoverTDD methodsFor: 'tests' stamp: 'a 5/12/2023 01:25:11'!
+!MarsRoverTDD methodsFor: 'tests' stamp: 'LMR 5/15/2023 17:51:27'!
 test02LeerComandoVacioNoHaceNada
 
-	roverStartingAt2x2facingNorth executeCommand: ''.
+	roverStartingAt2x2facingNorth executeCommands: ''.
 	
 	self assertThat: roverStartingAt2x2facingNorth isInLocation: 2@2 facing: North new! !
 
-!MarsRoverTDD methodsFor: 'tests' stamp: 'a 5/12/2023 01:25:11'!
+!MarsRoverTDD methodsFor: 'tests' stamp: 'LMR 5/15/2023 17:51:27'!
 test03Leer1ComandoFMirandoUnaDireccion
 	
-	roverStartingAt2x2facingNorth executeCommand: 'f'.
+	roverStartingAt2x2facingNorth executeCommands: 'f'.
 	
 	self assertThat: roverStartingAt2x2facingNorth isInLocation: 2@3 facing: North new ! !
 
-!MarsRoverTDD methodsFor: 'tests' stamp: 'a 5/12/2023 01:29:51'!
+!MarsRoverTDD methodsFor: 'tests' stamp: 'LMR 5/15/2023 17:51:27'!
 test04Leer1ComandoFMirandoCualquierCardinal
 
-	roverStartingAt2x2facingWest executeCommand: 'f'.
+	roverStartingAt2x2facingWest executeCommands: 'f'.
 	
 	self assertThat: roverStartingAt2x2facingWest isInLocation: 1@2 facing: West new ! !
 
-!MarsRoverTDD methodsFor: 'tests' stamp: 'a 5/12/2023 01:26:05'!
+!MarsRoverTDD methodsFor: 'tests' stamp: 'LMR 5/15/2023 17:51:27'!
 test05Leer1ComandoBMirandoCualquierCardinal
 
-	roverStartingAt2x2facingNorth executeCommand: 'b'.
+	roverStartingAt2x2facingNorth executeCommands: 'b'.
 	
 	self assertThat: roverStartingAt2x2facingNorth isInLocation: 2@1 facing: North new ! !
 
-!MarsRoverTDD methodsFor: 'tests' stamp: 'a 5/12/2023 01:26:30'!
+!MarsRoverTDD methodsFor: 'tests' stamp: 'LMR 5/15/2023 17:51:27'!
 test06Leer1ComandoLMirandoUnCardinal
 	
-	roverStartingAt2x2facingNorth executeCommand: 'l'.
+	roverStartingAt2x2facingNorth executeCommands: 'l'.
 	
 	self assertThat: roverStartingAt2x2facingNorth isInLocation: 2@2 facing: West new ! !
 
-!MarsRoverTDD methodsFor: 'tests' stamp: 'a 5/12/2023 01:30:03'!
+!MarsRoverTDD methodsFor: 'tests' stamp: 'LMR 5/15/2023 17:51:27'!
 test07Leer1ComandoLMirandoCualquierCardinal
 
-	roverStartingAt2x2facingWest executeCommand: 'l'.
+	roverStartingAt2x2facingWest executeCommands: 'l'.
 	
 	self assertThat: roverStartingAt2x2facingWest isInLocation: 2@2 facing: South new ! !
 
-!MarsRoverTDD methodsFor: 'tests' stamp: 'a 5/12/2023 01:30:14'!
+!MarsRoverTDD methodsFor: 'tests' stamp: 'LMR 5/15/2023 17:51:27'!
 test08Leer1ComandoRMirandoCualquierCardinal
 
-	roverStartingAt2x2facingWest executeCommand: 'r'.
+	roverStartingAt2x2facingWest executeCommands: 'r'.
 	
 	self assertThat: roverStartingAt2x2facingWest isInLocation: 2@2 facing: North new ! !
 
-!MarsRoverTDD methodsFor: 'tests' stamp: 'a 5/12/2023 01:26:54'!
+!MarsRoverTDD methodsFor: 'tests' stamp: 'LMR 5/15/2023 17:51:27'!
 test09LeerMultiplesComandosMirandoUnCardinal
 	
-	roverStartingAt2x2facingNorth executeCommand: 'fff'.
+	roverStartingAt2x2facingNorth executeCommands: 'fff'.
 	
 	self assertThat: roverStartingAt2x2facingNorth isInLocation: 2@5 facing: North new ! !
 
-!MarsRoverTDD methodsFor: 'tests' stamp: 'a 5/12/2023 01:27:12'!
+!MarsRoverTDD methodsFor: 'tests' stamp: 'LMR 5/15/2023 17:51:27'!
 test10LeerMultiplesComandosMirandoCualquierCardinal
 	
-	roverStartingAt2x2facingNorth executeCommand: 'frf'.
+	roverStartingAt2x2facingNorth executeCommands: 'frf'.
 	
 	self assertThat: roverStartingAt2x2facingNorth isInLocation: 3@3 facing: East new ! !
 
-!MarsRoverTDD methodsFor: 'tests' stamp: 'LMR 5/15/2023 16:59:17'!
+!MarsRoverTDD methodsFor: 'tests' stamp: 'LMR 5/15/2023 17:51:27'!
 test11TrasLeerComandoInvalidoIgnoraTodoLoDemas
 
 	self
-		should: [roverStartingAt2x2facingNorth executeCommand: 'fffgfff'.]
+		should: [roverStartingAt2x2facingNorth executeCommands: 'fffgfff'.]
 		raise: Error - MessageNotUnderstood
 		withExceptionDo: [:anError | 
 			self assert: anError messageText equals: MarsRover invalidCommandErrorDescription .
@@ -107,8 +107,23 @@ Object subclass: #Cardinales
 	poolDictionaries: ''
 	category: 'MarsRoverEjercicio'!
 
-!Cardinales methodsFor: 'commands' stamp: 'a 5/12/2023 01:08:58'!
-executeCommand: aCommand
+!Cardinales methodsFor: 'movements' stamp: 'LMR 5/15/2023 18:06:52'!
+moveBackward
+
+	self subclassResponsibility ! !
+
+!Cardinales methodsFor: 'movements' stamp: 'LMR 5/15/2023 18:06:45'!
+moveForward
+
+	self subclassResponsibility ! !
+
+!Cardinales methodsFor: 'movements' stamp: 'LMR 5/15/2023 18:06:58'!
+rotateLeft
+
+	self subclassResponsibility ! !
+
+!Cardinales methodsFor: 'movements' stamp: 'LMR 5/15/2023 18:07:02'!
+rotateRight
 
 	self subclassResponsibility ! !
 
@@ -137,13 +152,33 @@ Cardinales subclass: #East
 	poolDictionaries: ''
 	category: 'MarsRoverEjercicio'!
 
-!East methodsFor: 'commands' stamp: 'a 5/12/2023 01:08:27'!
-executeCommand: aCommand 
+!East methodsFor: 'movements' stamp: 'LMR 5/15/2023 18:00:00'!
+moveBackward
 
-	aCommand = $f ifTrue: [marsRover increaseX].
-	aCommand = $b ifTrue: [marsRover decreaseX].
-	aCommand = $l ifTrue: [marsRover face: North].
-	aCommand = $r ifTrue: [marsRover face: South]
+	marsRover decreaseX
+
+	
+	! !
+
+!East methodsFor: 'movements' stamp: 'LMR 5/15/2023 18:00:20'!
+moveForward
+
+	marsRover increaseX
+
+	
+	! !
+
+!East methodsFor: 'movements' stamp: 'LMR 5/15/2023 18:00:33'!
+rotateLeft
+
+	marsRover face: North
+	
+	! !
+
+!East methodsFor: 'movements' stamp: 'LMR 5/15/2023 18:00:47'!
+rotateRight
+
+	marsRover face: South
 	
 	! !
 
@@ -155,13 +190,25 @@ Cardinales subclass: #North
 	poolDictionaries: ''
 	category: 'MarsRoverEjercicio'!
 
-!North methodsFor: 'commands' stamp: 'a 5/12/2023 01:08:11'!
-executeCommand: aCommand 
+!North methodsFor: 'movements' stamp: 'LMR 5/15/2023 18:02:01'!
+moveBackward
 
-	aCommand = $f ifTrue: [marsRover increaseY].
-	aCommand = $b ifTrue: [marsRover decreaseY].
-	aCommand = $l ifTrue: [marsRover face: West].
-	aCommand = $r ifTrue: [marsRover face: East]
+	marsRover decreaseY! !
+
+!North methodsFor: 'movements' stamp: 'LMR 5/15/2023 18:02:09'!
+moveForward
+
+	marsRover increaseY! !
+
+!North methodsFor: 'movements' stamp: 'LMR 5/15/2023 18:02:20'!
+rotateLeft
+
+	marsRover face: West! !
+
+!North methodsFor: 'movements' stamp: 'LMR 5/15/2023 18:02:27'!
+rotateRight
+
+	marsRover face: East
 	! !
 
 
@@ -172,13 +219,27 @@ Cardinales subclass: #South
 	poolDictionaries: ''
 	category: 'MarsRoverEjercicio'!
 
-!South methodsFor: 'commands' stamp: 'a 5/12/2023 01:34:27'!
-executeCommand: aCommand 
+!South methodsFor: 'movements' stamp: 'LMR 5/15/2023 18:04:30'!
+moveBackward
 	
-	aCommand = $f ifTrue: [marsRover decreaseY].
-	aCommand = $b ifTrue: [marsRover increaseY].
-	aCommand = $l ifTrue: [marsRover face: East].
-	aCommand = $r ifTrue: [marsRover face: West]
+	marsRover increaseY! !
+
+!South methodsFor: 'movements' stamp: 'LMR 5/15/2023 18:04:20'!
+moveForward
+	
+	marsRover decreaseY
+	! !
+
+!South methodsFor: 'movements' stamp: 'LMR 5/15/2023 18:04:11'!
+rotateLeft
+	
+	marsRover face: East
+	! !
+
+!South methodsFor: 'movements' stamp: 'LMR 5/15/2023 18:04:01'!
+rotateRight
+	
+	marsRover face: West
 	! !
 
 
@@ -189,13 +250,25 @@ Cardinales subclass: #West
 	poolDictionaries: ''
 	category: 'MarsRoverEjercicio'!
 
-!West methodsFor: 'commands' stamp: 'a 5/12/2023 01:35:37'!
-executeCommand: aCommand 
+!West methodsFor: 'movements' stamp: 'LMR 5/15/2023 18:06:15'!
+moveBackward
 
-	aCommand = $f ifTrue: [marsRover decreaseX].
-	aCommand = $b ifTrue: [marsRover increaseX].
-	aCommand = $l ifTrue: [marsRover face: South].
-	aCommand = $r ifTrue: [marsRover face: North]! !
+	marsRover increaseX! !
+
+!West methodsFor: 'movements' stamp: 'LMR 5/15/2023 18:06:23'!
+moveForward
+
+	marsRover decreaseX! !
+
+!West methodsFor: 'movements' stamp: 'LMR 5/15/2023 18:05:44'!
+rotateLeft
+
+	marsRover face: South! !
+
+!West methodsFor: 'movements' stamp: 'LMR 5/15/2023 18:06:03'!
+rotateRight
+
+	marsRover face: North! !
 
 
 !classDefinition: #MarsRover category: 'MarsRoverEjercicio'!
@@ -212,12 +285,21 @@ initializeAt: aCoordinate facing: aCardinal
 	cardinal := aCardinal of: self.! !
 
 
-!MarsRover methodsFor: 'commands' stamp: 'LMR 5/15/2023 16:56:30'!
-executeCommand: aStringOfCommands 
+!MarsRover methodsFor: 'commands' stamp: 'LMR 5/15/2023 17:58:15'!
+executeCommand: aCommand 
+	
+	(self isValidCommand: aCommand) ifFalse: [^self error: self class invalidCommandErrorDescription ].
+	aCommand = $f ifTrue: [cardinal moveForward].
+	aCommand = $b ifTrue: [cardinal moveBackward].
+	aCommand = $l ifTrue: [cardinal rotateLeft].
+	aCommand = $r ifTrue: [cardinal rotateRight]	.
+	
+	! !
 
-	aStringOfCommands do: [:aCommand| 
-		(self isValidCommand: aCommand) ifFalse: [^self error: self class invalidCommandErrorDescription ].
-		cardinal executeCommand: aCommand]
+!MarsRover methodsFor: 'commands' stamp: 'LMR 5/15/2023 17:57:46'!
+executeCommands: aStringOfCommands 
+
+	aStringOfCommands do: [:aCommand| self executeCommand: aCommand]
 	! !
 
 

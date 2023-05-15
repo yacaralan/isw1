@@ -1,0 +1,557 @@
+
+
+----STARTUP---- (15 May 2023 17:20:17) as /home/clinux01/Descargas/linux64/CuisUniversity-5799.image!
+
+!Cardinales methodsFor: 'commands' stamp: 'LMR 5/15/2023 17:51:27'!
+executeCommands: aCommand
+
+	self subclassResponsibility ! !
+!East methodsFor: 'commands' stamp: 'LMR 5/15/2023 17:51:27' overrides: 50620288!
+executeCommands: aCommand 
+
+	aCommand = $f ifTrue: [marsRover increaseX].
+	aCommand = $b ifTrue: [marsRover decreaseX].
+	aCommand = $l ifTrue: [marsRover face: North].
+	aCommand = $r ifTrue: [marsRover face: South]
+	
+	! !
+!North methodsFor: 'commands' stamp: 'LMR 5/15/2023 17:51:27' overrides: 50620288!
+executeCommands: aCommand 
+
+	aCommand = $f ifTrue: [marsRover increaseY].
+	aCommand = $b ifTrue: [marsRover decreaseY].
+	aCommand = $l ifTrue: [marsRover face: West].
+	aCommand = $r ifTrue: [marsRover face: East]
+	! !
+!South methodsFor: 'commands' stamp: 'LMR 5/15/2023 17:51:27' overrides: 50620288!
+executeCommands: aCommand 
+	
+	aCommand = $f ifTrue: [marsRover decreaseY].
+	aCommand = $b ifTrue: [marsRover increaseY].
+	aCommand = $l ifTrue: [marsRover face: East].
+	aCommand = $r ifTrue: [marsRover face: West]
+	! !
+!West methodsFor: 'commands' stamp: 'LMR 5/15/2023 17:51:27' overrides: 50620288!
+executeCommands: aCommand 
+
+	aCommand = $f ifTrue: [marsRover decreaseX].
+	aCommand = $b ifTrue: [marsRover increaseX].
+	aCommand = $l ifTrue: [marsRover face: South].
+	aCommand = $r ifTrue: [marsRover face: North]! !
+!MarsRover methodsFor: 'commands' stamp: 'LMR 5/15/2023 17:51:27'!
+executeCommands: aStringOfCommands 
+
+	aStringOfCommands do: [:aCommand| 
+		(self isValidCommand: aCommand) ifFalse: [^self error: self class invalidCommandErrorDescription ].
+		cardinal executeCommand: aCommand]
+	! !
+!MarsRoverTDD methodsFor: 'as yet unclassified' stamp: 'LMR 5/15/2023 17:51:27' prior: 50619939!
+test08Leer1ComandoRMirandoCualquierCardinal
+
+	roverStartingAt2x2facingWest executeCommands: 'r'.
+	
+	self assertThat: roverStartingAt2x2facingWest isInLocation: 2@2 facing: North new ! !
+!MarsRoverTDD methodsFor: 'as yet unclassified' stamp: 'LMR 5/15/2023 17:51:27' prior: 50619915!
+test05Leer1ComandoBMirandoCualquierCardinal
+
+	roverStartingAt2x2facingNorth executeCommands: 'b'.
+	
+	self assertThat: roverStartingAt2x2facingNorth isInLocation: 2@1 facing: North new ! !
+!MarsRoverTDD methodsFor: 'as yet unclassified' stamp: 'LMR 5/15/2023 17:51:27' prior: 50619899!
+test03Leer1ComandoFMirandoUnaDireccion
+	
+	roverStartingAt2x2facingNorth executeCommands: 'f'.
+	
+	self assertThat: roverStartingAt2x2facingNorth isInLocation: 2@3 facing: North new ! !
+!MarsRoverTDD methodsFor: 'as yet unclassified' stamp: 'LMR 5/15/2023 17:51:27' prior: 50619923!
+test06Leer1ComandoLMirandoUnCardinal
+	
+	roverStartingAt2x2facingNorth executeCommands: 'l'.
+	
+	self assertThat: roverStartingAt2x2facingNorth isInLocation: 2@2 facing: West new ! !
+!MarsRoverTDD methodsFor: 'as yet unclassified' stamp: 'LMR 5/15/2023 17:51:27' prior: 50620218!
+test11TrasLeerComandoInvalidoIgnoraTodoLoDemas
+
+	self
+		should: [roverStartingAt2x2facingNorth executeCommands: 'fffgfff'.]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [:anError | 
+			self assert: anError messageText equals: MarsRover invalidCommandErrorDescription .
+			self assertThat: roverStartingAt2x2facingNorth isInLocation: 2@5 facing: North new]! !
+!MarsRoverTDD methodsFor: 'as yet unclassified' stamp: 'LMR 5/15/2023 17:51:27' prior: 50619907!
+test04Leer1ComandoFMirandoCualquierCardinal
+
+	roverStartingAt2x2facingWest executeCommands: 'f'.
+	
+	self assertThat: roverStartingAt2x2facingWest isInLocation: 1@2 facing: West new ! !
+!MarsRoverTDD methodsFor: 'as yet unclassified' stamp: 'LMR 5/15/2023 17:51:27' prior: 50619955!
+test10LeerMultiplesComandosMirandoCualquierCardinal
+	
+	roverStartingAt2x2facingNorth executeCommands: 'frf'.
+	
+	self assertThat: roverStartingAt2x2facingNorth isInLocation: 3@3 facing: East new ! !
+!MarsRoverTDD methodsFor: 'as yet unclassified' stamp: 'LMR 5/15/2023 17:51:27' prior: 50619891!
+test02LeerComandoVacioNoHaceNada
+
+	roverStartingAt2x2facingNorth executeCommands: ''.
+	
+	self assertThat: roverStartingAt2x2facingNorth isInLocation: 2@2 facing: North new! !
+!MarsRoverTDD methodsFor: 'as yet unclassified' stamp: 'LMR 5/15/2023 17:51:27' prior: 50619931!
+test07Leer1ComandoLMirandoCualquierCardinal
+
+	roverStartingAt2x2facingWest executeCommands: 'l'.
+	
+	self assertThat: roverStartingAt2x2facingWest isInLocation: 2@2 facing: South new ! !
+!MarsRoverTDD methodsFor: 'as yet unclassified' stamp: 'LMR 5/15/2023 17:51:27' prior: 50619947!
+test09LeerMultiplesComandosMirandoUnCardinal
+	
+	roverStartingAt2x2facingNorth executeCommands: 'fff'.
+	
+	self assertThat: roverStartingAt2x2facingNorth isInLocation: 2@5 facing: North new ! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'LMR 5/15/2023 17:51:27' prior: 50620193!
+executeCommand: aStringOfCommands 
+
+	aStringOfCommands do: [:aCommand| 
+		(self isValidCommand: aCommand) ifFalse: [^self error: self class invalidCommandErrorDescription ].
+		cardinal executeCommands: aCommand]
+	! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'LMR 5/15/2023 17:51:27' prior: 50620332!
+executeCommands: aStringOfCommands 
+
+	aStringOfCommands do: [:aCommand| 
+		(self isValidCommand: aCommand) ifFalse: [^self error: self class invalidCommandErrorDescription ].
+		cardinal executeCommands: aCommand]
+	! !
+
+!methodRemoval: Cardinales #executeCommand: stamp: 'LMR 5/15/2023 17:51:27'!
+executeCommand: aCommand
+
+	self subclassResponsibility !
+
+!methodRemoval: East #executeCommand: stamp: 'LMR 5/15/2023 17:51:27'!
+executeCommand: aCommand 
+
+	aCommand = $f ifTrue: [marsRover increaseX].
+	aCommand = $b ifTrue: [marsRover decreaseX].
+	aCommand = $l ifTrue: [marsRover face: North].
+	aCommand = $r ifTrue: [marsRover face: South]
+	
+	!
+
+!methodRemoval: North #executeCommand: stamp: 'LMR 5/15/2023 17:51:27'!
+executeCommand: aCommand 
+
+	aCommand = $f ifTrue: [marsRover increaseY].
+	aCommand = $b ifTrue: [marsRover decreaseY].
+	aCommand = $l ifTrue: [marsRover face: West].
+	aCommand = $r ifTrue: [marsRover face: East]
+	!
+
+!methodRemoval: South #executeCommand: stamp: 'LMR 5/15/2023 17:51:27'!
+executeCommand: aCommand 
+	
+	aCommand = $f ifTrue: [marsRover decreaseY].
+	aCommand = $b ifTrue: [marsRover increaseY].
+	aCommand = $l ifTrue: [marsRover face: East].
+	aCommand = $r ifTrue: [marsRover face: West]
+	!
+
+!methodRemoval: West #executeCommand: stamp: 'LMR 5/15/2023 17:51:27'!
+executeCommand: aCommand 
+
+	aCommand = $f ifTrue: [marsRover decreaseX].
+	aCommand = $b ifTrue: [marsRover increaseX].
+	aCommand = $l ifTrue: [marsRover face: South].
+	aCommand = $r ifTrue: [marsRover face: North]!
+
+!methodRemoval: MarsRover #executeCommand: stamp: 'LMR 5/15/2023 17:51:27'!
+executeCommand: aStringOfCommands 
+
+	aStringOfCommands do: [:aCommand| 
+		(self isValidCommand: aCommand) ifFalse: [^self error: self class invalidCommandErrorDescription ].
+		cardinal executeCommands: aCommand]
+	!
+!MarsRover methodsFor: 'commands' stamp: 'LMR 5/15/2023 17:52:27' prior: 50620449!
+executeCommands: aStringOfCommands 
+
+	aStringOfCommands do: [:aCommand| self readCommand: aCommand.
+		(self isValidCommand: aCommand) ifFalse: [^self error: self class invalidCommandErrorDescription ].
+		cardinal executeCommands: aCommand]
+	! !
+!MarsRover methodsFor: 'commands' stamp: 'LMR 5/15/2023 17:52:42' prior: 50620508!
+executeCommands: aStringOfCommands 
+
+	aStringOfCommands do: [:aCommand| self executeCommand: aCommand.
+		(self isValidCommand: aCommand) ifFalse: [^self error: self class invalidCommandErrorDescription ].
+		cardinal executeCommands: aCommand]
+	! !
+!MarsRover methodsFor: 'commands' stamp: 'LMR 5/15/2023 17:53:29'!
+executeCommand: aCommand 
+
+	
+	
+	
+	
+	
+	^self error: self class invalidCommandErrorDescription
+	! !
+!MarsRover methodsFor: 'commands' stamp: 'LMR 5/15/2023 17:55:25' prior: 50620529!
+executeCommand: aCommand 
+	
+	aCommand = $f ifTrue: [cardinal moveFoward].
+	aCommand = $b ifTrue: [cardinal moveBackward].
+	aCommand = $l ifTrue: [cardinal rotateLeft].
+	aCommand = $r ifTrue: [cardinal rotateRight]	.
+	
+	^self error: self class invalidCommandErrorDescription
+	! !
+!MarsRover methodsFor: 'commands' stamp: 'LMR 5/15/2023 17:56:53' prior: 50620535!
+executeCommand: aCommand 
+	
+	aCommand = $f ifTrue: [cardinal moveFoward].
+	aCommand = $b ifTrue: [cardinal moveBackward].
+	aCommand = $l ifTrue: [cardinal rotateLeft].
+	aCommand = $r ifTrue: [cardinal rotateRight]	.
+	
+	^self error: self class invalidCommandErrorDescription
+	! !
+!MarsRover methodsFor: 'commands' stamp: 'LMR 5/15/2023 17:57:25' prior: 50620547!
+executeCommand: aCommand 
+	
+	(self isValidCommand: aCommand) ifFalse: [^self error: self class invalidCommandErrorDescription ].
+	aCommand = $f ifTrue: [cardinal moveFoward].
+	aCommand = $b ifTrue: [cardinal moveBackward].
+	aCommand = $l ifTrue: [cardinal rotateLeft].
+	aCommand = $r ifTrue: [cardinal rotateRight]	.
+	
+	! !
+!MarsRover methodsFor: 'commands' stamp: 'LMR 5/15/2023 17:57:46' prior: 50620519!
+executeCommands: aStringOfCommands 
+
+	aStringOfCommands do: [:aCommand| self executeCommand: aCommand]
+	! !
+!MarsRover methodsFor: 'commands' stamp: 'LMR 5/15/2023 17:58:15' prior: 50620559!
+executeCommand: aCommand 
+	
+	(self isValidCommand: aCommand) ifFalse: [^self error: self class invalidCommandErrorDescription ].
+	aCommand = $f ifTrue: [cardinal moveForward].
+	aCommand = $b ifTrue: [cardinal moveBackward].
+	aCommand = $l ifTrue: [cardinal rotateLeft].
+	aCommand = $r ifTrue: [cardinal rotateRight]	.
+	
+	! !
+!East methodsFor: 'commands' stamp: 'LMR 5/15/2023 17:58:49'!
+moveForward
+
+	| aCommand |
+	aCommand = $f ifTrue: [marsRover increaseX].
+	aCommand = $b ifTrue: [marsRover decreaseX].
+	aCommand = $l ifTrue: [marsRover face: North].
+	aCommand = $r ifTrue: [marsRover face: South]
+	
+	! !
+!East methodsFor: 'commands' stamp: 'LMR 5/15/2023 17:59:05'!
+moveBackward
+
+	| aCommand |
+	aCommand = $f ifTrue: [marsRover increaseX].
+	aCommand = $b ifTrue: [marsRover decreaseX].
+	aCommand = $l ifTrue: [marsRover face: North].
+	aCommand = $r ifTrue: [marsRover face: South]
+	
+	! !
+!East methodsFor: 'commands' stamp: 'LMR 5/15/2023 17:59:10' prior: 50620600!
+moveBackward
+
+	| aCommand |
+	aCommand = $f ifTrue: [marsRover increaseX].
+	aCommand = $b ifTrue: [marsRover decreaseX].
+	aCommand = $l ifTrue: [marsRover face: North].
+	aCommand = $r ifTrue: [marsRover face: South]
+	
+	! !
+!East methodsFor: 'commands' stamp: 'LMR 5/15/2023 17:59:21'!
+rotateLeft
+
+	| aCommand |
+	aCommand = $f ifTrue: [marsRover increaseX].
+	aCommand = $b ifTrue: [marsRover decreaseX].
+	aCommand = $l ifTrue: [marsRover face: North].
+	aCommand = $r ifTrue: [marsRover face: South]
+	
+	! !
+!East methodsFor: 'commands' stamp: 'LMR 5/15/2023 17:59:30'!
+rotateRight
+
+	| aCommand |
+	aCommand = $f ifTrue: [marsRover increaseX].
+	aCommand = $b ifTrue: [marsRover decreaseX].
+	aCommand = $l ifTrue: [marsRover face: North].
+	aCommand = $r ifTrue: [marsRover face: South]
+	
+	! !
+
+!methodRemoval: East #executeCommands: stamp: 'LMR 5/15/2023 17:59:35'!
+executeCommands: aCommand 
+
+	aCommand = $f ifTrue: [marsRover increaseX].
+	aCommand = $b ifTrue: [marsRover decreaseX].
+	aCommand = $l ifTrue: [marsRover face: North].
+	aCommand = $r ifTrue: [marsRover face: South]
+	
+	!
+!East methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:00:00' prior: 50620610!
+moveBackward
+
+	marsRover decreaseX
+
+	
+	! !
+!East methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:00:20' prior: 50620591!
+moveForward
+
+	marsRover increaseX
+
+	
+	! !
+!East methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:00:33' prior: 50620619!
+rotateLeft
+
+	marsRover face: North
+	
+	! !
+!East methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:00:47' prior: 50620628!
+rotateRight
+
+	marsRover face: South
+	
+	! !
+!North methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:01:14'!
+moveForward
+
+	| aCommand |
+	aCommand = $f ifTrue: [marsRover increaseY].
+	aCommand = $b ifTrue: [marsRover decreaseY].
+	aCommand = $l ifTrue: [marsRover face: West].
+	aCommand = $r ifTrue: [marsRover face: East]
+	! !
+!North methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:01:28'!
+moveBackward
+
+	| aCommand |
+	aCommand = $f ifTrue: [marsRover increaseY].
+	aCommand = $b ifTrue: [marsRover decreaseY].
+	aCommand = $l ifTrue: [marsRover face: West].
+	aCommand = $r ifTrue: [marsRover face: East]
+	! !
+!North methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:01:37'!
+rotateLeft
+
+	| aCommand |
+	aCommand = $f ifTrue: [marsRover increaseY].
+	aCommand = $b ifTrue: [marsRover decreaseY].
+	aCommand = $l ifTrue: [marsRover face: West].
+	aCommand = $r ifTrue: [marsRover face: East]
+	! !
+!North methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:01:43'!
+rotateRight
+
+	| aCommand |
+	aCommand = $f ifTrue: [marsRover increaseY].
+	aCommand = $b ifTrue: [marsRover decreaseY].
+	aCommand = $l ifTrue: [marsRover face: West].
+	aCommand = $r ifTrue: [marsRover face: East]
+	! !
+
+!methodRemoval: North #executeCommands: stamp: 'LMR 5/15/2023 18:01:49'!
+executeCommands: aCommand 
+
+	aCommand = $f ifTrue: [marsRover increaseY].
+	aCommand = $b ifTrue: [marsRover decreaseY].
+	aCommand = $l ifTrue: [marsRover face: West].
+	aCommand = $r ifTrue: [marsRover face: East]
+	!
+!North methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:02:01' prior: 50620672!
+moveBackward
+
+	marsRover decreaseY! !
+!North methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:02:09' prior: 50620663!
+moveForward
+
+	marsRover increaseY! !
+!North methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:02:20' prior: 50620681!
+rotateLeft
+
+	marsRover face: West! !
+!North methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:02:27' prior: 50620690!
+rotateRight
+
+	marsRover face: East
+	! !
+!South methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:02:43'!
+moveForward
+	
+	| aCommand |
+	aCommand = $f ifTrue: [marsRover decreaseY].
+	aCommand = $b ifTrue: [marsRover increaseY].
+	aCommand = $l ifTrue: [marsRover face: East].
+	aCommand = $r ifTrue: [marsRover face: West]
+	! !
+!South methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:03:30'!
+moveBackward
+	
+	| aCommand |
+	aCommand = $f ifTrue: [marsRover decreaseY].
+	aCommand = $b ifTrue: [marsRover increaseY].
+	aCommand = $l ifTrue: [marsRover face: East].
+	aCommand = $r ifTrue: [marsRover face: West]
+	! !
+!South methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:03:39'!
+rotateLeft
+	
+	| aCommand |
+	aCommand = $f ifTrue: [marsRover decreaseY].
+	aCommand = $b ifTrue: [marsRover increaseY].
+	aCommand = $l ifTrue: [marsRover face: East].
+	aCommand = $r ifTrue: [marsRover face: West]
+	! !
+!South methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:03:48'!
+rotateRight
+	| aCommand |
+	aCommand = $f ifTrue: [marsRover decreaseY].
+	aCommand = $b ifTrue: [marsRover increaseY].
+	aCommand = $l ifTrue: [marsRover face: East].
+	aCommand = $r ifTrue: [marsRover face: West]
+	! !
+!South methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:04:01' prior: 50620752!
+rotateRight
+	
+	marsRover face: West
+	! !
+!South methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:04:11' prior: 50620743!
+rotateLeft
+	
+	marsRover face: East
+	! !
+!South methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:04:20' prior: 50620725!
+moveForward
+	
+	marsRover decreaseY
+	! !
+!South methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:04:30' prior: 50620734!
+moveBackward
+	
+	marsRover increaseY! !
+
+!methodRemoval: South #executeCommands: stamp: 'LMR 5/15/2023 18:04:34'!
+executeCommands: aCommand 
+	
+	aCommand = $f ifTrue: [marsRover decreaseY].
+	aCommand = $b ifTrue: [marsRover increaseY].
+	aCommand = $l ifTrue: [marsRover face: East].
+	aCommand = $r ifTrue: [marsRover face: West]
+	!
+!West methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:04:44'!
+moveForward
+
+	| aCommand |
+	aCommand = $f ifTrue: [marsRover decreaseX].
+	aCommand = $b ifTrue: [marsRover increaseX].
+	aCommand = $l ifTrue: [marsRover face: South].
+	aCommand = $r ifTrue: [marsRover face: North]! !
+!West methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:04:59'!
+moveBackward
+
+	| aCommand |
+	aCommand = $f ifTrue: [marsRover decreaseX].
+	aCommand = $b ifTrue: [marsRover increaseX].
+	aCommand = $l ifTrue: [marsRover face: South].
+	aCommand = $r ifTrue: [marsRover face: North]! !
+!West methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:05:08'!
+rotateLeft
+
+	| aCommand |
+	aCommand = $f ifTrue: [marsRover decreaseX].
+	aCommand = $b ifTrue: [marsRover increaseX].
+	aCommand = $l ifTrue: [marsRover face: South].
+	aCommand = $r ifTrue: [marsRover face: North]! !
+!West methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:05:44' prior: 50620805!
+rotateLeft
+
+	marsRover face: South! !
+!West methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:06:03'!
+rotateRight
+
+	marsRover face: North! !
+!West methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:06:15' prior: 50620796!
+moveBackward
+
+	marsRover increaseX! !
+!West methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:06:23' prior: 50620787!
+moveForward
+
+	marsRover decreaseX! !
+
+!methodRemoval: West #executeCommands: stamp: 'LMR 5/15/2023 18:06:29'!
+executeCommands: aCommand 
+
+	aCommand = $f ifTrue: [marsRover decreaseX].
+	aCommand = $b ifTrue: [marsRover increaseX].
+	aCommand = $l ifTrue: [marsRover face: South].
+	aCommand = $r ifTrue: [marsRover face: North]!
+!Cardinales methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:06:45'!
+moveForward
+
+	self subclassResponsibility ! !
+!Cardinales methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:06:52'!
+moveBackward
+
+	self subclassResponsibility ! !
+!Cardinales methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:06:58'!
+rotateLeft
+
+	self subclassResponsibility ! !
+!Cardinales methodsFor: 'commands' stamp: 'LMR 5/15/2023 18:07:02'!
+rotateRight
+
+	self subclassResponsibility ! !
+
+!methodRemoval: Cardinales #executeCommands: stamp: 'LMR 5/15/2023 18:07:06'!
+executeCommands: aCommand
+
+	self subclassResponsibility !
+
+!testRun: #MarsRoverTDD #test01EmpiezaEnLaCordenadaYDireccionInicial stamp: 'LMR 5/15/2023 18:07:15'!
+PASSED!
+
+!testRun: #MarsRoverTDD #test02LeerComandoVacioNoHaceNada stamp: 'LMR 5/15/2023 18:07:15'!
+PASSED!
+
+!testRun: #MarsRoverTDD #test03Leer1ComandoFMirandoUnaDireccion stamp: 'LMR 5/15/2023 18:07:15'!
+PASSED!
+
+!testRun: #MarsRoverTDD #test04Leer1ComandoFMirandoCualquierCardinal stamp: 'LMR 5/15/2023 18:07:15'!
+PASSED!
+
+!testRun: #MarsRoverTDD #test05Leer1ComandoBMirandoCualquierCardinal stamp: 'LMR 5/15/2023 18:07:15'!
+PASSED!
+
+!testRun: #MarsRoverTDD #test06Leer1ComandoLMirandoUnCardinal stamp: 'LMR 5/15/2023 18:07:15'!
+PASSED!
+
+!testRun: #MarsRoverTDD #test07Leer1ComandoLMirandoCualquierCardinal stamp: 'LMR 5/15/2023 18:07:15'!
+PASSED!
+
+!testRun: #MarsRoverTDD #test08Leer1ComandoRMirandoCualquierCardinal stamp: 'LMR 5/15/2023 18:07:15'!
+PASSED!
+
+!testRun: #MarsRoverTDD #test09LeerMultiplesComandosMirandoUnCardinal stamp: 'LMR 5/15/2023 18:07:15'!
+PASSED!
+
+!testRun: #MarsRoverTDD #test10LeerMultiplesComandosMirandoCualquierCardinal stamp: 'LMR 5/15/2023 18:07:15'!
+PASSED!
+
+!testRun: #MarsRoverTDD #test11TrasLeerComandoInvalidoIgnoraTodoLoDemas stamp: 'LMR 5/15/2023 18:07:15'!
+PASSED!
+
+----SNAPSHOT----(15 May 2023 18:08:37) CuisUniversity-5799.image priorSource: 9236209!
