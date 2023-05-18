@@ -1466,3 +1466,948 @@ PASSED!
 ----SNAPSHOT----(15 May 2023 21:47:20) CuisUniversity-5799.image priorSource: 9296424!
 
 ----QUIT----(15 May 2023 21:48:41) CuisUniversity-5799.image priorSource: 9296512!
+
+----STARTUP---- (18 May 2023 00:02:16) as /home/alanyacar/Desktop/isw1/cuis/CuisUniversity-5799.image!
+
+
+----End fileIn of /home/alanyacar/Desktop/isw1/cuis/Portfolio-Ejercicio.st----!
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'AlYac 5/18/2023 00:03:03'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasBalanceEqualsToThatAccount stamp: 'AlYac 5/18/2023 00:03:03'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasBalanceEqualsToThose stamp: 'AlYac 5/18/2023 00:03:03'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithMultipleAccountsAndPortfolioHasBalanceEqualsToThose stamp: 'AlYac 5/18/2023 00:03:03'!
+PASSED!
+
+!testRun: #PortfolioTest #test05EmptyPortfolioHasNoTransaction stamp: 'AlYac 5/18/2023 00:03:03'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithMultipleTransactionsOnAccountHasThemRegistered stamp: 'AlYac 5/18/2023 00:03:03'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemRegistered stamp: 'AlYac 5/18/2023 00:03:03'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'AlYac 5/18/2023 00:03:03'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'AlYac 5/18/2023 00:03:03'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'AlYac 5/18/2023 00:03:03'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'AlYac 5/18/2023 00:03:03'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'AlYac 5/18/2023 00:03:03'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'AlYac 5/18/2023 00:03:03'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'AlYac 5/18/2023 00:03:03'!
+PASSED!
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:04:20'!
+test05EmptyPortfolioHasNoTransactionRegistered
+	
+	| account deposit |
+	
+	account := ReceptiveAccount new.
+	deposit := Deposit register: 100 on: account.
+
+	self deny:(Portfolio new hasRegistered: deposit)! !
+
+!methodRemoval: PortfolioTest #test05EmptyPortfolioHasNoTransaction stamp: 'AlYac 5/18/2023 00:04:20'!
+test05EmptyPortfolioHasNoTransaction
+	
+	| account deposit |
+	
+	account := ReceptiveAccount new.
+	deposit := Deposit register: 100 on: account.
+
+	self deny:(Portfolio new hasRegistered: deposit)!
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:05:18'!
+test08EmptyPortfolioHasNoTransaction
+	
+
+	self assert: (Portfolio new transactions) isEmpty! !
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransaction stamp: 'AlYac 5/18/2023 00:05:19'!
+ERROR!
+!Portfolio methodsFor: 'transactions' stamp: 'AlYac 5/18/2023 00:05:34'!
+transactions
+	self shouldBeImplemented.! !
+!Portfolio methodsFor: 'transactions' stamp: 'AlYac 5/18/2023 00:05:45' prior: 50620376!
+transactions
+	
+	^true! !
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransaction stamp: 'AlYac 5/18/2023 00:05:46'!
+ERROR!
+!Portfolio methodsFor: 'transactions' stamp: 'AlYac 5/18/2023 00:06:23' prior: 50620381!
+transactions
+	
+	^OrderedCollection new! !
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'AlYac 5/18/2023 00:06:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasBalanceEqualsToThatAccount stamp: 'AlYac 5/18/2023 00:06:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasBalanceEqualsToThose stamp: 'AlYac 5/18/2023 00:06:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithMultipleAccountsAndPortfolioHasBalanceEqualsToThose stamp: 'AlYac 5/18/2023 00:06:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test05EmptyPortfolioHasNoTransactionRegistered stamp: 'AlYac 5/18/2023 00:06:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithMultipleTransactionsOnAccountHasThemRegistered stamp: 'AlYac 5/18/2023 00:06:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemRegistered stamp: 'AlYac 5/18/2023 00:06:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransaction stamp: 'AlYac 5/18/2023 00:06:25'!
+PASSED!
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:07:11'!
+test09PortfolioWithMultipleTransactionsOnAccountHasThemInTransactions
+	
+	|portfolio account account2 deposit deposit2 |
+	
+	portfolio := Portfolio new.
+	
+	account := ReceptiveAccount new.
+	account2 := ReceptiveAccount new.
+	
+	deposit := Deposit register: 100 on: account.
+	deposit2 := Deposit register: 100 on: account2.
+	
+	portfolio addAccount: account.
+	portfolio addAccount: account2 .
+
+	self assert:(portfolio hasRegistered: deposit).
+	self assert:(portfolio hasRegistered: deposit2)! !
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:07:45' prior: 50620424!
+test09PortfolioWithMultipleTransactionsOnAccountHasThemInTransactions
+	
+	|portfolio account account2 deposit deposit2 |
+	
+	portfolio := Portfolio new.
+	
+	account := ReceptiveAccount new.
+	account2 := ReceptiveAccount new.
+	
+	deposit := Deposit register: 100 on: account.
+	deposit2 := Deposit register: 100 on: account2.
+	
+	portfolio addAccount: account.
+	portfolio addAccount: account2.
+
+	self assert:(portfolio hasRegistered: deposit).
+	self assert:(portfolio hasRegistered: deposit2)! !
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:09:02' prior: 50620442!
+test09PortfolioWithMultipleTransactionsOnAccountHasThemInTransactions
+	
+	|portfolio account account2 deposit deposit2 portfolioTransactions |
+	
+	portfolio := Portfolio new.
+	
+	account := ReceptiveAccount new.
+	account2 := ReceptiveAccount new.
+	
+	deposit := Deposit register: 100 on: account.
+	deposit2 := Deposit register: 100 on: account2.
+	
+	portfolio addAccount: account.
+	portfolio addAccount: account2.
+
+	portfolioTransactions := portfolio transactions.
+	
+	self assert:(portfolioTransactions includes: deposit).
+	self assert:(portfolioTransactions includes: deposit2)! !
+
+!testRun: #PortfolioTest #test09PortfolioWithMultipleTransactionsOnAccountHasThemInTransactions stamp: 'AlYac 5/18/2023 00:09:07'!
+FAILURE!
+!Portfolio methodsFor: 'transactions' stamp: 'AlYac 5/18/2023 00:11:12' prior: 50620388!
+transactions
+	
+	^accounts collect: [:anAccount | anAccount transactions].! !
+!Portfolio methodsFor: 'transactions' stamp: 'AlYac 5/18/2023 00:18:41' prior: 50620486!
+transactions
+	
+	^accounts inject: OrderedCollection new into: [:transactions :anAccount | transactions , anAccount transactions].! !
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'AlYac 5/18/2023 00:18:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasBalanceEqualsToThatAccount stamp: 'AlYac 5/18/2023 00:18:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasBalanceEqualsToThose stamp: 'AlYac 5/18/2023 00:18:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithMultipleAccountsAndPortfolioHasBalanceEqualsToThose stamp: 'AlYac 5/18/2023 00:18:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test05EmptyPortfolioHasNoTransactionRegistered stamp: 'AlYac 5/18/2023 00:18:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithMultipleTransactionsOnAccountHasThemRegistered stamp: 'AlYac 5/18/2023 00:18:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemRegistered stamp: 'AlYac 5/18/2023 00:18:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransaction stamp: 'AlYac 5/18/2023 00:18:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioWithMultipleTransactionsOnAccountHasThemInTransactions stamp: 'AlYac 5/18/2023 00:18:42'!
+PASSED!
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:19:32'!
+test10PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemInTransactions
+	
+	|portfolio portfolio2 account account2 deposit deposit2 |
+	
+	portfolio := Portfolio new.
+	portfolio2 := Portfolio new.
+	
+	account := ReceptiveAccount new.
+	account2 := ReceptiveAccount new.
+	
+	deposit := Deposit register: 100 on: account.
+	deposit2 := Deposit register: 100 on: account2.
+	
+	portfolio2 addAccount: account2.
+	portfolio addAccount: account.
+	portfolio addPortfolio: portfolio2  .
+
+	self assert:(portfolio hasRegistered: deposit).
+	self assert:(portfolio hasRegistered: deposit2)! !
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:20:24' prior: 50620535!
+test10PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemInTransactions
+	
+	|portfolio portfolio2 account account2 deposit deposit2 portfolioTransactions |
+	
+	portfolio := Portfolio new.
+	portfolio2 := Portfolio new.
+	
+	account := ReceptiveAccount new.
+	account2 := ReceptiveAccount new.
+	
+	deposit := Deposit register: 100 on: account.
+	deposit2 := Deposit register: 100 on: account2.
+	
+	portfolio2 addAccount: account2.
+	portfolio addAccount: account.
+	portfolio addPortfolio: portfolio2  .
+
+	portfolioTransactions := portfolio transactions.
+	
+	self assert:(portfolioTransactions includes: deposit).
+	self assert:(portfolioTransactions includes: deposit2)! !
+
+!testRun: #PortfolioTest #test10PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemInTransactions stamp: 'AlYac 5/18/2023 00:20:33'!
+FAILURE!
+!Portfolio methodsFor: 'transactions' stamp: 'AlYac 5/18/2023 00:21:38'!
+accountTransactions
+
+	^ accounts inject: OrderedCollection new into: [:transactions :anAccount | transactions , anAccount transactions]! !
+!Portfolio methodsFor: 'transactions' stamp: 'AlYac 5/18/2023 00:21:38' prior: 50620492!
+transactions
+	
+	^self accountTransactions.! !
+!Portfolio methodsFor: 'transactions' stamp: 'AlYac 5/18/2023 00:22:24'!
+portfoliosTransactions
+
+	^ portfolios inject: OrderedCollection new into: [:transactions :aPortfolio | transactions , aPortfolio transactions]! !
+!Portfolio methodsFor: 'transactions' stamp: 'AlYac 5/18/2023 00:22:37' prior: 50620593!
+transactions
+	
+	^self accountTransactions, self portfoliosTransactions.! !
+!Portfolio methodsFor: 'transactions' stamp: 'AlYac 5/18/2023 00:22:49'!
+accountsTransactions
+
+	^ accounts inject: OrderedCollection new into: [:transactions :anAccount | transactions , anAccount transactions]! !
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'AlYac 5/18/2023 00:22:49' prior: 50620605!
+transactions
+	
+	^self accountsTransactions, self portfoliosTransactions.! !
+
+!methodRemoval: Portfolio #accountTransactions stamp: 'AlYac 5/18/2023 00:22:49'!
+accountTransactions
+
+	^ accounts inject: OrderedCollection new into: [:transactions :anAccount | transactions , anAccount transactions]!
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'AlYac 5/18/2023 00:23:27'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasBalanceEqualsToThatAccount stamp: 'AlYac 5/18/2023 00:23:27'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasBalanceEqualsToThose stamp: 'AlYac 5/18/2023 00:23:27'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithMultipleAccountsAndPortfolioHasBalanceEqualsToThose stamp: 'AlYac 5/18/2023 00:23:27'!
+PASSED!
+
+!testRun: #PortfolioTest #test05EmptyPortfolioHasNoTransactionRegistered stamp: 'AlYac 5/18/2023 00:23:27'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithMultipleTransactionsOnAccountHasThemRegistered stamp: 'AlYac 5/18/2023 00:23:27'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemRegistered stamp: 'AlYac 5/18/2023 00:23:27'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransaction stamp: 'AlYac 5/18/2023 00:23:27'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioWithMultipleTransactionsOnAccountHasThemInTransactions stamp: 'AlYac 5/18/2023 00:23:27'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemInTransactions stamp: 'AlYac 5/18/2023 00:23:27'!
+PASSED!
+
+Object subclass: #Account
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Account category: 'Portfolio-Ejercicio' stamp: 'AlYac 5/18/2023 00:24:08'!
+Object subclass: #Account
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts portfolios hasRegistered'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'AlYac 5/18/2023 00:24:22'!
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts portfolios hasRegistered'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+Account subclass: #AccountTransaction
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #AccountTransaction category: 'Portfolio-Ejercicio' stamp: 'AlYac 5/18/2023 00:24:31'!
+Account subclass: #AccountTransaction
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+Object subclass: #AccountTransaction
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #AccountTransaction category: 'Portfolio-Ejercicio' stamp: 'AlYac 5/18/2023 00:24:58'!
+Object subclass: #AccountTransaction
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+Account subclass: #ReceptiveAccount
+	instanceVariableNames: 'transactions'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #ReceptiveAccount category: 'Portfolio-Ejercicio' stamp: 'AlYac 5/18/2023 00:25:05'!
+Account subclass: #ReceptiveAccount
+	instanceVariableNames: 'transactions'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts portfolios'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'AlYac 5/18/2023 00:25:45'!
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts portfolios'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!testRun: #PortfolioTest #test05EmptyPortfolioHasNoTransactionRegistered stamp: 'AlYac 5/18/2023 00:25:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemRegistered stamp: 'AlYac 5/18/2023 00:25:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithMultipleTransactionsOnAccountHasThemRegistered stamp: 'AlYac 5/18/2023 00:25:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'AlYac 5/18/2023 00:25:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasBalanceEqualsToThatAccount stamp: 'AlYac 5/18/2023 00:25:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasBalanceEqualsToThose stamp: 'AlYac 5/18/2023 00:25:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithMultipleAccountsAndPortfolioHasBalanceEqualsToThose stamp: 'AlYac 5/18/2023 00:25:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test05EmptyPortfolioHasNoTransactionRegistered stamp: 'AlYac 5/18/2023 00:25:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithMultipleTransactionsOnAccountHasThemRegistered stamp: 'AlYac 5/18/2023 00:25:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemRegistered stamp: 'AlYac 5/18/2023 00:25:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransaction stamp: 'AlYac 5/18/2023 00:25:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioWithMultipleTransactionsOnAccountHasThemInTransactions stamp: 'AlYac 5/18/2023 00:25:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemInTransactions stamp: 'AlYac 5/18/2023 00:25:55'!
+PASSED!
+!Portfolio methodsFor: 'initialization' stamp: 'AlYac 5/18/2023 00:26:14' prior: 50620213 overrides: 16920235!
+initialize
+	
+	accounts := OrderedCollection new.
+	portfolios := OrderedCollection new.
+	! !
+!Portfolio methodsFor: 'add' stamp: 'AlYac 5/18/2023 00:27:11'!
+add: anAccount 
+	
+	accounts add: anAccount ! !
+
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'AlYac 5/18/2023 00:27:19'!
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Portfolio methodsFor: 'initialization' stamp: 'AlYac 5/18/2023 00:27:28' prior: 50620801 overrides: 16920235!
+initialize
+	
+	accounts := OrderedCollection new.
+	! !
+
+!methodRemoval: Portfolio #addAccount: stamp: 'AlYac 5/18/2023 00:27:41'!
+addAccount: account 
+	
+	accounts add: account !
+
+!methodRemoval: Portfolio #addPortfolio: stamp: 'AlYac 5/18/2023 00:27:53'!
+addPortfolio: aPortfolio 
+	
+	portfolios add: aPortfolio!
+!Portfolio methodsFor: 'balance' stamp: 'AlYac 5/18/2023 00:28:37' prior: 50620194!
+balance
+	
+	^ accounts sum: [:anAccount| anAccount balance] ifEmpty: [0] ! !
+
+!methodRemoval: Portfolio #portfoliosBalance stamp: 'AlYac 5/18/2023 00:28:41'!
+portfoliosBalance
+
+	^ portfolios sum: [:aPortfolio| aPortfolio balance] ifEmpty: [0]!
+
+!methodRemoval: Portfolio #accountsBalance stamp: 'AlYac 5/18/2023 00:28:42'!
+accountsBalance
+
+	^ accounts sum: [:anAccount| anAccount balance] ifEmpty: [0]!
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'AlYac 5/18/2023 00:28:51'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasBalanceEqualsToThatAccount stamp: 'AlYac 5/18/2023 00:28:51'!
+ERROR!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasBalanceEqualsToThose stamp: 'AlYac 5/18/2023 00:28:51'!
+ERROR!
+
+!testRun: #PortfolioTest #test04PortfolioWithMultipleAccountsAndPortfolioHasBalanceEqualsToThose stamp: 'AlYac 5/18/2023 00:28:51'!
+ERROR!
+
+!testRun: #PortfolioTest #test05EmptyPortfolioHasNoTransactionRegistered stamp: 'AlYac 5/18/2023 00:28:51'!
+ERROR!
+
+!testRun: #PortfolioTest #test06PortfolioWithMultipleTransactionsOnAccountHasThemRegistered stamp: 'AlYac 5/18/2023 00:28:51'!
+ERROR!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemRegistered stamp: 'AlYac 5/18/2023 00:28:51'!
+ERROR!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransaction stamp: 'AlYac 5/18/2023 00:28:51'!
+ERROR!
+
+!testRun: #PortfolioTest #test09PortfolioWithMultipleTransactionsOnAccountHasThemInTransactions stamp: 'AlYac 5/18/2023 00:28:51'!
+ERROR!
+
+!testRun: #PortfolioTest #test10PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemInTransactions stamp: 'AlYac 5/18/2023 00:28:51'!
+ERROR!
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:29:06' prior: 50619886!
+test02PortfolioWithOneAccountHasBalanceEqualsToThatAccount
+
+	|portfolio account|
+	
+	portfolio := Portfolio new.
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	portfolio add: account.
+
+	self assert: 100 equals: portfolio balance! !
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:29:45' prior: 50619897!
+test03PortfolioWithMultipleAccountsHasBalanceEqualsToThose
+
+	|portfolio account account2 |
+	
+	portfolio := Portfolio new.
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	account2 := ReceptiveAccount new.
+	Deposit register: 100 on: account2.
+	
+	portfolio add: account.
+	portfolio add: account2 .
+
+	self assert: 200 equals: portfolio balance! !
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:29:56' prior: 50619912!
+test04PortfolioWithMultipleAccountsAndPortfolioHasBalanceEqualsToThose
+
+	|portfolio account portfolio2 account2|
+	
+	portfolio := Portfolio new.
+	portfolio2 := Portfolio new.
+	
+	account := ReceptiveAccount new.
+	account2 := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	Deposit register: 100 on: account2.
+	
+	portfolio2 add: account2.
+	portfolio add: account.
+	portfolio add: portfolio2 .
+
+	self assert: 200 equals: portfolio balance! !
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:30:04' prior: 50619938!
+test06PortfolioWithMultipleTransactionsOnAccountHasThemRegistered
+	
+	|portfolio account account2 deposit deposit2 |
+	
+	portfolio := Portfolio new.
+	
+	account := ReceptiveAccount new.
+	account2 := ReceptiveAccount new.
+	
+	deposit := Deposit register: 100 on: account.
+	deposit2 := Deposit register: 100 on: account2.
+	
+	portfolio add: account.
+	portfolio add: account2 .
+
+	self assert:(portfolio hasRegistered: deposit).
+	self assert:(portfolio hasRegistered: deposit2)! !
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:30:12' prior: 50619956!
+test07PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemRegistered
+	
+	|portfolio portfolio2 account account2 deposit deposit2 |
+	
+	portfolio := Portfolio new.
+	portfolio2 := Portfolio new.
+	
+	account := ReceptiveAccount new.
+	account2 := ReceptiveAccount new.
+	
+	deposit := Deposit register: 100 on: account.
+	deposit2 := Deposit register: 100 on: account2.
+	
+	portfolio2 add: account2.
+	portfolio add: account.
+	portfolio add: portfolio2  .
+
+	self assert:(portfolio hasRegistered: deposit).
+	self assert:(portfolio hasRegistered: deposit2)! !
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:30:19' prior: 50620460!
+test09PortfolioWithMultipleTransactionsOnAccountHasThemInTransactions
+	
+	|portfolio account account2 deposit deposit2 portfolioTransactions |
+	
+	portfolio := Portfolio new.
+	
+	account := ReceptiveAccount new.
+	account2 := ReceptiveAccount new.
+	
+	deposit := Deposit register: 100 on: account.
+	deposit2 := Deposit register: 100 on: account2.
+	
+	portfolio add: account.
+	portfolio add: account2.
+
+	portfolioTransactions := portfolio transactions.
+	
+	self assert:(portfolioTransactions includes: deposit).
+	self assert:(portfolioTransactions includes: deposit2)! !
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:30:26' prior: 50620556!
+test10PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemInTransactions
+	
+	|portfolio portfolio2 account account2 deposit deposit2 portfolioTransactions |
+	
+	portfolio := Portfolio new.
+	portfolio2 := Portfolio new.
+	
+	account := ReceptiveAccount new.
+	account2 := ReceptiveAccount new.
+	
+	deposit := Deposit register: 100 on: account.
+	deposit2 := Deposit register: 100 on: account2.
+	
+	portfolio2 add: account2.
+	portfolio add: account.
+	portfolio add: portfolio2  .
+
+	portfolioTransactions := portfolio transactions.
+	
+	self assert:(portfolioTransactions includes: deposit).
+	self assert:(portfolioTransactions includes: deposit2)! !
+
+!testRun: #PortfolioTest #test10PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemInTransactions stamp: 'AlYac 5/18/2023 00:30:27'!
+ERROR!
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'AlYac 5/18/2023 00:30:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasBalanceEqualsToThatAccount stamp: 'AlYac 5/18/2023 00:30:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasBalanceEqualsToThose stamp: 'AlYac 5/18/2023 00:30:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithMultipleAccountsAndPortfolioHasBalanceEqualsToThose stamp: 'AlYac 5/18/2023 00:30:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test05EmptyPortfolioHasNoTransactionRegistered stamp: 'AlYac 5/18/2023 00:30:35'!
+ERROR!
+
+!testRun: #PortfolioTest #test06PortfolioWithMultipleTransactionsOnAccountHasThemRegistered stamp: 'AlYac 5/18/2023 00:30:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemRegistered stamp: 'AlYac 5/18/2023 00:30:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransaction stamp: 'AlYac 5/18/2023 00:30:35'!
+ERROR!
+
+!testRun: #PortfolioTest #test09PortfolioWithMultipleTransactionsOnAccountHasThemInTransactions stamp: 'AlYac 5/18/2023 00:30:35'!
+ERROR!
+
+!testRun: #PortfolioTest #test10PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemInTransactions stamp: 'AlYac 5/18/2023 00:30:35'!
+ERROR!
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'AlYac 5/18/2023 00:30:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasBalanceEqualsToThatAccount stamp: 'AlYac 5/18/2023 00:30:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasBalanceEqualsToThose stamp: 'AlYac 5/18/2023 00:30:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithMultipleAccountsAndPortfolioHasBalanceEqualsToThose stamp: 'AlYac 5/18/2023 00:30:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test05EmptyPortfolioHasNoTransactionRegistered stamp: 'AlYac 5/18/2023 00:30:42'!
+ERROR!
+
+!testRun: #PortfolioTest #test06PortfolioWithMultipleTransactionsOnAccountHasThemRegistered stamp: 'AlYac 5/18/2023 00:30:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemRegistered stamp: 'AlYac 5/18/2023 00:30:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransaction stamp: 'AlYac 5/18/2023 00:30:42'!
+ERROR!
+
+!testRun: #PortfolioTest #test09PortfolioWithMultipleTransactionsOnAccountHasThemInTransactions stamp: 'AlYac 5/18/2023 00:30:42'!
+ERROR!
+
+!testRun: #PortfolioTest #test10PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemInTransactions stamp: 'AlYac 5/18/2023 00:30:42'!
+ERROR!
+!Portfolio methodsFor: 'registered' stamp: 'AlYac 5/18/2023 00:31:13' prior: 50620219!
+hasRegistered: aTransaction 
+	
+	^ accounts anySatisfy: [:anAccount|anAccount hasRegistered: aTransaction]! !
+
+!methodRemoval: Portfolio #hasRegisteredInAccounts: stamp: 'AlYac 5/18/2023 00:31:17'!
+hasRegisteredInAccounts: aTransaction
+
+	^ accounts anySatisfy: [:anAccount|anAccount hasRegistered: aTransaction]!
+
+!methodRemoval: Portfolio #hasRegisteredInPortfolio: stamp: 'AlYac 5/18/2023 00:31:19'!
+hasRegisteredInPortfolio: aTransaction
+
+	^ portfolios anySatisfy: [:aPortfolio|aPortfolio hasRegistered: aTransaction]!
+
+!testRun: #PortfolioTest #test05EmptyPortfolioHasNoTransactionRegistered stamp: 'AlYac 5/18/2023 00:31:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemRegistered stamp: 'AlYac 5/18/2023 00:31:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithMultipleTransactionsOnAccountHasThemRegistered stamp: 'AlYac 5/18/2023 00:31:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'AlYac 5/18/2023 00:31:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasBalanceEqualsToThatAccount stamp: 'AlYac 5/18/2023 00:31:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasBalanceEqualsToThose stamp: 'AlYac 5/18/2023 00:31:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithMultipleAccountsAndPortfolioHasBalanceEqualsToThose stamp: 'AlYac 5/18/2023 00:31:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test05EmptyPortfolioHasNoTransactionRegistered stamp: 'AlYac 5/18/2023 00:31:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithMultipleTransactionsOnAccountHasThemRegistered stamp: 'AlYac 5/18/2023 00:31:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemRegistered stamp: 'AlYac 5/18/2023 00:31:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransaction stamp: 'AlYac 5/18/2023 00:31:25'!
+ERROR!
+
+!testRun: #PortfolioTest #test09PortfolioWithMultipleTransactionsOnAccountHasThemInTransactions stamp: 'AlYac 5/18/2023 00:31:25'!
+ERROR!
+
+!testRun: #PortfolioTest #test10PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemInTransactions stamp: 'AlYac 5/18/2023 00:31:25'!
+ERROR!
+!Portfolio methodsFor: 'transactions' stamp: 'AlYac 5/18/2023 00:32:41' prior: 50620618!
+transactions
+	
+	^accounts inject: OrderedCollection new into: [:transactions :anAccount | transactions , anAccount transactions]! !
+
+!methodRemoval: Portfolio #accountsTransactions stamp: 'AlYac 5/18/2023 00:32:43'!
+accountsTransactions
+
+	^ accounts inject: OrderedCollection new into: [:transactions :anAccount | transactions , anAccount transactions]!
+
+!methodRemoval: Portfolio #portfoliosTransactions stamp: 'AlYac 5/18/2023 00:32:45'!
+portfoliosTransactions
+
+	^ portfolios inject: OrderedCollection new into: [:transactions :aPortfolio | transactions , aPortfolio transactions]!
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'AlYac 5/18/2023 00:32:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasBalanceEqualsToThatAccount stamp: 'AlYac 5/18/2023 00:32:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasBalanceEqualsToThose stamp: 'AlYac 5/18/2023 00:32:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithMultipleAccountsAndPortfolioHasBalanceEqualsToThose stamp: 'AlYac 5/18/2023 00:32:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test05EmptyPortfolioHasNoTransactionRegistered stamp: 'AlYac 5/18/2023 00:32:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithMultipleTransactionsOnAccountHasThemRegistered stamp: 'AlYac 5/18/2023 00:32:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemRegistered stamp: 'AlYac 5/18/2023 00:32:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransaction stamp: 'AlYac 5/18/2023 00:32:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioWithMultipleTransactionsOnAccountHasThemInTransactions stamp: 'AlYac 5/18/2023 00:32:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemInTransactions stamp: 'AlYac 5/18/2023 00:32:48'!
+PASSED!
+!Account methodsFor: 'Account actions' stamp: 'AlYac 5/18/2023 00:34:03'!
+balance
+	
+	self subclassResponsibility ! !
+!Account methodsFor: 'Account actions' stamp: 'AlYac 5/18/2023 00:34:20'!
+hasRegistered: aTransaction
+	
+	self subclassResponsibility ! !
+!Account methodsFor: 'Account actions' stamp: 'AlYac 5/18/2023 00:34:43'!
+transactions
+	
+	self subclassResponsibility ! !
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:42:05'!
+test11CantAddAnAccountToAPortfolioMoreThanOnce
+	|portfolio account|
+	
+	portfolio := Portfolio new.
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	portfolio add: account.
+	portfolio add: account .
+
+	self assert: 200 equals: portfolio balance! !
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:45:50' prior: 50621252!
+test11CantAddAnAccountToAPortfolioMoreThanOnce
+	|portfolio account|
+	
+	portfolio := Portfolio new.
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	portfolio add: account.
+
+	self should: [portfolio add: account] 
+		raise: Error 
+		withExceptionDo: [:anError | anError description] ! !
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:47:12' prior: 50621264!
+test11CantAddAnAccountToAPortfolioMoreThanOnce
+	|portfolio account|
+	
+	portfolio := Portfolio new.
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	portfolio add: account.
+
+	self should: [portfolio add: account] 
+		raise: Error 
+		withExceptionDo: [:anError | self assert: anError messageText equals: Portfolio duplicatedAccountErrorDescription] ! !
+
+!testRun: #PortfolioTest #test11CantAddAnAccountToAPortfolioMoreThanOnce stamp: 'AlYac 5/18/2023 00:47:15'!
+FAILURE!
+!Portfolio class methodsFor: 'errors' stamp: 'AlYac 5/18/2023 00:48:39'!
+duplicatedAccountErrorDescription
+
+	^ 'That account is already registered!!'! !
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'AlYac 5/18/2023 00:48:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasBalanceEqualsToThatAccount stamp: 'AlYac 5/18/2023 00:48:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasBalanceEqualsToThose stamp: 'AlYac 5/18/2023 00:48:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithMultipleAccountsAndPortfolioHasBalanceEqualsToThose stamp: 'AlYac 5/18/2023 00:48:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test05EmptyPortfolioHasNoTransactionRegistered stamp: 'AlYac 5/18/2023 00:48:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithMultipleTransactionsOnAccountHasThemRegistered stamp: 'AlYac 5/18/2023 00:48:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemRegistered stamp: 'AlYac 5/18/2023 00:48:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransaction stamp: 'AlYac 5/18/2023 00:48:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioWithMultipleTransactionsOnAccountHasThemInTransactions stamp: 'AlYac 5/18/2023 00:48:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemInTransactions stamp: 'AlYac 5/18/2023 00:48:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test11CantAddAnAccountToAPortfolioMoreThanOnce stamp: 'AlYac 5/18/2023 00:48:44'!
+FAILURE!
+
+!testRun: #PortfolioTest #test11CantAddAnAccountToAPortfolioMoreThanOnce stamp: 'AlYac 5/18/2023 00:48:44'!
+FAILURE!
+!Portfolio methodsFor: 'add' stamp: 'AlYac 5/18/2023 00:52:34' prior: 50620806!
+add: anAccount 
+	
+	(accounts includes: anAccount) ifTrue: [self error: self class duplicatedAccountErrorDescription].
+	accounts add: anAccount ! !
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'AlYac 5/18/2023 00:52:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasBalanceEqualsToThatAccount stamp: 'AlYac 5/18/2023 00:52:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasBalanceEqualsToThose stamp: 'AlYac 5/18/2023 00:52:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithMultipleAccountsAndPortfolioHasBalanceEqualsToThose stamp: 'AlYac 5/18/2023 00:52:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test05EmptyPortfolioHasNoTransactionRegistered stamp: 'AlYac 5/18/2023 00:52:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithMultipleTransactionsOnAccountHasThemRegistered stamp: 'AlYac 5/18/2023 00:52:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemRegistered stamp: 'AlYac 5/18/2023 00:52:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransaction stamp: 'AlYac 5/18/2023 00:52:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioWithMultipleTransactionsOnAccountHasThemInTransactions stamp: 'AlYac 5/18/2023 00:52:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemInTransactions stamp: 'AlYac 5/18/2023 00:52:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test11CantAddAnAccountToAPortfolioMoreThanOnce stamp: 'AlYac 5/18/2023 00:52:36'!
+PASSED!
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:58:00'!
+test12CantAddAnAccountToAPortfolioMoreThanOnceWithASubPortfolioThatContainsIt
+	|portfolio portfolio2 account|
+	
+	portfolio := Portfolio new.
+	portfolio2 := Portfolio new.
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	portfolio2 add: account.
+	portfolio add: portfolio2.
+
+	self should: [portfolio add: account] 
+		raise: Error 
+		withExceptionDo: [:anError | self assert: anError messageText equals: Portfolio duplicatedAccountErrorDescription] ! !
+
+!testRun: #PortfolioTest #test12CantAddAnAccountToAPortfolioMoreThanOnceWithASubPortfolioThatContainsIt stamp: 'AlYac 5/18/2023 00:58:01'!
+FAILURE!
+
+----SNAPSHOT----(18 May 2023 00:58:07) CuisUniversity-5799.image priorSource: 9222790!
