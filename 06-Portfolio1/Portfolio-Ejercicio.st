@@ -1,190 +1,146 @@
 !classDefinition: #PortfolioTest category: 'Portfolio-Ejercicio'!
 TestCase subclass: #PortfolioTest
-	instanceVariableNames: ''
+	instanceVariableNames: 'newPortfolio anAccount anotherAccount anotherNewPortfolio'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/15/2023 20:19:28'!
+!PortfolioTest methodsFor: 'set up' stamp: 'AlYac 5/18/2023 18:14:16'!
+setUp
+
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	newPortfolio := Portfolio new.
+	anotherNewPortfolio := Portfolio new.! !
+
+
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 18:06:47'!
 test01EmptyPortfolioHasBalance0
 
-	self assert: 0 equals: Portfolio new balance! !
+	self assert: 0 equals: newPortfolio balance! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:29:06'!
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 18:11:48'!
 test02PortfolioWithOneAccountHasBalanceEqualsToThatAccount
 
-	|portfolio account|
+	Deposit register: 100 on: anAccount .
 	
-	portfolio := Portfolio new.
-	account := ReceptiveAccount new.
-	Deposit register: 100 on: account.
-	
-	portfolio add: account.
+	newPortfolio add: anAccount .
 
-	self assert: 100 equals: portfolio balance! !
+	self assert: 100 equals: newPortfolio balance! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:29:45'!
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 18:13:17'!
 test03PortfolioWithMultipleAccountsHasBalanceEqualsToThose
 
-	|portfolio account account2 |
+	Deposit register: 100 on: anAccount .
+	Deposit register: 100 on: anotherAccount .
 	
-	portfolio := Portfolio new.
-	account := ReceptiveAccount new.
-	Deposit register: 100 on: account.
-	account2 := ReceptiveAccount new.
-	Deposit register: 100 on: account2.
-	
-	portfolio add: account.
-	portfolio add: account2 .
+	newPortfolio add: anAccount .
+	newPortfolio add: anotherAccount .
 
-	self assert: 200 equals: portfolio balance! !
+	self assert: 200 equals: newPortfolio balance! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:29:56'!
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 18:15:44'!
 test04PortfolioWithMultipleAccountsAndPortfolioHasBalanceEqualsToThose
 
-	|portfolio account portfolio2 account2|
+	Deposit register: 100 on: anAccount .
+	Deposit register: 100 on: anotherAccount .
 	
-	portfolio := Portfolio new.
-	portfolio2 := Portfolio new.
-	
-	account := ReceptiveAccount new.
-	account2 := ReceptiveAccount new.
-	Deposit register: 100 on: account.
-	Deposit register: 100 on: account2.
-	
-	portfolio2 add: account2.
-	portfolio add: account.
-	portfolio add: portfolio2 .
+	anotherNewPortfolio add: anotherAccount.
+	newPortfolio add: anAccount .
+	newPortfolio add: anotherNewPortfolio .
 
-	self assert: 200 equals: portfolio balance! !
+	self assert: 200 equals: newPortfolio balance! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:04:20'!
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 18:17:05'!
 test05EmptyPortfolioHasNoTransactionRegistered
 	
-	| account deposit |
-	
-	account := ReceptiveAccount new.
-	deposit := Deposit register: 100 on: account.
+	| deposit |
+	deposit := Deposit register: 100 on: anAccount.
 
-	self deny:(Portfolio new hasRegistered: deposit)! !
+	self deny: (newPortfolio hasRegistered: deposit)! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:30:04'!
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 18:18:16'!
 test06PortfolioWithMultipleTransactionsOnAccountHasThemRegistered
 	
-	|portfolio account account2 deposit deposit2 |
+	|deposit deposit2|
 	
-	portfolio := Portfolio new.
+	deposit := Deposit register: 100 on: anAccount .
+	deposit2 := Deposit register: 100 on: anotherAccount .
 	
-	account := ReceptiveAccount new.
-	account2 := ReceptiveAccount new.
-	
-	deposit := Deposit register: 100 on: account.
-	deposit2 := Deposit register: 100 on: account2.
-	
-	portfolio add: account.
-	portfolio add: account2 .
+	newPortfolio add: anAccount.
+	newPortfolio add: anotherAccount.
 
-	self assert:(portfolio hasRegistered: deposit).
-	self assert:(portfolio hasRegistered: deposit2)! !
+	self assert:(newPortfolio hasRegistered: deposit).
+	self assert:(newPortfolio hasRegistered: deposit2)! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:30:12'!
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 18:19:23'!
 test07PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemRegistered
 	
-	|portfolio portfolio2 account account2 deposit deposit2 |
+	|deposit deposit2|
 	
-	portfolio := Portfolio new.
-	portfolio2 := Portfolio new.
+	deposit := Deposit register: 100 on: anAccount.
+	deposit2 := Deposit register: 100 on: anotherAccount.
 	
-	account := ReceptiveAccount new.
-	account2 := ReceptiveAccount new.
-	
-	deposit := Deposit register: 100 on: account.
-	deposit2 := Deposit register: 100 on: account2.
-	
-	portfolio2 add: account2.
-	portfolio add: account.
-	portfolio add: portfolio2  .
+	anotherNewPortfolio add: anotherAccount.
+	newPortfolio add: anAccount.
+	newPortfolio add: anotherNewPortfolio.
 
-	self assert:(portfolio hasRegistered: deposit).
-	self assert:(portfolio hasRegistered: deposit2)! !
+	self assert:(newPortfolio hasRegistered: deposit).
+	self assert:(newPortfolio hasRegistered: deposit2)! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:05:18'!
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 18:19:56'!
 test08EmptyPortfolioHasNoTransaction
 	
 
-	self assert: (Portfolio new transactions) isEmpty! !
+	self assert: (newPortfolio transactions) isEmpty! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:30:19'!
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 18:21:15'!
 test09PortfolioWithMultipleTransactionsOnAccountHasThemInTransactions
 	
-	|portfolio account account2 deposit deposit2 portfolioTransactions |
+	|deposit deposit2 portfolioTransactions|
+	deposit := Deposit register: 100 on: anAccount.
+	deposit2 := Deposit register: 100 on: anotherAccount.
 	
-	portfolio := Portfolio new.
-	
-	account := ReceptiveAccount new.
-	account2 := ReceptiveAccount new.
-	
-	deposit := Deposit register: 100 on: account.
-	deposit2 := Deposit register: 100 on: account2.
-	
-	portfolio add: account.
-	portfolio add: account2.
+	newPortfolio add: anAccount .
+	newPortfolio add: anotherAccount.
 
-	portfolioTransactions := portfolio transactions.
+	portfolioTransactions := newPortfolio transactions.
 	
 	self assert:(portfolioTransactions includes: deposit).
 	self assert:(portfolioTransactions includes: deposit2)! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:30:26'!
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 18:25:40'!
 test10PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemInTransactions
 	
-	|portfolio portfolio2 account account2 deposit deposit2 portfolioTransactions |
+	|deposit deposit2 portfolioTransactions|
+	deposit := Deposit register: 100 on: anAccount.
+	deposit2 := Deposit register: 100 on: anotherAccount.
 	
-	portfolio := Portfolio new.
-	portfolio2 := Portfolio new.
-	
-	account := ReceptiveAccount new.
-	account2 := ReceptiveAccount new.
-	
-	deposit := Deposit register: 100 on: account.
-	deposit2 := Deposit register: 100 on: account2.
-	
-	portfolio2 add: account2.
-	portfolio add: account.
-	portfolio add: portfolio2  .
+	anotherNewPortfolio add: anotherAccount.
+	newPortfolio add: anAccount.
+	newPortfolio add: anotherNewPortfolio.
 
-	portfolioTransactions := portfolio transactions.
+	portfolioTransactions := newPortfolio transactions.
 	
 	self assert:(portfolioTransactions includes: deposit).
 	self assert:(portfolioTransactions includes: deposit2)! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:47:12'!
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 20:55:29'!
 test11CantAddAnAccountToAPortfolioMoreThanOnce
-	|portfolio account|
 	
-	portfolio := Portfolio new.
-	account := ReceptiveAccount new.
-	Deposit register: 100 on: account.
-	
-	portfolio add: account.
+	newPortfolio add: anotherNewPortfolio .
 
-	self should: [portfolio add: account] 
+	self should: [newPortfolio add: anotherNewPortfolio ] 
 		raise: Error 
 		withExceptionDo: [:anError | self assert: anError messageText equals: Portfolio duplicatedAccountErrorDescription] ! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 00:58:00'!
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/18/2023 18:24:58'!
 test12CantAddAnAccountToAPortfolioMoreThanOnceWithASubPortfolioThatContainsIt
-	|portfolio portfolio2 account|
 	
-	portfolio := Portfolio new.
-	portfolio2 := Portfolio new.
-	account := ReceptiveAccount new.
-	Deposit register: 100 on: account.
-	
-	portfolio2 add: account.
-	portfolio add: portfolio2.
+	anotherNewPortfolio add: anAccount.
+	newPortfolio add: anotherNewPortfolio.
 
-	self should: [portfolio add: account] 
+	self should: [newPortfolio add: anAccount] 
 		raise: Error 
 		withExceptionDo: [:anError | self assert: anError messageText equals: Portfolio duplicatedAccountErrorDescription] ! !
 
@@ -304,44 +260,64 @@ transactions
 	
 	self subclassResponsibility ! !
 
+
+!Account methodsFor: 'aux' stamp: 'AlYac 5/18/2023 20:28:36'!
+accounts
+	
+	self subclassResponsibility! !
+
 
 !classDefinition: #Portfolio category: 'Portfolio-Ejercicio'!
 Account subclass: #Portfolio
-	instanceVariableNames: 'accounts'
+	instanceVariableNames: 'myAccounts allSubAccounts'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!Portfolio methodsFor: 'add' stamp: 'AlYac 5/18/2023 00:52:34'!
+!Portfolio methodsFor: 'add' stamp: 'AlYac 5/18/2023 21:02:45'!
 add: anAccount 
 	
-	(accounts includes: anAccount) ifTrue: [self error: self class duplicatedAccountErrorDescription].
-	accounts add: anAccount ! !
+	anAccount accounts do: [:account | self checkAccountNotDuplicated: account].
+	myAccounts add: anAccount.
+	allSubAccounts addAll: anAccount accounts.! !
 
 
-!Portfolio methodsFor: 'initialization' stamp: 'AlYac 5/18/2023 00:27:28'!
+!Portfolio methodsFor: 'initialization' stamp: 'AlYac 5/18/2023 20:58:45'!
 initialize
 	
-	accounts := OrderedCollection new.
+	myAccounts := OrderedCollection new.
+	allSubAccounts := OrderedCollection with: self.
 	! !
 
 
-!Portfolio methodsFor: 'transactions' stamp: 'AlYac 5/18/2023 00:32:41'!
+!Portfolio methodsFor: 'transactions' stamp: 'AlYac 5/18/2023 21:19:33'!
 transactions
 	
-	^accounts inject: OrderedCollection new into: [:transactions :anAccount | transactions , anAccount transactions]! !
+	^myAccounts inject: OrderedCollection new into: [:transactions :anAccount | transactions , anAccount transactions]! !
 
 
-!Portfolio methodsFor: 'balance' stamp: 'AlYac 5/18/2023 00:28:37'!
+!Portfolio methodsFor: 'balance' stamp: 'AlYac 5/18/2023 20:20:30'!
 balance
 	
-	^ accounts sum: [:anAccount| anAccount balance] ifEmpty: [0] ! !
+	^ myAccounts sum: [:anAccount| anAccount balance] ifEmpty: [0] ! !
 
 
-!Portfolio methodsFor: 'testing' stamp: 'AlYac 5/18/2023 00:31:13'!
+!Portfolio methodsFor: 'validations' stamp: 'AlYac 5/18/2023 21:00:17'!
+checkAccountNotDuplicated: anAccount
+
+	^ (allSubAccounts anySatisfy: [:subAccount | subAccount = anAccount]) ifTrue: [self error: self class duplicatedAccountErrorDescription]! !
+
+
+!Portfolio methodsFor: 'aux' stamp: 'AlYac 5/18/2023 20:31:57'!
+accounts
+	
+	^allSubAccounts! !
+
+
+!Portfolio methodsFor: 'testing' stamp: 'AlYac 5/18/2023 20:20:30'!
 hasRegistered: aTransaction 
 	
-	^ accounts anySatisfy: [:anAccount|anAccount hasRegistered: aTransaction]! !
+	^ myAccounts anySatisfy: [:anAccount|anAccount hasRegistered: aTransaction]! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -393,6 +369,12 @@ balance
 	balance := 0.
 	transactions do: [:aTransaction |balance := aTransaction effectOnBalance: balance].
 	^balance! !
+
+
+!ReceptiveAccount methodsFor: 'aux' stamp: 'AlYac 5/18/2023 20:26:49'!
+accounts
+
+	^OrderedCollection with: self! !
 
 
 !ReceptiveAccount methodsFor: 'testing' stamp: 'NR 10/17/2019 03:28:43'!
