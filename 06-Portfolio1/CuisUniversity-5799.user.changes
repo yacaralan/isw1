@@ -12172,3 +12172,2279 @@ PASSED!
 PASSED!
 
 ----QUIT----(22 May 2023 00:23:13) CuisUniversity-5799.image priorSource: 9566391!
+
+----STARTUP---- (22 May 2023 15:57:52) as D:\OneDrive - dc.uba.ar\UBA\Inge1\cuis5799\windows64\CuisUniversity-5799.image!
+
+!Account methodsFor: 'transactions' stamp: 'LMR 5/22/2023 15:59:49'!
+addAllTransactionsTo: transactionsCollection
+	
+	self subclassResponsibility ! !
+!Portfolio methodsFor: 'transactions' stamp: 'LMR 5/22/2023 16:00:49' overrides: 50630698!
+addAllTransactionsTo: transactionsCollection
+	
+	accounts do: [:subAccount | subAccount addAllTransactionsTo: transactionsCollection]! !
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'LMR 5/22/2023 16:01:19' overrides: 50630698!
+addAllTransactionsTo: transactionsCollection
+	
+	transactionsCollection addAll: transactions! !
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'LMR 5/22/2023 16:01:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasBalanceEqualsToThatAccount stamp: 'LMR 5/22/2023 16:01:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasBalanceEqualsToThose stamp: 'LMR 5/22/2023 16:01:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithMultipleAccountsAndPortfolioHasBalanceEqualsToThose stamp: 'LMR 5/22/2023 16:01:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test05EmptyPortfolioHasNoTransactionRegistered stamp: 'LMR 5/22/2023 16:01:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithMultipleTransactionsOnAccountHasThemRegistered stamp: 'LMR 5/22/2023 16:01:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemRegistered stamp: 'LMR 5/22/2023 16:01:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransaction stamp: 'LMR 5/22/2023 16:01:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioWithMultipleTransactionsOnAccountHasThemInTransactions stamp: 'LMR 5/22/2023 16:01:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemInTransactions stamp: 'LMR 5/22/2023 16:01:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test11CantAddPortfolioToItself stamp: 'LMR 5/22/2023 16:01:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test12CantAddAnAccountToAPortfolioMoreThanOnce stamp: 'LMR 5/22/2023 16:01:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test13CantAddAnAccountToAPortfolioAlreadyContainedInSubAccounts stamp: 'LMR 5/22/2023 16:01:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test14CantAddAPortfolioToAnotherThatSharesASubAccount stamp: 'LMR 5/22/2023 16:01:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test15CantAddAPortfolioToAnotherThatSharesSubAccountsWithParents stamp: 'LMR 5/22/2023 16:01:30'!
+PASSED!
+
+!testRun: #PortfolioTest #test16CantAddAPortfolioToAnotherThatSharesSubAccountsWithRecursiveParents stamp: 'LMR 5/22/2023 16:01:30'!
+PASSED!
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'LMR 5/22/2023 16:01:33'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasBalanceEqualsToThatAccount stamp: 'LMR 5/22/2023 16:01:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasBalanceEqualsToThose stamp: 'LMR 5/22/2023 16:01:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithMultipleAccountsAndPortfolioHasBalanceEqualsToThose stamp: 'LMR 5/22/2023 16:01:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test05EmptyPortfolioHasNoTransactionRegistered stamp: 'LMR 5/22/2023 16:01:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithMultipleTransactionsOnAccountHasThemRegistered stamp: 'LMR 5/22/2023 16:01:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemRegistered stamp: 'LMR 5/22/2023 16:01:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransaction stamp: 'LMR 5/22/2023 16:01:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioWithMultipleTransactionsOnAccountHasThemInTransactions stamp: 'LMR 5/22/2023 16:01:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemInTransactions stamp: 'LMR 5/22/2023 16:01:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test11CantAddPortfolioToItself stamp: 'LMR 5/22/2023 16:01:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test12CantAddAnAccountToAPortfolioMoreThanOnce stamp: 'LMR 5/22/2023 16:01:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test13CantAddAnAccountToAPortfolioAlreadyContainedInSubAccounts stamp: 'LMR 5/22/2023 16:01:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test14CantAddAPortfolioToAnotherThatSharesASubAccount stamp: 'LMR 5/22/2023 16:01:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test15CantAddAPortfolioToAnotherThatSharesSubAccountsWithParents stamp: 'LMR 5/22/2023 16:01:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test16CantAddAPortfolioToAnotherThatSharesSubAccountsWithRecursiveParents stamp: 'LMR 5/22/2023 16:01:35'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'LMR 5/22/2023 16:01:35'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'LMR 5/22/2023 16:01:35'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'LMR 5/22/2023 16:01:35'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'LMR 5/22/2023 16:01:36'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'LMR 5/22/2023 16:01:36'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'LMR 5/22/2023 16:01:36'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'LMR 5/22/2023 16:01:36'!
+PASSED!
+!Behavior method!
+addAllTransactionsTo: transactionsCollection
+	#_coverageTracker230331_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker230331_
+		cover: (49 to: 70)
+		declaredAt: (23 to: 44)
+		by: transactionsCollection.
+	#_coverageTracker230331_
+		coverAll:
+			{72 to: 78}
+		evaluating: [
+			receiver1 addAll:
+				(#_coverageTracker230331_
+					cover: (80 to: 91)
+					declaredAt: (80 to: 91)
+					by: transactions) ]
+		thatSends: #addAll:
+		to: receiver1 ] value.! !
+!Behavior method!
+transactions
+	#_coverageTracker230396_ markAsExecuted.
+	^ [ | receiver4 |
+	receiver4 _ #_coverageTracker230396_
+		cover: (18 to: 25)
+		declaredAt: (18 to: 25)
+		by: accounts.
+	#_coverageTracker230396_
+		coverAll:
+			{27 to: 33. 57 to: 61}
+		evaluating: [
+			receiver4
+				inject:
+					[ | receiver1 |
+					receiver1 _ #_coverageTracker230396_
+						coverAll:
+							{35 to: 51}
+						by: OrderedCollection.
+					#_coverageTracker230396_
+						coverAll:
+							{53 to: 55}
+						evaluating: [ receiver1 new ]
+						thatSends: #new
+						to: receiver1 ] value
+				into: [ :transactions :anAccount |
+					[ | receiver3 |
+					receiver3 _ #_coverageTracker230396_
+						cover: (91 to: 102)
+						declaredAt: (65 to: 76)
+						by: transactions.
+					#_coverageTracker230396_
+						coverAll:
+							{104 to: 104}
+						evaluating: [
+							receiver3 ,
+								[ | receiver2 |
+								receiver2 _ #_coverageTracker230396_
+									cover: (106 to: 114)
+									declaredAt: (79 to: 87)
+									by: anAccount.
+								#_coverageTracker230396_
+									coverAll:
+										{116 to: 127}
+									evaluating: [ receiver2 transactions ]
+									thatSends: #transactions
+									to: receiver2 ] value ]
+						thatSends: #,
+						to: receiver3 ] value ]]
+		thatSends: #inject:into:
+		to: receiver4 ] value.! !
+!Behavior method!
+new
+	#_coverageTracker230463_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker230463_
+		coverAll:
+			{9 to: 12}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker230463_
+		coverAll:
+			{14 to: 21}
+		evaluating: [ receiver1 basicNew ]
+		thatSends: #basicNew
+		to: receiver1 ] value.
+	#_coverageTracker230463_
+		coverAll:
+			{23 to: 32}
+		evaluating: [ receiver2 initialize ]
+		thatSends: #initialize
+		to: receiver2 ] value.! !
+!Behavior method!
+initialize
+	#_coverageTracker230516_ markAsExecuted.
+	#_coverageTracker230516_
+		cover: (15 to: 22)
+		declaredAt: (15 to: 22)
+		by:
+			(accounts _ [ | receiver1 |
+			receiver1 _ #_coverageTracker230516_
+				coverAll:
+					{27 to: 43}
+				by: OrderedCollection.
+			#_coverageTracker230516_
+				coverAll:
+					{45 to: 47}
+				evaluating: [ receiver1 new ]
+				thatSends: #new
+				to: receiver1 ] value).
+	#_coverageTracker230516_
+		cover: (51 to: 57)
+		declaredAt: (51 to: 57)
+		by:
+			(parents _ [ | receiver2 |
+			receiver2 _ #_coverageTracker230516_
+				coverAll:
+					{62 to: 78}
+				by: OrderedCollection.
+			#_coverageTracker230516_
+				coverAll:
+					{80 to: 82}
+				evaluating: [ receiver2 new ]
+				thatSends: #new
+				to: receiver2 ] value).! !
+!Behavior method!
+duplicatedAccountErrorDescription
+	#_coverageTracker230572_ markAsExecuted.
+	^ #_coverageTracker230572_
+		coverAll:
+			{39 to: 75}
+		byLiteralOrPseudoVariable: 'This account is already registered!!'.! !
+!Behavior method!
+initializeFor: aValue
+	#_coverageTracker230618_ markAsExecuted.
+	#_coverageTracker230618_
+		cover: (25 to: 29)
+		declaredAt: (25 to: 29)
+		by:
+			(value _ #_coverageTracker230618_
+				cover: (34 to: 39)
+				declaredAt: (16 to: 21)
+				by: aValue).! !
+!Behavior method!
+register: aTransaction
+	#_coverageTracker230659_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker230659_
+		cover: (26 to: 37)
+		declaredAt: (26 to: 37)
+		by: transactions.
+	#_coverageTracker230659_
+		coverAll:
+			{39 to: 42}
+		evaluating: [
+			receiver1 add:
+				(#_coverageTracker230659_
+					cover: (44 to: 55)
+					declaredAt: (11 to: 22)
+					by: aTransaction) ]
+		thatSends: #add:
+		to: receiver1 ] value.! !
+!Behavior method!
+for: aValue
+	#_coverageTracker230712_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker230712_
+		coverAll:
+			{17 to: 20}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker230712_
+		coverAll:
+			{22 to: 24}
+		evaluating: [ receiver1 new ]
+		thatSends: #new
+		to: receiver1 ] value.
+	#_coverageTracker230712_
+		coverAll:
+			{26 to: 39}
+		evaluating: [
+			receiver2 initializeFor:
+				(#_coverageTracker230712_
+					cover: (41 to: 46)
+					declaredAt: (6 to: 11)
+					by: aValue) ]
+		thatSends: #initializeFor:
+		to: receiver2 ] value.! !
+!Behavior method!
+hasRegistered: aTransaction
+	#_coverageTracker230768_ markAsExecuted.
+	^ [ | receiver1 |
+	receiver1 _ #_coverageTracker230768_
+		cover: (33 to: 44)
+		declaredAt: (33 to: 44)
+		by: transactions.
+	#_coverageTracker230768_
+		coverAll:
+			{46 to: 54}
+		evaluating: [
+			receiver1 includes:
+				(#_coverageTracker230768_
+					cover: (56 to: 67)
+					declaredAt: (16 to: 27)
+					by: aTransaction) ]
+		thatSends: #includes:
+		to: receiver1 ] value.! !
+!Behavior method!
+add: anAccount
+	#_coverageTracker230826_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker230826_
+		coverAll:
+			{20 to: 23}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker230826_
+		coverAll:
+			{25 to: 31}
+		evaluating: [
+			receiver1 canAdd:
+				(#_coverageTracker230826_
+					cover: (33 to: 41)
+					declaredAt: (6 to: 14)
+					by: anAccount) ]
+		thatSends: #canAdd:
+		to: receiver1 ] value.
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker230826_
+		cover: (47 to: 54)
+		declaredAt: (47 to: 54)
+		by: accounts.
+	#_coverageTracker230826_
+		coverAll:
+			{56 to: 59}
+		evaluating: [
+			receiver2 add:
+				(#_coverageTracker230826_
+					cover: (61 to: 69)
+					declaredAt: (6 to: 14)
+					by: anAccount) ]
+		thatSends: #add:
+		to: receiver2 ] value.
+	[ | receiver3 |
+	receiver3 _ #_coverageTracker230826_
+		cover: (73 to: 81)
+		declaredAt: (6 to: 14)
+		by: anAccount.
+	#_coverageTracker230826_
+		coverAll:
+			{83 to: 95}
+		evaluating: [
+			receiver3 addToParents:
+				(#_coverageTracker230826_
+					coverAll:
+						{97 to: 100}
+					byLiteralOrPseudoVariable: self) ]
+		thatSends: #addToParents:
+		to: receiver3 ] value.! !
+!Behavior method!
+value
+	#_coverageTracker230881_ markAsExecuted.
+	^ #_coverageTracker230881_
+		cover: (11 to: 15)
+		declaredAt: (11 to: 15)
+		by: value.! !
+!Behavior method!
+initialize
+	#_coverageTracker230923_ markAsExecuted.
+	#_coverageTracker230923_
+		cover: (14 to: 25)
+		declaredAt: (14 to: 25)
+		by:
+			(transactions _ [ | receiver1 |
+			receiver1 _ #_coverageTracker230923_
+				coverAll:
+					{30 to: 46}
+				by: OrderedCollection.
+			#_coverageTracker230923_
+				coverAll:
+					{48 to: 50}
+				evaluating: [ receiver1 new ]
+				thatSends: #new
+				to: receiver1 ] value).
+	#_coverageTracker230923_
+		cover: (54 to: 60)
+		declaredAt: (54 to: 60)
+		by:
+			(parents _ [ | receiver2 |
+			receiver2 _ #_coverageTracker230923_
+				coverAll:
+					{65 to: 81}
+				by: OrderedCollection.
+			#_coverageTracker230923_
+				coverAll:
+					{83 to: 85}
+				evaluating: [ receiver2 new ]
+				thatSends: #new
+				to: receiver2 ] value).! !
+!Behavior method!
+balance
+	| balance |
+	#_coverageTracker230983_ markAsExecuted.
+	#_coverageTracker230983_
+		cover: (23 to: 29)
+		declaredAt: (13 to: 19)
+		by:
+			(balance _ #_coverageTracker230983_
+				coverAll:
+					{34 to: 34}
+				byLiteralOrPseudoVariable: 0).
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker230983_
+		cover: (38 to: 49)
+		declaredAt: (38 to: 49)
+		by: transactions.
+	#_coverageTracker230983_
+		coverAll:
+			{51 to: 53}
+		evaluating: [
+			receiver2 do: [ :aTransaction |
+				#_coverageTracker230983_
+					cover: (112 to: 118)
+					declaredAt: (13 to: 19)
+					by:
+						(balance _ [ | receiver1 |
+						receiver1 _ #_coverageTracker230983_
+							cover: (82 to: 93)
+							declaredAt: (57 to: 68)
+							by: aTransaction.
+						#_coverageTracker230983_
+							coverAll:
+								{95 to: 110}
+							evaluating: [
+								receiver1 effectOnBalance:
+									(#_coverageTracker230983_
+										cover: (71 to: 77)
+										declaredAt: (13 to: 19)
+										by: balance) ]
+							thatSends: #effectOnBalance:
+							to: receiver1 ] value) ]]
+		thatSends: #do:
+		to: receiver2 ] value.
+	^ #_coverageTracker230983_
+		cover: (124 to: 130)
+		declaredAt: (13 to: 19)
+		by: balance.! !
+!Behavior method!
+balance
+	#_coverageTracker231025_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ #_coverageTracker231025_
+		cover: (14 to: 21)
+		declaredAt: (14 to: 21)
+		by: accounts.
+	#_coverageTracker231025_
+		coverAll:
+			{23 to: 26. 60 to: 67}
+		evaluating: [
+			receiver2
+				sum: [ :anAccount |
+					[ | receiver1 |
+					receiver1 _ #_coverageTracker231025_
+						cover: (41 to: 49)
+						declaredAt: (30 to: 38)
+						by: anAccount.
+					#_coverageTracker231025_
+						coverAll:
+							{51 to: 57}
+						evaluating: [ receiver1 balance ]
+						thatSends: #balance
+						to: receiver1 ] value ]
+				ifEmpty: [
+					#_coverageTracker231025_
+						coverAll:
+							{70 to: 70}
+						byLiteralOrPseudoVariable: 0 ]]
+		thatSends: #sum:ifEmpty:
+		to: receiver2 ] value.! !
+!Behavior method!
+for: aValue
+	#_coverageTracker231084_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker231084_
+		coverAll:
+			{17 to: 20}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker231084_
+		coverAll:
+			{22 to: 24}
+		evaluating: [ receiver1 new ]
+		thatSends: #new
+		to: receiver1 ] value.
+	#_coverageTracker231084_
+		coverAll:
+			{26 to: 39}
+		evaluating: [
+			receiver2 initializeFor:
+				(#_coverageTracker231084_
+					cover: (41 to: 46)
+					declaredAt: (6 to: 11)
+					by: aValue) ]
+		thatSends: #initializeFor:
+		to: receiver2 ] value.! !
+!Behavior method!
+hasAccount: anAccount
+	#_coverageTracker231138_ markAsExecuted.
+	^ [ | receiver4 |
+	receiver4 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker231138_
+		coverAll:
+			{28 to: 31}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker231138_
+		coverAll:
+			{33 to: 33}
+		evaluating: [
+			receiver1 =
+				(#_coverageTracker231138_
+					cover: (35 to: 43)
+					declaredAt: (13 to: 21)
+					by: anAccount) ]
+		thatSends: #=
+		to: receiver1 ] value.
+	#_coverageTracker231138_
+		coverAll:
+			{45 to: 47}
+		evaluating: [
+			receiver4 or: [
+				[ | receiver3 |
+				receiver3 _ #_coverageTracker231138_
+					cover: (50 to: 57)
+					declaredAt: (50 to: 57)
+					by: accounts.
+				#_coverageTracker231138_
+					coverAll:
+						{59 to: 69}
+					evaluating: [
+						receiver3 anySatisfy: [ :subAccount |
+							[ | receiver2 |
+							receiver2 _ #_coverageTracker231138_
+								cover: (86 to: 95)
+								declaredAt: (73 to: 82)
+								by: subAccount.
+							#_coverageTracker231138_
+								coverAll:
+									{97 to: 107}
+								evaluating: [
+									receiver2 hasAccount:
+										(#_coverageTracker231138_
+											cover: (109 to: 117)
+											declaredAt: (13 to: 21)
+											by: anAccount) ]
+								thatSends: #hasAccount:
+								to: receiver2 ] value ]]
+					thatSends: #anySatisfy:
+					to: receiver3 ] value ]]
+		thatSends: #or:
+		to: receiver4 ] value.! !
+!Behavior method!
+value
+	#_coverageTracker231183_ markAsExecuted.
+	^ #_coverageTracker231183_
+		cover: (11 to: 15)
+		declaredAt: (11 to: 15)
+		by: value.! !
+!Behavior method!
+transactions
+	#_coverageTracker231239_ markAsExecuted.
+	^ [ | receiver1 |
+	receiver1 _ #_coverageTracker231239_
+		cover: (19 to: 30)
+		declaredAt: (19 to: 30)
+		by: transactions.
+	#_coverageTracker231239_
+		coverAll:
+			{32 to: 35}
+		evaluating: [ receiver1 copy ]
+		thatSends: #copy
+		to: receiver1 ] value.! !
+!Behavior method!
+hasAccount: anAccount
+	#_coverageTracker231304_ markAsExecuted.
+	^ [ | receiver1 |
+	receiver1 _ #_coverageTracker231304_
+		coverAll:
+			{28 to: 31}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker231304_
+		coverAll:
+			{33 to: 33}
+		evaluating: [
+			receiver1 =
+				(#_coverageTracker231304_
+					cover: (35 to: 43)
+					declaredAt: (13 to: 21)
+					by: anAccount) ]
+		thatSends: #=
+		to: receiver1 ] value.! !
+!Behavior method!
+canBeAddedToPortfolioWithRecursiveParents: recursiveParents
+	#_coverageTracker231355_ markAsExecuted.
+	[ | receiver6 |
+	receiver6 _ [ | receiver2 |
+	receiver2 _ #_coverageTracker231355_
+		cover: (64 to: 79)
+		declaredAt: (44 to: 59)
+		by: recursiveParents.
+	#_coverageTracker231355_
+		coverAll:
+			{81 to: 91}
+		evaluating: [
+			receiver2 anySatisfy: [ :parent |
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker231355_
+					cover: (104 to: 109)
+					declaredAt: (95 to: 100)
+					by: parent.
+				#_coverageTracker231355_
+					coverAll:
+						{111 to: 121}
+					evaluating: [
+						receiver1 hasAccount:
+							(#_coverageTracker231355_
+								coverAll:
+									{123 to: 126}
+								byLiteralOrPseudoVariable: self) ]
+					thatSends: #hasAccount:
+					to: receiver1 ] value ]]
+		thatSends: #anySatisfy:
+		to: receiver2 ] value.
+	#_coverageTracker231355_
+		coverAll:
+			{130 to: 136}
+		evaluating: [
+			receiver6 ifTrue: [
+				[ | receiver5 |
+				receiver5 _ #_coverageTracker231355_
+					coverAll:
+						{139 to: 142}
+					byLiteralOrPseudoVariable: self.
+				#_coverageTracker231355_
+					coverAll:
+						{144 to: 149}
+					evaluating: [
+						receiver5 error:
+							[ | receiver4 |
+							receiver4 _ [ | receiver3 |
+							receiver3 _ #_coverageTracker231355_
+								coverAll:
+									{151 to: 154}
+								byLiteralOrPseudoVariable: self.
+							#_coverageTracker231355_
+								coverAll:
+									{156 to: 160}
+								evaluating: [ receiver3 class ]
+								thatSends: #class
+								to: receiver3 ] value.
+							#_coverageTracker231355_
+								coverAll:
+									{162 to: 194}
+								evaluating: [ receiver4 duplicatedAccountErrorDescription ]
+								thatSends: #duplicatedAccountErrorDescription
+								to: receiver4 ] value ]
+					thatSends: #error:
+					to: receiver5 ] value ]]
+		thatSends: #ifTrue:
+		to: receiver6 ] value.! !
+!Behavior method!
+canAdd: anAccount
+	#_coverageTracker231423_ markAsExecuted.
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker231423_
+		cover: (21 to: 29)
+		declaredAt: (9 to: 17)
+		by: anAccount.
+	#_coverageTracker231423_
+		coverAll:
+			{31 to: 72}
+		evaluating: [
+			receiver2 canBeAddedToPortfolioWithRecursiveParents:
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker231423_
+					coverAll:
+						{74 to: 77}
+					byLiteralOrPseudoVariable: self.
+				#_coverageTracker231423_
+					coverAll:
+						{79 to: 94}
+					evaluating: [ receiver1 recursiveParents ]
+					thatSends: #recursiveParents
+					to: receiver1 ] value ]
+		thatSends: #canBeAddedToPortfolioWithRecursiveParents:
+		to: receiver2 ] value.! !
+!Behavior method!
+addToParents: aNewParent
+	#_coverageTracker231470_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker231470_
+		cover: (28 to: 34)
+		declaredAt: (28 to: 34)
+		by: parents.
+	#_coverageTracker231470_
+		coverAll:
+			{36 to: 39}
+		evaluating: [
+			receiver1 add:
+				(#_coverageTracker231470_
+					cover: (41 to: 50)
+					declaredAt: (15 to: 24)
+					by: aNewParent) ]
+		thatSends: #add:
+		to: receiver1 ] value.! !
+!Behavior method!
+effectOnBalance: aBalance
+	#_coverageTracker231522_ markAsExecuted.
+	^ [ | receiver3 |
+	receiver3 _ #_coverageTracker231522_
+		cover: (31 to: 38)
+		declaredAt: (18 to: 25)
+		by: aBalance.
+	#_coverageTracker231522_
+		coverAll:
+			{40 to: 40}
+		evaluating: [
+			receiver3 +
+				[ | receiver2 |
+				receiver2 _ [ | receiver1 |
+				receiver1 _ #_coverageTracker231522_
+					coverAll:
+						{42 to: 45}
+					byLiteralOrPseudoVariable: self.
+				#_coverageTracker231522_
+					coverAll:
+						{47 to: 51}
+					evaluating: [ receiver1 value ]
+					thatSends: #value
+					to: receiver1 ] value.
+				#_coverageTracker231522_
+					coverAll:
+						{53 to: 59}
+					evaluating: [ receiver2 negated ]
+					thatSends: #negated
+					to: receiver2 ] value ]
+		thatSends: #+
+		to: receiver3 ] value.! !
+!Behavior method!
+hasRegistered: aTransaction
+	#_coverageTracker231559_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ #_coverageTracker231559_
+		cover: (35 to: 42)
+		declaredAt: (35 to: 42)
+		by: accounts.
+	#_coverageTracker231559_
+		coverAll:
+			{44 to: 54}
+		evaluating: [
+			receiver2 anySatisfy: [ :anAccount |
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker231559_
+					cover: (68 to: 76)
+					declaredAt: (58 to: 66)
+					by: anAccount.
+				#_coverageTracker231559_
+					coverAll:
+						{78 to: 91}
+					evaluating: [
+						receiver1 hasRegistered:
+							(#_coverageTracker231559_
+								cover: (93 to: 104)
+								declaredAt: (16 to: 27)
+								by: aTransaction) ]
+					thatSends: #hasRegistered:
+					to: receiver1 ] value ]]
+		thatSends: #anySatisfy:
+		to: receiver2 ] value.! !
+!Behavior method!
+effectOnBalance: aBalance
+	#_coverageTracker231613_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ #_coverageTracker231613_
+		cover: (31 to: 38)
+		declaredAt: (18 to: 25)
+		by: aBalance.
+	#_coverageTracker231613_
+		coverAll:
+			{40 to: 40}
+		evaluating: [
+			receiver2 +
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker231613_
+					coverAll:
+						{42 to: 45}
+					byLiteralOrPseudoVariable: self.
+				#_coverageTracker231613_
+					coverAll:
+						{47 to: 51}
+					evaluating: [ receiver1 value ]
+					thatSends: #value
+					to: receiver1 ] value ]
+		thatSends: #+
+		to: receiver2 ] value.! !
+!Behavior method!
+register: aValue on: account
+	| transaction |
+	#_coverageTracker231657_ markAsExecuted.
+	#_coverageTracker231657_
+		cover: (51 to: 61)
+		declaredAt: (34 to: 44)
+		by:
+			(transaction _ [ | receiver1 |
+			receiver1 _ #_coverageTracker231657_
+				coverAll:
+					{66 to: 69}
+				byLiteralOrPseudoVariable: self.
+			#_coverageTracker231657_
+				coverAll:
+					{71 to: 74}
+				evaluating: [
+					receiver1 for:
+						(#_coverageTracker231657_
+							cover: (76 to: 81)
+							declaredAt: (11 to: 16)
+							by: aValue) ]
+				thatSends: #for:
+				to: receiver1 ] value).
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker231657_
+		cover: (85 to: 91)
+		declaredAt: (22 to: 28)
+		by: account.
+	#_coverageTracker231657_
+		coverAll:
+			{93 to: 101}
+		evaluating: [
+			receiver2 register:
+				(#_coverageTracker231657_
+					cover: (103 to: 113)
+					declaredAt: (34 to: 44)
+					by: transaction) ]
+		thatSends: #register:
+		to: receiver2 ] value.
+	^ #_coverageTracker231657_
+		cover: (122 to: 132)
+		declaredAt: (34 to: 44)
+		by: transaction.! !
+!Behavior method!
+recursiveParents
+	#_coverageTracker231714_ markAsExecuted.
+	[ | receiver3 |
+	receiver3 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker231714_
+		cover: (20 to: 26)
+		declaredAt: (20 to: 26)
+		by: parents.
+	#_coverageTracker231714_
+		coverAll:
+			{28 to: 34}
+		evaluating: [ receiver1 isEmpty ]
+		thatSends: #isEmpty
+		to: receiver1 ] value.
+	#_coverageTracker231714_
+		coverAll:
+			{36 to: 42}
+		evaluating: [ receiver3 ifTrue: [ ^ [ | receiver2 |
+				receiver2 _ #_coverageTracker231714_
+					coverAll:
+						{46 to: 62}
+					by: OrderedCollection.
+				#_coverageTracker231714_
+					coverAll:
+						{64 to: 68}
+					evaluating: [
+						receiver2 with:
+							(#_coverageTracker231714_
+								coverAll:
+									{70 to: 73}
+								byLiteralOrPseudoVariable: self) ]
+					thatSends: #with:
+					to: receiver2 ] value ]]
+		thatSends: #ifTrue:
+		to: receiver3 ] value.
+	^ [ | receiver7 |
+	receiver7 _ #_coverageTracker231714_
+		cover: (79 to: 85)
+		declaredAt: (20 to: 26)
+		by: parents.
+	#_coverageTracker231714_
+		coverAll:
+			{87 to: 93. 117 to: 121}
+		evaluating: [
+			receiver7
+				inject:
+					[ | receiver4 |
+					receiver4 _ #_coverageTracker231714_
+						coverAll:
+							{95 to: 111}
+						by: OrderedCollection.
+					#_coverageTracker231714_
+						coverAll:
+							{113 to: 115}
+						evaluating: [ receiver4 new ]
+						thatSends: #new
+						to: receiver4 ] value
+				into: [ :recursiveParents :aParent |
+					[ | receiver6 |
+					receiver6 _ #_coverageTracker231714_
+						cover: (153 to: 168)
+						declaredAt: (125 to: 140)
+						by: recursiveParents.
+					#_coverageTracker231714_
+						coverAll:
+							{170 to: 170}
+						evaluating: [
+							receiver6 ,
+								[ | receiver5 |
+								receiver5 _ #_coverageTracker231714_
+									cover: (172 to: 178)
+									declaredAt: (143 to: 149)
+									by: aParent.
+								#_coverageTracker231714_
+									coverAll:
+										{180 to: 195}
+									evaluating: [ receiver5 recursiveParents ]
+									thatSends: #recursiveParents
+									to: receiver5 ] value ]
+						thatSends: #,
+						to: receiver6 ] value ]]
+		thatSends: #inject:into:
+		to: receiver7 ] value.! !
+!Behavior method!
+addAllTransactionsTo: transactionsCollection
+	#_coverageTracker231780_ markAsExecuted.
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker231780_
+		cover: (49 to: 56)
+		declaredAt: (49 to: 56)
+		by: accounts.
+	#_coverageTracker231780_
+		coverAll:
+			{58 to: 60}
+		evaluating: [
+			receiver2 do: [ :subAccount |
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker231780_
+					cover: (77 to: 86)
+					declaredAt: (64 to: 73)
+					by: subAccount.
+				#_coverageTracker231780_
+					coverAll:
+						{88 to: 108}
+					evaluating: [
+						receiver1 addAllTransactionsTo:
+							(#_coverageTracker231780_
+								cover: (110 to: 131)
+								declaredAt: (23 to: 44)
+								by: transactionsCollection) ]
+					thatSends: #addAllTransactionsTo:
+					to: receiver1 ] value ]]
+		thatSends: #do:
+		to: receiver2 ] value.! !
+!Behavior method!
+canBeAddedToPortfolioWithRecursiveParents: recursiveParents
+	#_coverageTracker231833_ markAsExecuted.
+	[ | receiver6 |
+	receiver6 _ [ | receiver2 |
+	receiver2 _ #_coverageTracker231833_
+		cover: (64 to: 79)
+		declaredAt: (44 to: 59)
+		by: recursiveParents.
+	#_coverageTracker231833_
+		coverAll:
+			{81 to: 91}
+		evaluating: [
+			receiver2 anySatisfy: [ :parent |
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker231833_
+					cover: (104 to: 109)
+					declaredAt: (95 to: 100)
+					by: parent.
+				#_coverageTracker231833_
+					coverAll:
+						{111 to: 121}
+					evaluating: [
+						receiver1 hasAccount:
+							(#_coverageTracker231833_
+								coverAll:
+									{123 to: 126}
+								byLiteralOrPseudoVariable: self) ]
+					thatSends: #hasAccount:
+					to: receiver1 ] value ]]
+		thatSends: #anySatisfy:
+		to: receiver2 ] value.
+	#_coverageTracker231833_
+		coverAll:
+			{130 to: 136}
+		evaluating: [
+			receiver6 ifTrue: [
+				[ | receiver5 |
+				receiver5 _ #_coverageTracker231833_
+					coverAll:
+						{139 to: 142}
+					byLiteralOrPseudoVariable: self.
+				#_coverageTracker231833_
+					coverAll:
+						{144 to: 149}
+					evaluating: [
+						receiver5 error:
+							[ | receiver4 |
+							receiver4 _ [ | receiver3 |
+							receiver3 _ #_coverageTracker231833_
+								coverAll:
+									{151 to: 154}
+								byLiteralOrPseudoVariable: self.
+							#_coverageTracker231833_
+								coverAll:
+									{156 to: 160}
+								evaluating: [ receiver3 class ]
+								thatSends: #class
+								to: receiver3 ] value.
+							#_coverageTracker231833_
+								coverAll:
+									{162 to: 194}
+								evaluating: [ receiver4 duplicatedAccountErrorDescription ]
+								thatSends: #duplicatedAccountErrorDescription
+								to: receiver4 ] value ]
+					thatSends: #error:
+					to: receiver5 ] value ]]
+		thatSends: #ifTrue:
+		to: receiver6 ] value.
+	[ | receiver8 |
+	receiver8 _ #_coverageTracker231833_
+		cover: (199 to: 206)
+		declaredAt: (199 to: 206)
+		by: accounts.
+	#_coverageTracker231833_
+		coverAll:
+			{208 to: 210}
+		evaluating: [
+			receiver8 do: [ :subAccount |
+				[ | receiver7 |
+				receiver7 _ #_coverageTracker231833_
+					cover: (227 to: 236)
+					declaredAt: (214 to: 223)
+					by: subAccount.
+				#_coverageTracker231833_
+					coverAll:
+						{238 to: 279}
+					evaluating: [
+						receiver7 canBeAddedToPortfolioWithRecursiveParents:
+							(#_coverageTracker231833_
+								cover: (281 to: 296)
+								declaredAt: (44 to: 59)
+								by: recursiveParents) ]
+					thatSends: #canBeAddedToPortfolioWithRecursiveParents:
+					to: receiver7 ] value ]]
+		thatSends: #do:
+		to: receiver8 ] value.! !
+!Behavior method!
+initializeFor: aValue
+	#_coverageTracker231902_ markAsExecuted.
+	#_coverageTracker231902_
+		cover: (25 to: 29)
+		declaredAt: (25 to: 29)
+		by:
+			(value _ #_coverageTracker231902_
+				cover: (34 to: 39)
+				declaredAt: (16 to: 21)
+				by: aValue).! !
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'LMR 5/22/2023 16:01:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasBalanceEqualsToThatAccount stamp: 'LMR 5/22/2023 16:01:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasBalanceEqualsToThose stamp: 'LMR 5/22/2023 16:01:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithMultipleAccountsAndPortfolioHasBalanceEqualsToThose stamp: 'LMR 5/22/2023 16:01:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test05EmptyPortfolioHasNoTransactionRegistered stamp: 'LMR 5/22/2023 16:01:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithMultipleTransactionsOnAccountHasThemRegistered stamp: 'LMR 5/22/2023 16:01:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemRegistered stamp: 'LMR 5/22/2023 16:01:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransaction stamp: 'LMR 5/22/2023 16:01:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioWithMultipleTransactionsOnAccountHasThemInTransactions stamp: 'LMR 5/22/2023 16:01:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemInTransactions stamp: 'LMR 5/22/2023 16:01:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test11CantAddPortfolioToItself stamp: 'LMR 5/22/2023 16:01:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test12CantAddAnAccountToAPortfolioMoreThanOnce stamp: 'LMR 5/22/2023 16:01:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test13CantAddAnAccountToAPortfolioAlreadyContainedInSubAccounts stamp: 'LMR 5/22/2023 16:01:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test14CantAddAPortfolioToAnotherThatSharesASubAccount stamp: 'LMR 5/22/2023 16:01:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test15CantAddAPortfolioToAnotherThatSharesSubAccountsWithParents stamp: 'LMR 5/22/2023 16:01:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test16CantAddAPortfolioToAnotherThatSharesSubAccountsWithRecursiveParents stamp: 'LMR 5/22/2023 16:01:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'LMR 5/22/2023 16:01:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'LMR 5/22/2023 16:01:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'LMR 5/22/2023 16:01:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'LMR 5/22/2023 16:01:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'LMR 5/22/2023 16:01:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'LMR 5/22/2023 16:01:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'LMR 5/22/2023 16:01:45'!
+PASSED!
+!Portfolio methodsFor: 'transactions' stamp: 'LMR 5/22/2023 16:03:26' prior: 50625814 overrides: 50625541!
+transactions
+	
+	| transactionsCollection |
+	transactionsCollection := OrderedCollection new.
+	self addAllTransactionsTo: transactionsCollection.
+	^transactionsCollection! !
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'LMR 5/22/2023 16:03:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasBalanceEqualsToThatAccount stamp: 'LMR 5/22/2023 16:03:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasBalanceEqualsToThose stamp: 'LMR 5/22/2023 16:03:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithMultipleAccountsAndPortfolioHasBalanceEqualsToThose stamp: 'LMR 5/22/2023 16:03:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test05EmptyPortfolioHasNoTransactionRegistered stamp: 'LMR 5/22/2023 16:03:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithMultipleTransactionsOnAccountHasThemRegistered stamp: 'LMR 5/22/2023 16:03:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemRegistered stamp: 'LMR 5/22/2023 16:03:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransaction stamp: 'LMR 5/22/2023 16:03:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioWithMultipleTransactionsOnAccountHasThemInTransactions stamp: 'LMR 5/22/2023 16:03:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemInTransactions stamp: 'LMR 5/22/2023 16:03:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test11CantAddPortfolioToItself stamp: 'LMR 5/22/2023 16:03:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test12CantAddAnAccountToAPortfolioMoreThanOnce stamp: 'LMR 5/22/2023 16:03:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test13CantAddAnAccountToAPortfolioAlreadyContainedInSubAccounts stamp: 'LMR 5/22/2023 16:03:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test14CantAddAPortfolioToAnotherThatSharesASubAccount stamp: 'LMR 5/22/2023 16:03:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test15CantAddAPortfolioToAnotherThatSharesSubAccountsWithParents stamp: 'LMR 5/22/2023 16:03:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test16CantAddAPortfolioToAnotherThatSharesSubAccountsWithRecursiveParents stamp: 'LMR 5/22/2023 16:03:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'LMR 5/22/2023 16:03:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'LMR 5/22/2023 16:03:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'LMR 5/22/2023 16:03:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'LMR 5/22/2023 16:03:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'LMR 5/22/2023 16:03:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'LMR 5/22/2023 16:03:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'LMR 5/22/2023 16:03:39'!
+PASSED!
+!Behavior method!
+transactions
+	| transactionsCollection |
+	#_coverageTracker350323_ markAsExecuted.
+	#_coverageTracker350323_
+		cover: (45 to: 66)
+		declaredAt: (19 to: 40)
+		by:
+			(transactionsCollection _ [ | receiver1 |
+			receiver1 _ #_coverageTracker350323_
+				coverAll:
+					{71 to: 87}
+				by: OrderedCollection.
+			#_coverageTracker350323_
+				coverAll:
+					{89 to: 91}
+				evaluating: [ receiver1 new ]
+				thatSends: #new
+				to: receiver1 ] value).
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker350323_
+		coverAll:
+			{95 to: 98}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker350323_
+		coverAll:
+			{100 to: 120}
+		evaluating: [
+			receiver2 addAllTransactionsTo:
+				(#_coverageTracker350323_
+					cover: (122 to: 143)
+					declaredAt: (19 to: 40)
+					by: transactionsCollection) ]
+		thatSends: #addAllTransactionsTo:
+		to: receiver2 ] value.
+	^ #_coverageTracker350323_
+		cover: (148 to: 169)
+		declaredAt: (19 to: 40)
+		by: transactionsCollection.! !
+!Behavior method!
+addAllTransactionsTo: transactionsCollection
+	#_coverageTracker350385_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker350385_
+		cover: (49 to: 70)
+		declaredAt: (23 to: 44)
+		by: transactionsCollection.
+	#_coverageTracker350385_
+		coverAll:
+			{72 to: 78}
+		evaluating: [
+			receiver1 addAll:
+				(#_coverageTracker350385_
+					cover: (80 to: 91)
+					declaredAt: (80 to: 91)
+					by: transactions) ]
+		thatSends: #addAll:
+		to: receiver1 ] value.! !
+!Behavior method!
+new
+	#_coverageTracker350430_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker350430_
+		coverAll:
+			{9 to: 12}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker350430_
+		coverAll:
+			{14 to: 21}
+		evaluating: [ receiver1 basicNew ]
+		thatSends: #basicNew
+		to: receiver1 ] value.
+	#_coverageTracker350430_
+		coverAll:
+			{23 to: 32}
+		evaluating: [ receiver2 initialize ]
+		thatSends: #initialize
+		to: receiver2 ] value.! !
+!Behavior method!
+initialize
+	#_coverageTracker350477_ markAsExecuted.
+	#_coverageTracker350477_
+		cover: (15 to: 22)
+		declaredAt: (15 to: 22)
+		by:
+			(accounts _ [ | receiver1 |
+			receiver1 _ #_coverageTracker350477_
+				coverAll:
+					{27 to: 43}
+				by: OrderedCollection.
+			#_coverageTracker350477_
+				coverAll:
+					{45 to: 47}
+				evaluating: [ receiver1 new ]
+				thatSends: #new
+				to: receiver1 ] value).
+	#_coverageTracker350477_
+		cover: (51 to: 57)
+		declaredAt: (51 to: 57)
+		by:
+			(parents _ [ | receiver2 |
+			receiver2 _ #_coverageTracker350477_
+				coverAll:
+					{62 to: 78}
+				by: OrderedCollection.
+			#_coverageTracker350477_
+				coverAll:
+					{80 to: 82}
+				evaluating: [ receiver2 new ]
+				thatSends: #new
+				to: receiver2 ] value).! !
+!Behavior method!
+duplicatedAccountErrorDescription
+	#_coverageTracker350537_ markAsExecuted.
+	^ #_coverageTracker350537_
+		coverAll:
+			{39 to: 75}
+		byLiteralOrPseudoVariable: 'This account is already registered!!'.! !
+!Behavior method!
+initializeFor: aValue
+	#_coverageTracker350592_ markAsExecuted.
+	#_coverageTracker350592_
+		cover: (25 to: 29)
+		declaredAt: (25 to: 29)
+		by:
+			(value _ #_coverageTracker350592_
+				cover: (34 to: 39)
+				declaredAt: (16 to: 21)
+				by: aValue).! !
+!Behavior method!
+register: aTransaction
+	#_coverageTracker350631_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker350631_
+		cover: (26 to: 37)
+		declaredAt: (26 to: 37)
+		by: transactions.
+	#_coverageTracker350631_
+		coverAll:
+			{39 to: 42}
+		evaluating: [
+			receiver1 add:
+				(#_coverageTracker350631_
+					cover: (44 to: 55)
+					declaredAt: (11 to: 22)
+					by: aTransaction) ]
+		thatSends: #add:
+		to: receiver1 ] value.! !
+!Behavior method!
+for: aValue
+	#_coverageTracker350681_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker350681_
+		coverAll:
+			{17 to: 20}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker350681_
+		coverAll:
+			{22 to: 24}
+		evaluating: [ receiver1 new ]
+		thatSends: #new
+		to: receiver1 ] value.
+	#_coverageTracker350681_
+		coverAll:
+			{26 to: 39}
+		evaluating: [
+			receiver2 initializeFor:
+				(#_coverageTracker350681_
+					cover: (41 to: 46)
+					declaredAt: (6 to: 11)
+					by: aValue) ]
+		thatSends: #initializeFor:
+		to: receiver2 ] value.! !
+!Behavior method!
+hasRegistered: aTransaction
+	#_coverageTracker350739_ markAsExecuted.
+	^ [ | receiver1 |
+	receiver1 _ #_coverageTracker350739_
+		cover: (33 to: 44)
+		declaredAt: (33 to: 44)
+		by: transactions.
+	#_coverageTracker350739_
+		coverAll:
+			{46 to: 54}
+		evaluating: [
+			receiver1 includes:
+				(#_coverageTracker350739_
+					cover: (56 to: 67)
+					declaredAt: (16 to: 27)
+					by: aTransaction) ]
+		thatSends: #includes:
+		to: receiver1 ] value.! !
+!Behavior method!
+value
+	#_coverageTracker350790_ markAsExecuted.
+	^ #_coverageTracker350790_
+		cover: (11 to: 15)
+		declaredAt: (11 to: 15)
+		by: value.! !
+!Behavior method!
+add: anAccount
+	#_coverageTracker350849_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker350849_
+		coverAll:
+			{20 to: 23}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker350849_
+		coverAll:
+			{25 to: 31}
+		evaluating: [
+			receiver1 canAdd:
+				(#_coverageTracker350849_
+					cover: (33 to: 41)
+					declaredAt: (6 to: 14)
+					by: anAccount) ]
+		thatSends: #canAdd:
+		to: receiver1 ] value.
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker350849_
+		cover: (47 to: 54)
+		declaredAt: (47 to: 54)
+		by: accounts.
+	#_coverageTracker350849_
+		coverAll:
+			{56 to: 59}
+		evaluating: [
+			receiver2 add:
+				(#_coverageTracker350849_
+					cover: (61 to: 69)
+					declaredAt: (6 to: 14)
+					by: anAccount) ]
+		thatSends: #add:
+		to: receiver2 ] value.
+	[ | receiver3 |
+	receiver3 _ #_coverageTracker350849_
+		cover: (73 to: 81)
+		declaredAt: (6 to: 14)
+		by: anAccount.
+	#_coverageTracker350849_
+		coverAll:
+			{83 to: 95}
+		evaluating: [
+			receiver3 addToParents:
+				(#_coverageTracker350849_
+					coverAll:
+						{97 to: 100}
+					byLiteralOrPseudoVariable: self) ]
+		thatSends: #addToParents:
+		to: receiver3 ] value.! !
+!Behavior method!
+initialize
+	#_coverageTracker350896_ markAsExecuted.
+	#_coverageTracker350896_
+		cover: (14 to: 25)
+		declaredAt: (14 to: 25)
+		by:
+			(transactions _ [ | receiver1 |
+			receiver1 _ #_coverageTracker350896_
+				coverAll:
+					{30 to: 46}
+				by: OrderedCollection.
+			#_coverageTracker350896_
+				coverAll:
+					{48 to: 50}
+				evaluating: [ receiver1 new ]
+				thatSends: #new
+				to: receiver1 ] value).
+	#_coverageTracker350896_
+		cover: (54 to: 60)
+		declaredAt: (54 to: 60)
+		by:
+			(parents _ [ | receiver2 |
+			receiver2 _ #_coverageTracker350896_
+				coverAll:
+					{65 to: 81}
+				by: OrderedCollection.
+			#_coverageTracker350896_
+				coverAll:
+					{83 to: 85}
+				evaluating: [ receiver2 new ]
+				thatSends: #new
+				to: receiver2 ] value).! !
+!Behavior method!
+balance
+	| balance |
+	#_coverageTracker350946_ markAsExecuted.
+	#_coverageTracker350946_
+		cover: (23 to: 29)
+		declaredAt: (13 to: 19)
+		by:
+			(balance _ #_coverageTracker350946_
+				coverAll:
+					{34 to: 34}
+				byLiteralOrPseudoVariable: 0).
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker350946_
+		cover: (38 to: 49)
+		declaredAt: (38 to: 49)
+		by: transactions.
+	#_coverageTracker350946_
+		coverAll:
+			{51 to: 53}
+		evaluating: [
+			receiver2 do: [ :aTransaction |
+				#_coverageTracker350946_
+					cover: (112 to: 118)
+					declaredAt: (13 to: 19)
+					by:
+						(balance _ [ | receiver1 |
+						receiver1 _ #_coverageTracker350946_
+							cover: (82 to: 93)
+							declaredAt: (57 to: 68)
+							by: aTransaction.
+						#_coverageTracker350946_
+							coverAll:
+								{95 to: 110}
+							evaluating: [
+								receiver1 effectOnBalance:
+									(#_coverageTracker350946_
+										cover: (71 to: 77)
+										declaredAt: (13 to: 19)
+										by: balance) ]
+							thatSends: #effectOnBalance:
+							to: receiver1 ] value) ]]
+		thatSends: #do:
+		to: receiver2 ] value.
+	^ #_coverageTracker350946_
+		cover: (124 to: 130)
+		declaredAt: (13 to: 19)
+		by: balance.! !
+!Behavior method!
+balance
+	#_coverageTracker350981_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ #_coverageTracker350981_
+		cover: (14 to: 21)
+		declaredAt: (14 to: 21)
+		by: accounts.
+	#_coverageTracker350981_
+		coverAll:
+			{23 to: 26. 60 to: 67}
+		evaluating: [
+			receiver2
+				sum: [ :anAccount |
+					[ | receiver1 |
+					receiver1 _ #_coverageTracker350981_
+						cover: (41 to: 49)
+						declaredAt: (30 to: 38)
+						by: anAccount.
+					#_coverageTracker350981_
+						coverAll:
+							{51 to: 57}
+						evaluating: [ receiver1 balance ]
+						thatSends: #balance
+						to: receiver1 ] value ]
+				ifEmpty: [
+					#_coverageTracker350981_
+						coverAll:
+							{70 to: 70}
+						byLiteralOrPseudoVariable: 0 ]]
+		thatSends: #sum:ifEmpty:
+		to: receiver2 ] value.! !
+!Behavior method!
+for: aValue
+	#_coverageTracker351035_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker351035_
+		coverAll:
+			{17 to: 20}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker351035_
+		coverAll:
+			{22 to: 24}
+		evaluating: [ receiver1 new ]
+		thatSends: #new
+		to: receiver1 ] value.
+	#_coverageTracker351035_
+		coverAll:
+			{26 to: 39}
+		evaluating: [
+			receiver2 initializeFor:
+				(#_coverageTracker351035_
+					cover: (41 to: 46)
+					declaredAt: (6 to: 11)
+					by: aValue) ]
+		thatSends: #initializeFor:
+		to: receiver2 ] value.! !
+!Behavior method!
+hasAccount: anAccount
+	#_coverageTracker351071_ markAsExecuted.
+	^ [ | receiver4 |
+	receiver4 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker351071_
+		coverAll:
+			{28 to: 31}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker351071_
+		coverAll:
+			{33 to: 33}
+		evaluating: [
+			receiver1 =
+				(#_coverageTracker351071_
+					cover: (35 to: 43)
+					declaredAt: (13 to: 21)
+					by: anAccount) ]
+		thatSends: #=
+		to: receiver1 ] value.
+	#_coverageTracker351071_
+		coverAll:
+			{45 to: 47}
+		evaluating: [
+			receiver4 or: [
+				[ | receiver3 |
+				receiver3 _ #_coverageTracker351071_
+					cover: (50 to: 57)
+					declaredAt: (50 to: 57)
+					by: accounts.
+				#_coverageTracker351071_
+					coverAll:
+						{59 to: 69}
+					evaluating: [
+						receiver3 anySatisfy: [ :subAccount |
+							[ | receiver2 |
+							receiver2 _ #_coverageTracker351071_
+								cover: (86 to: 95)
+								declaredAt: (73 to: 82)
+								by: subAccount.
+							#_coverageTracker351071_
+								coverAll:
+									{97 to: 107}
+								evaluating: [
+									receiver2 hasAccount:
+										(#_coverageTracker351071_
+											cover: (109 to: 117)
+											declaredAt: (13 to: 21)
+											by: anAccount) ]
+								thatSends: #hasAccount:
+								to: receiver2 ] value ]]
+					thatSends: #anySatisfy:
+					to: receiver3 ] value ]]
+		thatSends: #or:
+		to: receiver4 ] value.! !
+!Behavior method!
+value
+	#_coverageTracker351125_ markAsExecuted.
+	^ #_coverageTracker351125_
+		cover: (11 to: 15)
+		declaredAt: (11 to: 15)
+		by: value.! !
+!Behavior method!
+transactions
+	#_coverageTracker351165_ markAsExecuted.
+	^ [ | receiver1 |
+	receiver1 _ #_coverageTracker351165_
+		cover: (19 to: 30)
+		declaredAt: (19 to: 30)
+		by: transactions.
+	#_coverageTracker351165_
+		coverAll:
+			{32 to: 35}
+		evaluating: [ receiver1 copy ]
+		thatSends: #copy
+		to: receiver1 ] value.! !
+!Behavior method!
+hasAccount: anAccount
+	#_coverageTracker351202_ markAsExecuted.
+	^ [ | receiver1 |
+	receiver1 _ #_coverageTracker351202_
+		coverAll:
+			{28 to: 31}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker351202_
+		coverAll:
+			{33 to: 33}
+		evaluating: [
+			receiver1 =
+				(#_coverageTracker351202_
+					cover: (35 to: 43)
+					declaredAt: (13 to: 21)
+					by: anAccount) ]
+		thatSends: #=
+		to: receiver1 ] value.! !
+!Behavior method!
+canBeAddedToPortfolioWithRecursiveParents: recursiveParents
+	#_coverageTracker351256_ markAsExecuted.
+	[ | receiver6 |
+	receiver6 _ [ | receiver2 |
+	receiver2 _ #_coverageTracker351256_
+		cover: (64 to: 79)
+		declaredAt: (44 to: 59)
+		by: recursiveParents.
+	#_coverageTracker351256_
+		coverAll:
+			{81 to: 91}
+		evaluating: [
+			receiver2 anySatisfy: [ :parent |
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker351256_
+					cover: (104 to: 109)
+					declaredAt: (95 to: 100)
+					by: parent.
+				#_coverageTracker351256_
+					coverAll:
+						{111 to: 121}
+					evaluating: [
+						receiver1 hasAccount:
+							(#_coverageTracker351256_
+								coverAll:
+									{123 to: 126}
+								byLiteralOrPseudoVariable: self) ]
+					thatSends: #hasAccount:
+					to: receiver1 ] value ]]
+		thatSends: #anySatisfy:
+		to: receiver2 ] value.
+	#_coverageTracker351256_
+		coverAll:
+			{130 to: 136}
+		evaluating: [
+			receiver6 ifTrue: [
+				[ | receiver5 |
+				receiver5 _ #_coverageTracker351256_
+					coverAll:
+						{139 to: 142}
+					byLiteralOrPseudoVariable: self.
+				#_coverageTracker351256_
+					coverAll:
+						{144 to: 149}
+					evaluating: [
+						receiver5 error:
+							[ | receiver4 |
+							receiver4 _ [ | receiver3 |
+							receiver3 _ #_coverageTracker351256_
+								coverAll:
+									{151 to: 154}
+								byLiteralOrPseudoVariable: self.
+							#_coverageTracker351256_
+								coverAll:
+									{156 to: 160}
+								evaluating: [ receiver3 class ]
+								thatSends: #class
+								to: receiver3 ] value.
+							#_coverageTracker351256_
+								coverAll:
+									{162 to: 194}
+								evaluating: [ receiver4 duplicatedAccountErrorDescription ]
+								thatSends: #duplicatedAccountErrorDescription
+								to: receiver4 ] value ]
+					thatSends: #error:
+					to: receiver5 ] value ]]
+		thatSends: #ifTrue:
+		to: receiver6 ] value.! !
+!Behavior method!
+canAdd: anAccount
+	#_coverageTracker351302_ markAsExecuted.
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker351302_
+		cover: (21 to: 29)
+		declaredAt: (9 to: 17)
+		by: anAccount.
+	#_coverageTracker351302_
+		coverAll:
+			{31 to: 72}
+		evaluating: [
+			receiver2 canBeAddedToPortfolioWithRecursiveParents:
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker351302_
+					coverAll:
+						{74 to: 77}
+					byLiteralOrPseudoVariable: self.
+				#_coverageTracker351302_
+					coverAll:
+						{79 to: 94}
+					evaluating: [ receiver1 recursiveParents ]
+					thatSends: #recursiveParents
+					to: receiver1 ] value ]
+		thatSends: #canBeAddedToPortfolioWithRecursiveParents:
+		to: receiver2 ] value.! !
+!Behavior method!
+addToParents: aNewParent
+	#_coverageTracker351356_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker351356_
+		cover: (28 to: 34)
+		declaredAt: (28 to: 34)
+		by: parents.
+	#_coverageTracker351356_
+		coverAll:
+			{36 to: 39}
+		evaluating: [
+			receiver1 add:
+				(#_coverageTracker351356_
+					cover: (41 to: 50)
+					declaredAt: (15 to: 24)
+					by: aNewParent) ]
+		thatSends: #add:
+		to: receiver1 ] value.! !
+!Behavior method!
+effectOnBalance: aBalance
+	#_coverageTracker351400_ markAsExecuted.
+	^ [ | receiver3 |
+	receiver3 _ #_coverageTracker351400_
+		cover: (31 to: 38)
+		declaredAt: (18 to: 25)
+		by: aBalance.
+	#_coverageTracker351400_
+		coverAll:
+			{40 to: 40}
+		evaluating: [
+			receiver3 +
+				[ | receiver2 |
+				receiver2 _ [ | receiver1 |
+				receiver1 _ #_coverageTracker351400_
+					coverAll:
+						{42 to: 45}
+					byLiteralOrPseudoVariable: self.
+				#_coverageTracker351400_
+					coverAll:
+						{47 to: 51}
+					evaluating: [ receiver1 value ]
+					thatSends: #value
+					to: receiver1 ] value.
+				#_coverageTracker351400_
+					coverAll:
+						{53 to: 59}
+					evaluating: [ receiver2 negated ]
+					thatSends: #negated
+					to: receiver2 ] value ]
+		thatSends: #+
+		to: receiver3 ] value.! !
+!Behavior method!
+hasRegistered: aTransaction
+	#_coverageTracker351450_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ #_coverageTracker351450_
+		cover: (35 to: 42)
+		declaredAt: (35 to: 42)
+		by: accounts.
+	#_coverageTracker351450_
+		coverAll:
+			{44 to: 54}
+		evaluating: [
+			receiver2 anySatisfy: [ :anAccount |
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker351450_
+					cover: (68 to: 76)
+					declaredAt: (58 to: 66)
+					by: anAccount.
+				#_coverageTracker351450_
+					coverAll:
+						{78 to: 91}
+					evaluating: [
+						receiver1 hasRegistered:
+							(#_coverageTracker351450_
+								cover: (93 to: 104)
+								declaredAt: (16 to: 27)
+								by: aTransaction) ]
+					thatSends: #hasRegistered:
+					to: receiver1 ] value ]]
+		thatSends: #anySatisfy:
+		to: receiver2 ] value.! !
+!Behavior method!
+effectOnBalance: aBalance
+	#_coverageTracker351500_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ #_coverageTracker351500_
+		cover: (31 to: 38)
+		declaredAt: (18 to: 25)
+		by: aBalance.
+	#_coverageTracker351500_
+		coverAll:
+			{40 to: 40}
+		evaluating: [
+			receiver2 +
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker351500_
+					coverAll:
+						{42 to: 45}
+					byLiteralOrPseudoVariable: self.
+				#_coverageTracker351500_
+					coverAll:
+						{47 to: 51}
+					evaluating: [ receiver1 value ]
+					thatSends: #value
+					to: receiver1 ] value ]
+		thatSends: #+
+		to: receiver2 ] value.! !
+!Behavior method!
+register: aValue on: account
+	| transaction |
+	#_coverageTracker351543_ markAsExecuted.
+	#_coverageTracker351543_
+		cover: (51 to: 61)
+		declaredAt: (34 to: 44)
+		by:
+			(transaction _ [ | receiver1 |
+			receiver1 _ #_coverageTracker351543_
+				coverAll:
+					{66 to: 69}
+				byLiteralOrPseudoVariable: self.
+			#_coverageTracker351543_
+				coverAll:
+					{71 to: 74}
+				evaluating: [
+					receiver1 for:
+						(#_coverageTracker351543_
+							cover: (76 to: 81)
+							declaredAt: (11 to: 16)
+							by: aValue) ]
+				thatSends: #for:
+				to: receiver1 ] value).
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker351543_
+		cover: (85 to: 91)
+		declaredAt: (22 to: 28)
+		by: account.
+	#_coverageTracker351543_
+		coverAll:
+			{93 to: 101}
+		evaluating: [
+			receiver2 register:
+				(#_coverageTracker351543_
+					cover: (103 to: 113)
+					declaredAt: (34 to: 44)
+					by: transaction) ]
+		thatSends: #register:
+		to: receiver2 ] value.
+	^ #_coverageTracker351543_
+		cover: (122 to: 132)
+		declaredAt: (34 to: 44)
+		by: transaction.! !
+!Behavior method!
+recursiveParents
+	#_coverageTracker351591_ markAsExecuted.
+	[ | receiver3 |
+	receiver3 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker351591_
+		cover: (20 to: 26)
+		declaredAt: (20 to: 26)
+		by: parents.
+	#_coverageTracker351591_
+		coverAll:
+			{28 to: 34}
+		evaluating: [ receiver1 isEmpty ]
+		thatSends: #isEmpty
+		to: receiver1 ] value.
+	#_coverageTracker351591_
+		coverAll:
+			{36 to: 42}
+		evaluating: [ receiver3 ifTrue: [ ^ [ | receiver2 |
+				receiver2 _ #_coverageTracker351591_
+					coverAll:
+						{46 to: 62}
+					by: OrderedCollection.
+				#_coverageTracker351591_
+					coverAll:
+						{64 to: 68}
+					evaluating: [
+						receiver2 with:
+							(#_coverageTracker351591_
+								coverAll:
+									{70 to: 73}
+								byLiteralOrPseudoVariable: self) ]
+					thatSends: #with:
+					to: receiver2 ] value ]]
+		thatSends: #ifTrue:
+		to: receiver3 ] value.
+	^ [ | receiver7 |
+	receiver7 _ #_coverageTracker351591_
+		cover: (79 to: 85)
+		declaredAt: (20 to: 26)
+		by: parents.
+	#_coverageTracker351591_
+		coverAll:
+			{87 to: 93. 117 to: 121}
+		evaluating: [
+			receiver7
+				inject:
+					[ | receiver4 |
+					receiver4 _ #_coverageTracker351591_
+						coverAll:
+							{95 to: 111}
+						by: OrderedCollection.
+					#_coverageTracker351591_
+						coverAll:
+							{113 to: 115}
+						evaluating: [ receiver4 new ]
+						thatSends: #new
+						to: receiver4 ] value
+				into: [ :recursiveParents :aParent |
+					[ | receiver6 |
+					receiver6 _ #_coverageTracker351591_
+						cover: (153 to: 168)
+						declaredAt: (125 to: 140)
+						by: recursiveParents.
+					#_coverageTracker351591_
+						coverAll:
+							{170 to: 170}
+						evaluating: [
+							receiver6 ,
+								[ | receiver5 |
+								receiver5 _ #_coverageTracker351591_
+									cover: (172 to: 178)
+									declaredAt: (143 to: 149)
+									by: aParent.
+								#_coverageTracker351591_
+									coverAll:
+										{180 to: 195}
+									evaluating: [ receiver5 recursiveParents ]
+									thatSends: #recursiveParents
+									to: receiver5 ] value ]
+						thatSends: #,
+						to: receiver6 ] value ]]
+		thatSends: #inject:into:
+		to: receiver7 ] value.! !
+!Behavior method!
+addAllTransactionsTo: transactionsCollection
+	#_coverageTracker351645_ markAsExecuted.
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker351645_
+		cover: (49 to: 56)
+		declaredAt: (49 to: 56)
+		by: accounts.
+	#_coverageTracker351645_
+		coverAll:
+			{58 to: 60}
+		evaluating: [
+			receiver2 do: [ :subAccount |
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker351645_
+					cover: (77 to: 86)
+					declaredAt: (64 to: 73)
+					by: subAccount.
+				#_coverageTracker351645_
+					coverAll:
+						{88 to: 108}
+					evaluating: [
+						receiver1 addAllTransactionsTo:
+							(#_coverageTracker351645_
+								cover: (110 to: 131)
+								declaredAt: (23 to: 44)
+								by: transactionsCollection) ]
+					thatSends: #addAllTransactionsTo:
+					to: receiver1 ] value ]]
+		thatSends: #do:
+		to: receiver2 ] value.! !
+!Behavior method!
+canBeAddedToPortfolioWithRecursiveParents: recursiveParents
+	#_coverageTracker351702_ markAsExecuted.
+	[ | receiver6 |
+	receiver6 _ [ | receiver2 |
+	receiver2 _ #_coverageTracker351702_
+		cover: (64 to: 79)
+		declaredAt: (44 to: 59)
+		by: recursiveParents.
+	#_coverageTracker351702_
+		coverAll:
+			{81 to: 91}
+		evaluating: [
+			receiver2 anySatisfy: [ :parent |
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker351702_
+					cover: (104 to: 109)
+					declaredAt: (95 to: 100)
+					by: parent.
+				#_coverageTracker351702_
+					coverAll:
+						{111 to: 121}
+					evaluating: [
+						receiver1 hasAccount:
+							(#_coverageTracker351702_
+								coverAll:
+									{123 to: 126}
+								byLiteralOrPseudoVariable: self) ]
+					thatSends: #hasAccount:
+					to: receiver1 ] value ]]
+		thatSends: #anySatisfy:
+		to: receiver2 ] value.
+	#_coverageTracker351702_
+		coverAll:
+			{130 to: 136}
+		evaluating: [
+			receiver6 ifTrue: [
+				[ | receiver5 |
+				receiver5 _ #_coverageTracker351702_
+					coverAll:
+						{139 to: 142}
+					byLiteralOrPseudoVariable: self.
+				#_coverageTracker351702_
+					coverAll:
+						{144 to: 149}
+					evaluating: [
+						receiver5 error:
+							[ | receiver4 |
+							receiver4 _ [ | receiver3 |
+							receiver3 _ #_coverageTracker351702_
+								coverAll:
+									{151 to: 154}
+								byLiteralOrPseudoVariable: self.
+							#_coverageTracker351702_
+								coverAll:
+									{156 to: 160}
+								evaluating: [ receiver3 class ]
+								thatSends: #class
+								to: receiver3 ] value.
+							#_coverageTracker351702_
+								coverAll:
+									{162 to: 194}
+								evaluating: [ receiver4 duplicatedAccountErrorDescription ]
+								thatSends: #duplicatedAccountErrorDescription
+								to: receiver4 ] value ]
+					thatSends: #error:
+					to: receiver5 ] value ]]
+		thatSends: #ifTrue:
+		to: receiver6 ] value.
+	[ | receiver8 |
+	receiver8 _ #_coverageTracker351702_
+		cover: (199 to: 206)
+		declaredAt: (199 to: 206)
+		by: accounts.
+	#_coverageTracker351702_
+		coverAll:
+			{208 to: 210}
+		evaluating: [
+			receiver8 do: [ :subAccount |
+				[ | receiver7 |
+				receiver7 _ #_coverageTracker351702_
+					cover: (227 to: 236)
+					declaredAt: (214 to: 223)
+					by: subAccount.
+				#_coverageTracker351702_
+					coverAll:
+						{238 to: 279}
+					evaluating: [
+						receiver7 canBeAddedToPortfolioWithRecursiveParents:
+							(#_coverageTracker351702_
+								cover: (281 to: 296)
+								declaredAt: (44 to: 59)
+								by: recursiveParents) ]
+					thatSends: #canBeAddedToPortfolioWithRecursiveParents:
+					to: receiver7 ] value ]]
+		thatSends: #do:
+		to: receiver8 ] value.! !
+!Behavior method!
+initializeFor: aValue
+	#_coverageTracker351766_ markAsExecuted.
+	#_coverageTracker351766_
+		cover: (25 to: 29)
+		declaredAt: (25 to: 29)
+		by:
+			(value _ #_coverageTracker351766_
+				cover: (34 to: 39)
+				declaredAt: (16 to: 21)
+				by: aValue).! !
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'LMR 5/22/2023 16:03:43'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasBalanceEqualsToThatAccount stamp: 'LMR 5/22/2023 16:03:43'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasBalanceEqualsToThose stamp: 'LMR 5/22/2023 16:03:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithMultipleAccountsAndPortfolioHasBalanceEqualsToThose stamp: 'LMR 5/22/2023 16:03:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test05EmptyPortfolioHasNoTransactionRegistered stamp: 'LMR 5/22/2023 16:03:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithMultipleTransactionsOnAccountHasThemRegistered stamp: 'LMR 5/22/2023 16:03:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemRegistered stamp: 'LMR 5/22/2023 16:03:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransaction stamp: 'LMR 5/22/2023 16:03:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioWithMultipleTransactionsOnAccountHasThemInTransactions stamp: 'LMR 5/22/2023 16:03:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemInTransactions stamp: 'LMR 5/22/2023 16:03:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test11CantAddPortfolioToItself stamp: 'LMR 5/22/2023 16:03:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test12CantAddAnAccountToAPortfolioMoreThanOnce stamp: 'LMR 5/22/2023 16:03:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test13CantAddAnAccountToAPortfolioAlreadyContainedInSubAccounts stamp: 'LMR 5/22/2023 16:03:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test14CantAddAPortfolioToAnotherThatSharesASubAccount stamp: 'LMR 5/22/2023 16:03:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test15CantAddAPortfolioToAnotherThatSharesSubAccountsWithParents stamp: 'LMR 5/22/2023 16:03:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test16CantAddAPortfolioToAnotherThatSharesSubAccountsWithRecursiveParents stamp: 'LMR 5/22/2023 16:03:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'LMR 5/22/2023 16:03:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'LMR 5/22/2023 16:03:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'LMR 5/22/2023 16:03:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'LMR 5/22/2023 16:03:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'LMR 5/22/2023 16:03:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'LMR 5/22/2023 16:03:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'LMR 5/22/2023 16:03:45'!
+PASSED!
+
+----SNAPSHOT----(22 May 2023 16:03:53) CuisUniversity-5799.image priorSource: 9569314!
+
+----QUIT----(22 May 2023 16:04:00) CuisUniversity-5799.image priorSource: 9632980!

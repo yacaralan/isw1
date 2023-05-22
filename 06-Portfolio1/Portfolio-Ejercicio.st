@@ -308,6 +308,11 @@ hasRegistered: aTransaction
 	self subclassResponsibility ! !
 
 
+!Account methodsFor: 'transactions' stamp: 'LMR 5/22/2023 15:59:49'!
+addAllTransactionsTo: transactionsCollection
+	
+	self subclassResponsibility ! !
+
 !Account methodsFor: 'transactions' stamp: 'AlYac 5/18/2023 00:34:43'!
 transactions
 	
@@ -366,10 +371,18 @@ initialize
 	parents := OrderedCollection new.! !
 
 
-!Portfolio methodsFor: 'transactions' stamp: 'LMR 5/21/2023 22:37:55'!
+!Portfolio methodsFor: 'transactions' stamp: 'LMR 5/22/2023 16:00:49'!
+addAllTransactionsTo: transactionsCollection
+	
+	accounts do: [:subAccount | subAccount addAllTransactionsTo: transactionsCollection]! !
+
+!Portfolio methodsFor: 'transactions' stamp: 'LMR 5/22/2023 16:03:26'!
 transactions
 	
-	^accounts inject: OrderedCollection new into: [:transactions :anAccount | transactions , anAccount transactions]! !
+	| transactionsCollection |
+	transactionsCollection := OrderedCollection new.
+	self addAllTransactionsTo: transactionsCollection.
+	^transactionsCollection! !
 
 
 !Portfolio methodsFor: 'balance' stamp: 'LMR 5/21/2023 22:37:55'!
@@ -425,6 +438,11 @@ initialize
 	transactions := OrderedCollection new.
 	parents := OrderedCollection new.! !
 
+
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'LMR 5/22/2023 16:01:19'!
+addAllTransactionsTo: transactionsCollection
+	
+	transactionsCollection addAll: transactions! !
 
 !ReceptiveAccount methodsFor: 'transactions' stamp: 'sdaasd 5/15/2023 20:55:57'!
 register: aTransaction
