@@ -1,38 +1,36 @@
 !classDefinition: #PortfolioTest category: 'Portfolio-Ejercicio'!
 TestCase subclass: #PortfolioTest
-	instanceVariableNames: 'firstNewPortfolio firstAccount secondAccount secondNewPortfolio thirdNewPortfolio fourthNewPortfolio'
+	instanceVariableNames: 'firstAccount secondAccount firstNewPortfolio secondNewPortfolio thirdNewPortfolio fourthNewPortfolio'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!PortfolioTest methodsFor: 'set up' stamp: 'LMR 5/21/2023 17:42:27'!
+!PortfolioTest methodsFor: 'set up' stamp: 'LMR 5/22/2023 00:01:28'!
 setUp
 
 	firstAccount := ReceptiveAccount new.
 	secondAccount := ReceptiveAccount new.
-	
+
 	firstNewPortfolio := Portfolio new.
 	secondNewPortfolio := Portfolio new.
 	thirdNewPortfolio := Portfolio new.
-	fourthNewPortfolio := Portfolio new.
-	
-	! !
+	fourthNewPortfolio := Portfolio new.! !
 
 
-!PortfolioTest methodsFor: 'assertions' stamp: 'LMR 5/21/2023 17:59:22'!
-assertThat: aPortfolio canNotAdd: anAccount
+!PortfolioTest methodsFor: 'assertions' stamp: 'LMR 5/21/2023 22:54:29'!
+assertThatPortfolio: aPortfolio canNotAdd: anAccount
 	
-	self should: [aPortfolio add: anAccount] 
+	self should: [aPortfolio add: anAccount ] 
 		raise: Error 
-		withExceptionDo: [:anError | self assert: anError messageText equals: Account duplicatedAccountErrorDescription] ! !
+		withExceptionDo: [:anError | self assert: anError messageText equals: Portfolio duplicatedAccountErrorDescription] ! !
 
-!PortfolioTest methodsFor: 'assertions' stamp: 'LMR 5/21/2023 17:46:22'!
+!PortfolioTest methodsFor: 'assertions' stamp: 'LMR 5/22/2023 00:04:04'!
 assertThatPortfolio: aPortfolio hasRegistered: aDeposit and: anotherDeposit
 
 	self assert:(aPortfolio hasRegistered: aDeposit).
 	self assert:(aPortfolio hasRegistered: anotherDeposit)! !
 
-!PortfolioTest methodsFor: 'assertions' stamp: 'LMR 5/21/2023 17:49:58'!
+!PortfolioTest methodsFor: 'assertions' stamp: 'LMR 5/22/2023 00:06:27'!
 assertThatPortfolio: aPortfolio hasTransaction: aTransaction and: anotherTransaction
 
 	| portfolioTransactions |
@@ -41,19 +39,21 @@ assertThatPortfolio: aPortfolio hasTransaction: aTransaction and: anotherTransac
 	self assert:(portfolioTransactions includes: anotherTransaction)! !
 
 
-!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 17:42:27'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/22/2023 00:01:19'!
 test01EmptyPortfolioHasBalance0
 
 	self assert: 0 equals: firstNewPortfolio balance! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 17:42:27'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/22/2023 00:01:16'!
 test02PortfolioWithOneAccountHasBalanceEqualsToThatAccount
 
 	Deposit register: 100 on: firstAccount .
+	
 	firstNewPortfolio add: firstAccount .
+
 	self assert: 100 equals: firstNewPortfolio balance! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 17:42:28'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/22/2023 00:01:11'!
 test03PortfolioWithMultipleAccountsHasBalanceEqualsToThose
 
 	Deposit register: 100 on: firstAccount .
@@ -64,7 +64,7 @@ test03PortfolioWithMultipleAccountsHasBalanceEqualsToThose
 
 	self assert: 200 equals: firstNewPortfolio balance! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 17:42:28'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/22/2023 00:01:05'!
 test04PortfolioWithMultipleAccountsAndPortfolioHasBalanceEqualsToThose
 
 	Deposit register: 100 on: firstAccount .
@@ -76,7 +76,7 @@ test04PortfolioWithMultipleAccountsAndPortfolioHasBalanceEqualsToThose
 
 	self assert: 200 equals: firstNewPortfolio balance! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 17:42:28'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/22/2023 00:00:49'!
 test05EmptyPortfolioHasNoTransactionRegistered
 	
 	| deposit |
@@ -84,7 +84,7 @@ test05EmptyPortfolioHasNoTransactionRegistered
 
 	self deny: (firstNewPortfolio hasRegistered: deposit)! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 17:47:20'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/22/2023 00:04:58'!
 test06PortfolioWithMultipleTransactionsOnAccountHasThemRegistered
 	
 	|deposit deposit2|
@@ -97,7 +97,7 @@ test06PortfolioWithMultipleTransactionsOnAccountHasThemRegistered
 
 	self assertThatPortfolio: firstNewPortfolio hasRegistered: deposit and: deposit2! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 17:47:32'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/22/2023 00:05:18'!
 test07PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemRegistered
 	
 	|deposit deposit2|
@@ -111,16 +111,16 @@ test07PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemRegistered
 
 	self assertThatPortfolio: firstNewPortfolio hasRegistered: deposit and: deposit2! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 17:42:27'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 23:59:27'!
 test08EmptyPortfolioHasNoTransaction
 	
 
 	self assert: (firstNewPortfolio transactions) isEmpty! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 17:50:33'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/22/2023 00:07:03'!
 test09PortfolioWithMultipleTransactionsOnAccountHasThemInTransactions
 	
-	|deposit deposit2|
+	|deposit deposit2 |
 	deposit := Deposit register: 100 on: firstAccount.
 	deposit2 := Deposit register: 100 on: secondAccount.
 	
@@ -129,10 +129,10 @@ test09PortfolioWithMultipleTransactionsOnAccountHasThemInTransactions
 
 	self assertThatPortfolio: firstNewPortfolio hasTransaction: deposit and: deposit2! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 17:52:09'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/22/2023 00:07:16'!
 test10PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemInTransactions
 	
-	|deposit deposit2|
+	|deposit deposit2 |
 	deposit := Deposit register: 100 on: firstAccount.
 	deposit2 := Deposit register: 100 on: secondAccount.
 	
@@ -142,27 +142,27 @@ test10PortfolioWithMultipleTransactionsOnAccountAndPortfoliosHasThemInTransactio
 
 	self assertThatPortfolio: firstNewPortfolio hasTransaction: deposit and: deposit2! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 18:00:27'!
-test11CantAddAPortfolioToItself
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 23:58:06'!
+test11CantAddPortfolioToItself
 	
-	self assertThat: firstNewPortfolio canNotAdd: firstNewPortfolio! !
+	self assertThatPortfolio: firstNewPortfolio canNotAdd: firstNewPortfolio.! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 18:00:23'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 23:58:32'!
 test12CantAddAnAccountToAPortfolioMoreThanOnce
 	
-	firstNewPortfolio add: secondNewPortfolio .
+	firstNewPortfolio add: secondNewPortfolio.
 
-	self assertThat: firstNewPortfolio canNotAdd: secondNewPortfolio! !
+	self assertThatPortfolio: firstNewPortfolio canNotAdd: secondNewPortfolio.! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 18:02:30'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/22/2023 00:18:13'!
 test13CantAddAnAccountToAPortfolioAlreadyContainedInSubAccounts
-
+	
 	secondNewPortfolio add: firstAccount.
 	firstNewPortfolio add: secondNewPortfolio.
-	
-	self assertThat: firstNewPortfolio canNotAdd: firstAccount! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 18:02:26'!
+	self assertThatPortfolio: firstNewPortfolio canNotAdd: firstAccount.! !
+
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 23:03:47'!
 test14CantAddAPortfolioToAnotherThatSharesASubAccount
 
 	firstNewPortfolio add: thirdNewPortfolio .
@@ -170,9 +170,9 @@ test14CantAddAPortfolioToAnotherThatSharesASubAccount
 	thirdNewPortfolio add: firstAccount.
 	fourthNewPortfolio add: firstAccount.
 	
-	self assertThat: firstNewPortfolio canNotAdd: secondNewPortfolio.! !
+	self assertThatPortfolio: firstNewPortfolio canNotAdd: secondNewPortfolio.! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 18:02:22'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 23:42:16'!
 test15CantAddAPortfolioToAnotherThatSharesSubAccountsWithParents
 
 	firstNewPortfolio add: thirdNewPortfolio.
@@ -180,7 +180,17 @@ test15CantAddAPortfolioToAnotherThatSharesSubAccountsWithParents
 	secondNewPortfolio add: thirdNewPortfolio.
 	fourthNewPortfolio add: firstAccount.
 	
-	self assertThat: thirdNewPortfolio canNotAdd: fourthNewPortfolio! !
+	self assertThatPortfolio: thirdNewPortfolio canNotAdd: fourthNewPortfolio! !
+
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 23:57:23'!
+test16CantAddAPortfolioToAnotherThatSharesSubAccountsWithRecursiveParents
+
+	firstNewPortfolio add: secondNewPortfolio.
+	firstNewPortfolio add: firstAccount.
+	secondNewPortfolio add: thirdNewPortfolio.
+	fourthNewPortfolio add: firstAccount.
+	
+	self assertThatPortfolio: thirdNewPortfolio canNotAdd: fourthNewPortfolio! !
 
 
 !classDefinition: #ReceptiveAccountTest category: 'Portfolio-Ejercicio'!
@@ -190,7 +200,7 @@ TestCase subclass: #ReceptiveAccountTest
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 17:42:28'!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'NR 11/2/2020 17:13:44'!
 test01ReceptiveAccountHaveZeroAsBalanceWhenCreated 
 
 	| account |
@@ -200,7 +210,7 @@ test01ReceptiveAccountHaveZeroAsBalanceWhenCreated
 	self assert: 0 equals: account balance.
 ! !
 
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 17:42:28'!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'NR 11/2/2020 17:13:48'!
 test02DepositIncreasesBalanceOnTransactionValue 
 
 	| account |
@@ -211,7 +221,7 @@ test02DepositIncreasesBalanceOnTransactionValue
 	self assert: 100 equals: account balance.
 ! !
 
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 17:42:28'!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'NR 11/2/2020 17:13:52'!
 test03WithdrawDecreasesBalanceOnTransactionValue 
 
 	| account |
@@ -223,7 +233,7 @@ test03WithdrawDecreasesBalanceOnTransactionValue
 	self assert: 50 equals: account balance.
 ! !
 
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 17:42:28'!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'HAW 5/23/2019 15:20:32'!
 test04WithdrawValueMustBePositive 
 
 	| account withdrawValue |
@@ -234,7 +244,7 @@ test04WithdrawValueMustBePositive
 	self assert: withdrawValue equals: (Withdraw register: withdrawValue on: account) value
 ! !
 
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 17:42:28'!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'HAW 5/23/2019 15:20:46'!
 test05ReceptiveAccountKnowsRegisteredTransactions 
 
 	| account deposit withdraw |
@@ -247,7 +257,7 @@ test05ReceptiveAccountKnowsRegisteredTransactions
 	self assert: (account hasRegistered: withdraw).
 ! !
 
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 17:42:28'!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'NR 5/17/2021 17:29:53'!
 test06ReceptiveAccountDoNotKnowNotRegisteredTransactions
 
 	| deposit withdraw account |
@@ -260,7 +270,7 @@ test06ReceptiveAccountDoNotKnowNotRegisteredTransactions
 	self deny: (account hasRegistered:withdraw).
 ! !
 
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'LMR 5/21/2023 17:42:29'!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'NR 11/2/2020 17:14:01'!
 test07AccountKnowsItsTransactions 
 
 	| account1 deposit1 |
@@ -281,51 +291,41 @@ Object subclass: #Account
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!Account methodsFor: 'balance' stamp: 'LMR 5/21/2023 17:42:26'!
+!Account methodsFor: 'balance' stamp: 'AlYac 5/18/2023 00:34:03'!
 balance
-
+	
 	self subclassResponsibility ! !
 
 
-!Account methodsFor: 'testing' stamp: 'LMR 5/21/2023 17:42:26'!
+!Account methodsFor: 'testing' stamp: 'LMR 5/21/2023 22:51:51'!
 hasAccount: anAccount
-
+	
 	self subclassResponsibility ! !
 
-!Account methodsFor: 'testing' stamp: 'LMR 5/21/2023 17:42:26'!
+!Account methodsFor: 'testing' stamp: 'AlYac 5/18/2023 00:34:20'!
 hasRegistered: aTransaction
-
+	
 	self subclassResponsibility ! !
 
 
-!Account methodsFor: 'transactions' stamp: 'LMR 5/21/2023 17:42:26'!
+!Account methodsFor: 'transactions' stamp: 'AlYac 5/18/2023 00:34:43'!
 transactions
-
+	
 	self subclassResponsibility ! !
 
 
-!Account methodsFor: 'validations' stamp: 'LMR 5/21/2023 17:42:26'!
-canAdd
+!Account methodsFor: 'validations' stamp: 'LMR 5/21/2023 23:52:13'!
+canBeAddedToPortfolioWithRecursiveParents: recursiveParents
 
-	self subclassResponsibility ! !
-
-!Account methodsFor: 'validations' stamp: 'LMR 5/21/2023 17:42:26'!
-canAddAccountWithRecursiveParents: recursiveParentsOfAnAccount
-
-	self subclassResponsibility ! !
-
-!Account methodsFor: 'validations' stamp: 'LMR 5/21/2023 17:42:26'!
-canBeAddedTo: aPortfolio
-
-	self canBeAddedToPortfolioWithRecursiveParents: aPortfolio recursiveParents.! !
+	self subclassResponsibility! !
 
 
-!Account methodsFor: 'parents' stamp: 'LMR 5/21/2023 17:42:26'!
+!Account methodsFor: 'parents' stamp: 'LMR 5/21/2023 23:30:17'!
 addToParents: aNewParent
 
 	parents add: aNewParent.! !
 
-!Account methodsFor: 'parents' stamp: 'LMR 5/21/2023 17:42:26'!
+!Account methodsFor: 'parents' stamp: 'LMR 5/21/2023 23:48:58'!
 recursiveParents
 
 	parents isEmpty ifTrue: [^OrderedCollection with: self].
@@ -337,9 +337,9 @@ recursiveParents
 Account class
 	instanceVariableNames: ''!
 
-!Account class methodsFor: 'errors' stamp: 'LMR 5/21/2023 18:10:33'!
+!Account class methodsFor: 'errors' stamp: 'LMR 5/22/2023 00:14:47'!
 duplicatedAccountErrorDescription
-	
+
 	^ 'This account is already registered!!'! !
 
 
@@ -350,53 +350,53 @@ Account subclass: #Portfolio
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!Portfolio methodsFor: 'add' stamp: 'LMR 5/21/2023 18:16:08'!
+!Portfolio methodsFor: 'add' stamp: 'LMR 5/21/2023 23:31:06'!
 add: anAccount 
-
+	
 	self canAdd: anAccount.
 	
 	accounts add: anAccount.
 	anAccount addToParents: self.! !
 
 
-!Portfolio methodsFor: 'initialization' stamp: 'LMR 5/21/2023 18:16:08'!
+!Portfolio methodsFor: 'initialization' stamp: 'LMR 5/21/2023 23:29:22'!
 initialize
 	
 	accounts := OrderedCollection new.
 	parents := OrderedCollection new.! !
 
 
-!Portfolio methodsFor: 'transactions' stamp: 'LMR 5/21/2023 18:16:08'!
+!Portfolio methodsFor: 'transactions' stamp: 'LMR 5/21/2023 22:37:55'!
 transactions
 	
 	^accounts inject: OrderedCollection new into: [:transactions :anAccount | transactions , anAccount transactions]! !
 
 
-!Portfolio methodsFor: 'balance' stamp: 'LMR 5/21/2023 18:16:08'!
+!Portfolio methodsFor: 'balance' stamp: 'LMR 5/21/2023 22:37:55'!
 balance
-
+	
 	^ accounts sum: [:anAccount| anAccount balance] ifEmpty: [0] ! !
 
 
-!Portfolio methodsFor: 'validations' stamp: 'LMR 5/21/2023 17:42:27'!
+!Portfolio methodsFor: 'validations' stamp: 'LMR 5/21/2023 23:49:50'!
 canAdd: anAccount
 
-	anAccount canBeAddedTo: self.! !
+	anAccount canBeAddedToPortfolioWithRecursiveParents: self recursiveParents! !
 
-!Portfolio methodsFor: 'validations' stamp: 'LMR 5/21/2023 18:16:08'!
-canBeAddedToPortfolioWithRecursiveParents: recursiveParentsOfAPortfolio
+!Portfolio methodsFor: 'validations' stamp: 'LMR 5/21/2023 23:51:11'!
+canBeAddedToPortfolioWithRecursiveParents: recursiveParents
 
-	(recursiveParentsOfAPortfolio anySatisfy: [:aParent | aParent hasAccount: self]) ifTrue: [self error: self class duplicatedAccountErrorDescription].
-	accounts do: [:anAccount | anAccount canBeAddedToPortfolioWithRecursiveParents: recursiveParentsOfAPortfolio]! !
+	(recursiveParents anySatisfy: [:parent | parent hasAccount: self]) ifTrue: [self error: self class duplicatedAccountErrorDescription].
+	accounts do: [:subAccount | subAccount canBeAddedToPortfolioWithRecursiveParents: recursiveParents]! !
 
 
-!Portfolio methodsFor: 'testing' stamp: 'LMR 5/21/2023 18:16:08'!
-hasAccount: anAccount
+!Portfolio methodsFor: 'testing' stamp: 'LMR 5/21/2023 22:50:00'!
+hasAccount: anAccount 
 	
-	^(self = anAccount) or: [accounts anySatisfy: [:oneOfMyAccounts | oneOfMyAccounts hasAccount: anAccount]]! !
+	^self = anAccount or: [accounts anySatisfy: [:subAccount | subAccount hasAccount: anAccount]]! !
 
-!Portfolio methodsFor: 'testing' stamp: 'LMR 5/21/2023 18:16:08'!
-hasRegistered: aTransaction
+!Portfolio methodsFor: 'testing' stamp: 'LMR 5/21/2023 22:37:55'!
+hasRegistered: aTransaction 
 	
 	^ accounts anySatisfy: [:anAccount|anAccount hasRegistered: aTransaction]! !
 
@@ -406,7 +406,7 @@ hasRegistered: aTransaction
 Portfolio class
 	instanceVariableNames: ''!
 
-!Portfolio class methodsFor: 'instance creation' stamp: 'LMR 5/21/2023 17:42:27'!
+!Portfolio class methodsFor: 'instance creation' stamp: 'sdaasd 5/15/2023 20:48:35'!
 new
 	
 	^self basicNew initialize! !
@@ -419,26 +419,26 @@ Account subclass: #ReceptiveAccount
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!ReceptiveAccount methodsFor: 'initialization' stamp: 'LMR 5/21/2023 17:42:28'!
+!ReceptiveAccount methodsFor: 'initialization' stamp: 'LMR 5/21/2023 23:29:29'!
 initialize
-	
+
 	transactions := OrderedCollection new.
 	parents := OrderedCollection new.! !
 
 
-!ReceptiveAccount methodsFor: 'transactions' stamp: 'LMR 5/21/2023 17:42:28'!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'sdaasd 5/15/2023 20:55:57'!
 register: aTransaction
-	
+
 	transactions add: aTransaction 
 ! !
 
-!ReceptiveAccount methodsFor: 'transactions' stamp: 'LMR 5/21/2023 17:42:28'!
-transactions
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'HernanWilkinson 7/13/2011 18:37'!
+transactions 
 
 	^ transactions copy! !
 
 
-!ReceptiveAccount methodsFor: 'balance' stamp: 'LMR 5/21/2023 17:42:28'!
+!ReceptiveAccount methodsFor: 'balance' stamp: 'LMR 5/15/2023 20:15:44'!
 balance
 	
 	|balance|
@@ -447,21 +447,22 @@ balance
 	^balance! !
 
 
-!ReceptiveAccount methodsFor: 'validations' stamp: 'LMR 5/21/2023 17:42:28'!
-canBeAddedToPortfolioWithRecursiveParents: recursiveParentsOfAPortfolio
+!ReceptiveAccount methodsFor: 'validations' stamp: 'LMR 5/21/2023 23:51:41'!
+canBeAddedToPortfolioWithRecursiveParents: recursiveParents
 
-	(recursiveParentsOfAPortfolio anySatisfy: [:aParent | aParent hasAccount: self]) ifTrue: [self error: self class duplicatedAccountErrorDescription].! !
+	(recursiveParents anySatisfy: [:parent | parent hasAccount: self]) ifTrue: [self error: self class duplicatedAccountErrorDescription]! !
 
 
-!ReceptiveAccount methodsFor: 'testing' stamp: 'LMR 5/21/2023 17:42:28'!
-hasAccount: anAccount
+!ReceptiveAccount methodsFor: 'testing' stamp: 'LMR 5/21/2023 22:51:27'!
+hasAccount: anAccount 
 	
 	^self = anAccount! !
 
-!ReceptiveAccount methodsFor: 'testing' stamp: 'LMR 5/21/2023 17:42:28'!
+!ReceptiveAccount methodsFor: 'testing' stamp: 'NR 10/17/2019 03:28:43'!
 hasRegistered: aTransaction
-	
-	^ transactions includes: aTransaction! !
+
+	^ transactions includes: aTransaction 
+! !
 
 
 !classDefinition: #AccountTransaction category: 'Portfolio-Ejercicio'!
@@ -471,12 +472,12 @@ Object subclass: #AccountTransaction
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!AccountTransaction methodsFor: 'value' stamp: 'LMR 5/21/2023 17:42:26'!
+!AccountTransaction methodsFor: 'value' stamp: 'LMR 5/15/2023 20:05:08'!
 effectOnBalance 
 
 	self subclassResponsibility ! !
 
-!AccountTransaction methodsFor: 'value' stamp: 'LMR 5/21/2023 17:42:26'!
+!AccountTransaction methodsFor: 'value' stamp: 'HernanWilkinson 9/12/2011 12:25'!
 value 
 
 	self subclassResponsibility ! !
@@ -487,7 +488,7 @@ value
 AccountTransaction class
 	instanceVariableNames: ''!
 
-!AccountTransaction class methodsFor: 'instance creation' stamp: 'LMR 5/21/2023 17:42:26'!
+!AccountTransaction class methodsFor: 'instance creation' stamp: 'NR 10/17/2019 03:22:00'!
 register: aValue on: account
 
 	| transaction |
@@ -505,18 +506,18 @@ AccountTransaction subclass: #Deposit
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!Deposit methodsFor: 'initialization' stamp: 'LMR 5/21/2023 17:42:26'!
+!Deposit methodsFor: 'initialization' stamp: 'HernanWilkinson 7/13/2011 18:45'!
 initializeFor: aValue
 
 	value := aValue ! !
 
 
-!Deposit methodsFor: 'value' stamp: 'LMR 5/21/2023 17:42:26'!
+!Deposit methodsFor: 'value' stamp: 'LMR 5/15/2023 20:12:22'!
 effectOnBalance: aBalance
 	
 	^aBalance + self value.! !
 
-!Deposit methodsFor: 'value' stamp: 'LMR 5/21/2023 17:42:26'!
+!Deposit methodsFor: 'value' stamp: 'HernanWilkinson 7/13/2011 18:38'!
 value
 
 	^ value! !
@@ -527,7 +528,7 @@ value
 Deposit class
 	instanceVariableNames: ''!
 
-!Deposit class methodsFor: 'instance creation' stamp: 'LMR 5/21/2023 17:42:26'!
+!Deposit class methodsFor: 'instance creation' stamp: 'HernanWilkinson 7/13/2011 18:38'!
 for: aValue
 
 	^ self new initializeFor: aValue ! !
@@ -540,18 +541,18 @@ AccountTransaction subclass: #Withdraw
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!Withdraw methodsFor: 'initialization' stamp: 'LMR 5/21/2023 17:42:29'!
+!Withdraw methodsFor: 'initialization' stamp: 'HernanWilkinson 7/13/2011 18:46'!
 initializeFor: aValue
 
 	value := aValue ! !
 
 
-!Withdraw methodsFor: 'value' stamp: 'LMR 5/21/2023 17:42:29'!
+!Withdraw methodsFor: 'value' stamp: 'LMR 5/15/2023 20:12:37'!
 effectOnBalance: aBalance
 	
 	^aBalance + self value negated! !
 
-!Withdraw methodsFor: 'value' stamp: 'LMR 5/21/2023 17:42:29'!
+!Withdraw methodsFor: 'value' stamp: 'HernanWilkinson 7/13/2011 18:33'!
 value
 
 	^ value! !
@@ -562,7 +563,7 @@ value
 Withdraw class
 	instanceVariableNames: ''!
 
-!Withdraw class methodsFor: 'instance creation' stamp: 'LMR 5/21/2023 17:42:29'!
+!Withdraw class methodsFor: 'instance creation' stamp: 'HernanWilkinson 7/13/2011 18:33'!
 for: aValue
 
 	^ self new initializeFor: aValue ! !
