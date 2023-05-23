@@ -1,0 +1,257 @@
+
+
+----QUIT----(12 May 2023 17:49:00) CuisUniversity-5799.image priorSource: 4801971!
+
+----STARTUP---- (12 May 2023 17:49:01) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5799.image!
+
+
+----QUIT----(12 May 2023 17:49:01) CuisUniversity-5799.image priorSource: 9222569!
+
+----STARTUP---- (22 May 2023 21:15:58) as /home/clinux01/Escritorio/cuis/CuisUniversity-5799.image!
+
+
+----End fileIn of /home/clinux01/Escritorio/2023-1c/Portfolio-Ejercicio.st----!
+
+TestCase subclass: #TransferTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #TransferTest category: 'Portfolio-Ejercicio' stamp: 'AYac 5/22/2023 21:23:42'!
+TestCase subclass: #TransferTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!TransferTest methodsFor: 'no messages' stamp: 'AYac 5/22/2023 21:25:57'!
+test01TransferBetweenTwoAccountsAffectsTheirBalance! !
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'AYac 5/22/2023 21:26:24'!
+test01TransferBetweenTwoAccountsAffectsTransfererBalance! !
+
+!methodRemoval: TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AYac 5/22/2023 21:26:27'!
+test01TransferBetweenTwoAccountsAffectsTheirBalance!
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'AYac 5/22/2023 21:26:42' prior: 50620605!
+test01TransferBetweenTwoAccountsAffectsTransfererBalance
+
+	! !
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'AYac 5/22/2023 21:28:50' prior: 50620616!
+test01TransferBetweenTwoAccountsAffectsTransfererBalance
+
+	| transfereeAccount transfererAccount |
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.
+	
+	! !
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'AYac 5/22/2023 21:30:08' prior: 50620622!
+test01TransferBetweenTwoAccountsAffectsTransfererBalance
+
+	| transfereeAccount transfererAccount |
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.
+	
+	transfererAccount transfer: 100 to: transfereeAccount.
+	
+	self assert: transfererAccount balance equals: -100! !
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTransfererBalance stamp: 'AYac 5/22/2023 21:30:11'!
+ERROR!
+!ReceptiveAccount methodsFor: 'transfer' stamp: 'AYac 5/22/2023 21:30:30'!
+transfer: aRenameMe1 to: transfereeAccount 
+	self shouldBeImplemented.! !
+!ReceptiveAccount methodsFor: 'transfer' stamp: 'AYac 5/22/2023 21:31:21' prior: 50620648!
+transfer: anAmmountToTransfer to: anAccount
+	self shouldBeImplemented.! !
+!ReceptiveAccount methodsFor: 'transfer' stamp: 'AYac 5/22/2023 21:31:51' prior: 50620654!
+transfer: anAmmountToTransfer to: anAccount 
+	self shouldBeImplemented.! !
+!ReceptiveAccount methodsFor: 'transfer' stamp: 'AYac 5/22/2023 21:35:17' prior: 50620660!
+transfer: anAmmountToTransfer to: anAccount 
+	
+	Withdraw ! !
+!ReceptiveAccount methodsFor: 'transfer' stamp: 'AYac 5/22/2023 21:35:51' prior: 50620666!
+transfer: anAmmountToTransfer to: anAccount 
+	
+	Withdraw register: 100 on: self! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'AYac 5/22/2023 21:35:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'AYac 5/22/2023 21:35:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'AYac 5/22/2023 21:35:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'AYac 5/22/2023 21:35:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'AYac 5/22/2023 21:35:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'AYac 5/22/2023 21:35:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'AYac 5/22/2023 21:35:55'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTransfererBalance stamp: 'AYac 5/22/2023 21:35:59'!
+PASSED!
+
+!classDefinition: #Transfer category: 'Portfolio-Ejercicio' stamp: 'AYac 5/22/2023 21:40:41'!
+Object subclass: #Transfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'AYac 5/22/2023 21:40:34'!
+test01TransferBetweenTwoAccountsAffectsTheirBalance
+
+	| transfereeAccount transfererAccount |
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.
+	Transfer register: 100 from: transfererAccount to: transfereeAccount.
+	
+	self assert: transfererAccount balance equals: -100.
+	self assert: transfereeAccount balance equals: 100! !
+
+!methodRemoval: TransferTest #test01TransferBetweenTwoAccountsAffectsTransfererBalance stamp: 'AYac 5/22/2023 21:40:46'!
+test01TransferBetweenTwoAccountsAffectsTransfererBalance
+
+	| transfereeAccount transfererAccount |
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.
+	
+	transfererAccount transfer: 100 to: transfereeAccount.
+	
+	self assert: transfererAccount balance equals: -100!
+
+!methodRemoval: ReceptiveAccount #transfer:to: stamp: 'AYac 5/22/2023 21:40:58'!
+transfer: anAmmountToTransfer to: anAccount 
+	
+	Withdraw register: 100 on: self!
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AYac 5/22/2023 21:41:03'!
+ERROR!
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AYac 5/22/2023 21:41:03'!
+ERROR!
+!Transfer class methodsFor: 'instance creation' stamp: 'AYac 5/22/2023 21:41:20'!
+register: aSmallInteger from: aReceptiveAccount to: aReceptiveAccount3 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeRegister: aSmallInteger from: aReceptiveAccount to: aReceptiveAccount3 ! !
+!Transfer class methodsFor: 'instance creation' stamp: 'AYac 5/22/2023 21:42:21' prior: 50620754!
+register: anAmount from: aTransfererAccount to: aTransfereeAccount 
+
+	^self new initializeRegister: anAmount from: aTransfererAccount to: aTransfereeAccount ! !
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AYac 5/22/2023 21:42:24'!
+ERROR!
+
+!classDefinition: #Transfer category: 'Portfolio-Ejercicio' stamp: 'AYac 5/22/2023 21:42:41'!
+Object subclass: #Transfer
+	instanceVariableNames: 'amount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Transfer category: 'Portfolio-Ejercicio' stamp: 'AYac 5/22/2023 21:42:41'!
+Object subclass: #Transfer
+	instanceVariableNames: 'amount transfererAccount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Transfer category: 'Portfolio-Ejercicio' stamp: 'AYac 5/22/2023 21:42:41'!
+Object subclass: #Transfer
+	instanceVariableNames: 'amount transfererAccount transfereeAccount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Transfer methodsFor: 'transfer' stamp: 'AYac 5/22/2023 21:42:41'!
+initializeRegister: anAmount from: aTransfererAccount to: aTransfereeAccount 
+	self shouldBeImplemented.
+	amount := anAmount.
+	transfererAccount := aTransfererAccount.
+	transfereeAccount := aTransfereeAccount.! !
+
+AccountTransaction subclass: #Transfer
+	instanceVariableNames: 'amount transfererAccount transfereeAccount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Transfer category: 'Portfolio-Ejercicio' stamp: 'AYac 5/22/2023 21:44:47'!
+AccountTransaction subclass: #Transfer
+	instanceVariableNames: 'amount transfererAccount transfereeAccount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+AccountTransaction subclass: #Transfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Transfer category: 'Portfolio-Ejercicio' stamp: 'AYac 5/22/2023 21:44:53'!
+AccountTransaction subclass: #Transfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!methodRemoval: Transfer #initializeRegister:from:to: stamp: 'AYac 5/22/2023 21:44:58'!
+initializeRegister: anAmount from: aTransfererAccount to: aTransfereeAccount 
+	self shouldBeImplemented.
+	amount := anAmount.
+	transfererAccount := aTransfererAccount.
+	transfereeAccount := aTransfereeAccount.!
+!Transfer class methodsFor: 'instance creation' stamp: 'AYac 5/22/2023 21:45:45' prior: 50620766!
+register: anAmount from: aTransfererAccount to: aTransfereeAccount 
+
+	Deposit register: anAmount on: aTransfereeAccount.
+	Withdraw register: 100 on: aTransfererAccount ! !
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AYac 5/22/2023 21:45:47'!
+PASSED!
+!Transfer class methodsFor: 'instance creation' stamp: 'AYac 5/22/2023 21:46:05' prior: 50620847!
+register: anAmount from: aTransfererAccount to: aTransfereeAccount 
+
+	Deposit register: anAmount on: aTransfereeAccount.
+	Withdraw register: anAmount on: aTransfererAccount ! !
+
+Object subclass: #Transfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Transfer category: 'Portfolio-Ejercicio' stamp: 'AYac 5/22/2023 21:46:14'!
+Object subclass: #Transfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!TransferTest methodsFor: 'tests' stamp: 'AYac 5/22/2023 21:58:35'!
+test02TransferBetweenTwoAccountsIsRegisteredInBoth
+
+	| transfereeAccount transfererAccount |
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.
+	Transfer register: 100 from: transfererAccount to: transfereeAccount.
+	
+	self assert: transfererAccount balance equals: -100.
+	self assert: transfereeAccount balance equals: 100! !
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsIsRegisteredInBoth stamp: 'AYac 5/22/2023 21:58:40'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AYac 5/22/2023 21:58:40'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsIsRegisteredInBoth stamp: 'AYac 5/22/2023 21:58:40'!
+PASSED!
+
+----SNAPSHOT----(22 May 2023 21:58:50) CuisUniversity-5799.image priorSource: 9222790!
