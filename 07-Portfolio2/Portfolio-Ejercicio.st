@@ -312,12 +312,12 @@ TestCase subclass: #ReportsTest
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 21:49:03'!
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/31/2023 01:12:35'!
 test01AccountSummaryOfANewAccountIsEmpty
 
-	self assert: (AccountSummary of: ReceptiveAccount new) print equals: (OrderedCollection with: 'Balance = 0')! !
+	self assert: (AccountSummary of: ReceptiveAccount new) report equals: (OrderedCollection with: 'Balance = 0')! !
 
-!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 21:48:13'!
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/31/2023 01:12:35'!
 test02AccountWithOneDepositHasItInItsAccountSummary
 
 	| anAccount expectedSummary |
@@ -325,9 +325,9 @@ test02AccountWithOneDepositHasItInItsAccountSummary
 	Deposit register: 100 on: anAccount.
 	expectedSummary := OrderedCollection with: 'Depósito por 100.' with:'Balance = 100'.
 
-	self assert: (AccountSummary of: anAccount) print equals: expectedSummary ! !
+	self assert: (AccountSummary of: anAccount) report equals: expectedSummary ! !
 
-!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 21:48:03'!
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/31/2023 01:12:35'!
 test03AccountWithOneWithdrawHasItInItsAccountSummary
 
 	| anAccount expectedSummary |
@@ -335,9 +335,9 @@ test03AccountWithOneWithdrawHasItInItsAccountSummary
 	Withdraw register: 100 on: anAccount.
 	expectedSummary := OrderedCollection with: 'Extracción por 100.' with: 'Balance = -100'.
 
-	self assert: (AccountSummary of: anAccount) print equals: expectedSummary ! !
+	self assert: (AccountSummary of: anAccount) report equals: expectedSummary ! !
 
-!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 21:47:54'!
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/31/2023 01:12:35'!
 test04AccountWithOneTransferDepositHasItInItsAccountSummary
 
 	| expectedSummary transfereeAccount transfererAccount |
@@ -346,9 +346,9 @@ test04AccountWithOneTransferDepositHasItInItsAccountSummary
 	Transfer register: 100 from: transfererAccount to: transfereeAccount.
 	expectedSummary := OrderedCollection with: 'Entrada por transferencia de 100.' with: 'Balance = 100'.
 
-	self assert: (AccountSummary of: transfereeAccount ) print equals: expectedSummary ! !
+	self assert: (AccountSummary of: transfereeAccount ) report equals: expectedSummary ! !
 
-!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 21:47:33'!
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/31/2023 01:12:35'!
 test05AccountWithOneTransferWithdrawHasItInItsAccountSummary
 
 	| expectedSummary transfereeAccount transfererAccount |
@@ -357,9 +357,9 @@ test05AccountWithOneTransferWithdrawHasItInItsAccountSummary
 	Transfer register: 100 from: transfererAccount to: transfereeAccount.
 	expectedSummary := OrderedCollection with: 'Salida por transferencia de 100.' with: 'Balance = -100'.
 
-	self assert: (AccountSummary of: transfererAccount ) print equals: expectedSummary ! !
+	self assert: (AccountSummary of: transfererAccount ) report equals: expectedSummary ! !
 
-!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 21:46:42'!
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/31/2023 01:12:35'!
 test06AccountWithMultipleTransactionsHasThemInItsAccountSummary
 
 	| expectedSummary accountTwo accountOne |
@@ -377,7 +377,85 @@ test06AccountWithMultipleTransactionsHasThemInItsAccountSummary
 	expectedSummary add: 'Entrada por transferencia de 30.'.
 	expectedSummary add: 'Balance = 70'.
 
-	self assert: (AccountSummary of: accountOne) print equals: expectedSummary ! !
+	self assert: (AccountSummary of: accountOne) report equals: expectedSummary ! !
+
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/31/2023 01:12:35'!
+test07PortfolioWithMultipleTransactionsHasThemInItsAccountSummary
+
+	| expectedSummary accountTwo accountOne aPorfolio |
+	accountOne := ReceptiveAccount new.
+	accountTwo := ReceptiveAccount new.
+	Deposit register: 100 on: accountOne.
+	Withdraw register: 50 on: accountOne.
+	Deposit register: 70 on: accountTwo.
+	Withdraw register: 10 on: accountTwo.
+	
+	aPorfolio := Portfolio new.
+	aPorfolio add: accountOne.
+	aPorfolio add: accountTwo.
+	
+	expectedSummary := OrderedCollection new.
+	expectedSummary add: 'Depósito por 100.'.
+	expectedSummary add: 'Extracción por 50.'.
+	expectedSummary add: 'Depósito por 70.'.
+	expectedSummary add: 'Extracción por 10.'.
+	expectedSummary add: 'Balance = 110'.
+
+	self assert: (AccountSummary of: aPorfolio) report equals: expectedSummary ! !
+
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/31/2023 01:13:11'!
+test08NetTransferOfANewAccountIs0
+
+	self assert: (NetTransfer of: ReceptiveAccount new) report equals: 0 ! !
+
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/31/2023 01:13:05'!
+test09AnAccountWithATransferHasItInItsNetTransfer
+
+	| accountOne accountTwo |
+	accountOne := ReceptiveAccount new.
+	accountTwo := ReceptiveAccount new.
+	
+	Transfer register: 100 from: accountOne to: accountTwo . 
+
+	self assert: (NetTransfer of: accountOne) report equals: -100 ! !
+
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/31/2023 01:12:59'!
+test10AnAccountWithMultipleTransactionsHasACorrectNetTransfer
+
+	| accountOne accountTwo |
+	accountOne := ReceptiveAccount new.
+	accountTwo := ReceptiveAccount new.
+	
+	Transfer register: 100 from: accountOne to: accountTwo. 
+	Transfer register: 250 from: accountTwo to: accountOne.
+	Deposit register: 100 on: accountOne.
+	Transfer register: 30 from: accountOne to: accountTwo.
+	Transfer register: 15 from: accountTwo to: accountOne .
+
+	self assert: (NetTransfer of: accountOne) report equals: 135 ! !
+
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/31/2023 01:12:55'!
+test11APortfolioWithMultipleTransactionsHasACorrectNetTransfer
+
+	| accountOne accountTwo accountFour accountThree aPortfolio |
+	accountOne := ReceptiveAccount new.
+	accountTwo := ReceptiveAccount new.
+	accountThree := ReceptiveAccount new.
+	accountFour := ReceptiveAccount new.
+	aPortfolio := Portfolio new.
+	aPortfolio add: accountOne.
+	aPortfolio add: accountThree.
+	
+	Transfer register: 100 from: accountOne to: accountTwo. 
+	Deposit register: 100 on: accountOne.
+	Transfer register: 250 from: accountTwo to: accountOne.
+	
+	Transfer register: 30 from: accountThree to: accountFour.
+	Deposit register: 100 on: accountThree.
+	Transfer register: 15 from: accountFour to: accountThree.
+	
+
+	self assert: (NetTransfer of: aPortfolio) report equals: 135 ! !
 
 
 !classDefinition: #TransferTest category: 'Portfolio-Ejercicio'!
@@ -469,6 +547,12 @@ transactions
 addedTo: aPortfolio
 
 	self subclassResponsibility ! !
+
+
+!Account methodsFor: 'reports' stamp: 'AlYac 5/31/2023 01:32:12'!
+fillReport: aReport
+
+	self subclassResponsibility! !
 
 
 !classDefinition: #Portfolio category: 'Portfolio-Ejercicio'!
@@ -582,6 +666,12 @@ signalCanNotAddAccount
 	
 	self error: self class canNotAddAccountErrorMessage! !
 
+
+!Portfolio methodsFor: 'reports' stamp: 'AlYac 5/31/2023 01:28:17'!
+fillReport: aReport 
+	
+	accounts do: [:anAccount| anAccount fillReport: aReport].! !
+
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
 !classDefinition: 'Portfolio class' category: 'Portfolio-Ejercicio'!
@@ -666,85 +756,11 @@ addedTo: aPortfolio
 	! !
 
 
-!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 20:07:39'!
-accountSummary
-	
-	| summary |
-	summary := OrderedCollection new.
-	transactions do: [:transaction| transaction printOnSummary: summary].
-	summary add: 'Balance = ', self balance asString.
-	^summary 
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/31/2023 01:27:51'!
+fillReport: aReport
+
+	transactions do: [:transaction| transaction fillReport: aReport].
 ! !
-
-!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 21:29:05'!
-fillAccountSummary: aSummary
-
-	transactions do: [:transaction| transaction printOnSummary: aSummary].
-	aSummary printBalanceOf: self balance
-! !
-
-
-!classDefinition: #AccountSummary category: 'Portfolio-Ejercicio'!
-Object subclass: #AccountSummary
-	instanceVariableNames: 'account summary'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Portfolio-Ejercicio'!
-
-!AccountSummary methodsFor: 'initialization' stamp: 'AlYac 5/30/2023 21:32:15'!
-initializeOf: anAccount
-
-	account := anAccount.
-	summary := OrderedCollection new! !
-
-
-!AccountSummary methodsFor: 'print' stamp: 'AlYac 5/30/2023 21:44:48'!
-print
-	
-	account fillAccountSummary: self.
-	^summary 
-! !
-
-!AccountSummary methodsFor: 'print' stamp: 'AlYac 5/30/2023 21:36:52'!
-printBalanceOf: anAmount
-	
-	^summary add: 'Balance = ', anAmount asString
-! !
-
-!AccountSummary methodsFor: 'print' stamp: 'AlYac 5/30/2023 21:35:21'!
-printDepositOf: anAmount
-	
-	^summary add: 'Depósito por ', anAmount asString , '.'
-! !
-
-!AccountSummary methodsFor: 'print' stamp: 'AlYac 5/30/2023 21:35:46'!
-printTransferDepositOf: anAmount
-	
-	^summary add: 'Entrada por transferencia de ', anAmount asString , '.'
-! !
-
-!AccountSummary methodsFor: 'print' stamp: 'AlYac 5/30/2023 21:35:58'!
-printTransferWithdrawOf: anAmount
-	
-	^summary add: 'Salida por transferencia de ', anAmount asString , '.'
-! !
-
-!AccountSummary methodsFor: 'print' stamp: 'AlYac 5/30/2023 21:34:57'!
-printWithdrawOf: anAmount
-	
-	^summary add: 'Extracción por ', anAmount asString , '.'
-! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-!classDefinition: 'AccountSummary class' category: 'Portfolio-Ejercicio'!
-AccountSummary class
-	instanceVariableNames: ''!
-
-!AccountSummary class methodsFor: 'initialization' stamp: 'AlYac 5/30/2023 20:56:13'!
-of: anAccount
-	
-	^self new initializeOf: anAccount ! !
 
 
 !classDefinition: #AccountTransaction category: 'Portfolio-Ejercicio'!
@@ -760,8 +776,8 @@ value
 	self subclassResponsibility ! !
 
 
-!AccountTransaction methodsFor: 'reports' stamp: 'AlYac 5/30/2023 20:07:39'!
-printOnSummary: anAccountSummary
+!AccountTransaction methodsFor: 'reports' stamp: 'AlYac 5/31/2023 01:32:18'!
+fillReport: aReport
 
 	self subclassResponsibility! !
 
@@ -813,10 +829,10 @@ affectBalance: aBalance
 	^aBalance + value ! !
 
 
-!Deposit methodsFor: 'reports' stamp: 'AlYac 5/30/2023 21:25:45'!
-printOnSummary: anAccountSummary
+!Deposit methodsFor: 'reports' stamp: 'AlYac 5/31/2023 01:29:50'!
+fillReport: aReport
 
-	anAccountSummary printDepositOf: self value! !
+	aReport addToReportDepositOf: self value! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -851,10 +867,10 @@ initializeOn: anAccount fromTransfer: aTransfer
 ! !
 
 
-!TransferDeposit methodsFor: 'reports' stamp: 'AlYac 5/30/2023 21:27:46'!
-printOnSummary: anAccountSummary
+!TransferDeposit methodsFor: 'reports' stamp: 'AlYac 5/31/2023 01:30:21'!
+fillReport: aReport
 
-	anAccountSummary printTransferDepositOf: self value! !
+	aReport addToReportTransferDepositOf: self value! !
 
 
 !TransferDeposit methodsFor: 'balance' stamp: 'AlYac 5/30/2023 19:09:11'!
@@ -895,10 +911,10 @@ initializeOn: anAccount fromTransfer: aTransfer
 ! !
 
 
-!TransferWithdraw methodsFor: 'reports' stamp: 'AlYac 5/30/2023 21:27:19'!
-printOnSummary: anAccountSummary
+!TransferWithdraw methodsFor: 'reports' stamp: 'AlYac 5/31/2023 01:30:39'!
+fillReport: aReport
 	
-	anAccountSummary printTransferWithdrawOf: self value! !
+	aReport addToReportTransferWithdrawOf: self value! !
 
 
 !TransferWithdraw methodsFor: 'balance' stamp: 'AlYac 5/30/2023 19:13:38'!
@@ -955,10 +971,10 @@ affectBalance: aBalance
 	^aBalance - value! !
 
 
-!Withdraw methodsFor: 'reports' stamp: 'AlYac 5/30/2023 21:26:36'!
-printOnSummary: anAccountSummary
+!Withdraw methodsFor: 'reports' stamp: 'AlYac 5/31/2023 01:30:58'!
+fillReport: aReport
 
-	anAccountSummary printWithdrawOf: self value! !
+	aReport addToReportWithdrawOf: self value! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -970,6 +986,139 @@ Withdraw class
 for: aValue
 
 	^ self new initializeFor: aValue ! !
+
+
+!classDefinition: #Report category: 'Portfolio-Ejercicio'!
+Object subclass: #Report
+	instanceVariableNames: 'account report'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!Report methodsFor: 'report' stamp: 'AlYac 5/31/2023 01:20:16'!
+report
+
+	self subclassResponsibility! !
+
+
+!Report methodsFor: 'initialization' stamp: 'AlYac 5/31/2023 01:14:45'!
+initializeOf: anAccount 
+	
+	account := anAccount.! !
+
+
+!Report methodsFor: 'add to report' stamp: 'AlYac 5/31/2023 01:20:38'!
+addToReportDepositOf: anAmount
+
+	self subclassResponsibility! !
+
+!Report methodsFor: 'add to report' stamp: 'AlYac 5/31/2023 01:20:51'!
+addToReportTransferDepositOf: anAmount
+
+	self subclassResponsibility! !
+
+!Report methodsFor: 'add to report' stamp: 'AlYac 5/31/2023 01:21:01'!
+addToReportTransferWithdrawOf: anAmount
+
+	self subclassResponsibility! !
+
+!Report methodsFor: 'add to report' stamp: 'AlYac 5/31/2023 01:21:04'!
+addToReportWithdrawOf: anAmount
+
+	self subclassResponsibility! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'Report class' category: 'Portfolio-Ejercicio'!
+Report class
+	instanceVariableNames: ''!
+
+!Report class methodsFor: 'instance creation' stamp: 'AlYac 5/31/2023 01:14:58'!
+of: anAccount 
+	
+	^self new initializeOf: anAccount ! !
+
+
+!classDefinition: #AccountSummary category: 'Portfolio-Ejercicio'!
+Report subclass: #AccountSummary
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!AccountSummary methodsFor: 'report' stamp: 'AlYac 5/31/2023 01:27:32'!
+report
+	
+	report := OrderedCollection new.
+	account fillReport: self.
+	self addToReportBalanceOf: account balance.
+	^report 
+! !
+
+
+!AccountSummary methodsFor: 'add to report' stamp: 'AlYac 5/31/2023 01:18:11'!
+addToReportBalanceOf: anAmount
+	
+	^report add: 'Balance = ', anAmount asString
+! !
+
+!AccountSummary methodsFor: 'add to report' stamp: 'AlYac 5/31/2023 01:16:36'!
+addToReportDepositOf: anAmount
+	
+	^report add: 'Depósito por ', anAmount asString , '.'
+! !
+
+!AccountSummary methodsFor: 'add to report' stamp: 'AlYac 5/31/2023 01:17:11'!
+addToReportTransferDepositOf: anAmount
+	
+	^report add: 'Entrada por transferencia de ', anAmount asString , '.'
+! !
+
+!AccountSummary methodsFor: 'add to report' stamp: 'AlYac 5/31/2023 01:17:31'!
+addToReportTransferWithdrawOf: anAmount
+	
+	^report add: 'Salida por transferencia de ', anAmount asString , '.'
+! !
+
+!AccountSummary methodsFor: 'add to report' stamp: 'AlYac 5/31/2023 01:17:49'!
+addToReportWithdrawOf: anAmount
+	
+	^report add: 'Extracción por ', anAmount asString , '.'
+! !
+
+
+!classDefinition: #NetTransfer category: 'Portfolio-Ejercicio'!
+Report subclass: #NetTransfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!NetTransfer methodsFor: 'report' stamp: 'AlYac 5/31/2023 01:31:30'!
+report
+
+	report := 0.
+	account fillReport: self.
+	^report ! !
+
+
+!NetTransfer methodsFor: 'add to report' stamp: 'AlYac 5/31/2023 01:25:47'!
+addToReportDepositOf: anAmount
+! !
+
+!NetTransfer methodsFor: 'add to report' stamp: 'AlYac 5/31/2023 01:22:21'!
+addToReportTransferDepositOf: anAmount
+	
+	report := report + anAmount ! !
+
+!NetTransfer methodsFor: 'add to report' stamp: 'AlYac 5/31/2023 01:22:38'!
+addToReportTransferWithdrawOf: anAmount
+	
+	report := report - anAmount ! !
+
+!NetTransfer methodsFor: 'add to report' stamp: 'AlYac 5/31/2023 01:25:37'!
+addToReportWithdrawOf: anAmount
+ ! !
 
 
 !classDefinition: #Transfer category: 'Portfolio-Ejercicio'!
