@@ -255,3 +255,2621 @@ PASSED!
 PASSED!
 
 ----SNAPSHOT----(22 May 2023 21:58:50) CuisUniversity-5799.image priorSource: 9222790!
+
+----End fileIn of /home/alanyacar/Desktop/isw1/isw1/07-Portfolio2/Portfolio-Ejercicio.st----!
+!TransferTest methodsFor: 'tests' stamp: 'AlYac 5/30/2023 17:12:48' prior: 50621876!
+test02TransferBetweenTwoAccountsIsRegisteredInBoth
+
+	| transfereeAccount transfererAccount aTransfer |
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.
+	aTransfer := Transfer register: 100 from: transfererAccount to: transfereeAccount.
+	
+	self assert: transfererAccount balance equals: -100.
+	self assert: transfereeAccount balance equals: 100! !
+!TransferTest methodsFor: 'tests' stamp: 'AlYac 5/30/2023 17:15:24' prior: 50622274!
+test02TransferBetweenTwoAccountsIsRegisteredInBoth
+
+	| transfereeAccount transfererAccount aTransfer |
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.
+	aTransfer := Transfer register: 100 from: transfererAccount to: transfereeAccount.
+	
+	self assert: (transfererAccount hasRegistered: aTransfer withdraw).
+	self assert: (transfereeAccount hasRegistered: aTransfer deposit).! !
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsIsRegisteredInBoth stamp: 'AlYac 5/30/2023 17:15:29'!
+ERROR!
+!Transfer class methodsFor: 'operations' stamp: 'AlYac 5/30/2023 17:15:51'!
+withdraw
+	self shouldBeImplemented.! !
+
+!classDefinition: 'Transfer class' category: 'Portfolio-Ejercicio' stamp: 'AlYac 5/30/2023 17:17:08'!
+Transfer class
+	instanceVariableNames: 'withdraw'!
+!Transfer class methodsFor: 'operations' stamp: 'AlYac 5/30/2023 17:17:06' prior: 50622309!
+withdraw
+	^withdraw.! !
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsIsRegisteredInBoth stamp: 'AlYac 5/30/2023 17:17:12'!
+FAILURE!
+
+!classDefinition: 'Transfer class' category: 'Portfolio-Ejercicio' stamp: 'AlYac 5/30/2023 17:17:52'!
+Transfer class
+	instanceVariableNames: 'withdraw deposit'!
+!Transfer class methodsFor: 'instance creation' stamp: 'AlYac 5/30/2023 17:17:50' prior: 50622262!
+register: anAmount from: aTransfererAccount to: aTransfereeAccount 
+
+	deposit := Deposit register: anAmount on: aTransfereeAccount.
+	withdraw := Withdraw register: anAmount on: aTransfererAccount ! !
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AlYac 5/30/2023 17:17:56'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsIsRegisteredInBoth stamp: 'AlYac 5/30/2023 17:17:56'!
+ERROR!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsIsRegisteredInBoth stamp: 'AlYac 5/30/2023 17:17:56'!
+ERROR!
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AlYac 5/30/2023 17:18:14'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsIsRegisteredInBoth stamp: 'AlYac 5/30/2023 17:18:14'!
+ERROR!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsIsRegisteredInBoth stamp: 'AlYac 5/30/2023 17:18:14'!
+ERROR!
+!Transfer class methodsFor: 'operations' stamp: 'AlYac 5/30/2023 17:18:18'!
+deposit
+	self shouldBeImplemented.
+	^deposit! !
+!Transfer class methodsFor: 'operations' stamp: 'AlYac 5/30/2023 17:18:25' prior: 50622363!
+deposit
+	
+	^deposit! !
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsIsRegisteredInBoth stamp: 'AlYac 5/30/2023 17:18:28'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AlYac 5/30/2023 17:18:32'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsIsRegisteredInBoth stamp: 'AlYac 5/30/2023 17:18:32'!
+PASSED!
+!TransferTest methodsFor: 'tests' stamp: 'AlYac 5/30/2023 17:23:40'!
+test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth
+
+	| transfereeAccount transfererAccount aTransfer |
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.
+	aTransfer := Transfer register: 100 from: transfererAccount to: transfereeAccount.
+	
+	self assert: (transfererAccount hasRegistered: aTransfer withdraw).
+	self assert: (transfereeAccount hasRegistered: aTransfer deposit).! !
+
+!methodRemoval: TransferTest #test02TransferBetweenTwoAccountsIsRegisteredInBoth stamp: 'AlYac 5/30/2023 17:23:40'!
+test02TransferBetweenTwoAccountsIsRegisteredInBoth
+
+	| transfereeAccount transfererAccount aTransfer |
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.
+	aTransfer := Transfer register: 100 from: transfererAccount to: transfereeAccount.
+	
+	self assert: (transfererAccount hasRegistered: aTransfer withdraw).
+	self assert: (transfereeAccount hasRegistered: aTransfer deposit).!
+!TransferTest methodsFor: 'tests' stamp: 'AlYac 5/30/2023 17:26:43'!
+test03DepositOfATransferKnowsItsTransfer
+
+	| transfereeAccount transfererAccount aTransfer |
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.
+	aTransfer := Transfer register: 100 from: transfererAccount to: transfereeAccount.
+
+	self assert: aTransfer deposit transfer equals: aTransfer .! !
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 17:26:45'!
+ERROR!
+
+!classDefinition: #TransferDeposit category: 'Portfolio-Ejercicio' stamp: 'AlYac 5/30/2023 17:28:53'!
+AccountTransaction subclass: #TransferDeposit
+	instanceVariableNames: 'myTransfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Transfer class methodsFor: 'instance creation' stamp: 'AlYac 5/30/2023 17:27:23' prior: 50622331!
+register: anAmount from: aTransfererAccount to: aTransfereeAccount 
+
+	deposit := TransferDeposit register: anAmount on: aTransfereeAccount.
+	withdraw := Withdraw register: anAmount on: aTransfererAccount ! !
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AlYac 5/30/2023 17:29:04'!
+ERROR!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth stamp: 'AlYac 5/30/2023 17:29:04'!
+ERROR!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 17:29:04'!
+ERROR!
+!TransferDeposit methodsFor: 'no messages' stamp: 'AlYac 5/30/2023 17:29:55'!
+transfer
+
+	^myTransfer ! !
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'AlYac 5/30/2023 17:30:05'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'AlYac 5/30/2023 17:30:05'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'AlYac 5/30/2023 17:30:05'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'AlYac 5/30/2023 17:30:05'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'AlYac 5/30/2023 17:30:05'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'AlYac 5/30/2023 17:30:05'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'AlYac 5/30/2023 17:30:05'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'AlYac 5/30/2023 17:30:05'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'AlYac 5/30/2023 17:30:05'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'AlYac 5/30/2023 17:30:05'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'AlYac 5/30/2023 17:30:05'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'AlYac 5/30/2023 17:30:05'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'AlYac 5/30/2023 17:30:05'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'AlYac 5/30/2023 17:30:05'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'AlYac 5/30/2023 17:30:05'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'AlYac 5/30/2023 17:30:05'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 17:30:05'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 17:30:05'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'AlYac 5/30/2023 17:30:05'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'AlYac 5/30/2023 17:30:05'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'AlYac 5/30/2023 17:30:05'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'AlYac 5/30/2023 17:30:05'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'AlYac 5/30/2023 17:30:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'AlYac 5/30/2023 17:30:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'AlYac 5/30/2023 17:30:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'AlYac 5/30/2023 17:30:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'AlYac 5/30/2023 17:30:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'AlYac 5/30/2023 17:30:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'AlYac 5/30/2023 17:30:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'AlYac 5/30/2023 17:30:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'AlYac 5/30/2023 17:30:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'AlYac 5/30/2023 17:30:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'AlYac 5/30/2023 17:30:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'AlYac 5/30/2023 17:30:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'AlYac 5/30/2023 17:30:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'AlYac 5/30/2023 17:30:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'AlYac 5/30/2023 17:30:09'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'AlYac 5/30/2023 17:30:09'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 17:30:09'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 17:30:09'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'AlYac 5/30/2023 17:30:09'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'AlYac 5/30/2023 17:30:09'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'AlYac 5/30/2023 17:30:09'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'AlYac 5/30/2023 17:30:09'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AlYac 5/30/2023 17:30:11'!
+ERROR!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth stamp: 'AlYac 5/30/2023 17:30:11'!
+ERROR!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 17:30:11'!
+ERROR!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 17:30:17'!
+ERROR!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 17:30:31'!
+ERROR!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 17:30:31'!
+ERROR!
+!TransferDeposit class methodsFor: 'instance creation' stamp: 'AlYac 5/30/2023 17:30:39'!
+for: aSmallInteger 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeFor: aSmallInteger ! !
+!TransferDeposit class methodsFor: 'instance creation' stamp: 'AlYac 5/30/2023 17:31:07' prior: 50622660!
+for: aValue
+
+	^ self new initializeFor: aValue ! !
+
+!classDefinition: #TransferDeposit category: 'Portfolio-Ejercicio' stamp: 'AlYac 5/30/2023 17:31:47'!
+AccountTransaction subclass: #TransferDeposit
+	instanceVariableNames: 'myTransfer value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!TransferDeposit methodsFor: 'nil' stamp: 'AlYac 5/30/2023 17:31:44'!
+initializeFor: aValue
+
+	value := aValue ! !
+!TransferDeposit methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 17:32:24'!
+initializeFor: aValue fromTransfer: aTransfer
+
+	value := aValue 
+! !
+
+!methodRemoval: TransferDeposit #initializeFor: stamp: 'AlYac 5/30/2023 17:32:39'!
+initializeFor: aValue
+
+	value := aValue !
+!TransferDeposit class methodsFor: 'instance creation' stamp: 'AlYac 5/30/2023 17:33:30'!
+for: aValue fromTransfer: aTransfer
+
+	^ self new initializeFor: aValue fromTransfer: aTransfer ! !
+
+!methodRemoval: TransferDeposit class #for: stamp: 'AlYac 5/30/2023 17:33:34'!
+for: aValue
+
+	^ self new initializeFor: aValue !
+!TransferDeposit methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 17:34:05' prior: 50622687!
+initializeFor: aValue fromTransfer: aTransfer
+
+	value := aValue.
+	myTransfer := aTransfer 
+! !
+!TransferDeposit methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 17:37:33' prior: 50622707!
+initializeFor: aValue fromTransfer: aTransfer
+
+	| a |
+	TransferDeposit register: aValue on: a.
+	myTransfer := aTransfer 
+! !
+!Transfer class methodsFor: 'instance creation' stamp: 'AlYac 5/30/2023 17:42:50' prior: 50622442!
+register: anAmount from: aTransfererAccount to: aTransfereeAccount 
+
+	self new register: anAmount from: aTransfererAccount to: aTransfereeAccount.
+	! !
+!Transfer class methodsFor: 'instance creation' stamp: 'AlYac 5/30/2023 17:42:58' prior: 50622721!
+register: anAmount from: aTransfererAccount to: aTransfereeAccount 
+
+	^self new register: anAmount from: aTransfererAccount to: aTransfereeAccount.
+	! !
+
+!classDefinition: #Transfer category: 'Portfolio-Ejercicio' stamp: 'AlYac 5/30/2023 17:43:52'!
+Object subclass: #Transfer
+	instanceVariableNames: 'deposit'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Transfer category: 'Portfolio-Ejercicio' stamp: 'AlYac 5/30/2023 17:43:53'!
+Object subclass: #Transfer
+	instanceVariableNames: 'deposit withdraw'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Transfer methodsFor: 'no messages' stamp: 'AlYac 5/30/2023 17:43:50'!
+register: anAmount from: aTransfererAccount to: aTransfereeAccount
+
+	deposit := TransferDeposit register: anAmount on: aTransfereeAccount.
+	withdraw := Withdraw register: anAmount on: aTransfererAccount ! !
+
+Transfer class
+	instanceVariableNames: ''!
+
+!classDefinition: 'Transfer class' category: 'Portfolio-Ejercicio' stamp: 'AlYac 5/30/2023 17:44:05'!
+Transfer class
+	instanceVariableNames: ''!
+!Transfer methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 17:45:19' prior: 50622752!
+register: anAmount from: aTransfererAccount to: aTransfereeAccount
+
+	deposit := TransferDeposit register: anAmount on: aTransfereeAccount fromTransfer: self.
+	withdraw := Withdraw register: anAmount on: aTransfererAccount ! !
+
+Object subclass: #TransferDeposit
+	instanceVariableNames: 'myTransfer value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #TransferDeposit category: 'Portfolio-Ejercicio' stamp: 'AlYac 5/30/2023 17:45:33'!
+Object subclass: #TransferDeposit
+	instanceVariableNames: 'myTransfer value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+Object subclass: #TransferDeposit
+	instanceVariableNames: 'myTransfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #TransferDeposit category: 'Portfolio-Ejercicio' stamp: 'AlYac 5/30/2023 17:45:46'!
+Object subclass: #TransferDeposit
+	instanceVariableNames: 'myTransfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!TransferDeposit class methodsFor: 'instance creation' stamp: 'AlYac 5/30/2023 17:46:13'!
+for: aValue on: anAccount fromTransfer: aTransfer
+
+	^ self new initializeFor: aValue fromTransfer: aTransfer ! !
+
+!methodRemoval: TransferDeposit class #for:fromTransfer: stamp: 'AlYac 5/30/2023 17:46:15'!
+for: aValue fromTransfer: aTransfer
+
+	^ self new initializeFor: aValue fromTransfer: aTransfer !
+!TransferDeposit class methodsFor: 'instance creation' stamp: 'AlYac 5/30/2023 17:46:30' prior: 50622804!
+for: aValue on: anAccount fromTransfer: aTransfer
+
+	^ self new initializeFor: aValue on: anAccount fromTransfer: aTransfer ! !
+!TransferDeposit methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 17:46:58'!
+initializeFor: aValue on: anAccount fromTransfer: aTransfer
+
+	
+	TransferDeposit register: aValue on: anAccount.
+	myTransfer := aTransfer 
+! !
+!TransferDeposit methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 17:48:05' prior: 50622824!
+initializeFor: aValue on: anAccount fromTransfer: aTransfer
+
+	
+	TransferDeposit registerOn: anAccount.
+	myTransfer := aTransfer 
+! !
+
+!methodRemoval: TransferDeposit #initializeFor:fromTransfer: stamp: 'AlYac 5/30/2023 17:48:54'!
+initializeFor: aValue fromTransfer: aTransfer
+
+	| a |
+	TransferDeposit register: aValue on: a.
+	myTransfer := aTransfer 
+!
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AlYac 5/30/2023 17:50:29'!
+ERROR!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth stamp: 'AlYac 5/30/2023 17:50:29'!
+ERROR!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 17:50:29'!
+ERROR!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 17:50:34'!
+ERROR!
+!TransferDeposit class methodsFor: 'instance creation' stamp: 'AlYac 5/30/2023 17:51:09'!
+register: aValue on: anAccount fromTransfer: aTransfer
+
+	^ self new initializeFor: aValue on: anAccount fromTransfer: aTransfer ! !
+
+!methodRemoval: TransferDeposit class #for:on:fromTransfer: stamp: 'AlYac 5/30/2023 17:51:09'!
+for: aValue on: anAccount fromTransfer: aTransfer
+
+	^ self new initializeFor: aValue on: anAccount fromTransfer: aTransfer !
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AlYac 5/30/2023 17:51:12'!
+ERROR!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth stamp: 'AlYac 5/30/2023 17:51:12'!
+ERROR!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 17:51:12'!
+ERROR!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 17:51:14'!
+ERROR!
+!TransferDeposit methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 17:51:59'!
+registerOn: anAccount
+
+
+! !
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AlYac 5/30/2023 17:52:04'!
+ERROR!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth stamp: 'AlYac 5/30/2023 17:52:04'!
+ERROR!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 17:52:04'!
+ERROR!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 17:52:06'!
+ERROR!
+!TransferDeposit methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 17:52:37' prior: 50622890!
+registerOn: anAccount
+
+
+! !
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AlYac 5/30/2023 17:52:42'!
+ERROR!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth stamp: 'AlYac 5/30/2023 17:52:42'!
+ERROR!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 17:52:42'!
+ERROR!
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AlYac 5/30/2023 17:52:43'!
+ERROR!
+
+!methodRemoval: TransferDeposit #registerOn: stamp: 'AlYac 5/30/2023 17:53:23'!
+registerOn: anAccount
+
+
+!
+!Transfer methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 17:54:27' prior: 50622768!
+register: anAmount from: aTransfererAccount to: aTransfereeAccount
+
+	deposit := TransferDeposit registerOn: aTransfereeAccount fromTransfer: self.
+	withdraw := Withdraw register: anAmount on: aTransfererAccount ! !
+
+!classDefinition: #Transfer category: 'Portfolio-Ejercicio' stamp: 'AlYac 5/30/2023 17:54:44'!
+Object subclass: #Transfer
+	instanceVariableNames: 'deposit withdraw value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Transfer methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 17:54:41' prior: 50622933!
+register: anAmount from: aTransfererAccount to: aTransfereeAccount
+
+	deposit := TransferDeposit registerOn: aTransfereeAccount fromTransfer: self.
+	withdraw := Withdraw register: anAmount on: aTransfererAccount.
+	value := anAmount ! !
+!TransferDeposit class methodsFor: 'instance creation' stamp: 'AlYac 5/30/2023 17:55:29'!
+registerOn: anAccount fromTransfer: aTransfer
+
+	^ self new initializeOn: anAccount fromTransfer: aTransfer ! !
+
+!methodRemoval: TransferDeposit class #register:on:fromTransfer: stamp: 'AlYac 5/30/2023 17:56:16'!
+register: aValue on: anAccount fromTransfer: aTransfer
+
+	^ self new initializeFor: aValue on: anAccount fromTransfer: aTransfer !
+!TransferDeposit methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 17:56:29'!
+initializeOn: anAccount fromTransfer: aTransfer
+
+	
+	TransferDeposit registerOn: anAccount.
+	myTransfer := aTransfer 
+! !
+
+!methodRemoval: TransferDeposit #initializeFor:on:fromTransfer: stamp: 'AlYac 5/30/2023 17:56:35'!
+initializeFor: aValue on: anAccount fromTransfer: aTransfer
+
+	
+	TransferDeposit registerOn: anAccount.
+	myTransfer := aTransfer 
+!
+!TransferDeposit methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 17:58:10' prior: 50622976!
+initializeOn: anAccount fromTransfer: aTransfer
+
+	myTransfer := aTransfer.
+	anAccount register: self
+! !
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AlYac 5/30/2023 17:58:16'!
+ERROR!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth stamp: 'AlYac 5/30/2023 17:58:16'!
+ERROR!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 17:58:16'!
+ERROR!
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AlYac 5/30/2023 17:58:19'!
+ERROR!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 17:58:25'!
+ERROR!
+!Transfer methodsFor: 'operations' stamp: 'AlYac 5/30/2023 17:58:59'!
+deposit
+
+	^deposit ! !
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AlYac 5/30/2023 17:59:00'!
+ERROR!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth stamp: 'AlYac 5/30/2023 17:59:00'!
+ERROR!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 17:59:00'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AlYac 5/30/2023 18:00:25'!
+ERROR!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth stamp: 'AlYac 5/30/2023 18:00:25'!
+ERROR!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 18:00:25'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AlYac 5/30/2023 18:00:26'!
+ERROR!
+!TransferDeposit methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 18:00:32'!
+affectBalance: currentBalance 
+	self shouldBeImplemented.! !
+!TransferDeposit methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 18:00:52' prior: 50623047!
+affectBalance: currentBalance 
+	^myTransfer value! !
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AlYac 5/30/2023 18:00:59'!
+FAILURE!
+!Transfer methodsFor: 'operations' stamp: 'AlYac 5/30/2023 18:01:27' overrides: 16902254!
+value
+
+	^value! !
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AlYac 5/30/2023 18:01:29'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth stamp: 'AlYac 5/30/2023 18:01:29'!
+ERROR!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 18:01:29'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth stamp: 'AlYac 5/30/2023 18:01:29'!
+ERROR!
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AlYac 5/30/2023 18:01:37'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth stamp: 'AlYac 5/30/2023 18:01:38'!
+ERROR!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth stamp: 'AlYac 5/30/2023 18:01:38'!
+ERROR!
+!Transfer methodsFor: 'operations' stamp: 'AlYac 5/30/2023 18:02:37'!
+withdraw
+
+	^withdraw ! !
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AlYac 5/30/2023 18:02:38'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth stamp: 'AlYac 5/30/2023 18:02:38'!
+PASSED!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 18:02:38'!
+PASSED!
+!TransferTest methodsFor: 'tests' stamp: 'AlYac 5/30/2023 18:02:52'!
+test04WithdrawOfATransferKnowsItsTransfer
+
+	| transfereeAccount transfererAccount aTransfer |
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.
+	aTransfer := Transfer register: 100 from: transfererAccount to: transfereeAccount.
+
+	self assert: aTransfer deposit transfer equals: aTransfer .! !
+!TransferTest methodsFor: 'tests' stamp: 'AlYac 5/30/2023 18:03:26' prior: 50623109!
+test04WithdrawOfATransferKnowsItsTransfer
+
+	| transfereeAccount transfererAccount aTransfer |
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.
+	aTransfer := Transfer register: 100 from: transfererAccount to: transfereeAccount.
+
+	self assert: aTransfer withdraw transfer equals: aTransfer .! !
+
+!testRun: #TransferTest #test04WithdrawOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 18:03:27'!
+ERROR!
+
+Object subclass: #TransferWithdraw
+	instanceVariableNames: 'myTransfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #TransferWithdraw category: 'Portfolio-Ejercicio' stamp: 'AlYac 5/30/2023 18:03:39'!
+Object subclass: #TransferWithdraw
+	instanceVariableNames: 'myTransfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!methodRemoval: Transfer class #withdraw stamp: 'AlYac 5/30/2023 18:04:21'!
+withdraw
+	^withdraw.!
+
+!methodRemoval: Transfer class #deposit stamp: 'AlYac 5/30/2023 18:04:22'!
+deposit
+	
+	^deposit!
+!Transfer methodsFor: 'operations' stamp: 'AlYac 5/30/2023 18:04:32' prior: 50622951!
+register: anAmount from: aTransfererAccount to: aTransfereeAccount
+
+	deposit := TransferDeposit registerOn: aTransfereeAccount fromTransfer: self.
+	withdraw := TransferWithdraw register: anAmount on: aTransfererAccount.
+	value := anAmount ! !
+!TransferWithdraw class methodsFor: 'no messages' stamp: 'AlYac 5/30/2023 18:04:47'!
+registerOn: anAccount fromTransfer: aTransfer
+
+	^ self new initializeOn: anAccount fromTransfer: aTransfer ! !
+!TransferWithdraw methodsFor: 'no messages' stamp: 'AlYac 5/30/2023 18:05:02'!
+initializeOn: anAccount fromTransfer: aTransfer
+
+	myTransfer := aTransfer.
+	anAccount register: self
+! !
+!TransferDeposit methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 18:05:15' prior: 50623053!
+affectBalance: currentBalance 
+	
+	^myTransfer value! !
+!TransferDeposit methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 18:05:31' prior: 50623182!
+affectBalance: currentBalance 
+	
+	^myTransfer value negated! !
+!TransferDeposit methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 18:05:37' prior: 50623187!
+affectBalance: currentBalance 
+	
+	^myTransfer value! !
+!TransferWithdraw methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 18:05:53'!
+affectBalance: currentBalance 
+	
+	^myTransfer value negated! !
+!TransferWithdraw methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 18:06:04'!
+transfer
+
+	^myTransfer ! !
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AlYac 5/30/2023 18:06:21'!
+ERROR!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth stamp: 'AlYac 5/30/2023 18:06:21'!
+ERROR!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 18:06:21'!
+ERROR!
+
+!testRun: #TransferTest #test04WithdrawOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 18:06:21'!
+ERROR!
+!Transfer methodsFor: 'operations' stamp: 'AlYac 5/30/2023 18:06:59' prior: 50623158!
+register: anAmount from: aTransfererAccount to: aTransfereeAccount
+
+	deposit := TransferDeposit registerOn: aTransfereeAccount fromTransfer: self.
+	withdraw := TransferWithdraw registerOn: aTransfererAccount fromTransfer: self.
+	value := anAmount ! !
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AlYac 5/30/2023 18:07:00'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth stamp: 'AlYac 5/30/2023 18:07:00'!
+PASSED!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 18:07:00'!
+PASSED!
+
+!testRun: #TransferTest #test04WithdrawOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 18:07:00'!
+PASSED!
+
+AccountTransaction subclass: #TransferDeposit
+	instanceVariableNames: 'myTransfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #TransferDeposit category: 'Portfolio-Ejercicio' stamp: 'AlYac 5/30/2023 18:07:46'!
+AccountTransaction subclass: #TransferDeposit
+	instanceVariableNames: 'myTransfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+AccountTransaction subclass: #TransferWithdraw
+	instanceVariableNames: 'myTransfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #TransferWithdraw category: 'Portfolio-Ejercicio' stamp: 'AlYac 5/30/2023 18:08:00'!
+AccountTransaction subclass: #TransferWithdraw
+	instanceVariableNames: 'myTransfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!TransferDeposit methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 18:10:12' prior: 50623193 overrides: 50622144!
+affectBalance: currentBalance 
+	
+	^currentBalance + myTransfer value! !
+!TransferWithdraw methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 18:10:58' prior: 50623198 overrides: 50622144!
+affectBalance: currentBalance 
+	
+	^currentBalance - myTransfer value! !
+
+TestCase subclass: #ReportsTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #ReportsTest category: 'Portfolio-Ejercicio' stamp: 'AlYac 5/30/2023 18:22:16'!
+TestCase subclass: #ReportsTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!ReportsTest methodsFor: 'no messages' stamp: 'AlYac 5/30/2023 18:23:34'!
+test01AccountSummaryOfANewAccountIsEmpty! !
+!ReportsTest methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 18:24:35' prior: 50623300!
+test01AccountSummaryOfANewAccountIsEmpty
+
+	self assert: ReceptiveAccount new accountSummary isEmpty ! !
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 18:24:38'!
+ERROR!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 18:24:49'!
+accountSummary
+	self shouldBeImplemented.! !
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 18:25:15' prior: 50623314!
+accountSummary
+	^OrderedCollection new! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'AlYac 5/30/2023 18:25:16'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 18:25:16'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 18:25:16'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'AlYac 5/30/2023 18:25:16'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'AlYac 5/30/2023 18:25:16'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'AlYac 5/30/2023 18:25:16'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'AlYac 5/30/2023 18:25:16'!
+PASSED!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 18:25:18'!
+PASSED!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 18:25:18'!
+PASSED!
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 18:27:39'!
+test02AccountWithOneDepositHasItInItsAccountSummary
+
+	self assert: ReceptiveAccount new accountSummary isEmpty ! !
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 18:28:35' prior: 50623357!
+test02AccountWithOneDepositHasItInItsAccountSummary
+
+	| anAccount |
+	anAccount := ReceptiveAccount new.
+	
+
+	self assert: ReceptiveAccount new accountSummary isEmpty ! !
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 18:29:02' prior: 50623364!
+test02AccountWithOneDepositHasItInItsAccountSummary
+
+	| anAccount |
+	anAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+
+	self assert: anAccount accountSummary isEmpty ! !
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 18:30:34' prior: 50623372!
+test02AccountWithOneDepositHasItInItsAccountSummary
+
+	| anAccount expectedSummary |
+	anAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	expectedSummary := OrderedCollection with: 'Depósito por 100.'.
+
+	self assert: anAccount accountSummary  ! !
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 18:31:09' prior: 50623381!
+test02AccountWithOneDepositHasItInItsAccountSummary
+
+	| anAccount expectedSummary |
+	anAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	expectedSummary := OrderedCollection with: 'Depósito por 100.'.
+
+	self assert: anAccount accountSummary = expectedSummary ! !
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 18:31:13'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 18:32:39' prior: 50623319!
+accountSummary
+	| accountSummary |
+	accountSummary := OrderedCollection new.
+	^ accountSummary! !
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 18:33:04' prior: 50623408!
+accountSummary
+	| accountSummary |
+	accountSummary := OrderedCollection new.
+	
+	^ accountSummary! !
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 18:37:17' prior: 50623414!
+accountSummary
+	| accountSummary |
+	accountSummary := OrderedCollection new.
+	
+	^ transactions inject: OrderedCollection new into: [:summary :transaction|
+		(transaction isKindOf: Deposit) ifTrue: [summary add: 'Deposito por ', transaction value ,'.'] ]! !
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 18:37:39' prior: 50623420!
+accountSummary
+	
+	^ transactions inject: OrderedCollection new into: [:summary :transaction|
+		(transaction isKindOf: Deposit) ifTrue: [summary add: 'Depósito por ', transaction value ,'.'] ]! !
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 18:37:43' prior: 50623431!
+accountSummary
+	
+	^ transactions inject: OrderedCollection new into: [:summary :transaction|
+		(transaction isKindOf: Deposit) ifTrue: [summary add: 'Depósito por ', transaction value ,'.'] 
+		]! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'AlYac 5/30/2023 18:37:47'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 18:37:47'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 18:37:47'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'AlYac 5/30/2023 18:37:47'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'AlYac 5/30/2023 18:37:47'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'AlYac 5/30/2023 18:37:47'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'AlYac 5/30/2023 18:37:47'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AlYac 5/30/2023 18:37:50'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth stamp: 'AlYac 5/30/2023 18:37:50'!
+PASSED!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 18:37:50'!
+PASSED!
+
+!testRun: #TransferTest #test04WithdrawOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 18:37:50'!
+PASSED!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 18:37:53'!
+PASSED!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 18:37:53'!
+ERROR!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 18:37:53'!
+ERROR!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 18:39:03' prior: 50623440!
+accountSummary
+	
+	^ transactions inject: OrderedCollection new into: [:summary :transaction|
+		(transaction isKindOf: Deposit) ifTrue: [summary add: 'Depósito por ', transaction value asString ,'.'] 
+		]! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'AlYac 5/30/2023 18:39:04'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 18:39:04'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 18:39:04'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'AlYac 5/30/2023 18:39:04'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'AlYac 5/30/2023 18:39:04'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'AlYac 5/30/2023 18:39:04'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'AlYac 5/30/2023 18:39:04'!
+PASSED!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 18:39:12'!
+PASSED!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 18:39:12'!
+FAILURE!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 18:39:12'!
+FAILURE!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 18:39:33'!
+FAILURE!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 18:39:33'!
+FAILURE!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 18:40:21'!
+PASSED!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 18:40:21'!
+FAILURE!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 18:40:21'!
+FAILURE!
+
+anAccount accountSummary!
+
+expectedSummary!
+
+anAccount accountSummary!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 18:43:07' prior: 50623502!
+accountSummary
+	
+		transactions do: [:transaction|
+		(transaction isKindOf: Deposit) ifTrue: [ ^OrderedCollection with: 'Depósito por ', transaction value asString ,'.'] 
+		]! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'AlYac 5/30/2023 18:43:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 18:43:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 18:43:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'AlYac 5/30/2023 18:43:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'AlYac 5/30/2023 18:43:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'AlYac 5/30/2023 18:43:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'AlYac 5/30/2023 18:43:10'!
+PASSED!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 18:43:24' prior: 50623571!
+accountSummary
+	
+		transactions do: [:transaction|
+		(transaction isKindOf: Deposit) ifTrue: [ ^OrderedCollection with: 'Depósito por ', transaction value asString ,'.'] 
+		]
+		^OrderedCollection new! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'AlYac 5/30/2023 18:43:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 18:43:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 18:43:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'AlYac 5/30/2023 18:43:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'AlYac 5/30/2023 18:43:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'AlYac 5/30/2023 18:43:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'AlYac 5/30/2023 18:43:25'!
+PASSED!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 18:43:30'!
+ERROR!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 18:43:30'!
+ERROR!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 18:43:36'!
+ERROR!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 18:44:07' prior: 50623607!
+accountSummary
+	
+		transactions do: [:transaction|
+		(transaction isKindOf: Deposit) ifTrue: [ ^OrderedCollection with: 'Depósito por ', transaction value asString ,'.']
+		].
+		^OrderedCollection new! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'AlYac 5/30/2023 18:44:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 18:44:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 18:44:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'AlYac 5/30/2023 18:44:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'AlYac 5/30/2023 18:44:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'AlYac 5/30/2023 18:44:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'AlYac 5/30/2023 18:44:10'!
+PASSED!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 18:44:16'!
+PASSED!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 18:44:16'!
+PASSED!
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 18:45:05'!
+test03AccountWithOneWithdrawHasItInItsAccountSummary
+
+	| anAccount expectedSummary |
+	anAccount := ReceptiveAccount new.
+	Withdraw register: 100 on: anAccount.
+	expectedSummary := OrderedCollection with: 'Extracción por 100.'.
+
+	self assert: anAccount accountSummary = expectedSummary ! !
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 18:45:07'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 18:46:11' prior: 50623654!
+accountSummary
+	
+		transactions do: [:transaction|
+		(transaction isKindOf: Deposit) ifTrue: [ ^OrderedCollection with: 'Depósito por ', transaction value asString ,'.'].
+		(transaction isKindOf: Withdraw) ifTrue: [ ^OrderedCollection with: 'Extraccion por ', transaction value asString ,'.'].
+		].
+		^OrderedCollection new! !
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 18:46:14'!
+PASSED!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 18:46:14'!
+PASSED!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 18:46:14'!
+FAILURE!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 18:46:14'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 18:46:34' prior: 50623713!
+accountSummary
+	
+		transactions do: [:transaction|
+		(transaction isKindOf: Deposit) ifTrue: [ ^OrderedCollection with: 'Depósito por ', transaction value asString ,'.'].
+		(transaction isKindOf: Withdraw) ifTrue: [ ^OrderedCollection with: 'Extracción por ', transaction value asString ,'.'].
+		].
+		^OrderedCollection new! !
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 18:46:40'!
+PASSED!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 18:46:40'!
+PASSED!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 18:46:40'!
+PASSED!
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 18:47:22'!
+test04AccountWithOneTransferDepositHasItInItsAccountSummary
+
+	| anAccount expectedSummary |
+	anAccount := ReceptiveAccount new.
+	Withdraw register: 100 on: anAccount.
+	expectedSummary := OrderedCollection with: 'Extracción por 100.'.
+
+	self assert: anAccount accountSummary = expectedSummary ! !
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 18:48:23' prior: 50623765!
+test04AccountWithOneTransferDepositHasItInItsAccountSummary
+
+	| expectedSummary aTransfer transfereeAccount transfererAccount |
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.
+	aTransfer := Transfer register: 100 from: transfererAccount to: transfereeAccount.
+	expectedSummary := OrderedCollection with: 'Extracción por 100.'.
+
+	self assert: transfereeAccount accountSummary = expectedSummary ! !
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 18:48:44' prior: 50623777!
+test04AccountWithOneTransferDepositHasItInItsAccountSummary
+
+	| expectedSummary transfereeAccount transfererAccount |
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.
+	Transfer register: 100 from: transfererAccount to: transfereeAccount.
+	expectedSummary := OrderedCollection with: 'Extracción por 100.'.
+
+	self assert: transfereeAccount accountSummary = expectedSummary ! !
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 18:49:11' prior: 50623794!
+test04AccountWithOneTransferDepositHasItInItsAccountSummary
+
+	| expectedSummary transfereeAccount transfererAccount |
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.
+	Transfer register: 100 from: transfererAccount to: transfereeAccount.
+	expectedSummary := OrderedCollection with: 'Entrada por transferencia de 100.'.
+
+	self assert: transfereeAccount accountSummary = expectedSummary ! !
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 18:49:12'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 18:49:59' prior: 50623741!
+accountSummary
+	
+		transactions do: [:transaction|
+		(transaction isKindOf: Deposit) ifTrue: [ ^OrderedCollection with: 'Depósito por ', transaction value asString ,'.'].
+		(transaction isKindOf: Withdraw) ifTrue: [ ^OrderedCollection with: 'Extracción por ', transaction value asString ,'.'].
+		(transaction isKindOf: TransferDeposit) ifTrue: [ ^OrderedCollection with: 'Entrada por transferencia de ', transaction value asString ,'.'].
+		].
+		^OrderedCollection new! !
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 18:50:04'!
+PASSED!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 18:50:04'!
+PASSED!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 18:50:04'!
+PASSED!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 18:50:04'!
+ERROR!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 18:50:04'!
+ERROR!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:08:39'!
+ERROR!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:08:39'!
+ERROR!
+!TransferDeposit methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 19:09:11' prior: 50623276 overrides: 50622144!
+affectBalance: currentBalance 
+	
+	^currentBalance + self value! !
+!TransferDeposit methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 19:09:38' overrides: 50622140!
+value
+	
+	myTransfer value ! !
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 19:09:57'!
+PASSED!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:09:57'!
+PASSED!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:09:57'!
+PASSED!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:09:57'!
+FAILURE!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:09:57'!
+FAILURE!
+
+transfereeAccount accountSummary!
+!TransferDeposit methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 19:10:48' prior: 50623883 overrides: 50622140!
+value
+	
+	^myTransfer value ! !
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 19:10:57'!
+PASSED!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:10:57'!
+PASSED!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:10:57'!
+PASSED!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:10:57'!
+PASSED!
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 19:12:11'!
+test04AccountWithOneTransferWithdrawHasItInItsAccountSummary
+
+	| expectedSummary transfereeAccount transfererAccount |
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.
+	Transfer register: 100 from: transfererAccount to: transfereeAccount.
+	expectedSummary := OrderedCollection with: 'Salida por transferencia de 100.'.
+
+	self assert: transfererAccount accountSummary = expectedSummary ! !
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 19:12:18'!
+test05AccountWithOneTransferWithdrawHasItInItsAccountSummary
+
+	| expectedSummary transfereeAccount transfererAccount |
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.
+	Transfer register: 100 from: transfererAccount to: transfereeAccount.
+	expectedSummary := OrderedCollection with: 'Salida por transferencia de 100.'.
+
+	self assert: transfererAccount accountSummary = expectedSummary ! !
+
+!methodRemoval: ReportsTest #test04AccountWithOneTransferWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:12:18'!
+test04AccountWithOneTransferWithdrawHasItInItsAccountSummary
+
+	| expectedSummary transfereeAccount transfererAccount |
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.
+	Transfer register: 100 from: transfererAccount to: transfereeAccount.
+	expectedSummary := OrderedCollection with: 'Salida por transferencia de 100.'.
+
+	self assert: transfererAccount accountSummary = expectedSummary !
+
+!testRun: #ReportsTest #test05AccountWithOneTransferWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:12:26'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 19:13:24' prior: 50623831!
+accountSummary
+	
+		transactions do: [:transaction|
+		(transaction isKindOf: Deposit) ifTrue: [ ^OrderedCollection with: 'Depósito por ', transaction value asString ,'.'].
+		(transaction isKindOf: Withdraw) ifTrue: [ ^OrderedCollection with: 'Extracción por ', transaction value asString ,'.'].
+		(transaction isKindOf: TransferDeposit) ifTrue: [ ^OrderedCollection with: 'Entrada por transferencia de ', transaction value asString ,'.'].
+		(transaction isKindOf: TransferWithdraw) ifTrue: [ ^OrderedCollection with: 'Salida por transferencia de ', transaction value asString ,'.'].
+		].
+		^OrderedCollection new! !
+!TransferWithdraw methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 19:13:38' prior: 50623283 overrides: 50622144!
+affectBalance: currentBalance 
+	
+	^currentBalance - self value! !
+!TransferWithdraw methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 19:13:57' overrides: 50622140!
+value
+	
+	^myTransfer value! !
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 19:14:46'!
+PASSED!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:14:46'!
+PASSED!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:14:46'!
+PASSED!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:14:46'!
+PASSED!
+
+!testRun: #ReportsTest #test05AccountWithOneTransferWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:14:46'!
+PASSED!
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 19:16:29'!
+test06AccountWithMultipleTransactionsHasThemInItsAccountSummary
+
+	| expectedSummary transfereeAccount transfererAccount |
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.
+	Transfer register: 100 from: transfererAccount to: transfereeAccount.
+	expectedSummary := OrderedCollection with: 'Salida por transferencia de 100.'.
+
+	self assert: transfererAccount accountSummary = expectedSummary ! !
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 19:19:57' prior: 50623392!
+test02AccountWithOneDepositHasItInItsAccountSummary
+
+	| anAccount expectedSummary |
+	anAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	expectedSummary := OrderedCollection with: 'Depósito por 100.' with:'Balance = 100'.
+
+	self assert: anAccount accountSummary = expectedSummary ! !
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 19:21:23' prior: 50623305!
+test01AccountSummaryOfANewAccountIsEmpty
+
+	self assert: (ReceptiveAccount new accountSummary = OrderedCollection with: 'Balance = 0')! !
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 19:21:57' prior: 50623697!
+test03AccountWithOneWithdrawHasItInItsAccountSummary
+
+	| anAccount expectedSummary |
+	anAccount := ReceptiveAccount new.
+	Withdraw register: 100 on: anAccount.
+	expectedSummary := OrderedCollection with: 'Extracción por 100.' with: 'Balance = -100'.
+
+	self assert: anAccount accountSummary = expectedSummary ! !
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 19:22:30' prior: 50623810!
+test04AccountWithOneTransferDepositHasItInItsAccountSummary
+
+	| expectedSummary transfereeAccount transfererAccount |
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.
+	Transfer register: 100 from: transfererAccount to: transfereeAccount.
+	expectedSummary := OrderedCollection with: 'Entrada por transferencia de 100.' with: 'Balance = 100'.
+
+	self assert: transfereeAccount accountSummary = expectedSummary ! !
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 19:22:49' prior: 50623942!
+test05AccountWithOneTransferWithdrawHasItInItsAccountSummary
+
+	| expectedSummary transfereeAccount transfererAccount |
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.
+	Transfer register: 100 from: transfererAccount to: transfereeAccount.
+	expectedSummary := OrderedCollection with: 'Salida por transferencia de 100.' with: 'Balance = -100'.
+
+	self assert: transfererAccount accountSummary = expectedSummary ! !
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 19:24:06' prior: 50623980!
+accountSummary
+	
+		| summary |
+	summary = OrderedCollection new
+		transactions do: [:transaction|
+		(transaction isKindOf: Deposit) ifTrue: [ ^OrderedCollection with: 'Depósito por ', transaction value asString ,'.'].
+		(transaction isKindOf: Withdraw) ifTrue: [ ^OrderedCollection with: 'Extracción por ', transaction value asString ,'.'].
+		(transaction isKindOf: TransferDeposit) ifTrue: [ ^OrderedCollection with: 'Entrada por transferencia de ', transaction value asString ,'.'].
+		(transaction isKindOf: TransferWithdraw) ifTrue: [ ^OrderedCollection with: 'Salida por transferencia de ', transaction value asString ,'.'].
+		].
+		^OrderedCollection new! !
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 19:26:08' prior: 50624116!
+accountSummary
+	
+		| summary |
+	summary = OrderedCollection new.
+		transactions do: [:transaction|
+		(transaction isKindOf: Deposit) ifTrue: [ summary add: 'Depósito por ', transaction value asString ,'.'].
+		(transaction isKindOf: Withdraw) ifTrue: [ summary add:  'Extracción por ', transaction value asString ,'.'].
+		(transaction isKindOf: TransferDeposit) ifTrue: [ summary add:  'Entrada por transferencia de ', transaction value asString ,'.'].
+		(transaction isKindOf: TransferWithdraw) ifTrue: [ summary add:  'Salida por transferencia de ', transaction value asString ,'.'].
+		].
+		summary add: 'Balance = ', self balance.
+		^summary ! !
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 19:26:43' prior: 50624140!
+accountSummary
+	
+	| summary |
+	summary = OrderedCollection new.
+	transactions do: [:transaction|
+		(transaction isKindOf: Deposit) ifTrue: [ summary add: 'Depósito por ', transaction value asString ,'.'].
+		(transaction isKindOf: Withdraw) ifTrue: [ summary add:  'Extracción por ', transaction value asString ,'.'].
+		(transaction isKindOf: TransferDeposit) ifTrue: [ summary add:  'Entrada por transferencia de ', transaction value asString ,'.'].
+		(transaction isKindOf: TransferWithdraw) ifTrue: [ summary add:  'Salida por transferencia de ', transaction value asString ,'.'].
+		].
+	summary add: 'Balance = ', self balance.
+	^summary ! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'AlYac 5/30/2023 19:26:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 19:26:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 19:26:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'AlYac 5/30/2023 19:26:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'AlYac 5/30/2023 19:26:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'AlYac 5/30/2023 19:26:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'AlYac 5/30/2023 19:26:48'!
+PASSED!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 19:26:56'!
+ERROR!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:26:56'!
+ERROR!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:26:56'!
+ERROR!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:26:56'!
+ERROR!
+
+!testRun: #ReportsTest #test05AccountWithOneTransferWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:26:56'!
+ERROR!
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 19:26:56'!
+ERROR!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 19:27:00'!
+ERROR!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 19:27:31' prior: 50624164!
+accountSummary
+	
+	| summary |
+	summary = OrderedCollection new.
+	transactions do: [:transaction|
+		(transaction isKindOf: Deposit) ifTrue: [ summary add: 'Depósito por ', transaction value asString ,'.'].
+		(transaction isKindOf: Withdraw) ifTrue: [ summary add:  'Extracción por ', transaction value asString ,'.'].
+		(transaction isKindOf: TransferDeposit) ifTrue: [ summary add:  'Entrada por transferencia de ', transaction value asString ,'.'].
+		(transaction isKindOf: TransferWithdraw) ifTrue: [ summary add:  'Salida por transferencia de ', transaction value asString ,'.'].
+		].
+	summary add: 'Balance = ', self balance asString .
+	^summary ! !
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 19:27:36' prior: 50624241!
+accountSummary
+	
+	| summary |
+	summary = OrderedCollection new.
+	transactions do: [:transaction|
+		(transaction isKindOf: Deposit) ifTrue: [ summary add: 'Depósito por ', transaction value asString ,'.'].
+		(transaction isKindOf: Withdraw) ifTrue: [ summary add:  'Extracción por ', transaction value asString ,'.'].
+		(transaction isKindOf: TransferDeposit) ifTrue: [ summary add:  'Entrada por transferencia de ', transaction value asString ,'.'].
+		(transaction isKindOf: TransferWithdraw) ifTrue: [ summary add:  'Salida por transferencia de ', transaction value asString ,'.'].
+		].
+	summary add: 'Balance = ', self balance asString.
+	^summary ! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'AlYac 5/30/2023 19:27:39'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 19:27:39'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 19:27:39'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'AlYac 5/30/2023 19:27:39'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'AlYac 5/30/2023 19:27:39'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'AlYac 5/30/2023 19:27:39'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'AlYac 5/30/2023 19:27:39'!
+PASSED!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 19:27:47'!
+ERROR!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:27:47'!
+ERROR!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:27:47'!
+ERROR!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:27:47'!
+ERROR!
+
+!testRun: #ReportsTest #test05AccountWithOneTransferWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:27:47'!
+ERROR!
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 19:27:47'!
+ERROR!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 19:27:49'!
+ERROR!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 19:28:17' prior: 50624265!
+accountSummary
+	
+	| summary |
+	summary := OrderedCollection new.
+	transactions do: [:transaction|
+		(transaction isKindOf: Deposit) ifTrue: [ summary add: 'Depósito por ', transaction value asString ,'.'].
+		(transaction isKindOf: Withdraw) ifTrue: [ summary add:  'Extracción por ', transaction value asString ,'.'].
+		(transaction isKindOf: TransferDeposit) ifTrue: [ summary add:  'Entrada por transferencia de ', transaction value asString ,'.'].
+		(transaction isKindOf: TransferWithdraw) ifTrue: [ summary add:  'Salida por transferencia de ', transaction value asString ,'.'].
+		].
+	summary add: 'Balance = ', self balance asString.
+	^summary ! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'AlYac 5/30/2023 19:28:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 19:28:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 19:28:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'AlYac 5/30/2023 19:28:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'AlYac 5/30/2023 19:28:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'AlYac 5/30/2023 19:28:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'AlYac 5/30/2023 19:28:18'!
+PASSED!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 19:28:23'!
+ERROR!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:28:23'!
+PASSED!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:28:23'!
+PASSED!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:28:23'!
+PASSED!
+
+!testRun: #ReportsTest #test05AccountWithOneTransferWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:28:23'!
+PASSED!
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 19:28:23'!
+FAILURE!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 19:28:28'!
+ERROR!
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 19:29:13' prior: 50624062!
+test01AccountSummaryOfANewAccountIsEmpty
+
+	self assert: (ReceptiveAccount new accountSummary = (OrderedCollection with: 'Balance = 0'))! !
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 19:29:14'!
+PASSED!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 19:29:14'!
+PASSED!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:29:15'!
+PASSED!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:29:15'!
+PASSED!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:29:15'!
+PASSED!
+
+!testRun: #ReportsTest #test05AccountWithOneTransferWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:29:15'!
+PASSED!
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 19:29:15'!
+FAILURE!
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 19:29:15'!
+FAILURE!
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 19:34:22' prior: 50624032!
+test06AccountWithMultipleTransactionsHasThemInItsAccountSummary
+
+	| expectedSummary accountTwo accountOne |
+	accountOne := ReceptiveAccount new.
+	accountTwo := ReceptiveAccount new.
+	Deposit register: 100 on: accountOne.
+	Withdraw register: 10 on: accountOne.
+	Transfer register: 50 from: accountOne to: accountTwo.
+	Transfer register: 30 from: accountTwo to: accountOne.
+	expectedSummary := OrderedCollection new.
+	expectedSummary add: 'Salida por transferencia de 100.'.
+
+	self assert: accountOne accountSummary = expectedSummary ! !
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 19:37:10' prior: 50624457!
+test06AccountWithMultipleTransactionsHasThemInItsAccountSummary
+
+	| expectedSummary accountTwo accountOne |
+	accountOne := ReceptiveAccount new.
+	accountTwo := ReceptiveAccount new.
+	Deposit register: 100 on: accountOne.
+	Withdraw register: 10 on: accountOne.
+	Transfer register: 50 from: accountOne to: accountTwo.
+	Transfer register: 30 from: accountTwo to: accountOne.
+	expectedSummary := OrderedCollection new.
+	expectedSummary add: 'Depósito por 100.'.
+	expectedSummary add: 'Extracción por 10.'.
+	expectedSummary add: 'Salida por transferencia de 50.'.
+	expectedSummary add: 'Entrada por transferencia de 30.'.
+	expectedSummary add: 'Balance = 70.'.
+
+	self assert: accountOne accountSummary = expectedSummary ! !
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 19:37:17'!
+FAILURE!
+
+accountOne!
+
+accountOne!
+
+expectedSummary!
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 19:40:01' prior: 50624477!
+test06AccountWithMultipleTransactionsHasThemInItsAccountSummary
+
+	| expectedSummary accountTwo accountOne |
+	accountOne := ReceptiveAccount new.
+	accountTwo := ReceptiveAccount new.
+	Deposit register: 100 on: accountOne.
+	Withdraw register: 10 on: accountOne.
+	Transfer register: 50 from: accountOne to: accountTwo.
+	Transfer register: 30 from: accountTwo to: accountOne.
+	
+	expectedSummary := OrderedCollection new.
+	expectedSummary add: 'Depósito por 100.'.
+	expectedSummary add: 'Extracción por 10.'.
+	expectedSummary add: 'Salida por transferencia de 50.'.
+	expectedSummary add: 'Entrada por transferencia de 30.'.
+	expectedSummary add: 'Balance = 70.'.
+
+	self assert: accountOne accountSummary = expectedSummary ! !
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 19:40:06'!
+FAILURE!
+
+accountOne accountSummary!
+
+accountOne accountSummary = expectedSummary!
+
+self at: index!
+
+otherCollection at: index!
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 19:46:29' prior: 50624508!
+test06AccountWithMultipleTransactionsHasThemInItsAccountSummary
+
+	| expectedSummary accountTwo accountOne |
+	accountOne := ReceptiveAccount new.
+	accountTwo := ReceptiveAccount new.
+	Deposit register: 100 on: accountOne.
+	Withdraw register: 10 on: accountOne.
+	Transfer register: 50 from: accountOne to: accountTwo.
+	Transfer register: 30 from: accountTwo to: accountOne.
+	
+	expectedSummary := OrderedCollection new.
+	expectedSummary add: 'Depósito por 100.'.
+	expectedSummary add: 'Extracción por 10.'.
+	expectedSummary add: 'Salida por transferencia de 50.'.
+	expectedSummary add: 'Entrada por transferencia de 30.'.
+	expectedSummary add: 'Balance = 70'.
+
+	self assert: accountOne accountSummary = expectedSummary ! !
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 19:46:31'!
+PASSED!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 19:46:31'!
+PASSED!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:46:31'!
+PASSED!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:46:31'!
+PASSED!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:46:31'!
+PASSED!
+
+!testRun: #ReportsTest #test05AccountWithOneTransferWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:46:31'!
+PASSED!
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 19:46:31'!
+PASSED!
+
+----SNAPSHOT----(30 May 2023 19:46:39) CuisUniversity-5799.image priorSource: 9272719!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 19:51:42' prior: 50624342!
+accountSummary
+	
+
+	^(transactions inject: OrderedCollection new into: [:summary :transaction| transaction affectAccountSummary: summary.
+		(transaction isKindOf: Deposit) ifTrue: [ summary add: 'Depósito por ', transaction value asString ,'.'].
+		(transaction isKindOf: Withdraw) ifTrue: [ summary add:  'Extracción por ', transaction value asString ,'.'].
+		(transaction isKindOf: TransferDeposit) ifTrue: [ summary add:  'Entrada por transferencia de ', transaction value asString ,'.'].
+		(transaction isKindOf: TransferWithdraw) ifTrue: [ summary add:  'Salida por transferencia de ', transaction value asString ,'.'].
+		]) add: 'Balance = ', self balance asString.
+! !
+!AccountTransaction methodsFor: 'reports' stamp: 'AlYac 5/30/2023 19:52:38'!
+affectAccountSummary: anAccountSummary
+
+	self subclassResponsibility! !
+!Deposit methodsFor: 'nil' stamp: 'AlYac 5/30/2023 19:53:29' overrides: 50624622!
+affectAccountSummary: anAccountSummary! !
+!TransferDeposit methodsFor: 'nil' stamp: 'AlYac 5/30/2023 19:53:38' overrides: 50624622!
+affectAccountSummary: anAccountSummary! !
+!TransferWithdraw methodsFor: 'nil' stamp: 'AlYac 5/30/2023 19:53:44' overrides: 50624622!
+affectAccountSummary: anAccountSummary! !
+!Withdraw methodsFor: 'nil' stamp: 'AlYac 5/30/2023 19:53:49' overrides: 50624622!
+affectAccountSummary: anAccountSummary! !
+!Deposit methodsFor: 'reports' stamp: 'AlYac 5/30/2023 19:55:57' prior: 50624627 overrides: 50624622!
+affectAccountSummary: anAccountSummary
+
+	anAccountSummary add: 'Depósito por ', self value asString ,'.'! !
+!Withdraw methodsFor: 'reports' stamp: 'AlYac 5/30/2023 19:56:39' prior: 50624641 overrides: 50624622!
+affectAccountSummary: anAccountSummary
+
+	anAccountSummary add:  'Extracción por ', self value asString ,'.'! !
+!TransferDeposit methodsFor: 'reports' stamp: 'AlYac 5/30/2023 19:57:10' prior: 50624632 overrides: 50624622!
+affectAccountSummary: anAccountSummary
+
+	anAccountSummary add:  'Entrada por transferencia de ', self value asString ,'.'! !
+!TransferWithdraw methodsFor: 'reports' stamp: 'AlYac 5/30/2023 19:57:39' prior: 50624637 overrides: 50624622!
+affectAccountSummary: anAccountSummary
+	
+	anAccountSummary add:  'Salida por transferencia de ', self value asString ,'.'! !
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 19:58:05' prior: 50624598!
+accountSummary
+	
+
+	^(transactions inject: OrderedCollection new into: [:summary :transaction| transaction affectAccountSummary: summary
+		]) add: 'Balance = ', self balance asString.
+! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'AlYac 5/30/2023 19:58:07'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 19:58:07'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 19:58:07'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'AlYac 5/30/2023 19:58:07'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'AlYac 5/30/2023 19:58:07'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'AlYac 5/30/2023 19:58:07'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'AlYac 5/30/2023 19:58:07'!
+PASSED!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 19:58:16'!
+FAILURE!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:58:16'!
+ERROR!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:58:16'!
+ERROR!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:58:16'!
+ERROR!
+
+!testRun: #ReportsTest #test05AccountWithOneTransferWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 19:58:16'!
+ERROR!
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 19:58:16'!
+ERROR!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 19:58:20'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 20:00:30' prior: 50624675!
+accountSummary
+	
+
+	| summary |
+	summary := OrderedCollection new.
+	transactions do: [:transaction| transaction affectAccountSummary: summary].
+	summary add: 'Balance = ', self balance asString.
+! !
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 20:00:45' prior: 50624738!
+accountSummary
+	
+	| summary |
+	summary := OrderedCollection new.
+	transactions do: [:transaction| transaction affectAccountSummary: summary].
+	summary add: 'Balance = ', self balance asString.
+	^summary 
+! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'AlYac 5/30/2023 20:00:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 20:00:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 20:00:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'AlYac 5/30/2023 20:00:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'AlYac 5/30/2023 20:00:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'AlYac 5/30/2023 20:00:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'AlYac 5/30/2023 20:00:46'!
+PASSED!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 20:00:53'!
+PASSED!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 20:00:53'!
+PASSED!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 20:00:53'!
+PASSED!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 20:00:53'!
+PASSED!
+
+!testRun: #ReportsTest #test05AccountWithOneTransferWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 20:00:53'!
+PASSED!
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 20:00:53'!
+PASSED!
+!AccountTransaction methodsFor: 'reports' stamp: 'AlYac 5/30/2023 20:07:39'!
+printOnSummary: anAccountSummary
+
+	self subclassResponsibility! !
+!Deposit methodsFor: 'reports' stamp: 'AlYac 5/30/2023 20:07:39' overrides: 50624807!
+printOnSummary: anAccountSummary
+
+	anAccountSummary add: 'Depósito por ', self value asString ,'.'! !
+!TransferDeposit methodsFor: 'reports' stamp: 'AlYac 5/30/2023 20:07:39' overrides: 50624807!
+printOnSummary: anAccountSummary
+
+	anAccountSummary add:  'Entrada por transferencia de ', self value asString ,'.'! !
+!TransferWithdraw methodsFor: 'reports' stamp: 'AlYac 5/30/2023 20:07:39' overrides: 50624807!
+printOnSummary: anAccountSummary
+	
+	anAccountSummary add:  'Salida por transferencia de ', self value asString ,'.'! !
+!Withdraw methodsFor: 'reports' stamp: 'AlYac 5/30/2023 20:07:39' overrides: 50624807!
+printOnSummary: anAccountSummary
+
+	anAccountSummary add:  'Extracción por ', self value asString ,'.'! !
+!ReceptiveAccount methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 20:07:39' prior: 50624748!
+accountSummary
+	
+	| summary |
+	summary := OrderedCollection new.
+	transactions do: [:transaction| transaction printOnSummary: summary].
+	summary add: 'Balance = ', self balance asString.
+	^summary 
+! !
+
+!methodRemoval: AccountTransaction #affectAccountSummary: stamp: 'AlYac 5/30/2023 20:07:39'!
+affectAccountSummary: anAccountSummary
+
+	self subclassResponsibility!
+
+!methodRemoval: Deposit #affectAccountSummary: stamp: 'AlYac 5/30/2023 20:07:39'!
+affectAccountSummary: anAccountSummary
+
+	anAccountSummary add: 'Depósito por ', self value asString ,'.'!
+
+!methodRemoval: TransferDeposit #affectAccountSummary: stamp: 'AlYac 5/30/2023 20:07:39'!
+affectAccountSummary: anAccountSummary
+
+	anAccountSummary add:  'Entrada por transferencia de ', self value asString ,'.'!
+
+!methodRemoval: TransferWithdraw #affectAccountSummary: stamp: 'AlYac 5/30/2023 20:07:39'!
+affectAccountSummary: anAccountSummary
+	
+	anAccountSummary add:  'Salida por transferencia de ', self value asString ,'.'!
+
+!methodRemoval: Withdraw #affectAccountSummary: stamp: 'AlYac 5/30/2023 20:07:39'!
+affectAccountSummary: anAccountSummary
+
+	anAccountSummary add:  'Extracción por ', self value asString ,'.'!
+
+Object subclass: #AccountSummaryPrinter
+	instanceVariableNames: 'transactions'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #AccountSummaryPrinter category: 'Portfolio-Ejercicio' stamp: 'AlYac 5/30/2023 20:24:36'!
+Object subclass: #AccountSummaryPrinter
+	instanceVariableNames: 'transactions'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!AccountSummaryPrinter methodsFor: 'no messages' stamp: 'AlYac 5/30/2023 20:25:11' overrides: 16902957!
+print! !
+!AccountSummaryPrinter class methodsFor: 'no messages' stamp: 'AlYac 5/30/2023 20:26:05'!
+for: aTransactionCollection! !
+!AccountSummaryPrinter class methodsFor: 'initialization' stamp: 'AlYac 5/30/2023 20:28:46' prior: 50624898!
+for: aTransactionCollection
+	
+	^self new initializeFor: aTransactionCollection! !
+!AccountSummaryPrinter methodsFor: 'initialization' stamp: 'AlYac 5/30/2023 20:29:30'!
+initializeFor: aTransactionCollection
+
+	transactions := aTransactionCollection! !
+
+!classRenamed: #AccountSummaryPrinter as: #AccountSummary stamp: 'AlYac 5/30/2023 20:53:12'!
+Smalltalk renameClassNamed: #AccountSummaryPrinter as: #AccountSummary!
+
+Object subclass: #AccountSummary
+	instanceVariableNames: 'account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #AccountSummary category: 'Portfolio-Ejercicio' stamp: 'AlYac 5/30/2023 20:53:21'!
+Object subclass: #AccountSummary
+	instanceVariableNames: 'account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!AccountSummary class methodsFor: 'initialization' stamp: 'AlYac 5/30/2023 20:53:53'!
+of: aTransactionCollection
+	
+	^self new initializeFor: aTransactionCollection! !
+!Deposit class methodsFor: 'instance creation' stamp: 'AlYac 5/30/2023 20:53:53'!
+of: aValue
+
+	^ self new initializeFor: aValue ! !
+!Withdraw class methodsFor: 'instance creation' stamp: 'AlYac 5/30/2023 20:53:53'!
+of: aValue
+
+	^ self new initializeFor: aValue ! !
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 20:53:53' prior: 50621533!
+test04PortfolioWithoutAccountsHasNoRegisteredTransaction
+
+	self deny: (Portfolio new hasRegistered: (Deposit of: 100))! !
+!AccountTransaction class methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 20:53:53' prior: 50622158!
+register: aValue on: account
+
+	| transaction |
+	
+	transaction := self of: aValue.
+	account register: transaction.
+		
+	^ transaction! !
+!ReceptiveAccountTest methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 20:53:53' prior: 50621827!
+test06ReceptiveAccountDoNotKnowNotRegisteredTransactions
+
+	| account deposit withdraw |
+	
+	account := ReceptiveAccount new.
+	deposit :=  Deposit of: 100.
+	withdraw := Withdraw of: 50.
+		
+	self deny: (account hasRegistered: deposit).
+	self deny: (account hasRegistered:withdraw).
+! !
+
+!methodRemoval: AccountSummary class #for: stamp: 'AlYac 5/30/2023 20:53:53'!
+for: aTransactionCollection
+	
+	^self new initializeFor: aTransactionCollection!
+
+!methodRemoval: Deposit class #for: stamp: 'AlYac 5/30/2023 20:53:53'!
+for: aValue
+
+	^ self new initializeFor: aValue !
+
+!methodRemoval: Withdraw class #for: stamp: 'AlYac 5/30/2023 20:53:53'!
+for: aValue
+
+	^ self new initializeFor: aValue !
+!AccountSummary methodsFor: 'initialization' stamp: 'AlYac 5/30/2023 20:54:45'!
+initializeOf: aTransactionCollection
+
+	transactions := aTransactionCollection! !
+!AccountSummary class methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 20:54:45' prior: 50624932!
+of: aTransactionCollection
+	
+	^self new initializeOf: aTransactionCollection! !
+
+!methodRemoval: AccountSummary #initializeFor: stamp: 'AlYac 5/30/2023 20:54:45'!
+initializeFor: aTransactionCollection
+
+	transactions := aTransactionCollection!
+!Withdraw class methodsFor: 'instance creation' stamp: 'AlYac 5/30/2023 20:55:14'!
+for: aValue
+
+	^ self new initializeFor: aValue ! !
+
+!methodRemoval: Withdraw class #of: stamp: 'AlYac 5/30/2023 20:55:14'!
+of: aValue
+
+	^ self new initializeFor: aValue !
+!Deposit class methodsFor: 'instance creation' stamp: 'AlYac 5/30/2023 20:55:27'!
+for: aValue
+
+	^ self new initializeFor: aValue ! !
+
+!methodRemoval: Deposit class #of: stamp: 'AlYac 5/30/2023 20:55:27'!
+of: aValue
+
+	^ self new initializeFor: aValue !
+!AccountSummary methodsFor: 'initialization' stamp: 'AlYac 5/30/2023 20:55:59' prior: 50624988!
+initializeOf: anAccount
+
+	account := anAccount ! !
+!AccountSummary class methodsFor: 'initialization' stamp: 'AlYac 5/30/2023 20:56:13' prior: 50624994!
+of: anAccount
+	
+	^self new initializeOf: anAccount ! !
+
+!classRenamed: #AccountSummary as: #ReportPrinter stamp: 'AlYac 5/30/2023 20:57:22'!
+Smalltalk renameClassNamed: #AccountSummary as: #ReportPrinter!
+!ReportPrinter methodsFor: 'print' stamp: 'AlYac 5/30/2023 20:57:44'!
+printAccountSummary! !
+
+!methodRemoval: ReportPrinter #print stamp: 'AlYac 5/30/2023 20:57:44'!
+print!
+!ReportPrinter methodsFor: 'print' stamp: 'AlYac 5/30/2023 20:58:29' prior: 50625036!
+printAccountSummary
+	
+	| summary |
+	summary := OrderedCollection new.! !
+!ReportPrinter methodsFor: 'print' stamp: 'AlYac 5/30/2023 20:58:40' prior: 50625042!
+printAccountSummary
+	
+	| summary |
+	summary := OrderedCollection new.
+	
+	^summary! !
+
+----SNAPSHOT----(30 May 2023 21:00:29) CuisUniversity-5799.image priorSource: 9374200!
+!ReportPrinter methodsFor: 'print' stamp: 'AlYac 5/30/2023 21:22:00' prior: 50625047!
+printAccountSummary
+	
+	| summary |
+	summary := OrderedCollection new.
+	account fillAccountSummary: summary
+	
+	^summary! !
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 21:23:42'!
+fillAccountSummary: aSummary
+
+	transactions do: [:transaction| transaction printOnSummary: aSummary ].
+	aSummary add: 'Balance = ', self balance asString.
+! !
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 21:23:43' prior: 50625063!
+fillAccountSummary: aSummary
+
+	transactions do: [:transaction| transaction printOnSummary: aSummary].
+	aSummary add: 'Balance = ', self balance asString.
+! !
+!Deposit methodsFor: 'reports' stamp: 'AlYac 5/30/2023 21:25:45' prior: 50624812 overrides: 50624807!
+printOnSummary: anAccountSummary
+
+	anAccountSummary printDepositOf: self value! !
+!Withdraw methodsFor: 'reports' stamp: 'AlYac 5/30/2023 21:26:13' prior: 50624833 overrides: 50624807!
+printOnSummary: anAccountSummary
+
+	anAccountSummary print! !
+!Withdraw methodsFor: 'reports' stamp: 'AlYac 5/30/2023 21:26:36' prior: 50625086 overrides: 50624807!
+printOnSummary: anAccountSummary
+
+	anAccountSummary printWithdrawOf: self value! !
+!TransferWithdraw methodsFor: 'reports' stamp: 'AlYac 5/30/2023 21:27:19' prior: 50624826 overrides: 50624807!
+printOnSummary: anAccountSummary
+	
+	anAccountSummary printTransferWithdrawOf: self value! !
+!TransferDeposit methodsFor: 'reports' stamp: 'AlYac 5/30/2023 21:27:46' prior: 50624819 overrides: 50624807!
+printOnSummary: anAccountSummary
+
+	anAccountSummary printTransferDepositOf: self value! !
+!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/30/2023 21:29:05' prior: 50625071!
+fillAccountSummary: aSummary
+
+	transactions do: [:transaction| transaction printOnSummary: aSummary].
+	aSummary printBalanceOf: self balance
+! !
+!ReportPrinter methodsFor: 'print' stamp: 'AlYac 5/30/2023 21:29:41' prior: 50625056!
+printAccountSummary
+	
+	| summary |
+	summary := OrderedCollection new.
+	account fillAccountSummary: summary
+	^summary! !
+!ReportPrinter methodsFor: 'print' stamp: 'AlYac 5/30/2023 21:30:11' prior: 50625120!
+printAccountSummary
+	
+	^account fillAccountSummary: OrderedCollection new
+! !
+!ReportPrinter methodsFor: 'print' stamp: 'AlYac 5/30/2023 21:31:43'!
+printWithdrawOf: anAmount
+	
+	^account fillAccountSummary: OrderedCollection new
+! !
+
+!classDefinition: #ReportPrinter category: 'Portfolio-Ejercicio' stamp: 'AlYac 5/30/2023 21:32:17'!
+Object subclass: #ReportPrinter
+	instanceVariableNames: 'account summary'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!ReportPrinter methodsFor: 'initialization' stamp: 'AlYac 5/30/2023 21:32:15' prior: 50625022!
+initializeOf: anAccount
+
+	account := anAccount.
+	summary := OrderedCollection new! !
+!ReportPrinter methodsFor: 'print' stamp: 'AlYac 5/30/2023 21:33:04' prior: 50625127!
+printAccountSummary
+	
+	^account fillAccountSummary: self
+! !
+!ReportPrinter methodsFor: 'print' stamp: 'AlYac 5/30/2023 21:34:57' prior: 50625132!
+printWithdrawOf: anAmount
+	
+	^summary add: 'Extracción por ', anAmount asString , '.'
+! !
+!ReportPrinter methodsFor: 'print' stamp: 'AlYac 5/30/2023 21:35:21'!
+printDepositOf: anAmount
+	
+	^summary add: 'Depósito por ', anAmount asString , '.'
+! !
+!ReportPrinter methodsFor: 'print' stamp: 'AlYac 5/30/2023 21:35:46'!
+printTransferDepositOf: anAmount
+	
+	^summary add: 'Entrada por transferencia de ', anAmount asString , '.'
+! !
+!ReportPrinter methodsFor: 'print' stamp: 'AlYac 5/30/2023 21:35:58'!
+printTransferWithdrawOf: anAmount
+	
+	^summary add: 'Salida por transferencia de ', anAmount asString , '.'
+! !
+!ReportPrinter methodsFor: 'print' stamp: 'AlYac 5/30/2023 21:36:52'!
+printBalanceOf: anAmount
+	
+	^summary add: 'Balance = ', anAmount asString
+! !
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 21:39:31' prior: 50624542!
+test06AccountWithMultipleTransactionsHasThemInItsAccountSummary
+
+	| expectedSummary accountTwo accountOne |
+	accountOne := ReceptiveAccount new.
+	accountTwo := ReceptiveAccount new.
+	Deposit register: 100 on: accountOne.
+	Withdraw register: 10 on: accountOne.
+	Transfer register: 50 from: accountOne to: accountTwo.
+	Transfer register: 30 from: accountTwo to: accountOne.
+	
+	expectedSummary := OrderedCollection new.
+	expectedSummary add: 'Depósito por 100.'.
+	expectedSummary add: 'Extracción por 10.'.
+	expectedSummary add: 'Salida por transferencia de 50.'.
+	expectedSummary add: 'Entrada por transferencia de 30.'.
+	expectedSummary add: 'Balance = 70'.
+
+	self assert: (ReportPrinter of: accountOne) print = expectedSummary ! !
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 21:39:32'!
+ERROR!
+!AccountTransaction class methodsFor: 'instance creation' stamp: 'AlYac 5/30/2023 21:40:01' prior: 50624956!
+register: aValue on: account
+
+	| transaction |
+	
+	transaction := self for: aValue.
+	account register: transaction.
+		
+	^ transaction! !
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 21:40:11'!
+FAILURE!
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 21:40:11'!
+FAILURE!
+
+(ReportPrinter of: accountOne) print!
+!ReportPrinter methodsFor: 'print' stamp: 'AlYac 5/30/2023 21:43:15' prior: 50625152!
+printAccountSummary
+	
+	account fillAccountSummary: self
+	^summary 
+! !
+!ReportPrinter methodsFor: 'print' stamp: 'AlYac 5/30/2023 21:43:17' prior: 50625234!
+printAccountSummary
+	
+	account fillAccountSummary: self
+	
+	^summary 
+! !
+!ReportPrinter methodsFor: 'print' stamp: 'AlYac 5/30/2023 21:43:19' prior: 50625239!
+printAccountSummary
+	
+	account fillAccountSummary: self
+	
+^summary 
+! !
+!ReportPrinter methodsFor: 'print' stamp: 'AlYac 5/30/2023 21:43:19' prior: 50625244!
+printAccountSummary
+	
+	account fillAccountSummary: self
+	^summary 
+! !
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 21:43:27'!
+FAILURE!
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 21:43:27'!
+FAILURE!
+
+(ReportPrinter of: accountOne) print!
+!ReportPrinter methodsFor: 'print' stamp: 'AlYac 5/30/2023 21:44:18' overrides: 16902957!
+print
+	
+	account fillAccountSummary: self
+	^summary 
+! !
+
+!methodRemoval: ReportPrinter #printAccountSummary stamp: 'AlYac 5/30/2023 21:44:18'!
+printAccountSummary
+	
+	account fillAccountSummary: self
+	^summary 
+!
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 21:44:24'!
+ERROR!
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 21:44:24'!
+ERROR!
+!ReportPrinter methodsFor: 'print' stamp: 'AlYac 5/30/2023 21:44:48' prior: 50625264 overrides: 16902957!
+print
+	
+	account fillAccountSummary: self.
+	^summary 
+! !
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 21:44:52'!
+PASSED!
+
+!classRenamed: #ReportPrinter as: #AccountSummary stamp: 'AlYac 5/30/2023 21:45:38'!
+Smalltalk renameClassNamed: #ReportPrinter as: #AccountSummary!
+!ReportsTest methodsFor: 'as yet unclassified' stamp: 'AlYac 5/30/2023 21:45:38' prior: 50625186!
+test06AccountWithMultipleTransactionsHasThemInItsAccountSummary
+
+	| expectedSummary accountTwo accountOne |
+	accountOne := ReceptiveAccount new.
+	accountTwo := ReceptiveAccount new.
+	Deposit register: 100 on: accountOne.
+	Withdraw register: 10 on: accountOne.
+	Transfer register: 50 from: accountOne to: accountTwo.
+	Transfer register: 30 from: accountTwo to: accountOne.
+	
+	expectedSummary := OrderedCollection new.
+	expectedSummary add: 'Depósito por 100.'.
+	expectedSummary add: 'Extracción por 10.'.
+	expectedSummary add: 'Salida por transferencia de 50.'.
+	expectedSummary add: 'Entrada por transferencia de 30.'.
+	expectedSummary add: 'Balance = 70'.
+
+	self assert: (AccountSummary of: accountOne) print = expectedSummary ! !
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 21:46:18' prior: 50625297!
+test06AccountWithMultipleTransactionsHasThemInItsAccountSummary
+
+	| expectedSummary accountTwo accountOne |
+	accountOne := ReceptiveAccount new.
+	accountTwo := ReceptiveAccount new.
+	Deposit register: 100 on: accountOne.
+	Withdraw register: 10 on: accountOne.
+	Transfer register: 50 from: accountOne to: accountTwo.
+	Transfer register: 30 from: accountTwo to: accountOne.
+	
+	expectedSummary := OrderedCollection new.
+	expectedSummary add: 'Depósito por 100.'.
+	expectedSummary add: 'Extracción por 10.'.
+	expectedSummary add: 'Salida por transferencia de 50.'.
+	expectedSummary add: 'Entrada por transferencia de 30.'.
+	expectedSummary add: 'Balance = 70'.
+
+	self assert: (AccountSummary of: accountOne) print equals: expectedSummary ! !
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 21:46:19'!
+PASSED!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 21:46:19'!
+PASSED!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 21:46:19'!
+ERROR!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 21:46:19'!
+ERROR!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 21:46:19'!
+ERROR!
+
+!testRun: #ReportsTest #test05AccountWithOneTransferWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 21:46:19'!
+ERROR!
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 21:46:19'!
+PASSED!
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 21:46:24'!
+PASSED!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 21:46:24'!
+PASSED!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 21:46:24'!
+ERROR!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 21:46:24'!
+ERROR!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 21:46:24'!
+ERROR!
+
+!testRun: #ReportsTest #test05AccountWithOneTransferWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 21:46:24'!
+ERROR!
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 21:46:24'!
+PASSED!
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 21:46:42' prior: 50625323!
+test06AccountWithMultipleTransactionsHasThemInItsAccountSummary
+
+	| expectedSummary accountTwo accountOne |
+	accountOne := ReceptiveAccount new.
+	accountTwo := ReceptiveAccount new.
+	Deposit register: 100 on: accountOne.
+	Withdraw register: 10 on: accountOne.
+	Transfer register: 50 from: accountOne to: accountTwo.
+	Transfer register: 30 from: accountTwo to: accountOne.
+	
+	expectedSummary := OrderedCollection new.
+	expectedSummary add: 'Depósito por 100.'.
+	expectedSummary add: 'Extracción por 10.'.
+	expectedSummary add: 'Salida por transferencia de 50.'.
+	expectedSummary add: 'Entrada por transferencia de 30.'.
+	expectedSummary add: 'Balance = 70'.
+
+	self assert: (AccountSummary of: accountOne) print equals: expectedSummary ! !
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 21:46:44'!
+PASSED!
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 21:47:33' prior: 50624099!
+test05AccountWithOneTransferWithdrawHasItInItsAccountSummary
+
+	| expectedSummary transfereeAccount transfererAccount |
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.
+	Transfer register: 100 from: transfererAccount to: transfereeAccount.
+	expectedSummary := OrderedCollection with: 'Salida por transferencia de 100.' with: 'Balance = -100'.
+
+	self assert: (AccountSummary of: transfererAccount ) print equals: expectedSummary ! !
+
+!testRun: #ReportsTest #test05AccountWithOneTransferWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 21:47:35'!
+PASSED!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 21:47:35'!
+PASSED!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 21:47:35'!
+ERROR!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 21:47:35'!
+ERROR!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 21:47:35'!
+ERROR!
+
+!testRun: #ReportsTest #test05AccountWithOneTransferWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 21:47:35'!
+PASSED!
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 21:47:35'!
+PASSED!
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 21:47:54' prior: 50624082!
+test04AccountWithOneTransferDepositHasItInItsAccountSummary
+
+	| expectedSummary transfereeAccount transfererAccount |
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.
+	Transfer register: 100 from: transfererAccount to: transfereeAccount.
+	expectedSummary := OrderedCollection with: 'Entrada por transferencia de 100.' with: 'Balance = 100'.
+
+	self assert: (AccountSummary of: transfereeAccount ) print equals: expectedSummary ! !
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 21:48:03' prior: 50624069!
+test03AccountWithOneWithdrawHasItInItsAccountSummary
+
+	| anAccount expectedSummary |
+	anAccount := ReceptiveAccount new.
+	Withdraw register: 100 on: anAccount.
+	expectedSummary := OrderedCollection with: 'Extracción por 100.' with: 'Balance = -100'.
+
+	self assert: (AccountSummary of: anAccount) print equals: expectedSummary ! !
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 21:48:13' prior: 50624049!
+test02AccountWithOneDepositHasItInItsAccountSummary
+
+	| anAccount expectedSummary |
+	anAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	expectedSummary := OrderedCollection with: 'Depósito por 100.' with:'Balance = 100'.
+
+	self assert: (AccountSummary of: anAccount) print equals: expectedSummary ! !
+!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/30/2023 21:49:03' prior: 50624419!
+test01AccountSummaryOfANewAccountIsEmpty
+
+	self assert: (AccountSummary of: ReceptiveAccount new) print equals: (OrderedCollection with: 'Balance = 0')! !
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 21:49:04'!
+PASSED!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 21:49:04'!
+PASSED!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 21:49:04'!
+PASSED!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 21:49:04'!
+PASSED!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 21:49:04'!
+PASSED!
+
+!testRun: #ReportsTest #test05AccountWithOneTransferWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 21:49:04'!
+PASSED!
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 21:49:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'AlYac 5/30/2023 21:51:11'!
+ERROR!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'AlYac 5/30/2023 21:51:11'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #ReportsTest #test05AccountWithOneTransferWithdrawHasItInItsAccountSummary stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #TransferTest #test04WithdrawOfATransferKnowsItsTransfer stamp: 'AlYac 5/30/2023 21:51:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'AlYac 5/30/2023 21:51:55'!
+ERROR!
+!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/30/2023 21:52:21' prior: 50624948!
+test04PortfolioWithoutAccountsHasNoRegisteredTransaction
+
+	self deny: (Portfolio new hasRegistered: (Deposit for: 100))! !
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'AlYac 5/30/2023 21:52:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'AlYac 5/30/2023 21:52:32'!
+ERROR!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'AlYac 5/30/2023 21:52:46' prior: 50624964!
+test06ReceptiveAccountDoNotKnowNotRegisteredTransactions
+
+	| account deposit withdraw |
+	
+	account := ReceptiveAccount new.
+	deposit :=  Deposit for: 100.
+	withdraw := Withdraw for: 50.
+		
+	self deny: (account hasRegistered: deposit).
+	self deny: (account hasRegistered:withdraw).
+! !
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'AlYac 5/30/2023 21:52:53'!
+PASSED!
+
+----SNAPSHOT----(30 May 2023 21:53:06) CuisUniversity-5799.image priorSource: 9388852!
+
+----SNAPSHOT----(30 May 2023 21:55:28) CuisUniversity-5799.image priorSource: 9410050!
