@@ -10914,3 +10914,513 @@ PASSED!
 PASSED!
 
 ----QUIT----(1 June 2023 05:54:17) CuisUniversity-5799.image priorSource: 9505647!
+
+----STARTUP---- (1 June 2023 15:15:07) as D:\OneDrive - dc.uba.ar\UBA\Inge1\cuis5799\windows64\CuisUniversity-5799.image!
+
+!Portfolio methodsFor: 'reports' stamp: 'LMR 6/1/2023 15:29:40' prior: 50625753 overrides: 50624254!
+fillTreeReport: aTreeReport 
+	
+	aTreeReport addPortfolio: self.! !
+!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 15:38:17'!
+addPortfolio: aPortfolio
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , aPortfolio name.
+	self incrementIndentation.
+	aPortfolio addSubaccountsTo: self.
+	report add: indentation , aPortfolio balance.
+	self decrementIndentation.! !
+!ReceptiveAccount methodsFor: 'reports' stamp: 'LMR 6/1/2023 15:39:20' prior: 50625809 overrides: 50624254!
+fillTreeReport: aTreeReport 
+	
+	aTreeReport addAccount: self.! !
+!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 15:40:59'!
+addAccount: anAccount
+
+	| indentation indentedSummary |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , anAccount name.
+	indentation := indentation , '   '.
+	indentedSummary := (AccountSummary of: anAccount) report collect: [:reportLine | indentation , reportLine].
+	report addAll: indentedSummary.! !
+!Portfolio methodsFor: 'reports' stamp: 'LMR 6/1/2023 15:44:34'!
+addSubaccountsTo: aTreeReport 
+	
+	accounts do: [:anAccount| anAccount fillTreeReport: aTreeReport].! !
+!Portfolio methodsFor: 'reports' stamp: 'LMR 6/1/2023 15:44:57' prior: 50628922!
+addSubaccountsTo: aTreeReport 
+	
+	accounts do: [:anAccount| anAccount fillTreeReport: aTreeReport].! !
+!PortfolioStructure methodsFor: 'add to report' stamp: 'LMR 6/1/2023 15:46:10'!
+addAccount: anAccount
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , anAccount name.! !
+!PortfolioStructure methodsFor: 'add to report' stamp: 'LMR 6/1/2023 15:46:52'!
+addPortfolio: aPortfolio
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , aPortfolio name.
+	self incrementIndentation.
+	aPortfolio addSubaccountsTo: self.
+	self decrementIndentation.! !
+
+!methodRemoval: PortfolioStructure #addBalanceOf: stamp: 'LMR 6/1/2023 15:47:07'!
+addBalanceOf: anAccount
+
+	!
+
+!methodRemoval: PortfolioStructure #addNameOf: stamp: 'LMR 6/1/2023 15:47:08'!
+addNameOf: anAccount
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , anAccount name.!
+
+!methodRemoval: PortfolioStructure #addTransactionsOf: stamp: 'LMR 6/1/2023 15:47:11'!
+addTransactionsOf: anAccount!
+
+!methodRemoval: TransactionTreeReport #addBalanceOf: stamp: 'LMR 6/1/2023 15:47:24'!
+addBalanceOf: anAccount
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , 'Balance = ' , anAccount balance asString.!
+
+!methodRemoval: TransactionTreeReport #addNameOf: stamp: 'LMR 6/1/2023 15:47:25'!
+addNameOf: anAccount
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , anAccount name.!
+
+!methodRemoval: TransactionTreeReport #addTransactionsOf: stamp: 'LMR 6/1/2023 15:47:26'!
+addTransactionsOf: anAccount
+
+	| indentation indentedSummary |
+	indentation := ''.
+	indentationLevel+1 timesRepeat: [indentation := indentation , '   '].
+	indentedSummary := (AccountSummary of: anAccount) report collect: [:reportLine | indentation , reportLine].
+	report addAll: indentedSummary.!
+!TreeReport methodsFor: 'add to report' stamp: 'LMR 6/1/2023 15:47:53'!
+addAccount: anAccount
+
+	self subclassResponsibility ! !
+!TreeReport methodsFor: 'add to report' stamp: 'LMR 6/1/2023 15:48:07'!
+addPortfolio: aPortfolio
+
+	self subclassResponsibility ! !
+
+!methodRemoval: TreeReport #addBalanceOf: stamp: 'LMR 6/1/2023 15:48:11'!
+addBalanceOf: anAccount
+
+	self subclassResponsibility !
+
+!methodRemoval: TreeReport #addNameOf: stamp: 'LMR 6/1/2023 15:48:12'!
+addNameOf: aName
+
+	self subclassResponsibility.!
+
+!methodRemoval: TreeReport #addTransactionsOf: stamp: 'LMR 6/1/2023 15:48:14'!
+addTransactionsOf: aName
+
+	self subclassResponsibility.!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'LMR 6/1/2023 15:49:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'LMR 6/1/2023 15:49:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'LMR 6/1/2023 15:49:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'LMR 6/1/2023 15:49:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'LMR 6/1/2023 15:49:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'LMR 6/1/2023 15:49:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'LMR 6/1/2023 15:49:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'LMR 6/1/2023 15:49:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'LMR 6/1/2023 15:49:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'LMR 6/1/2023 15:49:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'LMR 6/1/2023 15:49:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'LMR 6/1/2023 15:49:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'LMR 6/1/2023 15:49:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'LMR 6/1/2023 15:49:30'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'LMR 6/1/2023 15:49:30'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'LMR 6/1/2023 15:49:30'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'LMR 6/1/2023 15:49:30'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'LMR 6/1/2023 15:49:30'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'LMR 6/1/2023 15:49:30'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'LMR 6/1/2023 15:49:30'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'LMR 6/1/2023 15:49:30'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'LMR 6/1/2023 15:49:30'!
+PASSED!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'LMR 6/1/2023 15:49:30'!
+PASSED!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'LMR 6/1/2023 15:49:30'!
+PASSED!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'LMR 6/1/2023 15:49:30'!
+PASSED!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'LMR 6/1/2023 15:49:31'!
+PASSED!
+
+!testRun: #ReportsTest #test05AccountWithOneTransferWithdrawHasItInItsAccountSummary stamp: 'LMR 6/1/2023 15:49:31'!
+PASSED!
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'LMR 6/1/2023 15:49:31'!
+PASSED!
+
+!testRun: #ReportsTest #test07PortfolioWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'LMR 6/1/2023 15:49:31'!
+PASSED!
+
+!testRun: #ReportsTest #test08NetTransferOfANewAccountIs0 stamp: 'LMR 6/1/2023 15:49:31'!
+PASSED!
+
+!testRun: #ReportsTest #test09AnAccountWithATransferHasItInItsNetTransfer stamp: 'LMR 6/1/2023 15:49:31'!
+PASSED!
+
+!testRun: #ReportsTest #test10AnAccountWithMultipleTransactionsHasACorrectNetTransfer stamp: 'LMR 6/1/2023 15:49:31'!
+PASSED!
+
+!testRun: #ReportsTest #test11APortfolioWithMultipleTransactionsHasACorrectNetTransfer stamp: 'LMR 6/1/2023 15:49:31'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'LMR 6/1/2023 15:49:31'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth stamp: 'LMR 6/1/2023 15:49:31'!
+PASSED!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'LMR 6/1/2023 15:49:31'!
+PASSED!
+
+!testRun: #TransferTest #test04WithdrawOfATransferKnowsItsTransfer stamp: 'LMR 6/1/2023 15:49:32'!
+PASSED!
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 15:49:32'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 15:49:32'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 15:49:32'!
+PASSED!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 15:49:32'!
+PASSED!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 15:49:32'!
+PASSED!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 15:49:32'!
+ERROR!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 15:49:32'!
+ERROR!
+
+!testRun: #TreeReportsTest #test08PortfolioTransactionTreeReportWorksRecursively stamp: 'LMR 6/1/2023 15:49:32'!
+ERROR!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 15:49:37'!
+ERROR!
+!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 15:50:04' prior: 50628889 overrides: 50629001!
+addPortfolio: aPortfolio
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , aPortfolio name.
+	self incrementIndentation.
+	aPortfolio addSubaccountsTo: self.
+	report add: indentation , aPortfolio balance asString.
+	self decrementIndentation.! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 15:50:10'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 15:50:10'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 15:50:10'!
+PASSED!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 15:50:10'!
+PASSED!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 15:50:11'!
+PASSED!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 15:50:11'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 15:50:11'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test08PortfolioTransactionTreeReportWorksRecursively stamp: 'LMR 6/1/2023 15:50:11'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 15:50:14'!
+FAILURE!
+!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 15:50:50' prior: 50629194 overrides: 50629001!
+addPortfolio: aPortfolio
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , aPortfolio name.
+	self incrementIndentation.
+	aPortfolio addSubaccountsTo: self.
+	report add: indentation , 'Balance = ' , aPortfolio balance asString.
+	self decrementIndentation.! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 15:50:57'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 15:50:57'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 15:50:57'!
+PASSED!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 15:50:57'!
+PASSED!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 15:50:57'!
+PASSED!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 15:50:57'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 15:50:57'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test08PortfolioTransactionTreeReportWorksRecursively stamp: 'LMR 6/1/2023 15:50:57'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 15:50:59'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 15:52:09'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 15:52:10'!
+FAILURE!
+!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 15:53:15' prior: 50629244 overrides: 50629001!
+addPortfolio: aPortfolio
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , aPortfolio name.
+	self incrementIndentation.
+	aPortfolio addSubaccountsTo: self.
+	report add: indentation , '   Balance = ' , aPortfolio balance asString.
+	self decrementIndentation.! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 15:53:18'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 15:53:18'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 15:53:18'!
+PASSED!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 15:53:19'!
+PASSED!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 15:53:19'!
+PASSED!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 15:53:19'!
+PASSED!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 15:53:19'!
+PASSED!
+
+!testRun: #TreeReportsTest #test08PortfolioTransactionTreeReportWorksRecursively stamp: 'LMR 6/1/2023 15:53:19'!
+PASSED!
+
+!classDefinition: #TransferTest category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 15:55:00'!
+TestCase subclass: #TransferTest
+	instanceVariableNames: 'transfererAccount2'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #TransferTest category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 15:55:01'!
+TestCase subclass: #TransferTest
+	instanceVariableNames: 'transfererAccount2 transfereeAccount2'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!TransferTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/1/2023 15:54:59'!
+setup
+
+	transfererAccount2 := ReceptiveAccount new.
+	transfereeAccount2 := ReceptiveAccount new.! !
+!TransferTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 15:55:19' prior: 50622242!
+test01TransferBetweenTwoAccountsAffectsTheirBalance
+
+	Transfer register: 100 from: transfererAccount2 to: transfereeAccount2.
+	
+	self assert: transfererAccount2 balance equals: -100.
+	self assert: transfereeAccount2 balance equals: 100! !
+!TransferTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 15:55:34' prior: 50622225!
+test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth
+
+	| aTransfer |
+	aTransfer := Transfer register: 100 from: transfererAccount2 to: transfereeAccount2.
+	
+	self assert: (transfererAccount2 hasRegistered: aTransfer withdraw).
+	self assert: (transfereeAccount2 hasRegistered: aTransfer deposit).! !
+!TransferTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 15:55:49' prior: 50622257!
+test03DepositOfATransferKnowsItsTransfer
+
+	| aTransfer |
+	aTransfer := Transfer register: 100 from: transfererAccount2 to: transfereeAccount2.
+
+	self assert: aTransfer deposit transfer equals: aTransfer .! !
+!TransferTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 15:56:04' prior: 50622271!
+test04WithdrawOfATransferKnowsItsTransfer
+
+	| aTransfer |
+	aTransfer := Transfer register: 100 from: transfererAccount2 to: transfereeAccount2.
+
+	self assert: aTransfer withdraw transfer equals: aTransfer .! !
+
+!classDefinition: #TransferTest category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 15:56:19'!
+TestCase subclass: #TransferTest
+	instanceVariableNames: 'transfererAccount transfereeAccount2'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 15:56:19' prior: 50629381!
+test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth
+
+	| aTransfer |
+	aTransfer := Transfer register: 100 from: transfererAccount to: transfereeAccount2.
+	
+	self assert: (transfererAccount hasRegistered: aTransfer withdraw).
+	self assert: (transfereeAccount2 hasRegistered: aTransfer deposit).! !
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 15:56:19' prior: 50629364!
+setup
+
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount2 := ReceptiveAccount new.! !
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 15:56:19' prior: 50629394!
+test03DepositOfATransferKnowsItsTransfer
+
+	| aTransfer |
+	aTransfer := Transfer register: 100 from: transfererAccount to: transfereeAccount2.
+
+	self assert: aTransfer deposit transfer equals: aTransfer .! !
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 15:56:19' prior: 50629370!
+test01TransferBetweenTwoAccountsAffectsTheirBalance
+
+	Transfer register: 100 from: transfererAccount to: transfereeAccount2.
+	
+	self assert: transfererAccount balance equals: -100.
+	self assert: transfereeAccount2 balance equals: 100! !
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 15:56:19' prior: 50629404!
+test04WithdrawOfATransferKnowsItsTransfer
+
+	| aTransfer |
+	aTransfer := Transfer register: 100 from: transfererAccount to: transfereeAccount2.
+
+	self assert: aTransfer withdraw transfer equals: aTransfer .! !
+
+!classDefinition: #TransferTest category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 15:56:22'!
+TestCase subclass: #TransferTest
+	instanceVariableNames: 'transfererAccount transfereeAccount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 15:56:22' prior: 50629423!
+test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth
+
+	| aTransfer |
+	aTransfer := Transfer register: 100 from: transfererAccount to: transfereeAccount.
+	
+	self assert: (transfererAccount hasRegistered: aTransfer withdraw).
+	self assert: (transfereeAccount hasRegistered: aTransfer deposit).! !
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 15:56:22' prior: 50629436!
+setup
+
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.! !
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 15:56:22' prior: 50629443!
+test03DepositOfATransferKnowsItsTransfer
+
+	| aTransfer |
+	aTransfer := Transfer register: 100 from: transfererAccount to: transfereeAccount.
+
+	self assert: aTransfer deposit transfer equals: aTransfer .! !
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 15:56:22' prior: 50629453!
+test01TransferBetweenTwoAccountsAffectsTheirBalance
+
+	Transfer register: 100 from: transfererAccount to: transfereeAccount.
+	
+	self assert: transfererAccount balance equals: -100.
+	self assert: transfereeAccount balance equals: 100! !
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 15:56:22' prior: 50629464!
+test04WithdrawOfATransferKnowsItsTransfer
+
+	| aTransfer |
+	aTransfer := Transfer register: 100 from: transfererAccount to: transfereeAccount.
+
+	self assert: aTransfer withdraw transfer equals: aTransfer .! !
+
+----SNAPSHOT----(1 June 2023 15:59:18) CuisUniversity-5799.image priorSource: 9511222!
+
+----QUIT----(1 June 2023 15:59:42) CuisUniversity-5799.image priorSource: 9532239!

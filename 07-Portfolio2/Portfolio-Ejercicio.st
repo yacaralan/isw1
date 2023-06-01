@@ -460,52 +460,50 @@ test11APortfolioWithMultipleTransactionsHasACorrectNetTransfer
 
 !classDefinition: #TransferTest category: 'Portfolio-Ejercicio'!
 TestCase subclass: #TransferTest
-	instanceVariableNames: ''
+	instanceVariableNames: 'transfererAccount transfereeAccount'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!TransferTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:35:01'!
+!TransferTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 15:56:22'!
 test01TransferBetweenTwoAccountsAffectsTheirBalance
 
-	| transfereeAccount transfererAccount |
-	transfererAccount := ReceptiveAccount new.
-	transfereeAccount := ReceptiveAccount new.
 	Transfer register: 100 from: transfererAccount to: transfereeAccount.
 	
 	self assert: transfererAccount balance equals: -100.
 	self assert: transfereeAccount balance equals: 100! !
 
-!TransferTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:35:01'!
+!TransferTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 15:56:22'!
 test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth
 
-	| transfereeAccount transfererAccount aTransfer |
-	transfererAccount := ReceptiveAccount new.
-	transfereeAccount := ReceptiveAccount new.
+	| aTransfer |
 	aTransfer := Transfer register: 100 from: transfererAccount to: transfereeAccount.
 	
 	self assert: (transfererAccount hasRegistered: aTransfer withdraw).
 	self assert: (transfereeAccount hasRegistered: aTransfer deposit).! !
 
-!TransferTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:35:01'!
+!TransferTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 15:56:22'!
 test03DepositOfATransferKnowsItsTransfer
 
-	| transfereeAccount transfererAccount aTransfer |
-	transfererAccount := ReceptiveAccount new.
-	transfereeAccount := ReceptiveAccount new.
+	| aTransfer |
 	aTransfer := Transfer register: 100 from: transfererAccount to: transfereeAccount.
 
 	self assert: aTransfer deposit transfer equals: aTransfer .! !
 
-!TransferTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:35:01'!
+!TransferTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 15:56:22'!
 test04WithdrawOfATransferKnowsItsTransfer
 
-	| transfereeAccount transfererAccount aTransfer |
-	transfererAccount := ReceptiveAccount new.
-	transfereeAccount := ReceptiveAccount new.
+	| aTransfer |
 	aTransfer := Transfer register: 100 from: transfererAccount to: transfereeAccount.
 
 	self assert: aTransfer withdraw transfer equals: aTransfer .! !
+
+
+!TransferTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/1/2023 15:56:22'!
+setup
+
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.! !
 
 
 !classDefinition: #TreeReportsTest category: 'Portfolio-Ejercicio'!
@@ -831,19 +829,20 @@ signalCanNotAddAccount
 	self error: self class canNotAddAccountErrorMessage! !
 
 
+!Portfolio methodsFor: 'reports' stamp: 'LMR 6/1/2023 15:44:57'!
+addSubaccountsTo: aTreeReport 
+	
+	accounts do: [:anAccount| anAccount fillTreeReport: aTreeReport].! !
+
 !Portfolio methodsFor: 'reports' stamp: 'LMR 5/31/2023 23:34:58'!
 fillReport: aReport 
 	
 	accounts do: [:anAccount| anAccount fillReport: aReport].! !
 
-!Portfolio methodsFor: 'reports' stamp: 'LMR 6/1/2023 05:40:32'!
+!Portfolio methodsFor: 'reports' stamp: 'LMR 6/1/2023 15:29:40'!
 fillTreeReport: aTreeReport 
 	
-	aTreeReport addNameOf: self.
-	aTreeReport incrementIndentation.
-	accounts do: [:account | account fillTreeReport: aTreeReport.].
-	aTreeReport addBalanceOf: self.
-	aTreeReport decrementIndentation.! !
+	aTreeReport addPortfolio: self.! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -960,11 +959,10 @@ fillReport: aReport
 	transactions do: [:transaction| transaction fillReport: aReport].
 ! !
 
-!ReceptiveAccount methodsFor: 'reports' stamp: 'LMR 6/1/2023 05:42:24'!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'LMR 6/1/2023 15:39:20'!
 fillTreeReport: aTreeReport 
 	
-	aTreeReport addNameOf: self.
-	aTreeReport addTransactionsOf: self.! !
+	aTreeReport addAccount: self.! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -1381,20 +1379,15 @@ incrementIndentation
 	indentationLevel := indentationLevel + 1.! !
 
 
-!TreeReport methodsFor: 'add to report' stamp: 'LMR 6/1/2023 05:13:02'!
-addBalanceOf: anAccount
+!TreeReport methodsFor: 'add to report' stamp: 'LMR 6/1/2023 15:47:53'!
+addAccount: anAccount
 
 	self subclassResponsibility ! !
 
-!TreeReport methodsFor: 'add to report' stamp: 'LMR 6/1/2023 05:02:42'!
-addNameOf: aName
+!TreeReport methodsFor: 'add to report' stamp: 'LMR 6/1/2023 15:48:07'!
+addPortfolio: aPortfolio
 
-	self subclassResponsibility.! !
-
-!TreeReport methodsFor: 'add to report' stamp: 'LMR 6/1/2023 05:13:19'!
-addTransactionsOf: aName
-
-	self subclassResponsibility.! !
+	self subclassResponsibility ! !
 
 
 !TreeReport methodsFor: 'initialization' stamp: 'LMR 6/1/2023 04:35:07'!
@@ -1425,21 +1418,24 @@ report
 	^report! !
 
 
-!PortfolioStructure methodsFor: 'add to report' stamp: 'LMR 6/1/2023 05:11:44'!
-addBalanceOf: anAccount
-
-	! !
-
-!PortfolioStructure methodsFor: 'add to report' stamp: 'LMR 6/1/2023 05:02:42'!
-addNameOf: anAccount
+!PortfolioStructure methodsFor: 'add to report' stamp: 'LMR 6/1/2023 15:46:10'!
+addAccount: anAccount
 
 	| indentation |
 	indentation := ''.
 	indentationLevel timesRepeat: [indentation := indentation , '   '].
 	report add: indentation , anAccount name.! !
 
-!PortfolioStructure methodsFor: 'add to report' stamp: 'LMR 6/1/2023 05:12:30'!
-addTransactionsOf: anAccount! !
+!PortfolioStructure methodsFor: 'add to report' stamp: 'LMR 6/1/2023 15:46:52'!
+addPortfolio: aPortfolio
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , aPortfolio name.
+	self incrementIndentation.
+	aPortfolio addSubaccountsTo: self.
+	self decrementIndentation.! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -1460,30 +1456,28 @@ TreeReport subclass: #TransactionTreeReport
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 05:15:19'!
-addBalanceOf: anAccount
-
-	| indentation |
-	indentation := ''.
-	indentationLevel timesRepeat: [indentation := indentation , '   '].
-	report add: indentation , 'Balance = ' , anAccount balance asString.! !
-
-!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 05:03:10'!
-addNameOf: anAccount
-
-	| indentation |
-	indentation := ''.
-	indentationLevel timesRepeat: [indentation := indentation , '   '].
-	report add: indentation , anAccount name.! !
-
-!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 05:42:14'!
-addTransactionsOf: anAccount
+!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 15:40:59'!
+addAccount: anAccount
 
 	| indentation indentedSummary |
 	indentation := ''.
-	indentationLevel+1 timesRepeat: [indentation := indentation , '   '].
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , anAccount name.
+	indentation := indentation , '   '.
 	indentedSummary := (AccountSummary of: anAccount) report collect: [:reportLine | indentation , reportLine].
 	report addAll: indentedSummary.! !
+
+!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 15:53:15'!
+addPortfolio: aPortfolio
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , aPortfolio name.
+	self incrementIndentation.
+	aPortfolio addSubaccountsTo: self.
+	report add: indentation , '   Balance = ' , aPortfolio balance asString.
+	self decrementIndentation.! !
 
 !TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 04:31:41'!
 report
