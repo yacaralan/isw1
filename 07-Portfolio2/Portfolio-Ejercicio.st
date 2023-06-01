@@ -499,8 +499,8 @@ test04WithdrawOfATransferKnowsItsTransfer
 	self assert: aTransfer withdraw transfer equals: aTransfer .! !
 
 
-!TransferTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/1/2023 15:56:22'!
-setup
+!TransferTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/1/2023 16:03:55'!
+setUp
 
 	transfererAccount := ReceptiveAccount new.
 	transfereeAccount := ReceptiveAccount new.! !

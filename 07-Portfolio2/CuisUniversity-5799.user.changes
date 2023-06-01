@@ -11424,3 +11424,156 @@ test04WithdrawOfATransferKnowsItsTransfer
 ----SNAPSHOT----(1 June 2023 15:59:18) CuisUniversity-5799.image priorSource: 9511222!
 
 ----QUIT----(1 June 2023 15:59:42) CuisUniversity-5799.image priorSource: 9532239!
+
+----STARTUP---- (1 June 2023 16:03:41) as D:\OneDrive - dc.uba.ar\UBA\Inge1\cuis5799\windows64\CuisUniversity-5799.image!
+
+!TransferTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/1/2023 16:03:55' overrides: 16961394!
+setUp
+
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.! !
+
+!methodRemoval: TransferTest #setup stamp: 'LMR 6/1/2023 16:03:56'!
+setup
+
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'LMR 6/1/2023 16:03:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'LMR 6/1/2023 16:04:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'LMR 6/1/2023 16:04:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'LMR 6/1/2023 16:04:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'LMR 6/1/2023 16:04:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'LMR 6/1/2023 16:04:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'LMR 6/1/2023 16:04:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'LMR 6/1/2023 16:04:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'LMR 6/1/2023 16:04:01'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'LMR 6/1/2023 16:04:01'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'LMR 6/1/2023 16:04:01'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'LMR 6/1/2023 16:04:01'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'LMR 6/1/2023 16:04:01'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'LMR 6/1/2023 16:04:01'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'LMR 6/1/2023 16:04:01'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'LMR 6/1/2023 16:04:01'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'LMR 6/1/2023 16:04:01'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'LMR 6/1/2023 16:04:01'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'LMR 6/1/2023 16:04:01'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'LMR 6/1/2023 16:04:02'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'LMR 6/1/2023 16:04:02'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'LMR 6/1/2023 16:04:02'!
+PASSED!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'LMR 6/1/2023 16:04:02'!
+PASSED!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'LMR 6/1/2023 16:04:02'!
+PASSED!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'LMR 6/1/2023 16:04:02'!
+PASSED!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'LMR 6/1/2023 16:04:02'!
+PASSED!
+
+!testRun: #ReportsTest #test05AccountWithOneTransferWithdrawHasItInItsAccountSummary stamp: 'LMR 6/1/2023 16:04:02'!
+PASSED!
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'LMR 6/1/2023 16:04:02'!
+PASSED!
+
+!testRun: #ReportsTest #test07PortfolioWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'LMR 6/1/2023 16:04:02'!
+PASSED!
+
+!testRun: #ReportsTest #test08NetTransferOfANewAccountIs0 stamp: 'LMR 6/1/2023 16:04:02'!
+PASSED!
+
+!testRun: #ReportsTest #test09AnAccountWithATransferHasItInItsNetTransfer stamp: 'LMR 6/1/2023 16:04:02'!
+PASSED!
+
+!testRun: #ReportsTest #test10AnAccountWithMultipleTransactionsHasACorrectNetTransfer stamp: 'LMR 6/1/2023 16:04:03'!
+PASSED!
+
+!testRun: #ReportsTest #test11APortfolioWithMultipleTransactionsHasACorrectNetTransfer stamp: 'LMR 6/1/2023 16:04:03'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'LMR 6/1/2023 16:04:03'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth stamp: 'LMR 6/1/2023 16:04:03'!
+PASSED!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'LMR 6/1/2023 16:04:03'!
+PASSED!
+
+!testRun: #TransferTest #test04WithdrawOfATransferKnowsItsTransfer stamp: 'LMR 6/1/2023 16:04:03'!
+PASSED!
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 16:04:03'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 16:04:03'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 16:04:03'!
+PASSED!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 16:04:03'!
+PASSED!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 16:04:03'!
+PASSED!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 16:04:04'!
+PASSED!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 16:04:04'!
+PASSED!
+
+!testRun: #TreeReportsTest #test08PortfolioTransactionTreeReportWorksRecursively stamp: 'LMR 6/1/2023 16:04:04'!
+PASSED!
+
+----SNAPSHOT----(1 June 2023 16:04:09) CuisUniversity-5799.image priorSource: 9532327!
+
+----QUIT----(1 June 2023 16:04:27) CuisUniversity-5799.image priorSource: 9538389!
