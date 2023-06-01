@@ -4723,3 +4723,1477 @@ PASSED!
 ----SNAPSHOT----(31 May 2023 01:35:18) CuisUniversity-5799.image priorSource: 9477534!
 
 ----QUIT----(31 May 2023 01:35:20) CuisUniversity-5799.image priorSource: 9477622!
+
+TestCase subclass: #TreeReportsTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #TreeReportsTest category: 'Portfolio-Ejercicio' stamp: 'LMR 5/31/2023 23:39:08'!
+TestCase subclass: #TreeReportsTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #XXX category: 'Portfolio-Ejercicio' stamp: 'LMR 5/31/2023 23:42:39'!
+Object subclass: #XXX
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!TreeReportsTest methodsFor: 'nil' stamp: 'LMR 5/31/2023 23:42:35'!
+test01NewPortfolioOnlyHasItsNameOnItsReport
+
+	| aPortfolio expectedReport |
+	aPortfolio := Portfolio named: 'Portfolio de la familia'.
+
+	expectedReport := OrderedCollection with: 'Portfolio de la familia'.
+
+	self assert: (XXX of: aPortfolio) report equals: expectedReport. ! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 5/31/2023 23:42:47'!
+ERROR!
+!Portfolio class methodsFor: 'instance creation' stamp: 'LMR 5/31/2023 23:42:53'!
+named: aString 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeNamed: aString ! !
+!Portfolio class methodsFor: 'instance creation' stamp: 'LMR 5/31/2023 23:43:22' prior: 50622382!
+named: aName
+	
+	^self new initializeNamed: aName.! !
+!Account class methodsFor: 'instance creation' stamp: 'LMR 5/31/2023 23:43:45'!
+named: aName
+	
+	^self new initializeNamed: aName.! !
+
+!methodRemoval: Portfolio class #named: stamp: 'LMR 5/31/2023 23:43:45'!
+named: aName
+	
+	^self new initializeNamed: aName.!
+
+!methodRemoval: Account class #named: stamp: 'LMR 5/31/2023 23:44:07'!
+named: aName
+	
+	^self new initializeNamed: aName.!
+!Portfolio class methodsFor: 'instance creation' stamp: 'LMR 5/31/2023 23:45:03'!
+named: aName
+
+	^self new initializeNamed: aName.! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 5/31/2023 23:45:14'!
+ERROR!
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 5/31/2023 23:45:14'!
+ERROR!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'LMR 5/31/2023 23:45:52'!
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts parents name'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Portfolio methodsFor: 'initialization' stamp: 'LMR 5/31/2023 23:45:52'!
+initializeNamed: aName 
+	self shouldBeImplemented.
+	name := aName.! !
+!Portfolio methodsFor: 'initialization' stamp: 'LMR 5/31/2023 23:45:57' prior: 50622426!
+initializeNamed: aName 
+	
+	name := aName.! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 5/31/2023 23:45:59'!
+ERROR!
+!XXX class methodsFor: 'instance creation' stamp: 'LMR 5/31/2023 23:46:05'!
+of: aPortfolio 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeOf: aPortfolio ! !
+!XXX class methodsFor: 'instance creation' stamp: 'LMR 5/31/2023 23:46:09' prior: 50622439!
+of: aPortfolio 
+	
+	^self new initializeOf: aPortfolio ! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 5/31/2023 23:46:10'!
+ERROR!
+
+!classDefinition: #XXX category: 'Portfolio-Ejercicio' stamp: 'LMR 5/31/2023 23:46:36'!
+Object subclass: #XXX
+	instanceVariableNames: 'portfolio'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!XXX methodsFor: 'initialization' stamp: 'LMR 5/31/2023 23:46:36'!
+initializeOf: aPortfolio 
+	self shouldBeImplemented.
+	portfolio := aPortfolio.! !
+!XXX methodsFor: 'initialization' stamp: 'LMR 5/31/2023 23:46:39' prior: 50622462!
+initializeOf: aPortfolio 
+
+	portfolio := aPortfolio.! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 5/31/2023 23:46:40'!
+ERROR!
+!XXX methodsFor: 'report' stamp: 'LMR 5/31/2023 23:46:50'!
+report
+	self shouldBeImplemented.! !
+!XXX methodsFor: 'report' stamp: 'LMR 5/31/2023 23:46:58' prior: 50622476!
+report
+	
+	^'Portfolio de la familia'! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 5/31/2023 23:46:59'!
+FAILURE!
+!XXX methodsFor: 'report' stamp: 'LMR 5/31/2023 23:47:28' prior: 50622480!
+report
+	
+	^OrderedCollection with: 'Portfolio de la familia'! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 5/31/2023 23:47:57'!
+PASSED!
+!TreeReportsTest methodsFor: 'as yet unclassified' stamp: 'LMR 5/31/2023 23:54:30'!
+test02PortfolioWithOneAccountHasBothNamesOnItsReport
+
+	| aPortfolio myAccount expectedReport |
+	myAccount := ReceptiveAccount named: 'Cuenta Mia'.
+	aPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount.
+
+	expectedReport := OrderedCollection with: 'Portfolio de la familia' with: '   Cuenta Mia'.
+
+	self assert: (XXX of: aPortfolio) report equals: expectedReport. ! !
+!TreeReportsTest methodsFor: 'as yet unclassified' stamp: 'LMR 5/31/2023 23:54:47' prior: 50622497!
+test02PortfolioWithOneAccountHasBothNamesOnItsReport
+
+	| aPortfolio myAccount expectedReport |
+	myAccount := ReceptiveAccount named: 'Cuenta Mia'.
+	aPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount.
+
+	expectedReport := OrderedCollection with: 'Portfolio de la familia' with: '   Cuenta Mia'.
+
+	self assert: (XXX of: aPortfolio) report equals: expectedReport. ! !
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 5/31/2023 23:54:49'!
+ERROR!
+!ReceptiveAccount class methodsFor: 'instance creation' stamp: 'LMR 5/31/2023 23:54:55'!
+named: aString 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeNamed: aString ! !
+!ReceptiveAccount class methodsFor: 'instance creation' stamp: 'LMR 5/31/2023 23:55:09' prior: 50622532!
+named: aName
+	
+	^self new initializeNamed: aName! !
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 5/31/2023 23:55:10'!
+ERROR!
+
+!classDefinition: #ReceptiveAccount category: 'Portfolio-Ejercicio' stamp: 'LMR 5/31/2023 23:55:16'!
+Account subclass: #ReceptiveAccount
+	instanceVariableNames: 'transactions name'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!ReceptiveAccount methodsFor: 'initialization' stamp: 'LMR 5/31/2023 23:55:17'!
+initializeNamed: aName 
+	self shouldBeImplemented.
+	name := aName.! !
+!ReceptiveAccount methodsFor: 'initialization' stamp: 'LMR 5/31/2023 23:55:21' prior: 50622558!
+initializeNamed: aName 
+
+	name := aName.! !
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 5/31/2023 23:55:23'!
+ERROR!
+!Portfolio class methodsFor: 'instance creation' stamp: 'LMR 5/31/2023 23:55:29'!
+named: aString with: aReceptiveAccount 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeNamed: aString with: aReceptiveAccount ! !
+!Portfolio class methodsFor: 'instance creation' stamp: 'LMR 5/31/2023 23:55:39' prior: 50622572!
+named: aString with: anAccount 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeNamed: aString with: anAccount ! !
+!Portfolio class methodsFor: 'instance creation' stamp: 'LMR 5/31/2023 23:55:45' prior: 50622582!
+named: aName with: anAccount 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeNamed: aName with: anAccount ! !
+!Portfolio class methodsFor: 'instance creation' stamp: 'LMR 5/31/2023 23:55:48' prior: 50622591!
+named: aName with: anAccount 
+	
+	^self new initializeNamed: aName with: anAccount ! !
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 5/31/2023 23:55:49'!
+ERROR!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'LMR 5/31/2023 23:55:54'!
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts parents name account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Portfolio methodsFor: 'initialization' stamp: 'LMR 5/31/2023 23:55:54'!
+initializeNamed: aName with: anAccount 
+	self shouldBeImplemented.
+	name := aName.
+	account := anAccount.! !
+!Portfolio methodsFor: 'initialization' stamp: 'LMR 5/31/2023 23:56:15' prior: 50622617!
+initializeNamed: aName with: anAccount
+
+	name := aName.
+	accounts := OrderedCollection with: anAccount.! !
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 5/31/2023 23:56:16'!
+FAILURE!
+!XXX methodsFor: 'report' stamp: 'LMR 6/1/2023 00:02:08' prior: 50622488!
+report
+	
+	
+	portfolio accountsIsEmpty ifTrue: [^OrderedCollection with: portfolio name].
+	^OrderedCollection with: 'Portfolio de la familia'! !
+!XXX methodsFor: 'report' stamp: 'LMR 6/1/2023 00:03:48' prior: 50622634!
+report
+	
+	| report |
+	report := OrderedCollection new.
+	report add: portfolio name.
+	report add: ''
+	^report! !
+!XXX methodsFor: 'report' stamp: 'LMR 6/1/2023 00:06:59' prior: 50622641!
+report
+	
+	| report |
+	report := OrderedCollection new.
+	portfolio fillXXXReport: report.
+	^report! !
+!Portfolio methodsFor: 'reports' stamp: 'LMR 6/1/2023 00:09:29'!
+fillXXXReport: aXXXReport 
+	
+	accounts first fillReport: aXXXReport.! !
+!Portfolio methodsFor: 'reports' stamp: 'LMR 6/1/2023 00:09:50' prior: 50622653!
+fillXXXReport: aXXXReport 
+	
+	accounts first fillXXXReport: aXXXReport.! !
+!Portfolio methodsFor: 'reports' stamp: 'LMR 6/1/2023 00:11:34' prior: 50622658!
+fillXXXReport: aXXXReport 
+	
+	aXXXReport addNameToXXXReport: self.
+	accounts first fillXXXReport: aXXXReport.! !
+!Portfolio methodsFor: 'reports' stamp: 'LMR 6/1/2023 00:11:40' prior: 50622663!
+fillXXXReport: aXXXReport 
+	
+	aXXXReport addNameToXXXReport: name.
+	accounts first fillXXXReport: aXXXReport.! !
+!ReceptiveAccount methodsFor: 'reports' stamp: 'LMR 6/1/2023 00:11:51'!
+fillXXXReport: aXXXReport 
+	
+	aXXXReport addNameToXXXReport: name.! !
+!XXX methodsFor: 'nil' stamp: 'LMR 6/1/2023 00:12:44'!
+addNameToXXXReport: aName
+
+	| a |
+	a add: aName! !
+!XXX methodsFor: 'report' stamp: 'LMR 6/1/2023 00:13:21' prior: 50622647!
+report
+	
+	| report2 |
+	report2 := OrderedCollection new.
+	portfolio fillXXXReport: report2.
+	^report2! !
+
+!classDefinition: #XXX category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 00:13:31'!
+Object subclass: #XXX
+	instanceVariableNames: 'portfolio report'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!XXX methodsFor: 'report' stamp: 'LMR 6/1/2023 00:13:30' prior: 50622684!
+report
+	
+	report := OrderedCollection new.
+	portfolio fillXXXReport: report.
+	^report! !
+!XXX methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 00:13:41' prior: 50622680!
+addNameToXXXReport: aName
+
+	report add: aName! !
+!XXX methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 00:13:43' prior: 50622703!
+addNameToXXXReport: aName
+
+	report add: aName.! !
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 00:13:55'!
+ERROR!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 00:13:55'!
+ERROR!
+!XXX methodsFor: 'report' stamp: 'LMR 6/1/2023 00:14:09' prior: 50622697!
+report
+	
+	report := OrderedCollection new.
+	portfolio fillXXXReport: self.
+	^report! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 00:14:13'!
+ERROR!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 00:14:13'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 00:14:18'!
+ERROR!
+!Portfolio methodsFor: 'reports' stamp: 'LMR 6/1/2023 00:15:07' prior: 50622670!
+fillXXXReport: aXXXReport 
+	
+	aXXXReport addNameToXXXReport: name.
+	account isEmpty ifFalse: [accounts first fillXXXReport: aXXXReport.]! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 00:15:10'!
+ERROR!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 00:15:10'!
+ERROR!
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 00:15:34'!
+ERROR!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 00:15:34'!
+ERROR!
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 00:15:40'!
+ERROR!
+!Portfolio methodsFor: 'initialization' stamp: 'LMR 6/1/2023 00:16:13' prior: 50622431!
+initializeNamed: aName 
+	
+	name := aName.
+	accounts := OrderedCollection new.
+	parents := OrderedCollection new.! !
+!Portfolio methodsFor: 'initialization' stamp: 'LMR 6/1/2023 00:16:19' prior: 50622624!
+initializeNamed: aName with: anAccount
+
+	name := aName.
+	accounts := OrderedCollection with: anAccount.
+	parents := OrderedCollection new.! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 00:16:26'!
+ERROR!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 00:16:26'!
+ERROR!
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 00:16:29'!
+ERROR!
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 00:16:41'!
+ERROR!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 00:16:41'!
+ERROR!
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 00:16:43'!
+ERROR!
+
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts parents name'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 00:16:58'!
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts parents name'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Portfolio methodsFor: 'reports' stamp: 'LMR 6/1/2023 00:17:02' prior: 50622737!
+fillXXXReport: aXXXReport 
+	
+	aXXXReport addNameToXXXReport: name.
+	accounts isEmpty ifFalse: [accounts first fillXXXReport: aXXXReport.]! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 00:17:11'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 00:17:11'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 00:17:11'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'LMR 6/1/2023 00:17:51' prior: 50622676!
+fillXXXReport: aXXXReport 
+	
+	aXXXReport addNameToXXXReport: '   ' , name.! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 00:17:55'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 00:17:55'!
+PASSED!
+!TreeReportsTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 00:21:27' prior: 50622513!
+test02PortfolioWithOneAccountHasBothNamesOnItsReport
+
+	| familyPortfolio myAccount expectedReport angiesAccount childrenPortfolio johnsAccount |
+	johnsAccount := ReceptiveAccount named: 'Cuenta de Juan'.
+	angiesAccount := ReceptiveAccount named: 'Cuenta de Angeles'.
+	childrenPortfolio := Portfolio named: 'Portfolio de hijos' with: johnsAccount with: angiesAccount.
+	myAccount := ReceptiveAccount named: 'Cuenta mia'.
+	familyPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount with: childrenPortfolio.
+
+	expectedReport := OrderedCollection new.
+	expectedReport add: 'Portfolio de la familia'.
+	expectedReport add: '   Cuenta Mia'.
+	expectedReport add: '   Portfolio de hijos'.
+	expectedReport add: '      Cuenta de Juan'.
+	expectedReport add: '      Cuenta de Angeles'.
+
+	self assert: (XXX of: familyPortfolio) report equals: expectedReport. ! !
+!TreeReportsTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 00:22:00'!
+test03aaaa
+
+	| familyPortfolio myAccount expectedReport angiesAccount childrenPortfolio johnsAccount |
+	johnsAccount := ReceptiveAccount named: 'Cuenta de Juan'.
+	angiesAccount := ReceptiveAccount named: 'Cuenta de Angeles'.
+	childrenPortfolio := Portfolio named: 'Portfolio de hijos' with: johnsAccount with: angiesAccount.
+	myAccount := ReceptiveAccount named: 'Cuenta mia'.
+	familyPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount with: childrenPortfolio.
+
+	expectedReport := OrderedCollection new.
+	expectedReport add: 'Portfolio de la familia'.
+	expectedReport add: '   Cuenta Mia'.
+	expectedReport add: '   Portfolio de hijos'.
+	expectedReport add: '      Cuenta de Juan'.
+	expectedReport add: '      Cuenta de Angeles'.
+
+	self assert: (XXX of: familyPortfolio) report equals: expectedReport. ! !
+!TreeReportsTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:54:47' prior: 50622844!
+test02PortfolioWithOneAccountHasBothNamesOnItsReport
+
+	| aPortfolio myAccount expectedReport |
+	myAccount := ReceptiveAccount named: 'Cuenta Mia'.
+	aPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount.
+
+	expectedReport := OrderedCollection with: 'Portfolio de la familia' with: '   Cuenta Mia'.
+
+	self assert: (XXX of: aPortfolio) report equals: expectedReport. ! !
+!TreeReportsTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 00:23:00'!
+test04aaaa
+
+	| familyPortfolio myAccount expectedReport angiesAccount childrenPortfolio johnsAccount |
+	johnsAccount := ReceptiveAccount named: 'Cuenta de Juan'.
+	angiesAccount := ReceptiveAccount named: 'Cuenta de Angeles'.
+	childrenPortfolio := Portfolio named: 'Portfolio de hijos' with: johnsAccount with: angiesAccount.
+	myAccount := ReceptiveAccount named: 'Cuenta mia'.
+	familyPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount with: childrenPortfolio.
+
+	expectedReport := OrderedCollection new.
+	expectedReport add: 'Portfolio de la familia'.
+	expectedReport add: '   Cuenta Mia'.
+	expectedReport add: '   Portfolio de hijos'.
+	expectedReport add: '      Cuenta de Juan'.
+	expectedReport add: '      Cuenta de Angeles'.
+
+	self assert: (XXX of: familyPortfolio) report equals: expectedReport. ! !
+!TreeReportsTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 00:24:12' prior: 50622874!
+test03aaaa
+
+	| familyPortfolio expectedReport childrenPortfolio |
+	childrenPortfolio := Portfolio named: 'Portfolio de hijos'.
+	familyPortfolio := Portfolio named: 'Portfolio de la familia' with: childrenPortfolio.
+
+	expectedReport := OrderedCollection new.
+	expectedReport add: 'Portfolio de la familia'.
+	expectedReport add: '   Portfolio de hijos'.
+
+	self assert: (XXX of: familyPortfolio) report equals: expectedReport. ! !
+!TreeReportsTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 00:24:17'!
+_test04aaaa
+
+	| familyPortfolio myAccount expectedReport angiesAccount childrenPortfolio johnsAccount |
+	johnsAccount := ReceptiveAccount named: 'Cuenta de Juan'.
+	angiesAccount := ReceptiveAccount named: 'Cuenta de Angeles'.
+	childrenPortfolio := Portfolio named: 'Portfolio de hijos' with: johnsAccount with: angiesAccount.
+	myAccount := ReceptiveAccount named: 'Cuenta mia'.
+	familyPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount with: childrenPortfolio.
+
+	expectedReport := OrderedCollection new.
+	expectedReport add: 'Portfolio de la familia'.
+	expectedReport add: '   Cuenta Mia'.
+	expectedReport add: '   Portfolio de hijos'.
+	expectedReport add: '      Cuenta de Juan'.
+	expectedReport add: '      Cuenta de Angeles'.
+
+	self assert: (XXX of: familyPortfolio) report equals: expectedReport. ! !
+
+!methodRemoval: TreeReportsTest #test04aaaa stamp: 'LMR 6/1/2023 00:24:17'!
+test04aaaa
+
+	| familyPortfolio myAccount expectedReport angiesAccount childrenPortfolio johnsAccount |
+	johnsAccount := ReceptiveAccount named: 'Cuenta de Juan'.
+	angiesAccount := ReceptiveAccount named: 'Cuenta de Angeles'.
+	childrenPortfolio := Portfolio named: 'Portfolio de hijos' with: johnsAccount with: angiesAccount.
+	myAccount := ReceptiveAccount named: 'Cuenta mia'.
+	familyPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount with: childrenPortfolio.
+
+	expectedReport := OrderedCollection new.
+	expectedReport add: 'Portfolio de la familia'.
+	expectedReport add: '   Cuenta Mia'.
+	expectedReport add: '   Portfolio de hijos'.
+	expectedReport add: '      Cuenta de Juan'.
+	expectedReport add: '      Cuenta de Angeles'.
+
+	self assert: (XXX of: familyPortfolio) report equals: expectedReport. !
+!TreeReportsTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 00:24:50'!
+test03PortfolioWithOnePortfolioHasBothNamesOnItsReport
+
+	| familyPortfolio expectedReport childrenPortfolio |
+	childrenPortfolio := Portfolio named: 'Portfolio de hijos'.
+	familyPortfolio := Portfolio named: 'Portfolio de la familia' with: childrenPortfolio.
+
+	expectedReport := OrderedCollection new.
+	expectedReport add: 'Portfolio de la familia'.
+	expectedReport add: '   Portfolio de hijos'.
+
+	self assert: (XXX of: familyPortfolio) report equals: expectedReport. ! !
+
+!methodRemoval: TreeReportsTest #test03aaaa stamp: 'LMR 6/1/2023 00:24:52'!
+test03aaaa
+
+	| familyPortfolio expectedReport childrenPortfolio |
+	childrenPortfolio := Portfolio named: 'Portfolio de hijos'.
+	familyPortfolio := Portfolio named: 'Portfolio de la familia' with: childrenPortfolio.
+
+	expectedReport := OrderedCollection new.
+	expectedReport add: 'Portfolio de la familia'.
+	expectedReport add: '   Portfolio de hijos'.
+
+	self assert: (XXX of: familyPortfolio) report equals: expectedReport. !
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 00:24:56'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 00:24:57'!
+FAILURE!
+
+Object subclass: #XXX
+	instanceVariableNames: 'portfolio report indentationLevel'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #XXX category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 00:28:00'!
+Object subclass: #XXX
+	instanceVariableNames: 'portfolio report indentationLevel'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!XXX methodsFor: 'report' stamp: 'LMR 6/1/2023 00:28:13' prior: 50622720!
+report
+	
+	report := OrderedCollection new.
+	indentationLevel := 0.
+	portfolio fillXXXReport: self.
+	^report! !
+!XXX methodsFor: 'nil' stamp: 'LMR 6/1/2023 00:28:42'!
+incrementIndentation
+
+	indentationLevel := indentationLevel + 1.! !
+!Portfolio methodsFor: 'reports' stamp: 'LMR 6/1/2023 00:29:18' prior: 50622812!
+fillXXXReport: aXXXReport 
+	
+	aXXXReport addNameToXXXReport: name.
+	aXXXReport incrementIndentation.
+	accounts isEmpty ifFalse: [accounts first fillXXXReport: aXXXReport.]! !
+!ReceptiveAccount methodsFor: 'reports' stamp: 'LMR 6/1/2023 00:29:29' prior: 50622831!
+fillXXXReport: aXXXReport 
+	
+	aXXXReport addNameToXXXReport: name.! !
+!XXX methodsFor: 'add to report' stamp: 'LMR 6/1/2023 00:30:30' prior: 50622708!
+addNameToXXXReport: aName
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: aName.! !
+!XXX methodsFor: 'add to report' stamp: 'LMR 6/1/2023 00:30:41' prior: 50623099!
+addNameToXXXReport: aName
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , aName.! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 00:30:46'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 00:30:46'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 00:30:46'!
+PASSED!
+!TreeReportsTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 00:30:56' prior: 50622963!
+_test04aaaa
+
+	| familyPortfolio myAccount expectedReport angiesAccount childrenPortfolio johnsAccount |
+	johnsAccount := ReceptiveAccount named: 'Cuenta de Juan'.
+	angiesAccount := ReceptiveAccount named: 'Cuenta de Angeles'.
+	childrenPortfolio := Portfolio named: 'Portfolio de hijos' with: johnsAccount with: angiesAccount.
+	myAccount := ReceptiveAccount named: 'Cuenta mia'.
+	familyPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount with: childrenPortfolio.
+
+	expectedReport := OrderedCollection new.
+	expectedReport add: 'Portfolio de la familia'.
+	expectedReport add: '   Cuenta Mia'.
+	expectedReport add: '   Portfolio de hijos'.
+	expectedReport add: '      Cuenta de Juan'.
+	expectedReport add: '      Cuenta de Angeles'.
+
+	self assert: (XXX of: familyPortfolio) report equals: expectedReport. ! !
+!TreeReportsTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 00:33:09'!
+test04PortfolioReportWorksRecursively
+
+	| familyPortfolio myAccount expectedReport angiesAccount childrenPortfolio johnsAccount |
+	johnsAccount := ReceptiveAccount named: 'Cuenta de Juan'.
+	angiesAccount := ReceptiveAccount named: 'Cuenta de Angeles'.
+	childrenPortfolio := Portfolio named: 'Portfolio de hijos' with: johnsAccount with: angiesAccount.
+	myAccount := ReceptiveAccount named: 'Cuenta mia'.
+	familyPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount with: childrenPortfolio.
+
+	expectedReport := OrderedCollection new.
+	expectedReport add: 'Portfolio de la familia'.
+	expectedReport add: '   Cuenta Mia'.
+	expectedReport add: '   Portfolio de hijos'.
+	expectedReport add: '      Cuenta de Juan'.
+	expectedReport add: '      Cuenta de Angeles'.
+
+	self assert: (XXX of: familyPortfolio) report equals: expectedReport. ! !
+
+!methodRemoval: TreeReportsTest #_test04aaaa stamp: 'LMR 6/1/2023 00:33:12'!
+_test04aaaa
+
+	| familyPortfolio myAccount expectedReport angiesAccount childrenPortfolio johnsAccount |
+	johnsAccount := ReceptiveAccount named: 'Cuenta de Juan'.
+	angiesAccount := ReceptiveAccount named: 'Cuenta de Angeles'.
+	childrenPortfolio := Portfolio named: 'Portfolio de hijos' with: johnsAccount with: angiesAccount.
+	myAccount := ReceptiveAccount named: 'Cuenta mia'.
+	familyPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount with: childrenPortfolio.
+
+	expectedReport := OrderedCollection new.
+	expectedReport add: 'Portfolio de la familia'.
+	expectedReport add: '   Cuenta Mia'.
+	expectedReport add: '   Portfolio de hijos'.
+	expectedReport add: '      Cuenta de Juan'.
+	expectedReport add: '      Cuenta de Angeles'.
+
+	self assert: (XXX of: familyPortfolio) report equals: expectedReport. !
+
+!testRun: #TreeReportsTest #test04PortfolioReportWorksRecursively stamp: 'LMR 6/1/2023 00:33:16'!
+ERROR!
+
+!testRun: #TreeReportsTest #test04PortfolioReportWorksRecursively stamp: 'LMR 6/1/2023 00:33:16'!
+ERROR!
+!Portfolio class methodsFor: 'instance creation' stamp: 'LMR 6/1/2023 00:33:21'!
+named: aString with: aReceptiveAccount with: aReceptiveAccount3 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeNamed: aString with: aReceptiveAccount with: aReceptiveAccount3 ! !
+!TreeReportsTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 00:34:35'!
+_test04PortfolioReportWorksRecursively
+
+	| familyPortfolio myAccount expectedReport angiesAccount childrenPortfolio johnsAccount |
+	johnsAccount := ReceptiveAccount named: 'Cuenta de Juan'.
+	angiesAccount := ReceptiveAccount named: 'Cuenta de Angeles'.
+	childrenPortfolio := Portfolio named: 'Portfolio de hijos' with: johnsAccount with: angiesAccount.
+	myAccount := ReceptiveAccount named: 'Cuenta mia'.
+	familyPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount with: childrenPortfolio.
+
+	expectedReport := OrderedCollection new.
+	expectedReport add: 'Portfolio de la familia'.
+	expectedReport add: '   Cuenta Mia'.
+	expectedReport add: '   Portfolio de hijos'.
+	expectedReport add: '      Cuenta de Juan'.
+	expectedReport add: '      Cuenta de Angeles'.
+
+	self assert: (XXX of: familyPortfolio) report equals: expectedReport. ! !
+
+!methodRemoval: TreeReportsTest #test04PortfolioReportWorksRecursively stamp: 'LMR 6/1/2023 00:34:35'!
+test04PortfolioReportWorksRecursively
+
+	| familyPortfolio myAccount expectedReport angiesAccount childrenPortfolio johnsAccount |
+	johnsAccount := ReceptiveAccount named: 'Cuenta de Juan'.
+	angiesAccount := ReceptiveAccount named: 'Cuenta de Angeles'.
+	childrenPortfolio := Portfolio named: 'Portfolio de hijos' with: johnsAccount with: angiesAccount.
+	myAccount := ReceptiveAccount named: 'Cuenta mia'.
+	familyPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount with: childrenPortfolio.
+
+	expectedReport := OrderedCollection new.
+	expectedReport add: 'Portfolio de la familia'.
+	expectedReport add: '   Cuenta Mia'.
+	expectedReport add: '   Portfolio de hijos'.
+	expectedReport add: '      Cuenta de Juan'.
+	expectedReport add: '      Cuenta de Angeles'.
+
+	self assert: (XXX of: familyPortfolio) report equals: expectedReport. !
+!TreeReportsTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 00:36:19'!
+test04PortfolioWithManyAccountHasAllNamesOnItsReport
+
+	| aPortfolio myAccount expectedReport johnsAccount |
+	myAccount := ReceptiveAccount named: 'Cuenta Mia'.
+	johnsAccount := ReceptiveAccount named: 'Cuenta de Juan'.
+	aPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount.
+
+	expectedReport := OrderedCollection with: 'Portfolio de la familia' with: '   Cuenta Mia' with: '   Cuenta de Juan'.
+
+	self assert: (XXX of: aPortfolio) report equals: expectedReport. ! !
+!TreeReportsTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 00:36:36' prior: 50623288!
+test04PortfolioWithManyAccountHasAllNamesOnItsReport
+
+	| aPortfolio myAccount expectedReport johnsAccount |
+	myAccount := ReceptiveAccount named: 'Cuenta Mia'.
+	johnsAccount := ReceptiveAccount named: 'Cuenta de Juan'.
+	aPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount with: johnsAccount.
+
+	expectedReport := OrderedCollection with: 'Portfolio de la familia' with: '   Cuenta Mia' with: '   Cuenta de Juan'.
+
+	self assert: (XXX of: aPortfolio) report equals: expectedReport. ! !
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 00:36:37'!
+ERROR!
+!Portfolio class methodsFor: 'error handling' stamp: 'LMR 6/1/2023 00:36:45' overrides: 16902107!
+error: aRenameMe1 
+	self shouldBeImplemented.! !
+!Portfolio class methodsFor: 'instance creation' stamp: 'LMR 6/1/2023 00:37:29' prior: 50623219!
+named: aName with: anAccount with: anotherAccount 
+	
+	^self new initializeNamed: aName with: anAccount with: anotherAccount ! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 00:37:37'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 00:37:37'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 00:37:37'!
+PASSED!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 00:37:37'!
+ERROR!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 00:37:37'!
+ERROR!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 00:37:43'!
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts parents name account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 00:37:43'!
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts parents name account anotherAccount_CHANGE_ME'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Portfolio methodsFor: 'initialization' stamp: 'LMR 6/1/2023 00:37:43'!
+initializeNamed: aName with: anAccount with: anotherAccount 
+	self shouldBeImplemented.
+	name := aName.
+	account := anAccount.
+	anotherAccount_CHANGE_ME := anotherAccount.! !
+!Portfolio methodsFor: 'initialization' stamp: 'LMR 6/1/2023 00:38:23' prior: 50623376!
+initializeNamed: aName with: anAccount with: anotherAccount 
+	
+	name := aName.
+	accounts := OrderedCollection with: anAccount with: anotherAccount.
+	parents := OrderedCollection new.! !
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 00:38:24'!
+FAILURE!
+
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts parents name'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 00:40:52'!
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts parents name'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Portfolio methodsFor: 'reports' stamp: 'LMR 6/1/2023 00:41:09' prior: 50623085!
+fillXXXReport: aXXXReport 
+	
+	aXXXReport addNameToXXXReport: name.
+	aXXXReport incrementIndentation.
+	accounts do: [:account | account fillXXXReport: aXXXReport.]! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 00:41:15'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 00:41:15'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 00:41:15'!
+PASSED!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 00:41:15'!
+PASSED!
+!TreeReportsTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 00:42:18'!
+test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented
+
+	| familyPortfolio myAccount expectedReport angiesAccount childrenPortfolio johnsAccount |
+	johnsAccount := ReceptiveAccount named: 'Cuenta de Juan'.
+	angiesAccount := ReceptiveAccount named: 'Cuenta de Angeles'.
+	childrenPortfolio := Portfolio named: 'Portfolio de hijos' with: johnsAccount with: angiesAccount.
+	myAccount := ReceptiveAccount named: 'Cuenta mia'.
+	familyPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount with: childrenPortfolio.
+
+	expectedReport := OrderedCollection new.
+	expectedReport add: 'Portfolio de la familia'.
+	expectedReport add: '   Cuenta Mia'.
+	expectedReport add: '   Portfolio de hijos'.
+	expectedReport add: '      Cuenta de Juan'.
+	expectedReport add: '      Cuenta de Angeles'.
+
+	self assert: (XXX of: familyPortfolio) report equals: expectedReport. ! !
+
+!methodRemoval: TreeReportsTest #_test04PortfolioReportWorksRecursively stamp: 'LMR 6/1/2023 00:42:19'!
+_test04PortfolioReportWorksRecursively
+
+	| familyPortfolio myAccount expectedReport angiesAccount childrenPortfolio johnsAccount |
+	johnsAccount := ReceptiveAccount named: 'Cuenta de Juan'.
+	angiesAccount := ReceptiveAccount named: 'Cuenta de Angeles'.
+	childrenPortfolio := Portfolio named: 'Portfolio de hijos' with: johnsAccount with: angiesAccount.
+	myAccount := ReceptiveAccount named: 'Cuenta mia'.
+	familyPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount with: childrenPortfolio.
+
+	expectedReport := OrderedCollection new.
+	expectedReport add: 'Portfolio de la familia'.
+	expectedReport add: '   Cuenta Mia'.
+	expectedReport add: '   Portfolio de hijos'.
+	expectedReport add: '      Cuenta de Juan'.
+	expectedReport add: '      Cuenta de Angeles'.
+
+	self assert: (XXX of: familyPortfolio) report equals: expectedReport. !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 00:42:33'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 00:42:33'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 00:42:33'!
+PASSED!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 00:42:33'!
+PASSED!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 00:42:33'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 00:42:34'!
+FAILURE!
+!Portfolio methodsFor: 'reports' stamp: 'LMR 6/1/2023 00:43:06' prior: 50623410!
+fillXXXReport: aXXXReport 
+	
+	aXXXReport addNameToXXXReport: name.
+	aXXXReport incrementIndentation.
+	accounts do: [:account | account fillXXXReport: aXXXReport.].
+	aXXXReport decrementIndentation.! !
+!XXX methodsFor: 'indentation' stamp: 'LMR 6/1/2023 00:43:19'!
+decrementIndentation
+
+	indentationLevel := indentationLevel - 1.! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 00:43:24'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 00:43:25'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 00:43:25'!
+PASSED!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 00:43:25'!
+PASSED!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 00:43:25'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 00:43:25'!
+FAILURE!
+!TreeReportsTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 00:43:43' prior: 50623433!
+test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented
+
+	| familyPortfolio myAccount expectedReport angiesAccount childrenPortfolio johnsAccount |
+	johnsAccount := ReceptiveAccount named: 'Cuenta de Juan'.
+	angiesAccount := ReceptiveAccount named: 'Cuenta de Angeles'.
+	childrenPortfolio := Portfolio named: 'Portfolio de hijos' with: johnsAccount with: angiesAccount.
+	myAccount := ReceptiveAccount named: 'Cuenta Mia'.
+	familyPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount with: childrenPortfolio.
+
+	expectedReport := OrderedCollection new.
+	expectedReport add: 'Portfolio de la familia'.
+	expectedReport add: '   Cuenta Mia'.
+	expectedReport add: '   Portfolio de hijos'.
+	expectedReport add: '      Cuenta de Juan'.
+	expectedReport add: '      Cuenta de Angeles'.
+
+	self assert: (XXX of: familyPortfolio) report equals: expectedReport. ! !
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 00:43:45'!
+PASSED!
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 00:43:45'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 00:43:45'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 00:43:45'!
+PASSED!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 00:43:45'!
+PASSED!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 00:43:45'!
+PASSED!
+
+!classRenamed: #XXX as: #PortfolioStructure stamp: 'LMR 6/1/2023 00:44:40'!
+Smalltalk renameClassNamed: #XXX as: #PortfolioStructure!
+!TreeReportsTest methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 00:44:40' prior: 50623558!
+test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented
+
+	| familyPortfolio myAccount expectedReport angiesAccount childrenPortfolio johnsAccount |
+	johnsAccount := ReceptiveAccount named: 'Cuenta de Juan'.
+	angiesAccount := ReceptiveAccount named: 'Cuenta de Angeles'.
+	childrenPortfolio := Portfolio named: 'Portfolio de hijos' with: johnsAccount with: angiesAccount.
+	myAccount := ReceptiveAccount named: 'Cuenta Mia'.
+	familyPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount with: childrenPortfolio.
+
+	expectedReport := OrderedCollection new.
+	expectedReport add: 'Portfolio de la familia'.
+	expectedReport add: '   Cuenta Mia'.
+	expectedReport add: '   Portfolio de hijos'.
+	expectedReport add: '      Cuenta de Juan'.
+	expectedReport add: '      Cuenta de Angeles'.
+
+	self assert: (PortfolioStructure of: familyPortfolio) report equals: expectedReport. ! !
+!TreeReportsTest methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 00:44:40' prior: 50622903!
+test02PortfolioWithOneAccountHasBothNamesOnItsReport
+
+	| aPortfolio myAccount expectedReport |
+	myAccount := ReceptiveAccount named: 'Cuenta Mia'.
+	aPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount.
+
+	expectedReport := OrderedCollection with: 'Portfolio de la familia' with: '   Cuenta Mia'.
+
+	self assert: (PortfolioStructure of: aPortfolio) report equals: expectedReport. ! !
+!TreeReportsTest methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 00:44:40' prior: 50623020!
+test03PortfolioWithOnePortfolioHasBothNamesOnItsReport
+
+	| familyPortfolio expectedReport childrenPortfolio |
+	childrenPortfolio := Portfolio named: 'Portfolio de hijos'.
+	familyPortfolio := Portfolio named: 'Portfolio de la familia' with: childrenPortfolio.
+
+	expectedReport := OrderedCollection new.
+	expectedReport add: 'Portfolio de la familia'.
+	expectedReport add: '   Portfolio de hijos'.
+
+	self assert: (PortfolioStructure of: familyPortfolio) report equals: expectedReport. ! !
+!TreeReportsTest methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 00:44:40' prior: 50623306!
+test04PortfolioWithManyAccountHasAllNamesOnItsReport
+
+	| aPortfolio myAccount expectedReport johnsAccount |
+	myAccount := ReceptiveAccount named: 'Cuenta Mia'.
+	johnsAccount := ReceptiveAccount named: 'Cuenta de Juan'.
+	aPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount with: johnsAccount.
+
+	expectedReport := OrderedCollection with: 'Portfolio de la familia' with: '   Cuenta Mia' with: '   Cuenta de Juan'.
+
+	self assert: (PortfolioStructure of: aPortfolio) report equals: expectedReport. ! !
+!TreeReportsTest methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 00:44:40' prior: 50622367!
+test01NewPortfolioOnlyHasItsNameOnItsReport
+
+	| aPortfolio expectedReport |
+	aPortfolio := Portfolio named: 'Portfolio de la familia'.
+
+	expectedReport := OrderedCollection with: 'Portfolio de la familia'.
+
+	self assert: (PortfolioStructure of: aPortfolio) report equals: expectedReport. ! !
+!PortfolioStructure methodsFor: 'add to report' stamp: 'LMR 6/1/2023 00:46:32'!
+addNameToReport: aName
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , aName.! !
+!ReceptiveAccount methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 00:46:32' prior: 50623094!
+fillXXXReport: aXXXReport 
+	
+	aXXXReport addNameToReport: name.! !
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 00:46:32' prior: 50623519!
+fillXXXReport: aXXXReport 
+	
+	aXXXReport addNameToReport: name.
+	aXXXReport incrementIndentation.
+	accounts do: [:account | account fillXXXReport: aXXXReport.].
+	aXXXReport decrementIndentation.! !
+
+!methodRemoval: PortfolioStructure #addNameToXXXReport: stamp: 'LMR 6/1/2023 00:46:32'!
+addNameToXXXReport: aName
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , aName.!
+
+Report subclass: #PortfolioStructure
+	instanceVariableNames: 'portfolio report indentationLevel'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+Report subclass: #PortfolioStructure
+	instanceVariableNames: 'portfolio report indentationLevel'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+Object subclass: #PortfolioStructure
+	instanceVariableNames: 'portfolio report indentationLevel'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #PortfolioStructure category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 00:53:19'!
+Object subclass: #PortfolioStructure
+	instanceVariableNames: 'portfolio report indentationLevel'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #PortfolioStructure category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 00:53:27'!
+Object subclass: #PortfolioStructure
+	instanceVariableNames: 'account report indentationLevel'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 00:53:27' prior: 50623074!
+report
+	
+	report := OrderedCollection new.
+	indentationLevel := 0.
+	account fillXXXReport: self.
+	^report! !
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 00:53:27' prior: 50622468!
+initializeOf: aPortfolio 
+
+	account := aPortfolio.! !
+
+Report subclass: #PortfolioStructure
+	instanceVariableNames: 'indentationLevel'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #PortfolioStructure category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 00:53:36'!
+Report subclass: #PortfolioStructure
+	instanceVariableNames: 'indentationLevel'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+Object subclass: #PortfolioStructure
+	instanceVariableNames: 'account report indentationLevel'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #PortfolioStructure category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 00:55:26'!
+Object subclass: #PortfolioStructure
+	instanceVariableNames: 'account report indentationLevel'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #PortfolioStructure category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 00:55:32'!
+Object subclass: #PortfolioStructure
+	instanceVariableNames: 'portfolio report indentationLevel'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 00:55:32' prior: 50623783!
+report
+	
+	report := OrderedCollection new.
+	indentationLevel := 0.
+	portfolio fillXXXReport: self.
+	^report! !
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 00:55:32' prior: 50623790!
+initializeOf: aPortfolio 
+
+	portfolio := aPortfolio.! !
+!Portfolio methodsFor: 'reports' stamp: 'LMR 6/1/2023 00:58:00' prior: 50623731!
+fillXXXReport: aTreeReport 
+	
+	aTreeReport addNameToReport: name.
+	aTreeReport incrementIndentation.
+	accounts do: [:account | account fillXXXReport: aTreeReport.].
+	aTreeReport decrementIndentation.! !
+!Portfolio methodsFor: 'reports' stamp: 'LMR 6/1/2023 00:58:10'!
+fillTreeReport: aTreeReport 
+	
+	aTreeReport addNameToReport: name.
+	aTreeReport incrementIndentation.
+	accounts do: [:account | account fillXXXReport: aTreeReport.].
+	aTreeReport decrementIndentation.! !
+!ReceptiveAccount methodsFor: 'reports' stamp: 'LMR 6/1/2023 00:58:10'!
+fillTreeReport: aXXXReport 
+	
+	aXXXReport addNameToReport: name.! !
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 00:58:10' prior: 50623844!
+fillXXXReport: aTreeReport 
+	
+	aTreeReport addNameToReport: name.
+	aTreeReport incrementIndentation.
+	accounts do: [:account | account fillTreeReport: aTreeReport.].
+	aTreeReport decrementIndentation.! !
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 00:58:10' prior: 50623832!
+report
+	
+	report := OrderedCollection new.
+	indentationLevel := 0.
+	portfolio fillTreeReport: self.
+	^report! !
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 00:58:10' prior: 50623853!
+fillTreeReport: aTreeReport 
+	
+	aTreeReport addNameToReport: name.
+	aTreeReport incrementIndentation.
+	accounts do: [:account | account fillTreeReport: aTreeReport.].
+	aTreeReport decrementIndentation.! !
+
+!methodRemoval: Portfolio #fillXXXReport: stamp: 'LMR 6/1/2023 00:58:10'!
+fillXXXReport: aTreeReport 
+	
+	aTreeReport addNameToReport: name.
+	aTreeReport incrementIndentation.
+	accounts do: [:account | account fillTreeReport: aTreeReport.].
+	aTreeReport decrementIndentation.!
+
+!methodRemoval: ReceptiveAccount #fillXXXReport: stamp: 'LMR 6/1/2023 00:58:11'!
+fillXXXReport: aXXXReport 
+	
+	aXXXReport addNameToReport: name.!
+
+Report subclass: #TreeReport
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #TreeReport category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 00:59:19'!
+Report subclass: #TreeReport
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+Report subclass: #TransactionsReport
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #TransactionsReport category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 00:59:37'!
+Report subclass: #TransactionsReport
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+TransactionsReport subclass: #AccountSummary
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #AccountSummary category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 00:59:48'!
+TransactionsReport subclass: #AccountSummary
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+TransactionsReport subclass: #NetTransfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #NetTransfer category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 00:59:52'!
+TransactionsReport subclass: #NetTransfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #PortfolioStructure category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 01:00:15'!
+Object subclass: #PortfolioStructure
+	instanceVariableNames: 'account report indentationLevel'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 01:00:15' prior: 50623878!
+report
+	
+	report := OrderedCollection new.
+	indentationLevel := 0.
+	account fillTreeReport: self.
+	^report! !
+!PortfolioStructure methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 01:00:15' prior: 50623839!
+initializeOf: aPortfolio 
+
+	account := aPortfolio.! !
+
+Object subclass: #PortfolioStructure
+	instanceVariableNames: 'indentationLevel'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #PortfolioStructure category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 01:00:29'!
+Object subclass: #PortfolioStructure
+	instanceVariableNames: 'indentationLevel'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+TreeReport subclass: #PortfolioStructure
+	instanceVariableNames: 'indentationLevel'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #PortfolioStructure category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 01:00:48'!
+TreeReport subclass: #PortfolioStructure
+	instanceVariableNames: 'indentationLevel'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!TreeReport methodsFor: 'add to report' stamp: 'LMR 6/1/2023 01:01:51' overrides: 50621947!
+addToReportDepositOf: anAmount
+
+	self subclassResponsibility! !
+!TransactionsReport methodsFor: 'add to report' stamp: 'LMR 6/1/2023 01:01:52' overrides: 50621947!
+addToReportDepositOf: anAmount
+
+	self subclassResponsibility! !
+
+!methodRemoval: Report #addToReportDepositOf: stamp: 'LMR 6/1/2023 01:01:52'!
+addToReportDepositOf: anAmount
+
+	self subclassResponsibility!
+
+!methodRemoval: TreeReport #addToReportDepositOf: stamp: 'LMR 6/1/2023 01:02:06'!
+addToReportDepositOf: anAmount
+
+	self subclassResponsibility!
+!TreeReport methodsFor: 'add to report' stamp: 'LMR 6/1/2023 01:02:13' overrides: 50621925!
+addToReportTransferDepositOf: anAmount
+
+	self subclassResponsibility! !
+!TransactionsReport methodsFor: 'add to report' stamp: 'LMR 6/1/2023 01:02:13' overrides: 50621925!
+addToReportTransferDepositOf: anAmount
+
+	self subclassResponsibility! !
+
+!methodRemoval: Report #addToReportTransferDepositOf: stamp: 'LMR 6/1/2023 01:02:13'!
+addToReportTransferDepositOf: anAmount
+
+	self subclassResponsibility!
+!TreeReport methodsFor: 'add to report' stamp: 'LMR 6/1/2023 01:02:24' overrides: 50621936!
+addToReportTransferWithdrawOf: anAmount
+
+	self subclassResponsibility! !
+!TransactionsReport methodsFor: 'add to report' stamp: 'LMR 6/1/2023 01:02:24' overrides: 50621936!
+addToReportTransferWithdrawOf: anAmount
+
+	self subclassResponsibility! !
+
+!methodRemoval: Report #addToReportTransferWithdrawOf: stamp: 'LMR 6/1/2023 01:02:24'!
+addToReportTransferWithdrawOf: anAmount
+
+	self subclassResponsibility!
+!TreeReport methodsFor: 'add to report' stamp: 'LMR 6/1/2023 01:02:28' overrides: 50621942!
+addToReportWithdrawOf: anAmount
+
+	self subclassResponsibility! !
+!TransactionsReport methodsFor: 'add to report' stamp: 'LMR 6/1/2023 01:02:29' overrides: 50621942!
+addToReportWithdrawOf: anAmount
+
+	self subclassResponsibility! !
+
+!methodRemoval: Report #addToReportWithdrawOf: stamp: 'LMR 6/1/2023 01:02:29'!
+addToReportWithdrawOf: anAmount
+
+	self subclassResponsibility!
+
+!methodRemoval: TreeReport #addToReportTransferDepositOf: stamp: 'LMR 6/1/2023 01:02:38'!
+addToReportTransferDepositOf: anAmount
+
+	self subclassResponsibility!
+
+!methodRemoval: TreeReport #addToReportTransferWithdrawOf: stamp: 'LMR 6/1/2023 01:02:38'!
+addToReportTransferWithdrawOf: anAmount
+
+	self subclassResponsibility!
+
+!methodRemoval: TreeReport #addToReportWithdrawOf: stamp: 'LMR 6/1/2023 01:02:39'!
+addToReportWithdrawOf: anAmount
+
+	self subclassResponsibility!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'LMR 6/1/2023 01:02:46'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'LMR 6/1/2023 01:02:46'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'LMR 6/1/2023 01:02:46'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'LMR 6/1/2023 01:02:46'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'LMR 6/1/2023 01:02:46'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'LMR 6/1/2023 01:02:46'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'LMR 6/1/2023 01:02:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'LMR 6/1/2023 01:02:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'LMR 6/1/2023 01:02:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'LMR 6/1/2023 01:02:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'LMR 6/1/2023 01:02:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'LMR 6/1/2023 01:02:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'LMR 6/1/2023 01:02:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'LMR 6/1/2023 01:02:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'LMR 6/1/2023 01:02:47'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'LMR 6/1/2023 01:02:47'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'LMR 6/1/2023 01:02:47'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'LMR 6/1/2023 01:02:47'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'LMR 6/1/2023 01:02:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'LMR 6/1/2023 01:02:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'LMR 6/1/2023 01:02:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'LMR 6/1/2023 01:02:48'!
+PASSED!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'LMR 6/1/2023 01:02:48'!
+PASSED!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'LMR 6/1/2023 01:02:48'!
+PASSED!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'LMR 6/1/2023 01:02:48'!
+PASSED!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'LMR 6/1/2023 01:02:48'!
+PASSED!
+
+!testRun: #ReportsTest #test05AccountWithOneTransferWithdrawHasItInItsAccountSummary stamp: 'LMR 6/1/2023 01:02:48'!
+PASSED!
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'LMR 6/1/2023 01:02:48'!
+PASSED!
+
+!testRun: #ReportsTest #test07PortfolioWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'LMR 6/1/2023 01:02:48'!
+PASSED!
+
+!testRun: #ReportsTest #test08NetTransferOfANewAccountIs0 stamp: 'LMR 6/1/2023 01:02:49'!
+PASSED!
+
+!testRun: #ReportsTest #test09AnAccountWithATransferHasItInItsNetTransfer stamp: 'LMR 6/1/2023 01:02:49'!
+PASSED!
+
+!testRun: #ReportsTest #test10AnAccountWithMultipleTransactionsHasACorrectNetTransfer stamp: 'LMR 6/1/2023 01:02:49'!
+PASSED!
+
+!testRun: #ReportsTest #test11APortfolioWithMultipleTransactionsHasACorrectNetTransfer stamp: 'LMR 6/1/2023 01:02:49'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'LMR 6/1/2023 01:02:49'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth stamp: 'LMR 6/1/2023 01:02:49'!
+PASSED!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'LMR 6/1/2023 01:02:49'!
+PASSED!
+
+!testRun: #TransferTest #test04WithdrawOfATransferKnowsItsTransfer stamp: 'LMR 6/1/2023 01:02:49'!
+PASSED!
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 01:02:49'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 01:02:49'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 01:02:49'!
+PASSED!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 01:02:49'!
+PASSED!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 01:02:50'!
+PASSED!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'LMR 6/1/2023 01:03:17' prior: 50623862!
+fillTreeReport: aTreeReport 
+	
+	aTreeReport addNameToReport: name.! !
+!Account methodsFor: 'reports' stamp: 'LMR 6/1/2023 01:03:27'!
+fillTreeReport: aTreeReport
+
+	self subclassResponsibility! !
+
+----SNAPSHOT----(1 June 2023 01:05:51) CuisUniversity-5799.image priorSource: 9265631!
+
+----QUIT----(1 June 2023 01:06:02) CuisUniversity-5799.image priorSource: 9363452!

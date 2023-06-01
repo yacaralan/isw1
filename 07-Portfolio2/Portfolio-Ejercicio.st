@@ -5,12 +5,12 @@ TestCase subclass: #PortfolioTest
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:16:26'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:34:59'!
 test01BalanceOfPortfolioWithoutAccountsIsZero
 
 	self assert: 0 equals: Portfolio new balance! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'NR 5/27/2021 17:36:04'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:34:59'!
 test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance
 
 	| account portfolio |
@@ -21,7 +21,7 @@ test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance
 	
 	self assert: account balance equals: portfolio balance! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:23:25'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:34:59'!
 test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios
 
 	| simplePortfolioAccount simplePortfolio composedPortfolioAccount composedPortofolio |
@@ -36,12 +36,12 @@ test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios
 	
 	self assert: (composedPortfolioAccount balance + simplePortfolio balance) equals: composedPortofolio balance! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'AlYac 5/30/2023 21:52:21'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:34:59'!
 test04PortfolioWithoutAccountsHasNoRegisteredTransaction
 
 	self deny: (Portfolio new hasRegistered: (Deposit for: 100))! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:43:11'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:34:59'!
 test05PortfolioHasRegisteredItsAccountsTransactions
 
 	| account portfolio deposit |
@@ -52,7 +52,7 @@ test05PortfolioHasRegisteredItsAccountsTransactions
 	
 	self assert: (portfolio hasRegistered: deposit)! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:58:06'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:34:59'!
 test06PortfolioLooksForRegisteredTransactionsRecursively
 
 	| simplePortfolioAccount simplePortfolio composedPortfolioAccount composedPortfolio composedPortfolioAccountWithdraw simplePortfolioAccountDeposit |
@@ -68,12 +68,12 @@ test06PortfolioLooksForRegisteredTransactionsRecursively
 	self assert: (composedPortfolio hasRegistered: simplePortfolioAccountDeposit).
 	self assert: (composedPortfolio hasRegistered: composedPortfolioAccountWithdraw)! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:58:10'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:34:59'!
 test07PortfolioHasNoTransactionWhenHasNoAccounts
 
 	self assert: Portfolio new transactions isEmpty! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'NR 6/22/2020 07:31:19'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:34:59'!
 test08PortfolioTransactionsIncludesAllItsAccountsTransactions
 
 	| account portfolio accountDeposit anotherAccount portfolioTransactions anotherAccountWithdraw |
@@ -90,7 +90,7 @@ test08PortfolioTransactionsIncludesAllItsAccountsTransactions
 	self assert: (portfolioTransactions includes: accountDeposit).
 	self assert: (portfolioTransactions includes: anotherAccountWithdraw)! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:58:20'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:34:59'!
 test09PortfolioTransactionsAreCalculatedRecursively
 
 	| simplePortfolioAccount simplePortfolio composedPortfolioAccount composedPortfolio composedPortfolioAccountWithdraw simplePortfolioAccountDeposit composedPortfolioTransactions |
@@ -108,7 +108,7 @@ test09PortfolioTransactionsAreCalculatedRecursively
 	self assert: (composedPortfolioTransactions includes: simplePortfolioAccountDeposit).
 	self assert: (composedPortfolioTransactions includes: composedPortfolioAccountWithdraw)! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:58:24'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:34:59'!
 test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce
 
 	| account portfolio |
@@ -124,7 +124,7 @@ test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce
 			self assert: 1 equals: portfolio accountsSize.
 			self assert: (portfolio accountsIncludes: account) ]! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:58:28'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:34:59'!
 test11PortfolioCanNotIncludeAccountOfItsPortfolios
 
 	| account simplePortfolio composedPortfolio |
@@ -141,7 +141,7 @@ test11PortfolioCanNotIncludeAccountOfItsPortfolios
 			self assert: 1 equals: composedPortfolio accountsSize.
 			self assert: (composedPortfolio accountsIncludes: simplePortfolio) ]! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:58:32'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:34:59'!
 test12PortfolioCanNotIncludeItself
 
 	| account simplePortfolio |
@@ -157,7 +157,7 @@ test12PortfolioCanNotIncludeItself
 			self assert: 1 equals: simplePortfolio accountsSize.
 			self assert: (simplePortfolio accountsIncludes: account) ]! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 12:01:51'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:34:59'!
 test13ComposedPortfolioCanNotHaveParentPortfolioAccount
 
 	| account simplePortfolio composedPortfolio |
@@ -174,7 +174,7 @@ test13ComposedPortfolioCanNotHaveParentPortfolioAccount
 			self assert: Portfolio canNotAddAccountErrorMessage equals: anError messageText.
 			self assert: simplePortfolio accountsIsEmpty ]! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 12:12:16'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:34:59'!
 test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively
 
 	| account leftParentPortfolio leftRootParentPortfolio portfolio rightParentPortfolio rightRootParentPortfolio |
@@ -196,7 +196,7 @@ test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively
 			self assert: Portfolio canNotAddAccountErrorMessage equals: anError messageText.
 			self assert: portfolio accountsIsEmpty ]! !
 
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/29/2019 16:31:18'!
+!PortfolioTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:34:59'!
 test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd
 
 	| portfolioToAdd portfolioToModify rootPortfolio sharedAccount |
@@ -221,7 +221,7 @@ TestCase subclass: #ReceptiveAccountTest
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'HAW 5/23/2019 15:19:48'!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:35:00'!
 test01ReceptiveAccountHaveZeroAsBalanceWhenCreated 
 
 	| account |
@@ -231,7 +231,7 @@ test01ReceptiveAccountHaveZeroAsBalanceWhenCreated
 	self assert: 0 equals: account balance .
 ! !
 
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'HAW 5/23/2019 15:19:54'!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:35:00'!
 test02DepositIncreasesBalanceOnTransactionValue 
 
 	| account |
@@ -242,7 +242,7 @@ test02DepositIncreasesBalanceOnTransactionValue
 	self assert: 100 equals: account balance .
 ! !
 
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'HAW 5/23/2019 15:20:02'!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:35:00'!
 test03WithdrawDecreasesBalanceOnTransactionValue 
 
 	| account |
@@ -254,7 +254,7 @@ test03WithdrawDecreasesBalanceOnTransactionValue
 	self assert: 50 equals: account balance .
 ! !
 
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'HAW 5/23/2019 15:20:32'!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:35:00'!
 test04WithdrawValueMustBePositive 
 
 	| account withdrawValue |
@@ -265,7 +265,7 @@ test04WithdrawValueMustBePositive
 	self assert: withdrawValue equals: (Withdraw register: withdrawValue on: account) value
 ! !
 
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'HAW 5/23/2019 15:20:46'!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:35:00'!
 test05ReceptiveAccountKnowsRegisteredTransactions 
 
 	| account deposit withdraw |
@@ -278,7 +278,7 @@ test05ReceptiveAccountKnowsRegisteredTransactions
 	self assert: (account hasRegistered: withdraw).
 ! !
 
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'AlYac 5/30/2023 21:52:46'!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:35:00'!
 test06ReceptiveAccountDoNotKnowNotRegisteredTransactions
 
 	| account deposit withdraw |
@@ -291,7 +291,7 @@ test06ReceptiveAccountDoNotKnowNotRegisteredTransactions
 	self deny: (account hasRegistered:withdraw).
 ! !
 
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'HAW 5/23/2019 15:21:24'!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:35:00'!
 test07AccountKnowsItsTransactions 
 
 	| account1 deposit1 |
@@ -312,12 +312,12 @@ TestCase subclass: #ReportsTest
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/31/2023 01:12:35'!
+!ReportsTest methodsFor: 'test' stamp: 'LMR 5/31/2023 23:35:01'!
 test01AccountSummaryOfANewAccountIsEmpty
 
 	self assert: (AccountSummary of: ReceptiveAccount new) report equals: (OrderedCollection with: 'Balance = 0')! !
 
-!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/31/2023 01:12:35'!
+!ReportsTest methodsFor: 'test' stamp: 'LMR 5/31/2023 23:35:01'!
 test02AccountWithOneDepositHasItInItsAccountSummary
 
 	| anAccount expectedSummary |
@@ -327,7 +327,7 @@ test02AccountWithOneDepositHasItInItsAccountSummary
 
 	self assert: (AccountSummary of: anAccount) report equals: expectedSummary ! !
 
-!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/31/2023 01:12:35'!
+!ReportsTest methodsFor: 'test' stamp: 'LMR 5/31/2023 23:35:01'!
 test03AccountWithOneWithdrawHasItInItsAccountSummary
 
 	| anAccount expectedSummary |
@@ -337,7 +337,7 @@ test03AccountWithOneWithdrawHasItInItsAccountSummary
 
 	self assert: (AccountSummary of: anAccount) report equals: expectedSummary ! !
 
-!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/31/2023 01:12:35'!
+!ReportsTest methodsFor: 'test' stamp: 'LMR 5/31/2023 23:35:00'!
 test04AccountWithOneTransferDepositHasItInItsAccountSummary
 
 	| expectedSummary transfereeAccount transfererAccount |
@@ -348,7 +348,7 @@ test04AccountWithOneTransferDepositHasItInItsAccountSummary
 
 	self assert: (AccountSummary of: transfereeAccount ) report equals: expectedSummary ! !
 
-!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/31/2023 01:12:35'!
+!ReportsTest methodsFor: 'test' stamp: 'LMR 5/31/2023 23:35:01'!
 test05AccountWithOneTransferWithdrawHasItInItsAccountSummary
 
 	| expectedSummary transfereeAccount transfererAccount |
@@ -359,7 +359,7 @@ test05AccountWithOneTransferWithdrawHasItInItsAccountSummary
 
 	self assert: (AccountSummary of: transfererAccount ) report equals: expectedSummary ! !
 
-!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/31/2023 01:12:35'!
+!ReportsTest methodsFor: 'test' stamp: 'LMR 5/31/2023 23:35:00'!
 test06AccountWithMultipleTransactionsHasThemInItsAccountSummary
 
 	| expectedSummary accountTwo accountOne |
@@ -379,7 +379,7 @@ test06AccountWithMultipleTransactionsHasThemInItsAccountSummary
 
 	self assert: (AccountSummary of: accountOne) report equals: expectedSummary ! !
 
-!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/31/2023 01:12:35'!
+!ReportsTest methodsFor: 'test' stamp: 'LMR 5/31/2023 23:35:00'!
 test07PortfolioWithMultipleTransactionsHasThemInItsAccountSummary
 
 	| expectedSummary accountTwo accountOne aPorfolio |
@@ -403,12 +403,12 @@ test07PortfolioWithMultipleTransactionsHasThemInItsAccountSummary
 
 	self assert: (AccountSummary of: aPorfolio) report equals: expectedSummary ! !
 
-!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/31/2023 01:13:11'!
+!ReportsTest methodsFor: 'test' stamp: 'LMR 5/31/2023 23:35:00'!
 test08NetTransferOfANewAccountIs0
 
 	self assert: (NetTransfer of: ReceptiveAccount new) report equals: 0 ! !
 
-!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/31/2023 01:13:05'!
+!ReportsTest methodsFor: 'test' stamp: 'LMR 5/31/2023 23:35:00'!
 test09AnAccountWithATransferHasItInItsNetTransfer
 
 	| accountOne accountTwo |
@@ -419,7 +419,7 @@ test09AnAccountWithATransferHasItInItsNetTransfer
 
 	self assert: (NetTransfer of: accountOne) report equals: -100 ! !
 
-!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/31/2023 01:12:59'!
+!ReportsTest methodsFor: 'test' stamp: 'LMR 5/31/2023 23:35:00'!
 test10AnAccountWithMultipleTransactionsHasACorrectNetTransfer
 
 	| accountOne accountTwo |
@@ -434,7 +434,7 @@ test10AnAccountWithMultipleTransactionsHasACorrectNetTransfer
 
 	self assert: (NetTransfer of: accountOne) report equals: 135 ! !
 
-!ReportsTest methodsFor: 'test' stamp: 'AlYac 5/31/2023 01:12:55'!
+!ReportsTest methodsFor: 'test' stamp: 'LMR 5/31/2023 23:35:01'!
 test11APortfolioWithMultipleTransactionsHasACorrectNetTransfer
 
 	| accountOne accountTwo accountFour accountThree aPortfolio |
@@ -465,7 +465,7 @@ TestCase subclass: #TransferTest
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!TransferTest methodsFor: 'tests' stamp: 'AYac 5/22/2023 21:40:34'!
+!TransferTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:35:01'!
 test01TransferBetweenTwoAccountsAffectsTheirBalance
 
 	| transfereeAccount transfererAccount |
@@ -476,7 +476,7 @@ test01TransferBetweenTwoAccountsAffectsTheirBalance
 	self assert: transfererAccount balance equals: -100.
 	self assert: transfereeAccount balance equals: 100! !
 
-!TransferTest methodsFor: 'tests' stamp: 'AlYac 5/30/2023 17:23:40'!
+!TransferTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:35:01'!
 test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth
 
 	| transfereeAccount transfererAccount aTransfer |
@@ -487,7 +487,7 @@ test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth
 	self assert: (transfererAccount hasRegistered: aTransfer withdraw).
 	self assert: (transfereeAccount hasRegistered: aTransfer deposit).! !
 
-!TransferTest methodsFor: 'tests' stamp: 'AlYac 5/30/2023 17:26:43'!
+!TransferTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:35:01'!
 test03DepositOfATransferKnowsItsTransfer
 
 	| transfereeAccount transfererAccount aTransfer |
@@ -497,7 +497,7 @@ test03DepositOfATransferKnowsItsTransfer
 
 	self assert: aTransfer deposit transfer equals: aTransfer .! !
 
-!TransferTest methodsFor: 'tests' stamp: 'AlYac 5/30/2023 18:03:26'!
+!TransferTest methodsFor: 'tests' stamp: 'LMR 5/31/2023 23:35:01'!
 test04WithdrawOfATransferKnowsItsTransfer
 
 	| transfereeAccount transfererAccount aTransfer |
@@ -508,6 +508,79 @@ test04WithdrawOfATransferKnowsItsTransfer
 	self assert: aTransfer withdraw transfer equals: aTransfer .! !
 
 
+!classDefinition: #TreeReportsTest category: 'Portfolio-Ejercicio'!
+TestCase subclass: #TreeReportsTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!TreeReportsTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 00:44:40'!
+test01NewPortfolioOnlyHasItsNameOnItsReport
+
+	| aPortfolio expectedReport |
+	aPortfolio := Portfolio named: 'Portfolio de la familia'.
+
+	expectedReport := OrderedCollection with: 'Portfolio de la familia'.
+
+	self assert: (PortfolioStructure of: aPortfolio) report equals: expectedReport. ! !
+
+!TreeReportsTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 00:44:40'!
+test02PortfolioWithOneAccountHasBothNamesOnItsReport
+
+	| aPortfolio myAccount expectedReport |
+	myAccount := ReceptiveAccount named: 'Cuenta Mia'.
+	aPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount.
+
+	expectedReport := OrderedCollection with: 'Portfolio de la familia' with: '   Cuenta Mia'.
+
+	self assert: (PortfolioStructure of: aPortfolio) report equals: expectedReport. ! !
+
+!TreeReportsTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 00:44:40'!
+test03PortfolioWithOnePortfolioHasBothNamesOnItsReport
+
+	| familyPortfolio expectedReport childrenPortfolio |
+	childrenPortfolio := Portfolio named: 'Portfolio de hijos'.
+	familyPortfolio := Portfolio named: 'Portfolio de la familia' with: childrenPortfolio.
+
+	expectedReport := OrderedCollection new.
+	expectedReport add: 'Portfolio de la familia'.
+	expectedReport add: '   Portfolio de hijos'.
+
+	self assert: (PortfolioStructure of: familyPortfolio) report equals: expectedReport. ! !
+
+!TreeReportsTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 00:44:40'!
+test04PortfolioWithManyAccountHasAllNamesOnItsReport
+
+	| aPortfolio myAccount expectedReport johnsAccount |
+	myAccount := ReceptiveAccount named: 'Cuenta Mia'.
+	johnsAccount := ReceptiveAccount named: 'Cuenta de Juan'.
+	aPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount with: johnsAccount.
+
+	expectedReport := OrderedCollection with: 'Portfolio de la familia' with: '   Cuenta Mia' with: '   Cuenta de Juan'.
+
+	self assert: (PortfolioStructure of: aPortfolio) report equals: expectedReport. ! !
+
+!TreeReportsTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 00:44:40'!
+test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented
+
+	| familyPortfolio myAccount expectedReport angiesAccount childrenPortfolio johnsAccount |
+	johnsAccount := ReceptiveAccount named: 'Cuenta de Juan'.
+	angiesAccount := ReceptiveAccount named: 'Cuenta de Angeles'.
+	childrenPortfolio := Portfolio named: 'Portfolio de hijos' with: johnsAccount with: angiesAccount.
+	myAccount := ReceptiveAccount named: 'Cuenta Mia'.
+	familyPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount with: childrenPortfolio.
+
+	expectedReport := OrderedCollection new.
+	expectedReport add: 'Portfolio de la familia'.
+	expectedReport add: '   Cuenta Mia'.
+	expectedReport add: '   Portfolio de hijos'.
+	expectedReport add: '      Cuenta de Juan'.
+	expectedReport add: '      Cuenta de Angeles'.
+
+	self assert: (PortfolioStructure of: familyPortfolio) report equals: expectedReport. ! !
+
+
 !classDefinition: #Account category: 'Portfolio-Ejercicio'!
 Object subclass: #Account
 	instanceVariableNames: ''
@@ -515,69 +588,74 @@ Object subclass: #Account
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!Account methodsFor: 'testing' stamp: 'HAW 5/25/2019 12:23:47'!
+!Account methodsFor: 'testing' stamp: 'LMR 5/31/2023 23:34:57'!
 hasRegistered: aTransaction
 
 	self subclassResponsibility ! !
 
-!Account methodsFor: 'testing' stamp: 'HAW 5/25/2019 12:24:25'!
+!Account methodsFor: 'testing' stamp: 'LMR 5/31/2023 23:34:57'!
 isComposedBy: anAccount
 
 	self subclassResponsibility ! !
 
 
-!Account methodsFor: 'balance' stamp: 'HAW 5/25/2019 12:23:40'!
+!Account methodsFor: 'balance' stamp: 'LMR 5/31/2023 23:34:57'!
 balance
 
 	self subclassResponsibility ! !
 
 
-!Account methodsFor: 'transactions' stamp: 'HAW 5/25/2019 12:23:27'!
+!Account methodsFor: 'transactions' stamp: 'LMR 5/31/2023 23:34:57'!
 addTransactionsTo: aCollectionOfTransactions
 
 	self subclassResponsibility ! !
 
-!Account methodsFor: 'transactions' stamp: 'HAW 5/25/2019 12:23:15'!
+!Account methodsFor: 'transactions' stamp: 'LMR 5/31/2023 23:34:57'!
 transactions
 
 	self subclassResponsibility ! !
 
 
-!Account methodsFor: 'composition' stamp: 'HAW 5/25/2019 12:24:04'!
+!Account methodsFor: 'composition' stamp: 'LMR 5/31/2023 23:34:57'!
 addedTo: aPortfolio
 
 	self subclassResponsibility ! !
 
 
-!Account methodsFor: 'reports' stamp: 'AlYac 5/31/2023 01:32:12'!
+!Account methodsFor: 'reports' stamp: 'LMR 5/31/2023 23:34:56'!
 fillReport: aReport
+
+	self subclassResponsibility! !
+
+!Account methodsFor: 'reports' stamp: 'LMR 6/1/2023 01:03:27'!
+fillTreeReport: aTreeReport
 
 	self subclassResponsibility! !
 
 
 !classDefinition: #Portfolio category: 'Portfolio-Ejercicio'!
 Account subclass: #Portfolio
-	instanceVariableNames: 'accounts parents'
+	instanceVariableNames: 'accounts parents name'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!Portfolio methodsFor: 'accounts management' stamp: 'HAW 5/25/2019 11:49:20'!
+!Portfolio methodsFor: 'accounts management' stamp: 'LMR 5/31/2023 23:34:58'!
 accountsIncludes: anAccount
 
 	^accounts includes: anAccount ! !
 
-!Portfolio methodsFor: 'accounts management' stamp: 'HAW 5/25/2019 12:05:04'!
+!Portfolio methodsFor: 'accounts management' stamp: 'LMR 5/31/2023 23:34:58'!
 accountsIsEmpty
 	
 	^accounts isEmpty ! !
 
-!Portfolio methodsFor: 'accounts management' stamp: 'HAW 5/25/2019 11:49:06'!
+!Portfolio methodsFor: 'accounts management' stamp: 'LMR 5/31/2023 23:34:58'!
 accountsSize
 	
 	^accounts size! !
 
-!Portfolio methodsFor: 'accounts management' stamp: 'HAW 5/25/2019 12:19:20'!
+!Portfolio methodsFor: 'accounts management' stamp: 'LMR 5/31/2023 23:34:58'!
 add: accountToAdd
 
 	self assertCanAdd: accountToAdd.
@@ -586,7 +664,7 @@ add: accountToAdd
 	accountToAdd addedTo: self 
 	! !
 
-!Portfolio methodsFor: 'accounts management' stamp: 'HAW 5/25/2019 12:17:31'!
+!Portfolio methodsFor: 'accounts management' stamp: 'LMR 5/31/2023 23:34:58'!
 rootParents
 	
 	| rootParents |
@@ -597,25 +675,46 @@ rootParents
 	^ rootParents! !
 
 
-!Portfolio methodsFor: 'initialization' stamp: 'HAW 5/25/2019 12:03:18'!
+!Portfolio methodsFor: 'initialization' stamp: 'LMR 5/31/2023 23:34:58'!
 initialize
 
 	accounts := OrderedCollection new.
 	parents := OrderedCollection new.! !
 
+!Portfolio methodsFor: 'initialization' stamp: 'LMR 6/1/2023 00:16:13'!
+initializeNamed: aName 
+	
+	name := aName.
+	accounts := OrderedCollection new.
+	parents := OrderedCollection new.! !
 
-!Portfolio methodsFor: 'balance' stamp: 'HAW 5/25/2019 11:19:36'!
+!Portfolio methodsFor: 'initialization' stamp: 'LMR 6/1/2023 00:16:19'!
+initializeNamed: aName with: anAccount
+
+	name := aName.
+	accounts := OrderedCollection with: anAccount.
+	parents := OrderedCollection new.! !
+
+!Portfolio methodsFor: 'initialization' stamp: 'LMR 6/1/2023 00:38:23'!
+initializeNamed: aName with: anAccount with: anotherAccount 
+	
+	name := aName.
+	accounts := OrderedCollection with: anAccount with: anotherAccount.
+	parents := OrderedCollection new.! !
+
+
+!Portfolio methodsFor: 'balance' stamp: 'LMR 5/31/2023 23:34:58'!
 balance
 	
 	^accounts sum: [ :anAccount | anAccount balance ] ifEmpty: [ 0 ]! !
 
 
-!Portfolio methodsFor: 'transactions' stamp: 'HAW 5/25/2019 11:42:55'!
+!Portfolio methodsFor: 'transactions' stamp: 'LMR 5/31/2023 23:34:58'!
 addTransactionsTo: aCollectionOfTransactions
 
 	accounts do: [ :anAccount | anAccount addTransactionsTo: aCollectionOfTransactions ]! !
 
-!Portfolio methodsFor: 'transactions' stamp: 'HAW 5/25/2019 11:38:32'!
+!Portfolio methodsFor: 'transactions' stamp: 'LMR 5/31/2023 23:34:58'!
 transactions
 	
 	| transactions |
@@ -626,51 +725,59 @@ transactions
 	^transactions ! !
 
 
-!Portfolio methodsFor: 'composition' stamp: 'HAW 5/25/2019 12:02:59'!
+!Portfolio methodsFor: 'composition' stamp: 'LMR 5/31/2023 23:34:58'!
 addedTo: aPortfolio 
 	
 	parents add: aPortfolio ! !
 
 
-!Portfolio methodsFor: 'testing' stamp: 'HAW 5/25/2019 12:20:56'!
+!Portfolio methodsFor: 'testing' stamp: 'LMR 5/31/2023 23:34:58'!
 anyRootParentIsComposedBy: accountToAdd
 
 	^self rootParents anySatisfy: [ :aParent | aParent isComposedBy: accountToAdd]! !
 
-!Portfolio methodsFor: 'testing' stamp: 'HAW 5/25/2019 11:28:29'!
+!Portfolio methodsFor: 'testing' stamp: 'LMR 5/31/2023 23:34:58'!
 hasRegistered: aTransaction
 
 	^accounts anySatisfy: [ :anAccount | anAccount hasRegistered: aTransaction ]! !
 
-!Portfolio methodsFor: 'testing' stamp: 'HAW 5/29/2019 16:24:54'!
+!Portfolio methodsFor: 'testing' stamp: 'LMR 5/31/2023 23:34:58'!
 isComposedBy: anAccount
 
 	^ self = anAccount or: [ accounts anySatisfy: [ :composedAccount | (composedAccount isComposedBy: anAccount) or: [ anAccount isComposedBy: composedAccount ]]]! !
 
 
-!Portfolio methodsFor: 'account management - private' stamp: 'HAW 5/25/2019 12:17:31'!
+!Portfolio methodsFor: 'account management - private' stamp: 'LMR 5/31/2023 23:34:58'!
 addRootParentsTo: rootParents
 
 	parents 
 		ifEmpty: [ rootParents add: self ] 
 		ifNotEmpty: [ parents do: [ :aParent | aParent addRootParentsTo: rootParents ]]! !
 
-!Portfolio methodsFor: 'account management - private' stamp: 'HAW 5/25/2019 12:20:36'!
+!Portfolio methodsFor: 'account management - private' stamp: 'LMR 5/31/2023 23:34:58'!
 assertCanAdd: accountToAdd
 
 	(self anyRootParentIsComposedBy: accountToAdd) ifTrue: [ self signalCanNotAddAccount ].
 ! !
 
-!Portfolio methodsFor: 'account management - private' stamp: 'HAW 5/25/2019 11:48:34'!
+!Portfolio methodsFor: 'account management - private' stamp: 'LMR 5/31/2023 23:34:58'!
 signalCanNotAddAccount
 	
 	self error: self class canNotAddAccountErrorMessage! !
 
 
-!Portfolio methodsFor: 'reports' stamp: 'AlYac 5/31/2023 01:28:17'!
+!Portfolio methodsFor: 'reports' stamp: 'LMR 5/31/2023 23:34:58'!
 fillReport: aReport 
 	
 	accounts do: [:anAccount| anAccount fillReport: aReport].! !
+
+!Portfolio methodsFor: 'reports' stamp: 'LMR 6/1/2023 00:58:10'!
+fillTreeReport: aTreeReport 
+	
+	aTreeReport addNameToReport: name.
+	aTreeReport incrementIndentation.
+	accounts do: [:account | account fillTreeReport: aTreeReport.].
+	aTreeReport decrementIndentation.! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -678,19 +785,34 @@ fillReport: aReport
 Portfolio class
 	instanceVariableNames: ''!
 
-!Portfolio class methodsFor: 'instance creation' stamp: 'HAW 5/25/2019 11:48:55'!
+!Portfolio class methodsFor: 'instance creation' stamp: 'LMR 5/31/2023 23:34:58'!
 canNotAddAccountErrorMessage
 	
 	^'Can not add repeated account to a portfolio'! !
 
-!Portfolio class methodsFor: 'instance creation' stamp: 'HAW 5/25/2019 11:18:21'!
+!Portfolio class methodsFor: 'instance creation' stamp: 'LMR 5/31/2023 23:45:03'!
+named: aName
+
+	^self new initializeNamed: aName.! !
+
+!Portfolio class methodsFor: 'instance creation' stamp: 'LMR 5/31/2023 23:55:48'!
+named: aName with: anAccount 
+	
+	^self new initializeNamed: aName with: anAccount ! !
+
+!Portfolio class methodsFor: 'instance creation' stamp: 'LMR 6/1/2023 00:37:29'!
+named: aName with: anAccount with: anotherAccount 
+	
+	^self new initializeNamed: aName with: anAccount with: anotherAccount ! !
+
+!Portfolio class methodsFor: 'instance creation' stamp: 'LMR 5/31/2023 23:34:58'!
 with: anAccount
 
 	^self new 
 		add: anAccount;
 		yourself! !
 
-!Portfolio class methodsFor: 'instance creation' stamp: 'HAW 5/25/2019 11:23:59'!
+!Portfolio class methodsFor: 'instance creation' stamp: 'LMR 5/31/2023 23:34:58'!
 with: anAccount with: anotherAccount
 
 	^self new 
@@ -698,39 +820,49 @@ with: anAccount with: anotherAccount
 		add: anotherAccount;
 		yourself! !
 
+
+!Portfolio class methodsFor: 'error handling' stamp: 'LMR 6/1/2023 00:36:45'!
+error: aRenameMe1 
+	self shouldBeImplemented.! !
+
 
 !classDefinition: #ReceptiveAccount category: 'Portfolio-Ejercicio'!
 Account subclass: #ReceptiveAccount
-	instanceVariableNames: 'transactions'
+	instanceVariableNames: 'transactions name'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!ReceptiveAccount methodsFor: 'initialization' stamp: 'HernanWilkinson 7/13/2011 18:35'!
+!ReceptiveAccount methodsFor: 'initialization' stamp: 'LMR 5/31/2023 23:34:59'!
 initialize
 
 	super initialize.
 	transactions := OrderedCollection new.! !
 
+!ReceptiveAccount methodsFor: 'initialization' stamp: 'LMR 5/31/2023 23:55:21'!
+initializeNamed: aName 
 
-!ReceptiveAccount methodsFor: 'transactions' stamp: 'HAW 5/25/2019 11:38:52'!
+	name := aName.! !
+
+
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'LMR 5/31/2023 23:34:59'!
 addTransactionsTo: aCollectionOfTransactions
 
 	aCollectionOfTransactions addAll: transactions ! !
 
-!ReceptiveAccount methodsFor: 'transactions' stamp: 'HernanWilkinson 7/13/2011 18:37'!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'LMR 5/31/2023 23:35:00'!
 register: aTransaction
 
 	transactions add: aTransaction 
 ! !
 
-!ReceptiveAccount methodsFor: 'transactions' stamp: 'HernanWilkinson 7/13/2011 18:37'!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'LMR 5/31/2023 23:34:59'!
 transactions 
 
 	^ transactions copy! !
 
 
-!ReceptiveAccount methodsFor: 'balance' stamp: 'HAW 5/25/2019 11:24:46'!
+!ReceptiveAccount methodsFor: 'balance' stamp: 'LMR 5/31/2023 23:34:59'!
 balance
 
 	^transactions 
@@ -738,29 +870,45 @@ balance
 		into: [ :currentBalance :transaction | transaction affectBalance: currentBalance ]! !
 
 
-!ReceptiveAccount methodsFor: 'testing' stamp: 'NR 10/21/2019 18:55:56'!
+!ReceptiveAccount methodsFor: 'testing' stamp: 'LMR 5/31/2023 23:34:59'!
 hasRegistered: aTransaction
 
 	^ transactions includes: aTransaction 
 ! !
 
-!ReceptiveAccount methodsFor: 'testing' stamp: 'HAW 5/25/2019 11:54:51'!
+!ReceptiveAccount methodsFor: 'testing' stamp: 'LMR 5/31/2023 23:34:59'!
 isComposedBy: anAccount
 
 	^self = anAccount ! !
 
 
-!ReceptiveAccount methodsFor: 'composition' stamp: 'HAW 5/25/2019 12:03:32'!
+!ReceptiveAccount methodsFor: 'composition' stamp: 'LMR 5/31/2023 23:35:00'!
 addedTo: aPortfolio 
 	
 	! !
 
 
-!ReceptiveAccount methodsFor: 'reports' stamp: 'AlYac 5/31/2023 01:27:51'!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'LMR 5/31/2023 23:34:59'!
 fillReport: aReport
 
 	transactions do: [:transaction| transaction fillReport: aReport].
 ! !
+
+!ReceptiveAccount methodsFor: 'reports' stamp: 'LMR 6/1/2023 01:03:17'!
+fillTreeReport: aTreeReport 
+	
+	aTreeReport addNameToReport: name.! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'ReceptiveAccount class' category: 'Portfolio-Ejercicio'!
+ReceptiveAccount class
+	instanceVariableNames: ''!
+
+!ReceptiveAccount class methodsFor: 'instance creation' stamp: 'LMR 5/31/2023 23:55:09'!
+named: aName
+	
+	^self new initializeNamed: aName! !
 
 
 !classDefinition: #AccountTransaction category: 'Portfolio-Ejercicio'!
@@ -770,19 +918,19 @@ Object subclass: #AccountTransaction
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!AccountTransaction methodsFor: 'value' stamp: 'HernanWilkinson 9/12/2011 12:25'!
+!AccountTransaction methodsFor: 'value' stamp: 'LMR 5/31/2023 23:34:57'!
 value 
 
 	self subclassResponsibility ! !
 
 
-!AccountTransaction methodsFor: 'reports' stamp: 'AlYac 5/31/2023 01:32:18'!
+!AccountTransaction methodsFor: 'reports' stamp: 'LMR 5/31/2023 23:34:57'!
 fillReport: aReport
 
 	self subclassResponsibility! !
 
 
-!AccountTransaction methodsFor: 'balance' stamp: 'HAW 5/25/2019 11:25:39'!
+!AccountTransaction methodsFor: 'balance' stamp: 'LMR 5/31/2023 23:34:57'!
 affectBalance: aBalance
 
 	self subclassResponsibility ! !
@@ -793,7 +941,7 @@ affectBalance: aBalance
 AccountTransaction class
 	instanceVariableNames: ''!
 
-!AccountTransaction class methodsFor: 'instance creation' stamp: 'AlYac 5/30/2023 21:40:01'!
+!AccountTransaction class methodsFor: 'instance creation' stamp: 'LMR 5/31/2023 23:34:57'!
 register: aValue on: account
 
 	| transaction |
@@ -811,25 +959,25 @@ AccountTransaction subclass: #Deposit
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!Deposit methodsFor: 'initialization' stamp: 'HernanWilkinson 7/13/2011 18:45'!
+!Deposit methodsFor: 'initialization' stamp: 'LMR 5/31/2023 23:34:57'!
 initializeFor: aValue
 
 	value := aValue ! !
 
 
-!Deposit methodsFor: 'value' stamp: 'HernanWilkinson 7/13/2011 18:38'!
+!Deposit methodsFor: 'value' stamp: 'LMR 5/31/2023 23:34:57'!
 value
 
 	^ value! !
 
 
-!Deposit methodsFor: 'balance' stamp: 'HAW 5/25/2019 11:25:02'!
+!Deposit methodsFor: 'balance' stamp: 'LMR 5/31/2023 23:34:57'!
 affectBalance: aBalance
 
 	^aBalance + value ! !
 
 
-!Deposit methodsFor: 'reports' stamp: 'AlYac 5/31/2023 01:29:50'!
+!Deposit methodsFor: 'reports' stamp: 'LMR 5/31/2023 23:34:57'!
 fillReport: aReport
 
 	aReport addToReportDepositOf: self value! !
@@ -840,7 +988,7 @@ fillReport: aReport
 Deposit class
 	instanceVariableNames: ''!
 
-!Deposit class methodsFor: 'instance creation' stamp: 'AlYac 5/30/2023 20:55:27'!
+!Deposit class methodsFor: 'instance creation' stamp: 'LMR 5/31/2023 23:34:57'!
 for: aValue
 
 	^ self new initializeFor: aValue ! !
@@ -853,13 +1001,13 @@ AccountTransaction subclass: #TransferDeposit
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!TransferDeposit methodsFor: 'transfer' stamp: 'AlYac 5/30/2023 17:29:55'!
+!TransferDeposit methodsFor: 'transfer' stamp: 'LMR 5/31/2023 23:35:01'!
 transfer
 
 	^myTransfer ! !
 
 
-!TransferDeposit methodsFor: 'initialization' stamp: 'AlYac 5/30/2023 17:58:10'!
+!TransferDeposit methodsFor: 'initialization' stamp: 'LMR 5/31/2023 23:35:01'!
 initializeOn: anAccount fromTransfer: aTransfer
 
 	myTransfer := aTransfer.
@@ -867,19 +1015,19 @@ initializeOn: anAccount fromTransfer: aTransfer
 ! !
 
 
-!TransferDeposit methodsFor: 'reports' stamp: 'AlYac 5/31/2023 01:30:21'!
+!TransferDeposit methodsFor: 'reports' stamp: 'LMR 5/31/2023 23:35:01'!
 fillReport: aReport
 
 	aReport addToReportTransferDepositOf: self value! !
 
 
-!TransferDeposit methodsFor: 'balance' stamp: 'AlYac 5/30/2023 19:09:11'!
+!TransferDeposit methodsFor: 'balance' stamp: 'LMR 5/31/2023 23:35:01'!
 affectBalance: currentBalance 
 	
 	^currentBalance + self value! !
 
 
-!TransferDeposit methodsFor: 'value' stamp: 'AlYac 5/30/2023 19:10:48'!
+!TransferDeposit methodsFor: 'value' stamp: 'LMR 5/31/2023 23:35:01'!
 value
 	
 	^myTransfer value ! !
@@ -890,7 +1038,7 @@ value
 TransferDeposit class
 	instanceVariableNames: ''!
 
-!TransferDeposit class methodsFor: 'instance creation' stamp: 'AlYac 5/30/2023 17:55:29'!
+!TransferDeposit class methodsFor: 'instance creation' stamp: 'LMR 5/31/2023 23:35:01'!
 registerOn: anAccount fromTransfer: aTransfer
 
 	^ self new initializeOn: anAccount fromTransfer: aTransfer ! !
@@ -903,7 +1051,7 @@ AccountTransaction subclass: #TransferWithdraw
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!TransferWithdraw methodsFor: 'initialization' stamp: 'AlYac 5/30/2023 18:05:02'!
+!TransferWithdraw methodsFor: 'initialization' stamp: 'LMR 5/31/2023 23:35:01'!
 initializeOn: anAccount fromTransfer: aTransfer
 
 	myTransfer := aTransfer.
@@ -911,25 +1059,25 @@ initializeOn: anAccount fromTransfer: aTransfer
 ! !
 
 
-!TransferWithdraw methodsFor: 'reports' stamp: 'AlYac 5/31/2023 01:30:39'!
+!TransferWithdraw methodsFor: 'reports' stamp: 'LMR 5/31/2023 23:35:01'!
 fillReport: aReport
 	
 	aReport addToReportTransferWithdrawOf: self value! !
 
 
-!TransferWithdraw methodsFor: 'balance' stamp: 'AlYac 5/30/2023 19:13:38'!
+!TransferWithdraw methodsFor: 'balance' stamp: 'LMR 5/31/2023 23:35:02'!
 affectBalance: currentBalance 
 	
 	^currentBalance - self value! !
 
 
-!TransferWithdraw methodsFor: 'transfer' stamp: 'AlYac 5/30/2023 18:06:04'!
+!TransferWithdraw methodsFor: 'transfer' stamp: 'LMR 5/31/2023 23:35:02'!
 transfer
 
 	^myTransfer ! !
 
 
-!TransferWithdraw methodsFor: 'value' stamp: 'AlYac 5/30/2023 19:13:57'!
+!TransferWithdraw methodsFor: 'value' stamp: 'LMR 5/31/2023 23:35:01'!
 value
 	
 	^myTransfer value! !
@@ -940,7 +1088,7 @@ value
 TransferWithdraw class
 	instanceVariableNames: ''!
 
-!TransferWithdraw class methodsFor: 'instance creation' stamp: 'AlYac 5/30/2023 18:04:47'!
+!TransferWithdraw class methodsFor: 'instance creation' stamp: 'LMR 5/31/2023 23:35:02'!
 registerOn: anAccount fromTransfer: aTransfer
 
 	^ self new initializeOn: anAccount fromTransfer: aTransfer ! !
@@ -953,25 +1101,25 @@ AccountTransaction subclass: #Withdraw
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!Withdraw methodsFor: 'initialization' stamp: 'HernanWilkinson 7/13/2011 18:46'!
+!Withdraw methodsFor: 'initialization' stamp: 'LMR 5/31/2023 23:35:02'!
 initializeFor: aValue
 
 	value := aValue ! !
 
 
-!Withdraw methodsFor: 'value' stamp: 'HernanWilkinson 7/13/2011 18:33'!
+!Withdraw methodsFor: 'value' stamp: 'LMR 5/31/2023 23:35:02'!
 value
 
 	^ value! !
 
 
-!Withdraw methodsFor: 'balance' stamp: 'HAW 5/25/2019 11:25:15'!
+!Withdraw methodsFor: 'balance' stamp: 'LMR 5/31/2023 23:35:02'!
 affectBalance: aBalance
 
 	^aBalance - value! !
 
 
-!Withdraw methodsFor: 'reports' stamp: 'AlYac 5/31/2023 01:30:58'!
+!Withdraw methodsFor: 'reports' stamp: 'LMR 5/31/2023 23:35:02'!
 fillReport: aReport
 
 	aReport addToReportWithdrawOf: self value! !
@@ -982,7 +1130,7 @@ fillReport: aReport
 Withdraw class
 	instanceVariableNames: ''!
 
-!Withdraw class methodsFor: 'instance creation' stamp: 'AlYac 5/30/2023 20:55:14'!
+!Withdraw class methodsFor: 'instance creation' stamp: 'LMR 5/31/2023 23:35:02'!
 for: aValue
 
 	^ self new initializeFor: aValue ! !
@@ -995,37 +1143,17 @@ Object subclass: #Report
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!Report methodsFor: 'report' stamp: 'AlYac 5/31/2023 01:20:16'!
+!Report methodsFor: 'report' stamp: 'LMR 5/31/2023 23:35:00'!
 report
 
 	self subclassResponsibility! !
 
 
-!Report methodsFor: 'initialization' stamp: 'AlYac 5/31/2023 01:14:45'!
+!Report methodsFor: 'initialization' stamp: 'LMR 5/31/2023 23:35:00'!
 initializeOf: anAccount 
 	
 	account := anAccount.! !
 
-
-!Report methodsFor: 'add to report' stamp: 'AlYac 5/31/2023 01:20:38'!
-addToReportDepositOf: anAmount
-
-	self subclassResponsibility! !
-
-!Report methodsFor: 'add to report' stamp: 'AlYac 5/31/2023 01:20:51'!
-addToReportTransferDepositOf: anAmount
-
-	self subclassResponsibility! !
-
-!Report methodsFor: 'add to report' stamp: 'AlYac 5/31/2023 01:21:01'!
-addToReportTransferWithdrawOf: anAmount
-
-	self subclassResponsibility! !
-
-!Report methodsFor: 'add to report' stamp: 'AlYac 5/31/2023 01:21:04'!
-addToReportWithdrawOf: anAmount
-
-	self subclassResponsibility! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -1033,20 +1161,48 @@ addToReportWithdrawOf: anAmount
 Report class
 	instanceVariableNames: ''!
 
-!Report class methodsFor: 'instance creation' stamp: 'AlYac 5/31/2023 01:14:58'!
+!Report class methodsFor: 'instance creation' stamp: 'LMR 5/31/2023 23:35:00'!
 of: anAccount 
 	
 	^self new initializeOf: anAccount ! !
 
 
-!classDefinition: #AccountSummary category: 'Portfolio-Ejercicio'!
-Report subclass: #AccountSummary
+!classDefinition: #TransactionsReport category: 'Portfolio-Ejercicio'!
+Report subclass: #TransactionsReport
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!AccountSummary methodsFor: 'report' stamp: 'AlYac 5/31/2023 01:27:32'!
+!TransactionsReport methodsFor: 'add to report' stamp: 'LMR 6/1/2023 01:01:52'!
+addToReportDepositOf: anAmount
+
+	self subclassResponsibility! !
+
+!TransactionsReport methodsFor: 'add to report' stamp: 'LMR 6/1/2023 01:02:13'!
+addToReportTransferDepositOf: anAmount
+
+	self subclassResponsibility! !
+
+!TransactionsReport methodsFor: 'add to report' stamp: 'LMR 6/1/2023 01:02:24'!
+addToReportTransferWithdrawOf: anAmount
+
+	self subclassResponsibility! !
+
+!TransactionsReport methodsFor: 'add to report' stamp: 'LMR 6/1/2023 01:02:29'!
+addToReportWithdrawOf: anAmount
+
+	self subclassResponsibility! !
+
+
+!classDefinition: #AccountSummary category: 'Portfolio-Ejercicio'!
+TransactionsReport subclass: #AccountSummary
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!AccountSummary methodsFor: 'report' stamp: 'LMR 5/31/2023 23:34:57'!
 report
 	
 	report := OrderedCollection new.
@@ -1056,31 +1212,31 @@ report
 ! !
 
 
-!AccountSummary methodsFor: 'add to report' stamp: 'AlYac 5/31/2023 01:18:11'!
+!AccountSummary methodsFor: 'add to report' stamp: 'LMR 5/31/2023 23:34:57'!
 addToReportBalanceOf: anAmount
 	
 	^report add: 'Balance = ', anAmount asString
 ! !
 
-!AccountSummary methodsFor: 'add to report' stamp: 'AlYac 5/31/2023 01:16:36'!
+!AccountSummary methodsFor: 'add to report' stamp: 'LMR 5/31/2023 23:34:57'!
 addToReportDepositOf: anAmount
 	
 	^report add: 'Depósito por ', anAmount asString , '.'
 ! !
 
-!AccountSummary methodsFor: 'add to report' stamp: 'AlYac 5/31/2023 01:17:11'!
+!AccountSummary methodsFor: 'add to report' stamp: 'LMR 5/31/2023 23:34:57'!
 addToReportTransferDepositOf: anAmount
 	
 	^report add: 'Entrada por transferencia de ', anAmount asString , '.'
 ! !
 
-!AccountSummary methodsFor: 'add to report' stamp: 'AlYac 5/31/2023 01:17:31'!
+!AccountSummary methodsFor: 'add to report' stamp: 'LMR 5/31/2023 23:34:57'!
 addToReportTransferWithdrawOf: anAmount
 	
 	^report add: 'Salida por transferencia de ', anAmount asString , '.'
 ! !
 
-!AccountSummary methodsFor: 'add to report' stamp: 'AlYac 5/31/2023 01:17:49'!
+!AccountSummary methodsFor: 'add to report' stamp: 'LMR 5/31/2023 23:34:57'!
 addToReportWithdrawOf: anAmount
 	
 	^report add: 'Extracción por ', anAmount asString , '.'
@@ -1088,13 +1244,13 @@ addToReportWithdrawOf: anAmount
 
 
 !classDefinition: #NetTransfer category: 'Portfolio-Ejercicio'!
-Report subclass: #NetTransfer
+TransactionsReport subclass: #NetTransfer
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!NetTransfer methodsFor: 'report' stamp: 'AlYac 5/31/2023 01:31:30'!
+!NetTransfer methodsFor: 'report' stamp: 'LMR 5/31/2023 23:34:58'!
 report
 
 	report := 0.
@@ -1102,23 +1258,84 @@ report
 	^report ! !
 
 
-!NetTransfer methodsFor: 'add to report' stamp: 'AlYac 5/31/2023 01:25:47'!
+!NetTransfer methodsFor: 'add to report' stamp: 'LMR 5/31/2023 23:34:58'!
 addToReportDepositOf: anAmount
 ! !
 
-!NetTransfer methodsFor: 'add to report' stamp: 'AlYac 5/31/2023 01:22:21'!
+!NetTransfer methodsFor: 'add to report' stamp: 'LMR 5/31/2023 23:34:57'!
 addToReportTransferDepositOf: anAmount
 	
 	report := report + anAmount ! !
 
-!NetTransfer methodsFor: 'add to report' stamp: 'AlYac 5/31/2023 01:22:38'!
+!NetTransfer methodsFor: 'add to report' stamp: 'LMR 5/31/2023 23:34:57'!
 addToReportTransferWithdrawOf: anAmount
 	
 	report := report - anAmount ! !
 
-!NetTransfer methodsFor: 'add to report' stamp: 'AlYac 5/31/2023 01:25:37'!
+!NetTransfer methodsFor: 'add to report' stamp: 'LMR 5/31/2023 23:34:58'!
 addToReportWithdrawOf: anAmount
  ! !
+
+
+!classDefinition: #TreeReport category: 'Portfolio-Ejercicio'!
+Report subclass: #TreeReport
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+
+!classDefinition: #PortfolioStructure category: 'Portfolio-Ejercicio'!
+TreeReport subclass: #PortfolioStructure
+	instanceVariableNames: 'indentationLevel'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!PortfolioStructure methodsFor: 'initialization' stamp: 'LMR 6/1/2023 01:00:15'!
+initializeOf: aPortfolio 
+
+	account := aPortfolio.! !
+
+
+!PortfolioStructure methodsFor: 'report' stamp: 'LMR 6/1/2023 01:00:15'!
+report
+	
+	report := OrderedCollection new.
+	indentationLevel := 0.
+	account fillTreeReport: self.
+	^report! !
+
+
+!PortfolioStructure methodsFor: 'add to report' stamp: 'LMR 6/1/2023 00:46:32'!
+addNameToReport: aName
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , aName.! !
+
+
+!PortfolioStructure methodsFor: 'indentation' stamp: 'LMR 6/1/2023 00:43:19'!
+decrementIndentation
+
+	indentationLevel := indentationLevel - 1.! !
+
+!PortfolioStructure methodsFor: 'indentation' stamp: 'LMR 6/1/2023 00:28:42'!
+incrementIndentation
+
+	indentationLevel := indentationLevel + 1.! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'PortfolioStructure class' category: 'Portfolio-Ejercicio'!
+PortfolioStructure class
+	instanceVariableNames: ''!
+
+!PortfolioStructure class methodsFor: 'instance creation' stamp: 'LMR 5/31/2023 23:46:09'!
+of: aPortfolio 
+	
+	^self new initializeOf: aPortfolio ! !
 
 
 !classDefinition: #Transfer category: 'Portfolio-Ejercicio'!
@@ -1128,24 +1345,24 @@ Object subclass: #Transfer
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!Transfer methodsFor: 'transfer ends' stamp: 'AlYac 5/30/2023 17:58:59'!
+!Transfer methodsFor: 'transfer ends' stamp: 'LMR 5/31/2023 23:35:01'!
 deposit
 
 	^deposit ! !
 
-!Transfer methodsFor: 'transfer ends' stamp: 'AlYac 5/30/2023 18:02:37'!
+!Transfer methodsFor: 'transfer ends' stamp: 'LMR 5/31/2023 23:35:01'!
 withdraw
 
 	^withdraw ! !
 
 
-!Transfer methodsFor: 'value' stamp: 'AlYac 5/30/2023 18:01:27'!
+!Transfer methodsFor: 'value' stamp: 'LMR 5/31/2023 23:35:01'!
 value
 
 	^value! !
 
 
-!Transfer methodsFor: 'initialization' stamp: 'AlYac 5/30/2023 18:06:59'!
+!Transfer methodsFor: 'initialization' stamp: 'LMR 5/31/2023 23:35:01'!
 register: anAmount from: aTransfererAccount to: aTransfereeAccount
 
 	deposit := TransferDeposit registerOn: aTransfereeAccount fromTransfer: self.
@@ -1158,9 +1375,8 @@ register: anAmount from: aTransfererAccount to: aTransfereeAccount
 Transfer class
 	instanceVariableNames: ''!
 
-!Transfer class methodsFor: 'instance creation' stamp: 'AlYac 5/30/2023 17:42:58'!
+!Transfer class methodsFor: 'instance creation' stamp: 'LMR 5/31/2023 23:35:01'!
 register: anAmount from: aTransfererAccount to: aTransfereeAccount 
 
 	^self new register: anAmount from: aTransfererAccount to: aTransfereeAccount.
 	! !
-
