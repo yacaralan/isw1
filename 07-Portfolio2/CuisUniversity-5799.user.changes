@@ -6197,3 +6197,4720 @@ fillTreeReport: aTreeReport
 ----SNAPSHOT----(1 June 2023 01:05:51) CuisUniversity-5799.image priorSource: 9265631!
 
 ----QUIT----(1 June 2023 01:06:02) CuisUniversity-5799.image priorSource: 9363452!
+
+----STARTUP---- (1 June 2023 01:16:21) as D:\OneDrive - dc.uba.ar\UBA\Inge1\cuis5799\windows64\CuisUniversity-5799.image!
+
+
+!classDefinition: #TransactionTreeReport category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 01:19:27'!
+Object subclass: #TransactionTreeReport
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!TreeReportsTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 01:19:19'!
+test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport
+
+	| aPortfolio expectedReport |
+	aPortfolio := Portfolio named: 'Portfolio de la familia'.
+
+	expectedReport := OrderedCollection with: 'Portfolio de la familia' with: '   Balance = 0'.
+
+	self assert: (TransactionTreeReport of: aPortfolio) report equals: expectedReport. ! !
+
+TreeReport subclass: #TransactionTreeReport
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #TransactionTreeReport category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 01:19:42'!
+TreeReport subclass: #TransactionTreeReport
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+Object subclass: #TransactionTreeReport
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #TransactionTreeReport category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 01:19:55'!
+Object subclass: #TransactionTreeReport
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 01:20:03'!
+ERROR!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 01:20:03'!
+ERROR!
+!TransactionTreeReport class methodsFor: 'instance creation' stamp: 'LMR 6/1/2023 01:20:08'!
+of: aPortfolio 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeOf: aPortfolio ! !
+!TransactionTreeReport class methodsFor: 'instance creation' stamp: 'LMR 6/1/2023 01:20:13' prior: 50624323!
+of: aPortfolio 
+	
+	^self new initializeOf: aPortfolio ! !
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 01:20:14'!
+ERROR!
+
+!classDefinition: #TransactionTreeReport category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 01:20:26'!
+Object subclass: #TransactionTreeReport
+	instanceVariableNames: 'portfolio'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!TransactionTreeReport methodsFor: 'initialization' stamp: 'LMR 6/1/2023 01:20:26'!
+initializeOf: aPortfolio 
+	self shouldBeImplemented.
+	portfolio := aPortfolio.! !
+!TransactionTreeReport methodsFor: 'initialization' stamp: 'LMR 6/1/2023 01:20:30' prior: 50624349!
+initializeOf: aPortfolio 
+
+	portfolio := aPortfolio.! !
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 01:20:31'!
+ERROR!
+!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 01:20:41'!
+report
+	self shouldBeImplemented.! !
+!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 01:21:29' prior: 50624363!
+report
+	
+	^OrderedCollection with: portfolio name with: 'Balance = ' , portfolio balance.! !
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 01:21:31'!
+ERROR!
+!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 01:21:55' prior: 50624368!
+report
+	
+	^OrderedCollection with: portfolio name with: 'Balance = ' , portfolio balance asString.! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 01:22:00'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 01:22:01'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 01:22:01'!
+PASSED!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 01:22:01'!
+PASSED!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 01:22:01'!
+PASSED!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 01:22:01'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 01:22:01'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 01:23:20'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 01:23:20'!
+FAILURE!
+
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts parents'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 01:26:02'!
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts parents'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+Account subclass: #ReceptiveAccount
+	instanceVariableNames: 'transactions'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #ReceptiveAccount category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 01:26:06'!
+Account subclass: #ReceptiveAccount
+	instanceVariableNames: 'transactions'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+Object subclass: #Account
+	instanceVariableNames: 'name'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Account category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 01:26:10'!
+Object subclass: #Account
+	instanceVariableNames: 'name'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Account methodsFor: 'nil' stamp: 'LMR 6/1/2023 01:26:20' overrides: 16903442!
+name
+
+	^name! !
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 01:27:02'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 01:27:02'!
+FAILURE!
+!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 01:27:30' prior: 50624378!
+report
+	
+	^OrderedCollection with: portfolio name with: '   Balance = ' , portfolio balance asString.! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 01:27:32'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 01:27:32'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 01:27:32'!
+PASSED!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 01:27:32'!
+PASSED!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 01:27:33'!
+PASSED!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 01:27:33'!
+PASSED!
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 01:27:37'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 01:27:37'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 01:27:37'!
+PASSED!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 01:27:37'!
+PASSED!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 01:27:38'!
+PASSED!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 01:27:38'!
+PASSED!
+!TreeReportsTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 01:34:53'!
+test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport
+
+	| aPortfolio expectedReport myAccount |
+	myAccount := ReceptiveAccount named: 'Cuenta Mia'.
+	Deposit register: 100 on: myAccount.
+	Withdraw register: 50 on: myAccount.
+	aPortfolio := Portfolio named: 'Portfolio de la familia'.
+
+	expectedReport := OrderedCollection with: 'Portfolio de la familia' with: '   Cuenta Mia' with: '      Depósito por 100' with: '      Extracción por 50' with: '      Balance = 50' with: '   Balance = 0'.
+
+	self assert: (TransactionTreeReport of: aPortfolio) report equals: expectedReport. ! !
+
+----QUIT----(1 June 2023 01:35:09) CuisUniversity-5799.image priorSource: 9363540!
+
+----STARTUP---- (1 June 2023 04:28:48) as D:\OneDrive - dc.uba.ar\UBA\Inge1\cuis5799\windows64\CuisUniversity-5799.image!
+
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 04:28:57'!
+FAILURE!
+
+!classDefinition: #TransactionTreeReport category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 04:30:45'!
+Object subclass: #TransactionTreeReport
+	instanceVariableNames: 'portfolio report'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #TransactionTreeReport category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 04:30:46'!
+Object subclass: #TransactionTreeReport
+	instanceVariableNames: 'portfolio report indentationLevel'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #TransactionTreeReport category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 04:30:48'!
+Object subclass: #TransactionTreeReport
+	instanceVariableNames: 'portfolio report indentationLevel account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 04:30:42' prior: 50624468!
+report
+	
+	report := OrderedCollection new.
+	indentationLevel := 0.
+	account fillTreeReport: self.
+	^report! !
+!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 04:31:07' prior: 50624581!
+report
+	
+	report := OrderedCollection new.
+	indentationLevel := 0.
+	portfolio fillTreeReport: self.
+	^report! !
+
+Object subclass: #TransactionTreeReport
+	instanceVariableNames: 'portfolio report indentationLevel'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #TransactionTreeReport category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 04:31:35'!
+Object subclass: #TransactionTreeReport
+	instanceVariableNames: 'portfolio report indentationLevel'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #TransactionTreeReport category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 04:31:40'!
+Object subclass: #TransactionTreeReport
+	instanceVariableNames: 'account report indentationLevel'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!TransactionTreeReport methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 04:31:41' prior: 50624588!
+report
+	
+	report := OrderedCollection new.
+	indentationLevel := 0.
+	account fillTreeReport: self.
+	^report! !
+!TransactionTreeReport methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 04:31:41' prior: 50624355!
+initializeOf: aPortfolio 
+
+	account := aPortfolio.! !
+
+TreeReport subclass: #TransactionTreeReport
+	instanceVariableNames: 'indentationLevel'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #TransactionTreeReport category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 04:33:17'!
+TreeReport subclass: #TransactionTreeReport
+	instanceVariableNames: 'indentationLevel'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+TreeReport subclass: #PortfolioStructure
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #PortfolioStructure category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 04:33:29'!
+TreeReport subclass: #PortfolioStructure
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+TreeReport subclass: #TransactionTreeReport
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #TransactionTreeReport category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 04:33:32'!
+TreeReport subclass: #TransactionTreeReport
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+Report subclass: #TreeReport
+	instanceVariableNames: 'indentationLevel'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #TreeReport category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 04:33:36'!
+Report subclass: #TreeReport
+	instanceVariableNames: 'indentationLevel'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!TreeReport methodsFor: 'indentation' stamp: 'LMR 6/1/2023 04:33:44'!
+decrementIndentation
+
+	indentationLevel := indentationLevel - 1.! !
+
+!methodRemoval: PortfolioStructure #decrementIndentation stamp: 'LMR 6/1/2023 04:33:44'!
+decrementIndentation
+
+	indentationLevel := indentationLevel - 1.!
+!TreeReport methodsFor: 'indentation' stamp: 'LMR 6/1/2023 04:33:48'!
+incrementIndentation
+
+	indentationLevel := indentationLevel + 1.! !
+
+!methodRemoval: PortfolioStructure #incrementIndentation stamp: 'LMR 6/1/2023 04:33:48'!
+incrementIndentation
+
+	indentationLevel := indentationLevel + 1.!
+!TreeReport methodsFor: 'nil' stamp: 'LMR 6/1/2023 04:34:22'!
+addNameToReport: aName
+
+	self subclassResponsibility.! !
+!TreeReport methodsFor: 'initialization' stamp: 'LMR 6/1/2023 04:35:07' overrides: 50621931!
+initializeOf: aPortfolio 
+
+	account := aPortfolio.! !
+
+!methodRemoval: PortfolioStructure #initializeOf: stamp: 'LMR 6/1/2023 04:35:07'!
+initializeOf: aPortfolio 
+
+	account := aPortfolio.!
+
+!methodRemoval: TransactionTreeReport #initializeOf: stamp: 'LMR 6/1/2023 04:35:17'!
+initializeOf: aPortfolio 
+
+	account := aPortfolio.!
+!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 04:36:33' overrides: 50624701!
+addNameToReport: aName
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , aName.! !
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 04:36:48'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 04:36:48'!
+FAILURE!
+!TreeReportsTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 04:38:25' prior: 50624521!
+test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport
+
+	| aPortfolio expectedReport myAccount |
+	myAccount := ReceptiveAccount named: 'Cuenta Mia'.
+	Deposit register: 100 on: myAccount.
+	Withdraw register: 50 on: myAccount.
+	aPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount.
+
+	expectedReport := OrderedCollection with: 'Portfolio de la familia' with: '   Cuenta Mia' with: '      Depósito por 100' with: '      Extracción por 50' with: '      Balance = 50' with: '   Balance = 0'.
+
+	self assert: (TransactionTreeReport of: aPortfolio) report equals: expectedReport. ! !
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 04:38:27'!
+FAILURE!
+!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 04:39:08'!
+addToReport: aName
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , aName.! !
+
+!methodRemoval: TransactionTreeReport #addNameToReport: stamp: 'LMR 6/1/2023 04:39:08'!
+addNameToReport: aName
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , aName.!
+!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 04:39:31' prior: 50624764!
+addToReport: anAccount
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , anAccount.! !
+!TreeReport methodsFor: 'add to report' stamp: 'LMR 6/1/2023 04:40:24'!
+addToReport: aName
+
+	self subclassResponsibility.! !
+!PortfolioStructure methodsFor: 'add to report' stamp: 'LMR 6/1/2023 04:40:25' overrides: 50624788!
+addToReport: aName
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , aName.! !
+!ReceptiveAccount methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 04:40:25' prior: 50624249 overrides: 50624254!
+fillTreeReport: aTreeReport 
+	
+	aTreeReport addToReport: name.! !
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 04:40:25' prior: 50623885 overrides: 50624254!
+fillTreeReport: aTreeReport 
+	
+	aTreeReport addToReport: name.
+	aTreeReport incrementIndentation.
+	accounts do: [:account | account fillTreeReport: aTreeReport.].
+	aTreeReport decrementIndentation.! !
+
+!methodRemoval: TreeReport #addNameToReport: stamp: 'LMR 6/1/2023 04:40:25'!
+addNameToReport: aName
+
+	self subclassResponsibility.!
+
+!methodRemoval: PortfolioStructure #addNameToReport: stamp: 'LMR 6/1/2023 04:40:25'!
+addNameToReport: aName
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , aName.!
+!PortfolioStructure methodsFor: 'add to report' stamp: 'LMR 6/1/2023 04:40:32' prior: 50624793 overrides: 50624788!
+addToReport: anAccount
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , anAccount.! !
+!PortfolioStructure methodsFor: 'add to report' stamp: 'LMR 6/1/2023 04:40:36' prior: 50624830 overrides: 50624788!
+addToReport: anAccount
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , anAccount name.! !
+!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 04:40:46' prior: 50624780 overrides: 50624788!
+addToReport: anAccount
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , anAccount name.! !
+!ReceptiveAccount methodsFor: 'reports' stamp: 'LMR 6/1/2023 04:41:06' prior: 50624802 overrides: 50624254!
+fillTreeReport: aTreeReport 
+	
+	aTreeReport addToReport: self.! !
+!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 04:43:35' prior: 50624848 overrides: 50624788!
+addToReport: anAccount
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , anAccount name.
+	report addAll: (AccountSummary of: anAccount) report.! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 04:43:40'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 04:43:40'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 04:43:40'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 04:43:40'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 04:43:40'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 04:43:40'!
+ERROR!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 04:43:40'!
+ERROR!
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 04:43:49'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 04:44:42'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 04:44:42'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 04:44:42'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 04:44:42'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 04:44:42'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 04:44:42'!
+ERROR!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 04:44:43'!
+ERROR!
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 04:44:44'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 04:45:11'!
+FAILURE!
+
+accounts do: [:account | account fillTreeReport: aTreeReport.]!
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 04:49:15'!
+FAILURE!
+
+a PortfolioStructure!
+
+a PortfolioStructure!
+!Portfolio methodsFor: 'reports' stamp: 'LMR 6/1/2023 04:52:48' prior: 50624808 overrides: 50624254!
+fillTreeReport: aTreeReport 
+	
+	aTreeReport addToReport: self.
+	aTreeReport incrementIndentation.
+	accounts do: [:account | account fillTreeReport: aTreeReport.].
+	aTreeReport decrementIndentation.! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 04:52:56'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 04:52:56'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 04:52:57'!
+PASSED!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 04:52:57'!
+PASSED!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 04:52:57'!
+PASSED!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 04:52:57'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 04:52:57'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 04:53:01'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 04:53:12'!
+FAILURE!
+!TreeReport methodsFor: 'add to report' stamp: 'LMR 6/1/2023 05:02:42'!
+addNameOf: aName
+
+	self subclassResponsibility.! !
+!PortfolioStructure methodsFor: 'add to report' stamp: 'LMR 6/1/2023 05:02:42' overrides: 50624994!
+addNameOf: anAccount
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , anAccount name.! !
+!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 05:02:42' overrides: 50624994!
+addNameOf: anAccount
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , anAccount name.
+	report addAll: (AccountSummary of: anAccount) report.! !
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 05:02:42' prior: 50624948 overrides: 50624254!
+fillTreeReport: aTreeReport 
+	
+	aTreeReport addNameOf: self.
+	aTreeReport incrementIndentation.
+	accounts do: [:account | account fillTreeReport: aTreeReport.].
+	aTreeReport decrementIndentation.! !
+!ReceptiveAccount methodsFor: 'as yet unclassified' stamp: 'LMR 6/1/2023 05:02:42' prior: 50624857 overrides: 50624254!
+fillTreeReport: aTreeReport 
+	
+	aTreeReport addNameOf: self.! !
+
+!methodRemoval: TreeReport #addToReport: stamp: 'LMR 6/1/2023 05:02:42'!
+addToReport: aName
+
+	self subclassResponsibility.!
+
+!methodRemoval: PortfolioStructure #addToReport: stamp: 'LMR 6/1/2023 05:02:42'!
+addToReport: anAccount
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , anAccount name.!
+
+!methodRemoval: TransactionTreeReport #addToReport: stamp: 'LMR 6/1/2023 05:02:42'!
+addToReport: anAccount
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , anAccount name.
+	report addAll: (AccountSummary of: anAccount) report.!
+!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 05:03:10' prior: 50625008 overrides: 50624994!
+addNameOf: anAccount
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , anAccount name.! !
+!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 05:09:13'!
+addTransactionsOf: anAccount
+
+	| indentation indentedSummary |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	indentedSummary := (AccountSummary of: anAccount) report collect: [:reportLine | indentation , reportLine].
+	report addAll: indentedSummary.! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 05:09:32'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 05:09:33'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 05:09:33'!
+PASSED!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 05:09:33'!
+PASSED!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 05:09:33'!
+PASSED!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 05:09:33'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 05:09:33'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 05:09:38'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 05:09:50'!
+FAILURE!
+!Portfolio methodsFor: 'reports' stamp: 'LMR 6/1/2023 05:11:12' prior: 50625019 overrides: 50624254!
+fillTreeReport: aTreeReport 
+	
+	aTreeReport addNameOf: self.
+	aTreeReport incrementIndentation.
+	accounts do: [:account | account fillTreeReport: aTreeReport.].
+	aTreeReport decrementIndentation.
+	aTreeReport addBalanceOf: self.! !
+!PortfolioStructure methodsFor: 'add to report' stamp: 'LMR 6/1/2023 05:11:44'!
+addBalanceOf: anAccount
+
+	! !
+!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 05:12:17'!
+addBalanceOf: anAccount
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , anAccount balance.! !
+!PortfolioStructure methodsFor: 'add to report' stamp: 'LMR 6/1/2023 05:12:30'!
+addTransactionsOf: anAccount! !
+!TreeReport methodsFor: 'add to report' stamp: 'LMR 6/1/2023 05:13:02'!
+addBalanceOf: anAccount
+
+	self subclassResponsibility ! !
+!TreeReport methodsFor: 'add to report' stamp: 'LMR 6/1/2023 05:13:19'!
+addTransactionsOf: aName
+
+	self subclassResponsibility.! !
+!TreeReport methodsFor: 'nil' stamp: 'LMR 6/1/2023 05:13:42' overrides: 50621952!
+report
+
+	self subclassResponsibility.! !
+!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 05:15:19' prior: 50625129 overrides: 50625142!
+addBalanceOf: anAccount
+
+	| indentation |
+	indentation := ''.
+	indentationLevel timesRepeat: [indentation := indentation , '   '].
+	report add: indentation , 'Balance = ' , anAccount balance asString.! !
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 05:17:31'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 05:17:31'!
+FAILURE!
+!Portfolio methodsFor: 'reports' stamp: 'LMR 6/1/2023 05:18:05' prior: 50625115 overrides: 50624254!
+fillTreeReport: aTreeReport 
+	
+	aTreeReport addNameOf: self.
+	aTreeReport incrementIndentation.
+	accounts do: [:account | account fillTreeReport: aTreeReport.].
+	aTreeReport addBalanceOf: self.
+	aTreeReport decrementIndentation.! !
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 05:18:12'!
+PASSED!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 05:18:15'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 05:18:15'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'LMR 6/1/2023 05:19:36' prior: 50625029 overrides: 50624254!
+fillTreeReport: aTreeReport 
+	
+	aTreeReport addNameOf: self.
+	aTreeReport addTransactionsOf: self.! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 05:19:41'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 05:19:41'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 05:19:41'!
+PASSED!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 05:19:41'!
+PASSED!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 05:19:41'!
+PASSED!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 05:19:41'!
+PASSED!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 05:19:41'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 05:19:41'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'LMR 6/1/2023 05:20:23' prior: 50625199 overrides: 50624254!
+fillTreeReport: aTreeReport 
+	
+	aTreeReport addNameOf: self.
+	aTreeReport incrementIndentation.
+	aTreeReport addTransactionsOf: self.
+	aTreeReport decrementIndentation.! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 05:20:28'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 05:20:29'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 05:20:29'!
+PASSED!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 05:20:29'!
+PASSED!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 05:20:29'!
+PASSED!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 05:20:29'!
+PASSED!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 05:20:29'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 05:20:29'!
+FAILURE!
+!AccountSummary methodsFor: 'add to report' stamp: 'LMR 6/1/2023 05:24:43' prior: 50621262 overrides: 50624065!
+addToReportWithdrawOf: anAmount
+	
+	^report add: 'Extracción por ', anAmount asString
+! !
+!AccountSummary methodsFor: 'add to report' stamp: 'LMR 6/1/2023 05:24:47' prior: 50621254 overrides: 50624048!
+addToReportTransferWithdrawOf: anAmount
+	
+	^report add: 'Salida por transferencia de ', anAmount asString
+! !
+!AccountSummary methodsFor: 'add to report' stamp: 'LMR 6/1/2023 05:24:51' prior: 50621246 overrides: 50624031!
+addToReportTransferDepositOf: anAmount
+	
+	^report add: 'Entrada por transferencia de ', anAmount asString
+! !
+!AccountSummary methodsFor: 'add to report' stamp: 'LMR 6/1/2023 05:24:55' prior: 50621269 overrides: 50624011!
+addToReportDepositOf: anAmount
+	
+	^report add: 'Depósito por ', anAmount asString
+! !
+!ReportsTest methodsFor: 'test' stamp: 'LMR 6/1/2023 05:25:50' prior: 50622091!
+test02AccountWithOneDepositHasItInItsAccountSummary
+
+	| anAccount expectedSummary |
+	anAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	expectedSummary := OrderedCollection with: 'Depósito por 100' with:'Balance = 100'.
+
+	self assert: (AccountSummary of: anAccount) report equals: expectedSummary ! !
+!ReportsTest methodsFor: 'test' stamp: 'LMR 6/1/2023 05:25:56' prior: 50622113!
+test03AccountWithOneWithdrawHasItInItsAccountSummary
+
+	| anAccount expectedSummary |
+	anAccount := ReceptiveAccount new.
+	Withdraw register: 100 on: anAccount.
+	expectedSummary := OrderedCollection with: 'Extracción por 100' with: 'Balance = -100'.
+
+	self assert: (AccountSummary of: anAccount) report equals: expectedSummary ! !
+!ReportsTest methodsFor: 'test' stamp: 'LMR 6/1/2023 05:26:00' prior: 50621962!
+test04AccountWithOneTransferDepositHasItInItsAccountSummary
+
+	| expectedSummary transfereeAccount transfererAccount |
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.
+	Transfer register: 100 from: transfererAccount to: transfereeAccount.
+	expectedSummary := OrderedCollection with: 'Entrada por transferencia de 100' with: 'Balance = 100'.
+
+	self assert: (AccountSummary of: transfereeAccount ) report equals: expectedSummary ! !
+!ReportsTest methodsFor: 'test' stamp: 'LMR 6/1/2023 05:26:06' prior: 50622073!
+test05AccountWithOneTransferWithdrawHasItInItsAccountSummary
+
+	| expectedSummary transfereeAccount transfererAccount |
+	transfererAccount := ReceptiveAccount new.
+	transfereeAccount := ReceptiveAccount new.
+	Transfer register: 100 from: transfererAccount to: transfereeAccount.
+	expectedSummary := OrderedCollection with: 'Salida por transferencia de 100' with: 'Balance = -100'.
+
+	self assert: (AccountSummary of: transfererAccount ) report equals: expectedSummary ! !
+!ReportsTest methodsFor: 'test' stamp: 'LMR 6/1/2023 05:26:18' prior: 50621980!
+test06AccountWithMultipleTransactionsHasThemInItsAccountSummary
+
+	| expectedSummary accountTwo accountOne |
+	accountOne := ReceptiveAccount new.
+	accountTwo := ReceptiveAccount new.
+	Deposit register: 100 on: accountOne.
+	Withdraw register: 10 on: accountOne.
+	Transfer register: 50 from: accountOne to: accountTwo.
+	Transfer register: 30 from: accountTwo to: accountOne.
+	
+	expectedSummary := OrderedCollection new.
+	expectedSummary add: 'Depósito por 100'.
+	expectedSummary add: 'Extracción por 10'.
+	expectedSummary add: 'Salida por transferencia de 50'.
+	expectedSummary add: 'Entrada por transferencia de 30'.
+	expectedSummary add: 'Balance = 70'.
+
+	self assert: (AccountSummary of: accountOne) report equals: expectedSummary ! !
+!ReportsTest methodsFor: 'test' stamp: 'LMR 6/1/2023 05:26:28' prior: 50622033!
+test07PortfolioWithMultipleTransactionsHasThemInItsAccountSummary
+
+	| expectedSummary accountTwo accountOne aPorfolio |
+	accountOne := ReceptiveAccount new.
+	accountTwo := ReceptiveAccount new.
+	Deposit register: 100 on: accountOne.
+	Withdraw register: 50 on: accountOne.
+	Deposit register: 70 on: accountTwo.
+	Withdraw register: 10 on: accountTwo.
+	
+	aPorfolio := Portfolio new.
+	aPorfolio add: accountOne.
+	aPorfolio add: accountTwo.
+	
+	expectedSummary := OrderedCollection new.
+	expectedSummary add: 'Depósito por 100'.
+	expectedSummary add: 'Extracción por 50'.
+	expectedSummary add: 'Depósito por 70'.
+	expectedSummary add: 'Extracción por 10'.
+	expectedSummary add: 'Balance = 110'.
+
+	self assert: (AccountSummary of: aPorfolio) report equals: expectedSummary ! !
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'LMR 6/1/2023 05:26:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'LMR 6/1/2023 05:26:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'LMR 6/1/2023 05:26:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'LMR 6/1/2023 05:26:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'LMR 6/1/2023 05:26:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'LMR 6/1/2023 05:26:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'LMR 6/1/2023 05:26:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'LMR 6/1/2023 05:26:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'LMR 6/1/2023 05:26:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'LMR 6/1/2023 05:26:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'LMR 6/1/2023 05:26:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'LMR 6/1/2023 05:26:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'LMR 6/1/2023 05:26:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'LMR 6/1/2023 05:26:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'LMR 6/1/2023 05:26:39'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'LMR 6/1/2023 05:26:40'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'LMR 6/1/2023 05:26:40'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'LMR 6/1/2023 05:26:40'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'LMR 6/1/2023 05:26:40'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'LMR 6/1/2023 05:26:40'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'LMR 6/1/2023 05:26:40'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'LMR 6/1/2023 05:26:40'!
+PASSED!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'LMR 6/1/2023 05:26:40'!
+PASSED!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'LMR 6/1/2023 05:26:40'!
+PASSED!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'LMR 6/1/2023 05:26:40'!
+PASSED!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'LMR 6/1/2023 05:26:40'!
+PASSED!
+
+!testRun: #ReportsTest #test05AccountWithOneTransferWithdrawHasItInItsAccountSummary stamp: 'LMR 6/1/2023 05:26:40'!
+PASSED!
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'LMR 6/1/2023 05:26:41'!
+PASSED!
+
+!testRun: #ReportsTest #test07PortfolioWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'LMR 6/1/2023 05:26:41'!
+PASSED!
+
+!testRun: #ReportsTest #test08NetTransferOfANewAccountIs0 stamp: 'LMR 6/1/2023 05:26:41'!
+PASSED!
+
+!testRun: #ReportsTest #test09AnAccountWithATransferHasItInItsNetTransfer stamp: 'LMR 6/1/2023 05:26:41'!
+PASSED!
+
+!testRun: #ReportsTest #test10AnAccountWithMultipleTransactionsHasACorrectNetTransfer stamp: 'LMR 6/1/2023 05:26:41'!
+PASSED!
+
+!testRun: #ReportsTest #test11APortfolioWithMultipleTransactionsHasACorrectNetTransfer stamp: 'LMR 6/1/2023 05:26:41'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'LMR 6/1/2023 05:26:41'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth stamp: 'LMR 6/1/2023 05:26:41'!
+PASSED!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'LMR 6/1/2023 05:26:41'!
+PASSED!
+
+!testRun: #TransferTest #test04WithdrawOfATransferKnowsItsTransfer stamp: 'LMR 6/1/2023 05:26:41'!
+PASSED!
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 05:26:41'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 05:26:41'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 05:26:42'!
+PASSED!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 05:26:42'!
+PASSED!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 05:26:42'!
+PASSED!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 05:26:42'!
+PASSED!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 05:26:42'!
+FAILURE!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 05:26:42'!
+FAILURE!
+!TreeReportsTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 05:27:32' prior: 50624737!
+test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport
+
+	| aPortfolio expectedReport myAccount |
+	myAccount := ReceptiveAccount named: 'Cuenta Mia'.
+	Deposit register: 100 on: myAccount.
+	Withdraw register: 50 on: myAccount.
+	aPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount.
+
+	expectedReport := OrderedCollection with: 'Portfolio de la familia' with: '   Cuenta Mia' with: '      Depósito por 100' with: '      Extracción por 50' with: '      Balance = 50' with: '   Balance = 50'.
+
+	self assert: (TransactionTreeReport of: aPortfolio) report equals: expectedReport. ! !
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 05:27:34'!
+PASSED!
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 05:27:34'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 05:27:34'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 05:27:34'!
+PASSED!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 05:27:34'!
+PASSED!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 05:27:34'!
+PASSED!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 05:27:34'!
+PASSED!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 05:27:34'!
+PASSED!
+!Portfolio methodsFor: 'reports' stamp: 'LMR 6/1/2023 05:28:14' prior: 50625175 overrides: 50624254!
+fillTreeReport: aTreeReport 
+	
+	aTreeReport addNameOf: self.
+	aTreeReport incrementIndentation.
+	accounts do: [:account | account fillTreeReport: aTreeReport.].
+	aTreeReport addBalanceOf: self.! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 05:28:20'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 05:28:20'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 05:28:20'!
+PASSED!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 05:28:20'!
+PASSED!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 05:28:20'!
+PASSED!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 05:28:20'!
+PASSED!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 05:28:20'!
+PASSED!
+!TreeReportsTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 05:29:56'!
+test08PortfolioTransactionTreeReportWorksRecursively
+
+	! !
+!TreeReportsTest methodsFor: 'tests' stamp: 'LMR 6/1/2023 05:40:04' prior: 50625689!
+test08PortfolioTransactionTreeReportWorksRecursively
+
+	| familyPortfolio myAccount expectedReport angiesAccount childrenPortfolio johnsAccount anotherAccount |
+	johnsAccount := ReceptiveAccount named: 'Cuenta de Juan'.
+	angiesAccount := ReceptiveAccount named: 'Cuenta de Angeles'.
+	childrenPortfolio := Portfolio named: 'Portfolio de hijos' with: johnsAccount with: angiesAccount.
+	myAccount := ReceptiveAccount named: 'Cuenta Mia'.
+	familyPortfolio := Portfolio named: 'Portfolio de la familia' with: myAccount with: childrenPortfolio.
+	anotherAccount := ReceptiveAccount new.
+
+	Deposit register: 100 on: myAccount.
+	Withdraw register: 20 on: myAccount.
+	Deposit register: 30 on: johnsAccount.
+	Withdraw register: 15 on: johnsAccount.
+	Transfer register: 10 from: angiesAccount to: anotherAccount.
+
+	expectedReport := OrderedCollection new.
+	expectedReport add: 'Portfolio de la familia'.
+	expectedReport add: '   Cuenta Mia'.
+	expectedReport add: '      Depósito por 100'.
+	expectedReport add: '      Extracción por 20'.
+	expectedReport add: '      Balance = 80'.
+	expectedReport add: '   Portfolio de hijos'.
+	expectedReport add: '      Cuenta de Juan'.
+	expectedReport add: '         Depósito por 30'.
+	expectedReport add: '         Extracción por 15'.
+	expectedReport add: '         Balance = 15'.
+	expectedReport add: '      Cuenta de Angeles'.
+	expectedReport add: '         Salida por transferencia de 10'.
+	expectedReport add: '         Balance = -10'.
+	expectedReport add: '      Balance = 5'.
+	expectedReport add: '   Balance = 85'.
+	
+	self assert: (TransactionTreeReport of: familyPortfolio) report equals: expectedReport. ! !
+
+!testRun: #TreeReportsTest #test08PortfolioTransactionTreeReportWorksRecursively stamp: 'LMR 6/1/2023 05:40:07'!
+FAILURE!
+!Portfolio methodsFor: 'reports' stamp: 'LMR 6/1/2023 05:40:32' prior: 50625652 overrides: 50624254!
+fillTreeReport: aTreeReport 
+	
+	aTreeReport addNameOf: self.
+	aTreeReport incrementIndentation.
+	accounts do: [:account | account fillTreeReport: aTreeReport.].
+	aTreeReport addBalanceOf: self.
+	aTreeReport decrementIndentation.! !
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 05:40:36'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 05:40:36'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 05:40:36'!
+PASSED!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 05:40:36'!
+PASSED!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 05:40:36'!
+PASSED!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 05:40:36'!
+PASSED!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 05:40:36'!
+PASSED!
+
+!testRun: #TreeReportsTest #test08PortfolioTransactionTreeReportWorksRecursively stamp: 'LMR 6/1/2023 05:40:36'!
+PASSED!
+!TransactionTreeReport methodsFor: 'report' stamp: 'LMR 6/1/2023 05:42:14' prior: 50625065 overrides: 50625147!
+addTransactionsOf: anAccount
+
+	| indentation indentedSummary |
+	indentation := ''.
+	indentationLevel+1 timesRepeat: [indentation := indentation , '   '].
+	indentedSummary := (AccountSummary of: anAccount) report collect: [:reportLine | indentation , reportLine].
+	report addAll: indentedSummary.! !
+!ReceptiveAccount methodsFor: 'reports' stamp: 'LMR 6/1/2023 05:42:24' prior: 50625239 overrides: 50624254!
+fillTreeReport: aTreeReport 
+	
+	aTreeReport addNameOf: self.
+	aTreeReport addTransactionsOf: self.! !
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'LMR 6/1/2023 05:42:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'LMR 6/1/2023 05:42:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'LMR 6/1/2023 05:42:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'LMR 6/1/2023 05:42:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'LMR 6/1/2023 05:42:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'LMR 6/1/2023 05:42:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'LMR 6/1/2023 05:42:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'LMR 6/1/2023 05:42:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'LMR 6/1/2023 05:42:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'LMR 6/1/2023 05:42:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'LMR 6/1/2023 05:42:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'LMR 6/1/2023 05:42:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'LMR 6/1/2023 05:42:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'LMR 6/1/2023 05:42:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'LMR 6/1/2023 05:42:36'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'LMR 6/1/2023 05:42:36'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'LMR 6/1/2023 05:42:36'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'LMR 6/1/2023 05:42:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'LMR 6/1/2023 05:42:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'LMR 6/1/2023 05:42:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'LMR 6/1/2023 05:42:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'LMR 6/1/2023 05:42:37'!
+PASSED!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'LMR 6/1/2023 05:42:37'!
+PASSED!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'LMR 6/1/2023 05:42:37'!
+PASSED!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'LMR 6/1/2023 05:42:37'!
+PASSED!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'LMR 6/1/2023 05:42:37'!
+PASSED!
+
+!testRun: #ReportsTest #test05AccountWithOneTransferWithdrawHasItInItsAccountSummary stamp: 'LMR 6/1/2023 05:42:37'!
+PASSED!
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'LMR 6/1/2023 05:42:37'!
+PASSED!
+
+!testRun: #ReportsTest #test07PortfolioWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'LMR 6/1/2023 05:42:38'!
+PASSED!
+
+!testRun: #ReportsTest #test08NetTransferOfANewAccountIs0 stamp: 'LMR 6/1/2023 05:42:38'!
+PASSED!
+
+!testRun: #ReportsTest #test09AnAccountWithATransferHasItInItsNetTransfer stamp: 'LMR 6/1/2023 05:42:38'!
+PASSED!
+
+!testRun: #ReportsTest #test10AnAccountWithMultipleTransactionsHasACorrectNetTransfer stamp: 'LMR 6/1/2023 05:42:38'!
+PASSED!
+
+!testRun: #ReportsTest #test11APortfolioWithMultipleTransactionsHasACorrectNetTransfer stamp: 'LMR 6/1/2023 05:42:38'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'LMR 6/1/2023 05:42:38'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth stamp: 'LMR 6/1/2023 05:42:38'!
+PASSED!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'LMR 6/1/2023 05:42:38'!
+PASSED!
+
+!testRun: #TransferTest #test04WithdrawOfATransferKnowsItsTransfer stamp: 'LMR 6/1/2023 05:42:38'!
+PASSED!
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 05:42:38'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 05:42:38'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 05:42:38'!
+PASSED!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 05:42:39'!
+PASSED!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 05:42:39'!
+PASSED!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 05:42:39'!
+PASSED!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 05:42:39'!
+PASSED!
+
+!testRun: #TreeReportsTest #test08PortfolioTransactionTreeReportWorksRecursively stamp: 'LMR 6/1/2023 05:42:39'!
+PASSED!
+
+----SNAPSHOT----(1 June 2023 05:42:43) CuisUniversity-5799.image priorSource: 9372535!
+!Behavior method!
+fillTreeReport: aTreeReport
+	#_coverageTracker4445906_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker4445906_
+		cover: (33 to: 43)
+		declaredAt: (17 to: 27)
+		by: aTreeReport.
+	#_coverageTracker4445906_
+		coverAll:
+			{45 to: 54}
+		evaluating: [
+			receiver1 addNameOf:
+				(#_coverageTracker4445906_
+					coverAll:
+						{56 to: 59}
+					byLiteralOrPseudoVariable: self) ]
+		thatSends: #addNameOf:
+		to: receiver1 ] value.
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker4445906_
+		cover: (63 to: 73)
+		declaredAt: (17 to: 27)
+		by: aTreeReport.
+	#_coverageTracker4445906_
+		coverAll:
+			{75 to: 92}
+		evaluating: [
+			receiver2 addTransactionsOf:
+				(#_coverageTracker4445906_
+					coverAll:
+						{94 to: 97}
+					byLiteralOrPseudoVariable: self) ]
+		thatSends: #addTransactionsOf:
+		to: receiver2 ] value.! !
+!Behavior method!
+fillReport: aReport
+	#_coverageTracker4446267_ markAsExecuted.
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker4446267_
+		cover: (24 to: 30)
+		declaredAt: (13 to: 19)
+		by: aReport.
+	#_coverageTracker4446267_
+		coverAll:
+			{32 to: 61}
+		evaluating: [
+			receiver2 addToReportTransferWithdrawOf:
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker4446267_
+					coverAll:
+						{63 to: 66}
+					byLiteralOrPseudoVariable: self.
+				#_coverageTracker4446267_
+					coverAll:
+						{68 to: 72}
+					evaluating: [ receiver1 value ]
+					thatSends: #value
+					to: receiver1 ] value ]
+		thatSends: #addToReportTransferWithdrawOf:
+		to: receiver2 ] value.! !
+!Behavior method!
+value
+	#_coverageTracker4446328_ markAsExecuted.
+	^ #_coverageTracker4446328_
+		cover: (11 to: 15)
+		declaredAt: (11 to: 15)
+		by: value.! !
+!Behavior method!
+report
+	#_coverageTracker4446380_ markAsExecuted.
+	#_coverageTracker4446380_
+		cover: (11 to: 16)
+		declaredAt: (11 to: 16)
+		by:
+			(report _ [ | receiver1 |
+			receiver1 _ #_coverageTracker4446380_
+				coverAll:
+					{21 to: 37}
+				by: OrderedCollection.
+			#_coverageTracker4446380_
+				coverAll:
+					{39 to: 41}
+				evaluating: [ receiver1 new ]
+				thatSends: #new
+				to: receiver1 ] value).
+	#_coverageTracker4446380_
+		cover: (45 to: 60)
+		declaredAt: (45 to: 60)
+		by:
+			(indentationLevel _ #_coverageTracker4446380_
+				coverAll:
+					{65 to: 65}
+				byLiteralOrPseudoVariable: 0).
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker4446380_
+		cover: (69 to: 75)
+		declaredAt: (69 to: 75)
+		by: account.
+	#_coverageTracker4446380_
+		coverAll:
+			{77 to: 91}
+		evaluating: [
+			receiver2 fillTreeReport:
+				(#_coverageTracker4446380_
+					coverAll:
+						{93 to: 96}
+					byLiteralOrPseudoVariable: self) ]
+		thatSends: #fillTreeReport:
+		to: receiver2 ] value.
+	^ #_coverageTracker4446380_
+		cover: (101 to: 106)
+		declaredAt: (11 to: 16)
+		by: report.! !
+!Behavior method!
+with: anAccount
+	#_coverageTracker4446429_ markAsExecuted.
+	^ [ | cascadeReceiver |
+	cascadeReceiver _ [ | receiver1 |
+	receiver1 _ #_coverageTracker4446429_
+		coverAll:
+			{20 to: 23}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker4446429_
+		coverAll:
+			{25 to: 27}
+		evaluating: [ receiver1 new ]
+		thatSends: #new
+		to: receiver1 ] value.
+	[ | receiver2 |
+	receiver2 _ cascadeReceiver.
+	#_coverageTracker4446429_
+		coverAll:
+			{32 to: 35}
+		evaluating: [
+			receiver2 add:
+				(#_coverageTracker4446429_
+					cover: (37 to: 45)
+					declaredAt: (7 to: 15)
+					by: anAccount) ]
+		thatSends: #add:
+		to: receiver2 ] value.
+	[ | receiver3 |
+	receiver3 _ cascadeReceiver.
+	#_coverageTracker4446429_
+		coverAll:
+			{50 to: 57}
+		evaluating: [ receiver3 yourself ]
+		thatSends: #yourself
+		to: receiver3 ] value ] value.! !
+!Behavior method!
+initializeOn: anAccount fromTransfer: aTransfer
+	#_coverageTracker4446492_ markAsExecuted.
+	#_coverageTracker4446492_
+		cover: (51 to: 60)
+		declaredAt: (51 to: 60)
+		by:
+			(myTransfer _ #_coverageTracker4446492_
+				cover: (65 to: 73)
+				declaredAt: (39 to: 47)
+				by: aTransfer).
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker4446492_
+		cover: (77 to: 85)
+		declaredAt: (15 to: 23)
+		by: anAccount.
+	#_coverageTracker4446492_
+		coverAll:
+			{87 to: 95}
+		evaluating: [
+			receiver1 register:
+				(#_coverageTracker4446492_
+					coverAll:
+						{97 to: 100}
+					byLiteralOrPseudoVariable: self) ]
+		thatSends: #register:
+		to: receiver1 ] value.! !
+!Behavior method!
+initializeOf: anAccount
+	#_coverageTracker4446526_ markAsExecuted.
+	#_coverageTracker4446526_
+		cover: (29 to: 35)
+		declaredAt: (29 to: 35)
+		by:
+			(account _ #_coverageTracker4446526_
+				cover: (40 to: 48)
+				declaredAt: (15 to: 23)
+				by: anAccount).! !
+!Behavior method!
+addBalanceOf: anAccount
+	#_coverageTracker4446571_ markAsExecuted.! !
+!Behavior method!
+report
+	#_coverageTracker4446614_ markAsExecuted.
+	#_coverageTracker4446614_
+		cover: (10 to: 15)
+		declaredAt: (10 to: 15)
+		by:
+			(report _ #_coverageTracker4446614_
+				coverAll:
+					{20 to: 20}
+				byLiteralOrPseudoVariable: 0).
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker4446614_
+		cover: (24 to: 30)
+		declaredAt: (24 to: 30)
+		by: account.
+	#_coverageTracker4446614_
+		coverAll:
+			{32 to: 42}
+		evaluating: [
+			receiver1 fillReport:
+				(#_coverageTracker4446614_
+					coverAll:
+						{44 to: 47}
+					byLiteralOrPseudoVariable: self) ]
+		thatSends: #fillReport:
+		to: receiver1 ] value.
+	^ #_coverageTracker4446614_
+		cover: (52 to: 57)
+		declaredAt: (10 to: 15)
+		by: report.! !
+!Behavior method!
+anyRootParentIsComposedBy: accountToAdd
+	#_coverageTracker4446665_ markAsExecuted.
+	^ [ | receiver3 |
+	receiver3 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker4446665_
+		coverAll:
+			{44 to: 47}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker4446665_
+		coverAll:
+			{49 to: 59}
+		evaluating: [ receiver1 rootParents ]
+		thatSends: #rootParents
+		to: receiver1 ] value.
+	#_coverageTracker4446665_
+		coverAll:
+			{61 to: 71}
+		evaluating: [
+			receiver3 anySatisfy: [ :aParent |
+				[ | receiver2 |
+				receiver2 _ #_coverageTracker4446665_
+					cover: (86 to: 92)
+					declaredAt: (76 to: 82)
+					by: aParent.
+				#_coverageTracker4446665_
+					coverAll:
+						{94 to: 106}
+					evaluating: [
+						receiver2 isComposedBy:
+							(#_coverageTracker4446665_
+								cover: (108 to: 119)
+								declaredAt: (28 to: 39)
+								by: accountToAdd) ]
+					thatSends: #isComposedBy:
+					to: receiver2 ] value ]]
+		thatSends: #anySatisfy:
+		to: receiver3 ] value.! !
+!Behavior method!
+fillReport: aReport
+	#_coverageTracker4446716_ markAsExecuted.
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker4446716_
+		cover: (23 to: 29)
+		declaredAt: (13 to: 19)
+		by: aReport.
+	#_coverageTracker4446716_
+		coverAll:
+			{31 to: 52}
+		evaluating: [
+			receiver2 addToReportWithdrawOf:
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker4446716_
+					coverAll:
+						{54 to: 57}
+					byLiteralOrPseudoVariable: self.
+				#_coverageTracker4446716_
+					coverAll:
+						{59 to: 63}
+					evaluating: [ receiver1 value ]
+					thatSends: #value
+					to: receiver1 ] value ]
+		thatSends: #addToReportWithdrawOf:
+		to: receiver2 ] value.! !
+!Behavior method!
+fillReport: aReport
+	#_coverageTracker4446757_ markAsExecuted.
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker4446757_
+		cover: (25 to: 32)
+		declaredAt: (25 to: 32)
+		by: accounts.
+	#_coverageTracker4446757_
+		coverAll:
+			{34 to: 36}
+		evaluating: [
+			receiver2 do: [ :anAccount |
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker4446757_
+					cover: (51 to: 59)
+					declaredAt: (40 to: 48)
+					by: anAccount.
+				#_coverageTracker4446757_
+					coverAll:
+						{61 to: 71}
+					evaluating: [
+						receiver1 fillReport:
+							(#_coverageTracker4446757_
+								cover: (73 to: 79)
+								declaredAt: (13 to: 19)
+								by: aReport) ]
+					thatSends: #fillReport:
+					to: receiver1 ] value ]]
+		thatSends: #do:
+		to: receiver2 ] value.! !
+!Behavior method!
+addToReportBalanceOf: anAmount
+	#_coverageTracker4446805_ markAsExecuted.
+	^ [ | receiver3 |
+	receiver3 _ #_coverageTracker4446805_
+		cover: (36 to: 41)
+		declaredAt: (36 to: 41)
+		by: report.
+	#_coverageTracker4446805_
+		coverAll:
+			{43 to: 46}
+		evaluating: [
+			receiver3 add:
+				[ | receiver2 |
+				receiver2 _ #_coverageTracker4446805_
+					coverAll:
+						{48 to: 59}
+					byLiteralOrPseudoVariable: 'Balance = '.
+				#_coverageTracker4446805_
+					coverAll:
+						{60 to: 60}
+					evaluating: [
+						receiver2 ,
+							[ | receiver1 |
+							receiver1 _ #_coverageTracker4446805_
+								cover: (62 to: 69)
+								declaredAt: (23 to: 30)
+								by: anAmount.
+							#_coverageTracker4446805_
+								coverAll:
+									{71 to: 78}
+								evaluating: [ receiver1 asString ]
+								thatSends: #asString
+								to: receiver1 ] value ]
+					thatSends: #,
+					to: receiver2 ] value ]
+		thatSends: #add:
+		to: receiver3 ] value.! !
+!Behavior method!
+fillReport: aReport
+	#_coverageTracker4446848_ markAsExecuted.
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker4446848_
+		cover: (23 to: 34)
+		declaredAt: (23 to: 34)
+		by: transactions.
+	#_coverageTracker4446848_
+		coverAll:
+			{36 to: 38}
+		evaluating: [
+			receiver2 do: [ :transaction |
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker4446848_
+					cover: (55 to: 65)
+					declaredAt: (42 to: 52)
+					by: transaction.
+				#_coverageTracker4446848_
+					coverAll:
+						{67 to: 77}
+					evaluating: [
+						receiver1 fillReport:
+							(#_coverageTracker4446848_
+								cover: (79 to: 85)
+								declaredAt: (13 to: 19)
+								by: aReport) ]
+					thatSends: #fillReport:
+					to: receiver1 ] value ]]
+		thatSends: #do:
+		to: receiver2 ] value.! !
+!Behavior method!
+incrementIndentation
+	#_coverageTracker4446900_ markAsExecuted.
+	#_coverageTracker4446900_
+		cover: (44 to: 59)
+		declaredAt: (24 to: 39)
+		by:
+			(indentationLevel _ [ | receiver1 |
+			receiver1 _ #_coverageTracker4446900_
+				cover: (24 to: 39)
+				declaredAt: (24 to: 39)
+				by: indentationLevel.
+			#_coverageTracker4446900_
+				coverAll:
+					{61 to: 61}
+				evaluating: [
+					receiver1 +
+						(#_coverageTracker4446900_
+							coverAll:
+								{63 to: 63}
+							byLiteralOrPseudoVariable: 1) ]
+				thatSends: #+
+				to: receiver1 ] value).! !
+!Behavior method!
+initializeOn: anAccount fromTransfer: aTransfer
+	#_coverageTracker4446948_ markAsExecuted.
+	#_coverageTracker4446948_
+		cover: (51 to: 60)
+		declaredAt: (51 to: 60)
+		by:
+			(myTransfer _ #_coverageTracker4446948_
+				cover: (65 to: 73)
+				declaredAt: (39 to: 47)
+				by: aTransfer).
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker4446948_
+		cover: (77 to: 85)
+		declaredAt: (15 to: 23)
+		by: anAccount.
+	#_coverageTracker4446948_
+		coverAll:
+			{87 to: 95}
+		evaluating: [
+			receiver1 register:
+				(#_coverageTracker4446948_
+					coverAll:
+						{97 to: 100}
+					byLiteralOrPseudoVariable: self) ]
+		thatSends: #register:
+		to: receiver1 ] value.! !
+!Behavior method!
+addToReportTransferWithdrawOf: anAmount
+	#_coverageTracker4446989_ markAsExecuted.
+	#_coverageTracker4446989_
+		cover: (54 to: 59)
+		declaredAt: (44 to: 49)
+		by:
+			(report _ [ | receiver1 |
+			receiver1 _ #_coverageTracker4446989_
+				cover: (44 to: 49)
+				declaredAt: (44 to: 49)
+				by: report.
+			#_coverageTracker4446989_
+				coverAll:
+					{61 to: 61}
+				evaluating: [
+					receiver1 -
+						(#_coverageTracker4446989_
+							cover: (63 to: 70)
+							declaredAt: (32 to: 39)
+							by: anAmount) ]
+				thatSends: #-
+				to: receiver1 ] value).! !
+!Behavior method!
+isComposedBy: anAccount
+	#_coverageTracker4447045_ markAsExecuted.
+	^ [ | receiver6 |
+	receiver6 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker4447045_
+		coverAll:
+			{29 to: 32}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker4447045_
+		coverAll:
+			{34 to: 34}
+		evaluating: [
+			receiver1 =
+				(#_coverageTracker4447045_
+					cover: (36 to: 44)
+					declaredAt: (15 to: 23)
+					by: anAccount) ]
+		thatSends: #=
+		to: receiver1 ] value.
+	#_coverageTracker4447045_
+		coverAll:
+			{46 to: 48}
+		evaluating: [
+			receiver6 or: [
+				[ | receiver5 |
+				receiver5 _ #_coverageTracker4447045_
+					cover: (52 to: 59)
+					declaredAt: (52 to: 59)
+					by: accounts.
+				#_coverageTracker4447045_
+					coverAll:
+						{61 to: 71}
+					evaluating: [
+						receiver5 anySatisfy: [ :composedAccount |
+							[ | receiver4 |
+							receiver4 _ [ | receiver2 |
+							receiver2 _ #_coverageTracker4447045_
+								cover: (95 to: 109)
+								declaredAt: (76 to: 90)
+								by: composedAccount.
+							#_coverageTracker4447045_
+								coverAll:
+									{111 to: 123}
+								evaluating: [
+									receiver2 isComposedBy:
+										(#_coverageTracker4447045_
+											cover: (125 to: 133)
+											declaredAt: (15 to: 23)
+											by: anAccount) ]
+								thatSends: #isComposedBy:
+								to: receiver2 ] value.
+							#_coverageTracker4447045_
+								coverAll:
+									{136 to: 138}
+								evaluating: [
+									receiver4 or: [
+										[ | receiver3 |
+										receiver3 _ #_coverageTracker4447045_
+											cover: (142 to: 150)
+											declaredAt: (15 to: 23)
+											by: anAccount.
+										#_coverageTracker4447045_
+											coverAll:
+												{152 to: 164}
+											evaluating: [
+												receiver3 isComposedBy:
+													(#_coverageTracker4447045_
+														cover: (166 to: 180)
+														declaredAt: (76 to: 90)
+														by: composedAccount) ]
+											thatSends: #isComposedBy:
+											to: receiver3 ] value ]]
+								thatSends: #or:
+								to: receiver4 ] value ]]
+					thatSends: #anySatisfy:
+					to: receiver5 ] value ]]
+		thatSends: #or:
+		to: receiver6 ] value.! !
+!Behavior method!
+initializeNamed: aName with: anAccount with: anotherAccount
+	#_coverageTracker4447081_ markAsExecuted.
+	#_coverageTracker4447081_
+		cover: (65 to: 68)
+		declaredAt: (65 to: 68)
+		by:
+			(name _ #_coverageTracker4447081_
+				cover: (73 to: 77)
+				declaredAt: (18 to: 22)
+				by: aName).
+	#_coverageTracker4447081_
+		cover: (81 to: 88)
+		declaredAt: (81 to: 88)
+		by:
+			(accounts _ [ | receiver1 |
+			receiver1 _ #_coverageTracker4447081_
+				coverAll:
+					{93 to: 109}
+				by: OrderedCollection.
+			#_coverageTracker4447081_
+				coverAll:
+					{111 to: 115. 127 to: 131}
+				evaluating: [
+					receiver1
+						with:
+							(#_coverageTracker4447081_
+								cover: (117 to: 125)
+								declaredAt: (30 to: 38)
+								by: anAccount)
+						with:
+							(#_coverageTracker4447081_
+								cover: (133 to: 146)
+								declaredAt: (46 to: 59)
+								by: anotherAccount) ]
+				thatSends: #with:with:
+				to: receiver1 ] value).
+	#_coverageTracker4447081_
+		cover: (150 to: 156)
+		declaredAt: (150 to: 156)
+		by:
+			(parents _ [ | receiver2 |
+			receiver2 _ #_coverageTracker4447081_
+				coverAll:
+					{161 to: 177}
+				by: OrderedCollection.
+			#_coverageTracker4447081_
+				coverAll:
+					{179 to: 181}
+				evaluating: [ receiver2 new ]
+				thatSends: #new
+				to: receiver2 ] value).! !
+!Behavior method!
+initializeNamed: aName
+	#_coverageTracker4447146_ markAsExecuted.
+	#_coverageTracker4447146_
+		cover: (28 to: 31)
+		declaredAt: (28 to: 31)
+		by:
+			(name _ #_coverageTracker4447146_
+				cover: (36 to: 40)
+				declaredAt: (18 to: 22)
+				by: aName).
+	#_coverageTracker4447146_
+		cover: (44 to: 51)
+		declaredAt: (44 to: 51)
+		by:
+			(accounts _ [ | receiver1 |
+			receiver1 _ #_coverageTracker4447146_
+				coverAll:
+					{56 to: 72}
+				by: OrderedCollection.
+			#_coverageTracker4447146_
+				coverAll:
+					{74 to: 76}
+				evaluating: [ receiver1 new ]
+				thatSends: #new
+				to: receiver1 ] value).
+	#_coverageTracker4447146_
+		cover: (80 to: 86)
+		declaredAt: (80 to: 86)
+		by:
+			(parents _ [ | receiver2 |
+			receiver2 _ #_coverageTracker4447146_
+				coverAll:
+					{91 to: 107}
+				by: OrderedCollection.
+			#_coverageTracker4447146_
+				coverAll:
+					{109 to: 111}
+				evaluating: [ receiver2 new ]
+				thatSends: #new
+				to: receiver2 ] value).! !
+!Behavior method!
+value
+	#_coverageTracker4447189_ markAsExecuted.
+	^ [ | receiver1 |
+	receiver1 _ #_coverageTracker4447189_
+		cover: (11 to: 20)
+		declaredAt: (11 to: 20)
+		by: myTransfer.
+	#_coverageTracker4447189_
+		coverAll:
+			{22 to: 26}
+		evaluating: [ receiver1 value ]
+		thatSends: #value
+		to: receiver1 ] value.! !
+!Behavior method!
+withdraw
+	#_coverageTracker4447224_ markAsExecuted.
+	^ #_coverageTracker4447224_
+		cover: (13 to: 20)
+		declaredAt: (13 to: 20)
+		by: withdraw.! !
+!Behavior method!
+error: aRenameMe1
+	#_coverageTracker4447265_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker4447265_
+		coverAll:
+			{21 to: 24}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker4447265_
+		coverAll:
+			{26 to: 44}
+		evaluating: [ receiver1 shouldBeImplemented ]
+		thatSends: #shouldBeImplemented
+		to: receiver1 ] value.! !
+!Behavior method!
+initializeFor: aValue
+	#_coverageTracker4447300_ markAsExecuted.
+	#_coverageTracker4447300_
+		cover: (25 to: 29)
+		declaredAt: (25 to: 29)
+		by:
+			(value _ #_coverageTracker4447300_
+				cover: (34 to: 39)
+				declaredAt: (16 to: 21)
+				by: aValue).! !
+!Behavior method!
+value
+	#_coverageTracker4447343_ markAsExecuted.
+	^ [ | receiver1 |
+	receiver1 _ #_coverageTracker4447343_
+		cover: (11 to: 20)
+		declaredAt: (11 to: 20)
+		by: myTransfer.
+	#_coverageTracker4447343_
+		coverAll:
+			{22 to: 26}
+		evaluating: [ receiver1 value ]
+		thatSends: #value
+		to: receiver1 ] value.! !
+!Behavior method!
+addNameOf: anAccount
+	| indentation |
+	#_coverageTracker4447380_ markAsExecuted.
+	#_coverageTracker4447380_
+		cover: (41 to: 51)
+		declaredAt: (26 to: 36)
+		by:
+			(indentation _ #_coverageTracker4447380_
+				coverAll:
+					{56 to: 57}
+				byLiteralOrPseudoVariable: '').
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker4447380_
+		cover: (61 to: 76)
+		declaredAt: (61 to: 76)
+		by: indentationLevel.
+	#_coverageTracker4447380_
+		coverAll:
+			{78 to: 89}
+		evaluating: [
+			receiver2 timesRepeat: [
+				#_coverageTracker4447380_
+					cover: (107 to: 117)
+					declaredAt: (26 to: 36)
+					by:
+						(indentation _ [ | receiver1 |
+						receiver1 _ #_coverageTracker4447380_
+							cover: (92 to: 102)
+							declaredAt: (26 to: 36)
+							by: indentation.
+						#_coverageTracker4447380_
+							coverAll:
+								{119 to: 119}
+							evaluating: [
+								receiver1 ,
+									(#_coverageTracker4447380_
+										coverAll:
+											{121 to: 125}
+										byLiteralOrPseudoVariable: '   ') ]
+							thatSends: #,
+							to: receiver1 ] value) ]]
+		thatSends: #timesRepeat:
+		to: receiver2 ] value.
+	[ | receiver5 |
+	receiver5 _ #_coverageTracker4447380_
+		cover: (130 to: 135)
+		declaredAt: (130 to: 135)
+		by: report.
+	#_coverageTracker4447380_
+		coverAll:
+			{137 to: 140}
+		evaluating: [
+			receiver5 add:
+				[ | receiver4 |
+				receiver4 _ #_coverageTracker4447380_
+					cover: (142 to: 152)
+					declaredAt: (26 to: 36)
+					by: indentation.
+				#_coverageTracker4447380_
+					coverAll:
+						{154 to: 154}
+					evaluating: [
+						receiver4 ,
+							[ | receiver3 |
+							receiver3 _ #_coverageTracker4447380_
+								cover: (156 to: 164)
+								declaredAt: (12 to: 20)
+								by: anAccount.
+							#_coverageTracker4447380_
+								coverAll:
+									{166 to: 169}
+								evaluating: [ receiver3 name ]
+								thatSends: #name
+								to: receiver3 ] value ]
+					thatSends: #,
+					to: receiver4 ] value ]
+		thatSends: #add:
+		to: receiver5 ] value.! !
+!Behavior method!
+transfer
+	#_coverageTracker4447433_ markAsExecuted.
+	^ #_coverageTracker4447433_
+		cover: (13 to: 22)
+		declaredAt: (13 to: 22)
+		by: myTransfer.! !
+!Behavior method!
+registerOn: anAccount fromTransfer: aTransfer
+	#_coverageTracker4447475_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker4447475_
+		coverAll:
+			{51 to: 54}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker4447475_
+		coverAll:
+			{56 to: 58}
+		evaluating: [ receiver1 new ]
+		thatSends: #new
+		to: receiver1 ] value.
+	#_coverageTracker4447475_
+		coverAll:
+			{60 to: 72. 84 to: 96}
+		evaluating: [
+			receiver2
+				initializeOn:
+					(#_coverageTracker4447475_
+						cover: (74 to: 82)
+						declaredAt: (13 to: 21)
+						by: anAccount)
+				fromTransfer:
+					(#_coverageTracker4447475_
+						cover: (98 to: 106)
+						declaredAt: (37 to: 45)
+						by: aTransfer) ]
+		thatSends: #initializeOn:fromTransfer:
+		to: receiver2 ] value.! !
+!Behavior method!
+accountsIncludes: anAccount
+	#_coverageTracker4447523_ markAsExecuted.
+	^ [ | receiver1 |
+	receiver1 _ #_coverageTracker4447523_
+		cover: (32 to: 39)
+		declaredAt: (32 to: 39)
+		by: accounts.
+	#_coverageTracker4447523_
+		coverAll:
+			{41 to: 49}
+		evaluating: [
+			receiver1 includes:
+				(#_coverageTracker4447523_
+					cover: (51 to: 59)
+					declaredAt: (19 to: 27)
+					by: anAccount) ]
+		thatSends: #includes:
+		to: receiver1 ] value.! !
+!Behavior method!
+addedTo: aPortfolio
+	#_coverageTracker4447565_ markAsExecuted.! !
+!Behavior method!
+addTransactionsTo: aCollectionOfTransactions
+	#_coverageTracker4447617_ markAsExecuted.
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker4447617_
+		cover: (48 to: 55)
+		declaredAt: (48 to: 55)
+		by: accounts.
+	#_coverageTracker4447617_
+		coverAll:
+			{57 to: 59}
+		evaluating: [
+			receiver2 do: [ :anAccount |
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker4447617_
+					cover: (76 to: 84)
+					declaredAt: (64 to: 72)
+					by: anAccount.
+				#_coverageTracker4447617_
+					coverAll:
+						{86 to: 103}
+					evaluating: [
+						receiver1 addTransactionsTo:
+							(#_coverageTracker4447617_
+								cover: (105 to: 129)
+								declaredAt: (20 to: 44)
+								by: aCollectionOfTransactions) ]
+					thatSends: #addTransactionsTo:
+					to: receiver1 ] value ]]
+		thatSends: #do:
+		to: receiver2 ] value.! !
+!Behavior method!
+named: aName
+	#_coverageTracker4447667_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker4447667_
+		coverAll:
+			{18 to: 21}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker4447667_
+		coverAll:
+			{23 to: 25}
+		evaluating: [ receiver1 new ]
+		thatSends: #new
+		to: receiver1 ] value.
+	#_coverageTracker4447667_
+		coverAll:
+			{27 to: 42}
+		evaluating: [
+			receiver2 initializeNamed:
+				(#_coverageTracker4447667_
+					cover: (44 to: 48)
+					declaredAt: (8 to: 12)
+					by: aName) ]
+		thatSends: #initializeNamed:
+		to: receiver2 ] value.! !
+!Behavior method!
+for: aValue
+	#_coverageTracker4447709_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker4447709_
+		coverAll:
+			{17 to: 20}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker4447709_
+		coverAll:
+			{22 to: 24}
+		evaluating: [ receiver1 new ]
+		thatSends: #new
+		to: receiver1 ] value.
+	#_coverageTracker4447709_
+		coverAll:
+			{26 to: 39}
+		evaluating: [
+			receiver2 initializeFor:
+				(#_coverageTracker4447709_
+					cover: (41 to: 46)
+					declaredAt: (6 to: 11)
+					by: aValue) ]
+		thatSends: #initializeFor:
+		to: receiver2 ] value.! !
+!Behavior method!
+signalCanNotAddAccount
+	#_coverageTracker4447754_ markAsExecuted.
+	[ | receiver3 |
+	receiver3 _ #_coverageTracker4447754_
+		coverAll:
+			{27 to: 30}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker4447754_
+		coverAll:
+			{32 to: 37}
+		evaluating: [
+			receiver3 error:
+				[ | receiver2 |
+				receiver2 _ [ | receiver1 |
+				receiver1 _ #_coverageTracker4447754_
+					coverAll:
+						{39 to: 42}
+					byLiteralOrPseudoVariable: self.
+				#_coverageTracker4447754_
+					coverAll:
+						{44 to: 48}
+					evaluating: [ receiver1 class ]
+					thatSends: #class
+					to: receiver1 ] value.
+				#_coverageTracker4447754_
+					coverAll:
+						{50 to: 77}
+					evaluating: [ receiver2 canNotAddAccountErrorMessage ]
+					thatSends: #canNotAddAccountErrorMessage
+					to: receiver2 ] value ]
+		thatSends: #error:
+		to: receiver3 ] value.! !
+!Behavior method!
+canNotAddAccountErrorMessage
+	#_coverageTracker4447797_ markAsExecuted.
+	^ #_coverageTracker4447797_
+		coverAll:
+			{34 to: 78}
+		byLiteralOrPseudoVariable: 'Can not add repeated account to a portfolio'.! !
+!Behavior method!
+addToReportTransferWithdrawOf: anAmount
+	#_coverageTracker4447839_ markAsExecuted.
+	^ [ | receiver3 |
+	receiver3 _ #_coverageTracker4447839_
+		cover: (45 to: 50)
+		declaredAt: (45 to: 50)
+		by: report.
+	#_coverageTracker4447839_
+		coverAll:
+			{52 to: 55}
+		evaluating: [
+			receiver3 add:
+				[ | receiver2 |
+				receiver2 _ #_coverageTracker4447839_
+					coverAll:
+						{57 to: 86}
+					byLiteralOrPseudoVariable: 'Salida por transferencia de '.
+				#_coverageTracker4447839_
+					coverAll:
+						{87 to: 87}
+					evaluating: [
+						receiver2 ,
+							[ | receiver1 |
+							receiver1 _ #_coverageTracker4447839_
+								cover: (89 to: 96)
+								declaredAt: (32 to: 39)
+								by: anAmount.
+							#_coverageTracker4447839_
+								coverAll:
+									{98 to: 105}
+								evaluating: [ receiver1 asString ]
+								thatSends: #asString
+								to: receiver1 ] value ]
+					thatSends: #,
+					to: receiver2 ] value ]
+		thatSends: #add:
+		to: receiver3 ] value.! !
+!Behavior method!
+isComposedBy: anAccount
+	#_coverageTracker4447886_ markAsExecuted.
+	^ [ | receiver1 |
+	receiver1 _ #_coverageTracker4447886_
+		coverAll:
+			{28 to: 31}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker4447886_
+		coverAll:
+			{33 to: 33}
+		evaluating: [
+			receiver1 =
+				(#_coverageTracker4447886_
+					cover: (35 to: 43)
+					declaredAt: (15 to: 23)
+					by: anAccount) ]
+		thatSends: #=
+		to: receiver1 ] value.! !
+!Behavior method!
+addToReportDepositOf: anAmount
+	#_coverageTracker4447936_ markAsExecuted.
+	^ [ | receiver3 |
+	receiver3 _ #_coverageTracker4447936_
+		cover: (36 to: 41)
+		declaredAt: (36 to: 41)
+		by: report.
+	#_coverageTracker4447936_
+		coverAll:
+			{43 to: 46}
+		evaluating: [
+			receiver3 add:
+				[ | receiver2 |
+				receiver2 _ #_coverageTracker4447936_
+					coverAll:
+						{48 to: 62}
+					byLiteralOrPseudoVariable: 'Depósito por '.
+				#_coverageTracker4447936_
+					coverAll:
+						{63 to: 63}
+					evaluating: [
+						receiver2 ,
+							[ | receiver1 |
+							receiver1 _ #_coverageTracker4447936_
+								cover: (65 to: 72)
+								declaredAt: (23 to: 30)
+								by: anAmount.
+							#_coverageTracker4447936_
+								coverAll:
+									{74 to: 81}
+								evaluating: [ receiver1 asString ]
+								thatSends: #asString
+								to: receiver1 ] value ]
+					thatSends: #,
+					to: receiver2 ] value ]
+		thatSends: #add:
+		to: receiver3 ] value.! !
+!Behavior method!
+initialize
+	#_coverageTracker4447987_ markAsExecuted.
+	#_coverageTracker4447987_
+		cover: (14 to: 21)
+		declaredAt: (14 to: 21)
+		by:
+			(accounts _ [ | receiver1 |
+			receiver1 _ #_coverageTracker4447987_
+				coverAll:
+					{26 to: 42}
+				by: OrderedCollection.
+			#_coverageTracker4447987_
+				coverAll:
+					{44 to: 46}
+				evaluating: [ receiver1 new ]
+				thatSends: #new
+				to: receiver1 ] value).
+	#_coverageTracker4447987_
+		cover: (50 to: 56)
+		declaredAt: (50 to: 56)
+		by:
+			(parents _ [ | receiver2 |
+			receiver2 _ #_coverageTracker4447987_
+				coverAll:
+					{61 to: 77}
+				by: OrderedCollection.
+			#_coverageTracker4447987_
+				coverAll:
+					{79 to: 81}
+				evaluating: [ receiver2 new ]
+				thatSends: #new
+				to: receiver2 ] value).! !
+!Behavior method!
+addToReportTransferDepositOf: anAmount
+	#_coverageTracker4448029_ markAsExecuted.
+	#_coverageTracker4448029_
+		cover: (53 to: 58)
+		declaredAt: (43 to: 48)
+		by:
+			(report _ [ | receiver1 |
+			receiver1 _ #_coverageTracker4448029_
+				cover: (43 to: 48)
+				declaredAt: (43 to: 48)
+				by: report.
+			#_coverageTracker4448029_
+				coverAll:
+					{60 to: 60}
+				evaluating: [
+					receiver1 +
+						(#_coverageTracker4448029_
+							cover: (62 to: 69)
+							declaredAt: (31 to: 38)
+							by: anAmount) ]
+				thatSends: #+
+				to: receiver1 ] value).! !
+!Behavior method!
+name
+	#_coverageTracker4448064_ markAsExecuted.
+	^ #_coverageTracker4448064_
+		cover: (9 to: 12)
+		declaredAt: (9 to: 12)
+		by: name.! !
+!Behavior method!
+decrementIndentation
+	#_coverageTracker4448105_ markAsExecuted.
+	#_coverageTracker4448105_
+		cover: (44 to: 59)
+		declaredAt: (24 to: 39)
+		by:
+			(indentationLevel _ [ | receiver1 |
+			receiver1 _ #_coverageTracker4448105_
+				cover: (24 to: 39)
+				declaredAt: (24 to: 39)
+				by: indentationLevel.
+			#_coverageTracker4448105_
+				coverAll:
+					{61 to: 61}
+				evaluating: [
+					receiver1 -
+						(#_coverageTracker4448105_
+							coverAll:
+								{63 to: 63}
+							byLiteralOrPseudoVariable: 1) ]
+				thatSends: #-
+				to: receiver1 ] value).! !
+!Behavior method!
+transactions
+	| transactions |
+	#_coverageTracker4448154_ markAsExecuted.
+	#_coverageTracker4448154_
+		cover: (37 to: 48)
+		declaredAt: (19 to: 30)
+		by:
+			(transactions _ [ | receiver1 |
+			receiver1 _ #_coverageTracker4448154_
+				coverAll:
+					{53 to: 69}
+				by: OrderedCollection.
+			#_coverageTracker4448154_
+				coverAll:
+					{71 to: 73}
+				evaluating: [ receiver1 new ]
+				thatSends: #new
+				to: receiver1 ] value).
+	[ | receiver3 |
+	receiver3 _ #_coverageTracker4448154_
+		cover: (77 to: 84)
+		declaredAt: (77 to: 84)
+		by: accounts.
+	#_coverageTracker4448154_
+		coverAll:
+			{86 to: 88}
+		evaluating: [
+			receiver3 do: [ :anAccount |
+				[ | receiver2 |
+				receiver2 _ #_coverageTracker4448154_
+					cover: (105 to: 113)
+					declaredAt: (93 to: 101)
+					by: anAccount.
+				#_coverageTracker4448154_
+					coverAll:
+						{115 to: 132}
+					evaluating: [
+						receiver2 addTransactionsTo:
+							(#_coverageTracker4448154_
+								cover: (134 to: 145)
+								declaredAt: (19 to: 30)
+								by: transactions) ]
+					thatSends: #addTransactionsTo:
+					to: receiver2 ] value ]]
+		thatSends: #do:
+		to: receiver3 ] value.
+	^ #_coverageTracker4448154_
+		cover: (154 to: 165)
+		declaredAt: (19 to: 30)
+		by: transactions.! !
+!Behavior method!
+addToReportWithdrawOf: anAmount
+	#_coverageTracker4448209_ markAsExecuted.
+	^ [ | receiver3 |
+	receiver3 _ #_coverageTracker4448209_
+		cover: (37 to: 42)
+		declaredAt: (37 to: 42)
+		by: report.
+	#_coverageTracker4448209_
+		coverAll:
+			{44 to: 47}
+		evaluating: [
+			receiver3 add:
+				[ | receiver2 |
+				receiver2 _ #_coverageTracker4448209_
+					coverAll:
+						{49 to: 65}
+					byLiteralOrPseudoVariable: 'Extracción por '.
+				#_coverageTracker4448209_
+					coverAll:
+						{66 to: 66}
+					evaluating: [
+						receiver2 ,
+							[ | receiver1 |
+							receiver1 _ #_coverageTracker4448209_
+								cover: (68 to: 75)
+								declaredAt: (24 to: 31)
+								by: anAmount.
+							#_coverageTracker4448209_
+								coverAll:
+									{77 to: 84}
+								evaluating: [ receiver1 asString ]
+								thatSends: #asString
+								to: receiver1 ] value ]
+					thatSends: #,
+					to: receiver2 ] value ]
+		thatSends: #add:
+		to: receiver3 ] value.! !
+!Behavior method!
+initializeFor: aValue
+	#_coverageTracker4448241_ markAsExecuted.
+	#_coverageTracker4448241_
+		cover: (25 to: 29)
+		declaredAt: (25 to: 29)
+		by:
+			(value _ #_coverageTracker4448241_
+				cover: (34 to: 39)
+				declaredAt: (16 to: 21)
+				by: aValue).! !
+!Behavior method!
+addToReportDepositOf: anAmount
+	#_coverageTracker4448316_ markAsExecuted.! !
+!Behavior method!
+transfer
+	#_coverageTracker4448340_ markAsExecuted.
+	^ #_coverageTracker4448340_
+		cover: (13 to: 22)
+		declaredAt: (13 to: 22)
+		by: myTransfer.! !
+!Behavior method!
+deposit
+	#_coverageTracker4448381_ markAsExecuted.
+	^ #_coverageTracker4448381_
+		cover: (12 to: 18)
+		declaredAt: (12 to: 18)
+		by: deposit.! !
+!Behavior method!
+of: aPortfolio
+	#_coverageTracker4448419_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker4448419_
+		coverAll:
+			{21 to: 24}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker4448419_
+		coverAll:
+			{26 to: 28}
+		evaluating: [ receiver1 new ]
+		thatSends: #new
+		to: receiver1 ] value.
+	#_coverageTracker4448419_
+		coverAll:
+			{30 to: 42}
+		evaluating: [
+			receiver2 initializeOf:
+				(#_coverageTracker4448419_
+					cover: (44 to: 53)
+					declaredAt: (5 to: 14)
+					by: aPortfolio) ]
+		thatSends: #initializeOf:
+		to: receiver2 ] value.! !
+!Behavior method!
+named: aName with: anAccount with: anotherAccount
+	#_coverageTracker4448471_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker4448471_
+		coverAll:
+			{56 to: 59}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker4448471_
+		coverAll:
+			{61 to: 63}
+		evaluating: [ receiver1 new ]
+		thatSends: #new
+		to: receiver1 ] value.
+	#_coverageTracker4448471_
+		coverAll:
+			{65 to: 80. 88 to: 92. 104 to: 108}
+		evaluating: [
+			receiver2
+				initializeNamed:
+					(#_coverageTracker4448471_
+						cover: (82 to: 86)
+						declaredAt: (8 to: 12)
+						by: aName)
+				with:
+					(#_coverageTracker4448471_
+						cover: (94 to: 102)
+						declaredAt: (20 to: 28)
+						by: anAccount)
+				with:
+					(#_coverageTracker4448471_
+						cover: (110 to: 123)
+						declaredAt: (36 to: 49)
+						by: anotherAccount) ]
+		thatSends: #initializeNamed:with:with:
+		to: receiver2 ] value.! !
+!Behavior method!
+fillReport: aReport
+	#_coverageTracker4448540_ markAsExecuted.
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker4448540_
+		cover: (23 to: 29)
+		declaredAt: (13 to: 19)
+		by: aReport.
+	#_coverageTracker4448540_
+		coverAll:
+			{31 to: 59}
+		evaluating: [
+			receiver2 addToReportTransferDepositOf:
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker4448540_
+					coverAll:
+						{61 to: 64}
+					byLiteralOrPseudoVariable: self.
+				#_coverageTracker4448540_
+					coverAll:
+						{66 to: 70}
+					evaluating: [ receiver1 value ]
+					thatSends: #value
+					to: receiver1 ] value ]
+		thatSends: #addToReportTransferDepositOf:
+		to: receiver2 ] value.! !
+!Behavior method!
+affectBalance: currentBalance
+	#_coverageTracker4448580_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ #_coverageTracker4448580_
+		cover: (36 to: 49)
+		declaredAt: (16 to: 29)
+		by: currentBalance.
+	#_coverageTracker4448580_
+		coverAll:
+			{51 to: 51}
+		evaluating: [
+			receiver2 +
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker4448580_
+					coverAll:
+						{53 to: 56}
+					byLiteralOrPseudoVariable: self.
+				#_coverageTracker4448580_
+					coverAll:
+						{58 to: 62}
+					evaluating: [ receiver1 value ]
+					thatSends: #value
+					to: receiver1 ] value ]
+		thatSends: #+
+		to: receiver2 ] value.! !
+!Behavior method!
+register: anAmount from: aTransfererAccount to: aTransfereeAccount
+	#_coverageTracker4448628_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker4448628_
+		coverAll:
+			{72 to: 75}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker4448628_
+		coverAll:
+			{77 to: 79}
+		evaluating: [ receiver1 new ]
+		thatSends: #new
+		to: receiver1 ] value.
+	#_coverageTracker4448628_
+		coverAll:
+			{81 to: 89. 100 to: 104. 125 to: 127}
+		evaluating: [
+			receiver2
+				register:
+					(#_coverageTracker4448628_
+						cover: (91 to: 98)
+						declaredAt: (11 to: 18)
+						by: anAmount)
+				from:
+					(#_coverageTracker4448628_
+						cover: (106 to: 123)
+						declaredAt: (26 to: 43)
+						by: aTransfererAccount)
+				to:
+					(#_coverageTracker4448628_
+						cover: (129 to: 146)
+						declaredAt: (49 to: 66)
+						by: aTransfereeAccount) ]
+		thatSends: #register:from:to:
+		to: receiver2 ] value.! !
+!Behavior method!
+with: anAccount with: anotherAccount
+	#_coverageTracker4448682_ markAsExecuted.
+	^ [ | cascadeReceiver |
+	cascadeReceiver _ [ | receiver1 |
+	receiver1 _ #_coverageTracker4448682_
+		coverAll:
+			{41 to: 44}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker4448682_
+		coverAll:
+			{46 to: 48}
+		evaluating: [ receiver1 new ]
+		thatSends: #new
+		to: receiver1 ] value.
+	[ | receiver2 |
+	receiver2 _ cascadeReceiver.
+	#_coverageTracker4448682_
+		coverAll:
+			{53 to: 56}
+		evaluating: [
+			receiver2 add:
+				(#_coverageTracker4448682_
+					cover: (58 to: 66)
+					declaredAt: (7 to: 15)
+					by: anAccount) ]
+		thatSends: #add:
+		to: receiver2 ] value.
+	[ | receiver3 |
+	receiver3 _ cascadeReceiver.
+	#_coverageTracker4448682_
+		coverAll:
+			{71 to: 74}
+		evaluating: [
+			receiver3 add:
+				(#_coverageTracker4448682_
+					cover: (76 to: 89)
+					declaredAt: (23 to: 36)
+					by: anotherAccount) ]
+		thatSends: #add:
+		to: receiver3 ] value.
+	[ | receiver4 |
+	receiver4 _ cascadeReceiver.
+	#_coverageTracker4448682_
+		coverAll:
+			{94 to: 101}
+		evaluating: [ receiver4 yourself ]
+		thatSends: #yourself
+		to: receiver4 ] value ] value.! !
+!Behavior method!
+register: aValue on: account
+	| transaction |
+	#_coverageTracker4448719_ markAsExecuted.
+	#_coverageTracker4448719_
+		cover: (51 to: 61)
+		declaredAt: (34 to: 44)
+		by:
+			(transaction _ [ | receiver1 |
+			receiver1 _ #_coverageTracker4448719_
+				coverAll:
+					{66 to: 69}
+				byLiteralOrPseudoVariable: self.
+			#_coverageTracker4448719_
+				coverAll:
+					{71 to: 74}
+				evaluating: [
+					receiver1 for:
+						(#_coverageTracker4448719_
+							cover: (76 to: 81)
+							declaredAt: (11 to: 16)
+							by: aValue) ]
+				thatSends: #for:
+				to: receiver1 ] value).
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker4448719_
+		cover: (85 to: 91)
+		declaredAt: (22 to: 28)
+		by: account.
+	#_coverageTracker4448719_
+		coverAll:
+			{93 to: 101}
+		evaluating: [
+			receiver2 register:
+				(#_coverageTracker4448719_
+					cover: (103 to: 113)
+					declaredAt: (34 to: 44)
+					by: transaction) ]
+		thatSends: #register:
+		to: receiver2 ] value.
+	^ #_coverageTracker4448719_
+		cover: (122 to: 132)
+		declaredAt: (34 to: 44)
+		by: transaction.! !
+!Behavior method!
+registerOn: anAccount fromTransfer: aTransfer
+	#_coverageTracker4448773_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker4448773_
+		coverAll:
+			{51 to: 54}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker4448773_
+		coverAll:
+			{56 to: 58}
+		evaluating: [ receiver1 new ]
+		thatSends: #new
+		to: receiver1 ] value.
+	#_coverageTracker4448773_
+		coverAll:
+			{60 to: 72. 84 to: 96}
+		evaluating: [
+			receiver2
+				initializeOn:
+					(#_coverageTracker4448773_
+						cover: (74 to: 82)
+						declaredAt: (13 to: 21)
+						by: anAccount)
+				fromTransfer:
+					(#_coverageTracker4448773_
+						cover: (98 to: 106)
+						declaredAt: (37 to: 45)
+						by: aTransfer) ]
+		thatSends: #initializeOn:fromTransfer:
+		to: receiver2 ] value.! !
+!Behavior method!
+value
+	#_coverageTracker4448814_ markAsExecuted.
+	^ #_coverageTracker4448814_
+		cover: (11 to: 15)
+		declaredAt: (11 to: 15)
+		by: value.! !
+!Behavior method!
+initialize
+	#_coverageTracker4448851_ markAsExecuted.
+	#_coverageTracker4448851_
+		coverAll:
+			{20 to: 29}
+		evaluating: [ super initialize ]
+		thatSends: #initialize
+		to: super.
+	#_coverageTracker4448851_
+		cover: (33 to: 44)
+		declaredAt: (33 to: 44)
+		by:
+			(transactions _ [ | receiver1 |
+			receiver1 _ #_coverageTracker4448851_
+				coverAll:
+					{49 to: 65}
+				by: OrderedCollection.
+			#_coverageTracker4448851_
+				coverAll:
+					{67 to: 69}
+				evaluating: [ receiver1 new ]
+				thatSends: #new
+				to: receiver1 ] value).! !
+!Behavior method!
+addToReportWithdrawOf: anAmount
+	#_coverageTracker4448903_ markAsExecuted.! !
+!Behavior method!
+addedTo: aPortfolio
+	#_coverageTracker4448948_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker4448948_
+		cover: (25 to: 31)
+		declaredAt: (25 to: 31)
+		by: parents.
+	#_coverageTracker4448948_
+		coverAll:
+			{33 to: 36}
+		evaluating: [
+			receiver1 add:
+				(#_coverageTracker4448948_
+					cover: (38 to: 47)
+					declaredAt: (10 to: 19)
+					by: aPortfolio) ]
+		thatSends: #add:
+		to: receiver1 ] value.! !
+!Behavior method!
+affectBalance: currentBalance
+	#_coverageTracker4449001_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ #_coverageTracker4449001_
+		cover: (36 to: 49)
+		declaredAt: (16 to: 29)
+		by: currentBalance.
+	#_coverageTracker4449001_
+		coverAll:
+			{51 to: 51}
+		evaluating: [
+			receiver2 -
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker4449001_
+					coverAll:
+						{53 to: 56}
+					byLiteralOrPseudoVariable: self.
+				#_coverageTracker4449001_
+					coverAll:
+						{58 to: 62}
+					evaluating: [ receiver1 value ]
+					thatSends: #value
+					to: receiver1 ] value ]
+		thatSends: #-
+		to: receiver2 ] value.! !
+!Behavior method!
+report
+	#_coverageTracker4449040_ markAsExecuted.
+	#_coverageTracker4449040_
+		cover: (11 to: 16)
+		declaredAt: (11 to: 16)
+		by:
+			(report _ [ | receiver1 |
+			receiver1 _ #_coverageTracker4449040_
+				coverAll:
+					{21 to: 37}
+				by: OrderedCollection.
+			#_coverageTracker4449040_
+				coverAll:
+					{39 to: 41}
+				evaluating: [ receiver1 new ]
+				thatSends: #new
+				to: receiver1 ] value).
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker4449040_
+		cover: (45 to: 51)
+		declaredAt: (45 to: 51)
+		by: account.
+	#_coverageTracker4449040_
+		coverAll:
+			{53 to: 63}
+		evaluating: [
+			receiver2 fillReport:
+				(#_coverageTracker4449040_
+					coverAll:
+						{65 to: 68}
+					byLiteralOrPseudoVariable: self) ]
+		thatSends: #fillReport:
+		to: receiver2 ] value.
+	[ | receiver4 |
+	receiver4 _ #_coverageTracker4449040_
+		coverAll:
+			{72 to: 75}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker4449040_
+		coverAll:
+			{77 to: 97}
+		evaluating: [
+			receiver4 addToReportBalanceOf:
+				[ | receiver3 |
+				receiver3 _ #_coverageTracker4449040_
+					cover: (99 to: 105)
+					declaredAt: (45 to: 51)
+					by: account.
+				#_coverageTracker4449040_
+					coverAll:
+						{107 to: 113}
+					evaluating: [ receiver3 balance ]
+					thatSends: #balance
+					to: receiver3 ] value ]
+		thatSends: #addToReportBalanceOf:
+		to: receiver4 ] value.
+	^ #_coverageTracker4449040_
+		cover: (118 to: 123)
+		declaredAt: (11 to: 16)
+		by: report.! !
+!Behavior method!
+hasRegistered: aTransaction
+	#_coverageTracker4449094_ markAsExecuted.
+	^ [ | receiver1 |
+	receiver1 _ #_coverageTracker4449094_
+		cover: (33 to: 44)
+		declaredAt: (33 to: 44)
+		by: transactions.
+	#_coverageTracker4449094_
+		coverAll:
+			{46 to: 54}
+		evaluating: [
+			receiver1 includes:
+				(#_coverageTracker4449094_
+					cover: (56 to: 67)
+					declaredAt: (16 to: 27)
+					by: aTransaction) ]
+		thatSends: #includes:
+		to: receiver1 ] value.! !
+!Behavior method!
+rootParents
+	| rootParents |
+	#_coverageTracker4449136_ markAsExecuted.
+	#_coverageTracker4449136_
+		cover: (35 to: 45)
+		declaredAt: (18 to: 28)
+		by:
+			(rootParents _ [ | receiver1 |
+			receiver1 _ #_coverageTracker4449136_
+				coverAll:
+					{50 to: 52}
+				by: Set.
+			#_coverageTracker4449136_
+				coverAll:
+					{54 to: 56}
+				evaluating: [ receiver1 new ]
+				thatSends: #new
+				to: receiver1 ] value).
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker4449136_
+		coverAll:
+			{60 to: 63}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker4449136_
+		coverAll:
+			{65 to: 81}
+		evaluating: [
+			receiver2 addRootParentsTo:
+				(#_coverageTracker4449136_
+					cover: (83 to: 93)
+					declaredAt: (18 to: 28)
+					by: rootParents) ]
+		thatSends: #addRootParentsTo:
+		to: receiver2 ] value.
+	^ #_coverageTracker4449136_
+		cover: (101 to: 111)
+		declaredAt: (18 to: 28)
+		by: rootParents.! !
+!Behavior method!
+report
+	#_coverageTracker4449181_ markAsExecuted.
+	#_coverageTracker4449181_
+		cover: (11 to: 16)
+		declaredAt: (11 to: 16)
+		by:
+			(report _ [ | receiver1 |
+			receiver1 _ #_coverageTracker4449181_
+				coverAll:
+					{21 to: 37}
+				by: OrderedCollection.
+			#_coverageTracker4449181_
+				coverAll:
+					{39 to: 41}
+				evaluating: [ receiver1 new ]
+				thatSends: #new
+				to: receiver1 ] value).
+	#_coverageTracker4449181_
+		cover: (45 to: 60)
+		declaredAt: (45 to: 60)
+		by:
+			(indentationLevel _ #_coverageTracker4449181_
+				coverAll:
+					{65 to: 65}
+				byLiteralOrPseudoVariable: 0).
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker4449181_
+		cover: (69 to: 75)
+		declaredAt: (69 to: 75)
+		by: account.
+	#_coverageTracker4449181_
+		coverAll:
+			{77 to: 91}
+		evaluating: [
+			receiver2 fillTreeReport:
+				(#_coverageTracker4449181_
+					coverAll:
+						{93 to: 96}
+					byLiteralOrPseudoVariable: self) ]
+		thatSends: #fillTreeReport:
+		to: receiver2 ] value.
+	^ #_coverageTracker4449181_
+		cover: (101 to: 106)
+		declaredAt: (11 to: 16)
+		by: report.! !
+!Behavior method!
+transactions
+	#_coverageTracker4449233_ markAsExecuted.
+	^ [ | receiver1 |
+	receiver1 _ #_coverageTracker4449233_
+		cover: (19 to: 30)
+		declaredAt: (19 to: 30)
+		by: transactions.
+	#_coverageTracker4449233_
+		coverAll:
+			{32 to: 35}
+		evaluating: [ receiver1 copy ]
+		thatSends: #copy
+		to: receiver1 ] value.! !
+!Behavior method!
+balance
+	#_coverageTracker4449277_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ #_coverageTracker4449277_
+		cover: (13 to: 20)
+		declaredAt: (13 to: 20)
+		by: accounts.
+	#_coverageTracker4449277_
+		coverAll:
+			{22 to: 25. 62 to: 69}
+		evaluating: [
+			receiver2
+				sum: [ :anAccount |
+					[ | receiver1 |
+					receiver1 _ #_coverageTracker4449277_
+						cover: (42 to: 50)
+						declaredAt: (30 to: 38)
+						by: anAccount.
+					#_coverageTracker4449277_
+						coverAll:
+							{52 to: 58}
+						evaluating: [ receiver1 balance ]
+						thatSends: #balance
+						to: receiver1 ] value ]
+				ifEmpty: [
+					#_coverageTracker4449277_
+						coverAll:
+							{73 to: 73}
+						byLiteralOrPseudoVariable: 0 ]]
+		thatSends: #sum:ifEmpty:
+		to: receiver2 ] value.! !
+!Behavior method!
+addToReportTransferDepositOf: anAmount
+	#_coverageTracker4449325_ markAsExecuted.
+	^ [ | receiver3 |
+	receiver3 _ #_coverageTracker4449325_
+		cover: (44 to: 49)
+		declaredAt: (44 to: 49)
+		by: report.
+	#_coverageTracker4449325_
+		coverAll:
+			{51 to: 54}
+		evaluating: [
+			receiver3 add:
+				[ | receiver2 |
+				receiver2 _ #_coverageTracker4449325_
+					coverAll:
+						{56 to: 86}
+					byLiteralOrPseudoVariable: 'Entrada por transferencia de '.
+				#_coverageTracker4449325_
+					coverAll:
+						{87 to: 87}
+					evaluating: [
+						receiver2 ,
+							[ | receiver1 |
+							receiver1 _ #_coverageTracker4449325_
+								cover: (89 to: 96)
+								declaredAt: (31 to: 38)
+								by: anAmount.
+							#_coverageTracker4449325_
+								coverAll:
+									{98 to: 105}
+								evaluating: [ receiver1 asString ]
+								thatSends: #asString
+								to: receiver1 ] value ]
+					thatSends: #,
+					to: receiver2 ] value ]
+		thatSends: #add:
+		to: receiver3 ] value.! !
+!Behavior method!
+affectBalance: aBalance
+	#_coverageTracker4449366_ markAsExecuted.
+	^ [ | receiver1 |
+	receiver1 _ #_coverageTracker4449366_
+		cover: (28 to: 35)
+		declaredAt: (16 to: 23)
+		by: aBalance.
+	#_coverageTracker4449366_
+		coverAll:
+			{37 to: 37}
+		evaluating: [
+			receiver1 -
+				(#_coverageTracker4449366_
+					cover: (39 to: 43)
+					declaredAt: (39 to: 43)
+					by: value) ]
+		thatSends: #-
+		to: receiver1 ] value.! !
+!Behavior method!
+named: aName
+	#_coverageTracker4449413_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker4449413_
+		coverAll:
+			{17 to: 20}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker4449413_
+		coverAll:
+			{22 to: 24}
+		evaluating: [ receiver1 new ]
+		thatSends: #new
+		to: receiver1 ] value.
+	#_coverageTracker4449413_
+		coverAll:
+			{26 to: 41}
+		evaluating: [
+			receiver2 initializeNamed:
+				(#_coverageTracker4449413_
+					cover: (43 to: 47)
+					declaredAt: (8 to: 12)
+					by: aName) ]
+		thatSends: #initializeNamed:
+		to: receiver2 ] value.! !
+!Behavior method!
+register: anAmount from: aTransfererAccount to: aTransfereeAccount
+	#_coverageTracker4449457_ markAsExecuted.
+	#_coverageTracker4449457_
+		cover: (70 to: 76)
+		declaredAt: (70 to: 76)
+		by:
+			(deposit _ [ | receiver1 |
+			receiver1 _ #_coverageTracker4449457_
+				coverAll:
+					{81 to: 95}
+				by: TransferDeposit.
+			#_coverageTracker4449457_
+				coverAll:
+					{97 to: 107. 128 to: 140}
+				evaluating: [
+					receiver1
+						registerOn:
+							(#_coverageTracker4449457_
+								cover: (109 to: 126)
+								declaredAt: (49 to: 66)
+								by: aTransfereeAccount)
+						fromTransfer:
+							(#_coverageTracker4449457_
+								coverAll:
+									{142 to: 145}
+								byLiteralOrPseudoVariable: self) ]
+				thatSends: #registerOn:fromTransfer:
+				to: receiver1 ] value).
+	#_coverageTracker4449457_
+		cover: (149 to: 156)
+		declaredAt: (149 to: 156)
+		by:
+			(withdraw _ [ | receiver2 |
+			receiver2 _ #_coverageTracker4449457_
+				coverAll:
+					{161 to: 176}
+				by: TransferWithdraw.
+			#_coverageTracker4449457_
+				coverAll:
+					{178 to: 188. 209 to: 221}
+				evaluating: [
+					receiver2
+						registerOn:
+							(#_coverageTracker4449457_
+								cover: (190 to: 207)
+								declaredAt: (26 to: 43)
+								by: aTransfererAccount)
+						fromTransfer:
+							(#_coverageTracker4449457_
+								coverAll:
+									{223 to: 226}
+								byLiteralOrPseudoVariable: self) ]
+				thatSends: #registerOn:fromTransfer:
+				to: receiver2 ] value).
+	#_coverageTracker4449457_
+		cover: (230 to: 234)
+		declaredAt: (230 to: 234)
+		by:
+			(value _ #_coverageTracker4449457_
+				cover: (239 to: 246)
+				declaredAt: (11 to: 18)
+				by: anAmount).! !
+!Behavior method!
+addRootParentsTo: rootParents
+	#_coverageTracker4449510_ markAsExecuted.
+	[ | receiver4 |
+	receiver4 _ #_coverageTracker4449510_
+		cover: (33 to: 39)
+		declaredAt: (33 to: 39)
+		by: parents.
+	#_coverageTracker4449510_
+		coverAll:
+			{44 to: 51. 82 to: 92}
+		evaluating: [
+			receiver4
+				ifEmpty: [
+					[ | receiver1 |
+					receiver1 _ #_coverageTracker4449510_
+						cover: (55 to: 65)
+						declaredAt: (19 to: 29)
+						by: rootParents.
+					#_coverageTracker4449510_
+						coverAll:
+							{67 to: 70}
+						evaluating: [
+							receiver1 add:
+								(#_coverageTracker4449510_
+									coverAll:
+										{72 to: 75}
+									byLiteralOrPseudoVariable: self) ]
+						thatSends: #add:
+						to: receiver1 ] value ]
+				ifNotEmpty: [
+					[ | receiver3 |
+					receiver3 _ #_coverageTracker4449510_
+						cover: (96 to: 102)
+						declaredAt: (33 to: 39)
+						by: parents.
+					#_coverageTracker4449510_
+						coverAll:
+							{104 to: 106}
+						evaluating: [
+							receiver3 do: [ :aParent |
+								[ | receiver2 |
+								receiver2 _ #_coverageTracker4449510_
+									cover: (121 to: 127)
+									declaredAt: (111 to: 117)
+									by: aParent.
+								#_coverageTracker4449510_
+									coverAll:
+										{129 to: 145}
+									evaluating: [
+										receiver2 addRootParentsTo:
+											(#_coverageTracker4449510_
+												cover: (147 to: 157)
+												declaredAt: (19 to: 29)
+												by: rootParents) ]
+									thatSends: #addRootParentsTo:
+									to: receiver2 ] value ]]
+						thatSends: #do:
+						to: receiver3 ] value ]]
+		thatSends: #ifEmpty:ifNotEmpty:
+		to: receiver4 ] value.! !
+!Behavior method!
+initializeNamed: aName
+	#_coverageTracker4449557_ markAsExecuted.
+	#_coverageTracker4449557_
+		cover: (27 to: 30)
+		declaredAt: (27 to: 30)
+		by:
+			(name _ #_coverageTracker4449557_
+				cover: (35 to: 39)
+				declaredAt: (18 to: 22)
+				by: aName).! !
+!Behavior method!
+of: anAccount
+	#_coverageTracker4449597_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker4449597_
+		coverAll:
+			{20 to: 23}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker4449597_
+		coverAll:
+			{25 to: 27}
+		evaluating: [ receiver1 new ]
+		thatSends: #new
+		to: receiver1 ] value.
+	#_coverageTracker4449597_
+		coverAll:
+			{29 to: 41}
+		evaluating: [
+			receiver2 initializeOf:
+				(#_coverageTracker4449597_
+					cover: (43 to: 51)
+					declaredAt: (5 to: 13)
+					by: anAccount) ]
+		thatSends: #initializeOf:
+		to: receiver2 ] value.! !
+!Behavior method!
+hasRegistered: aTransaction
+	#_coverageTracker4449646_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ #_coverageTracker4449646_
+		cover: (32 to: 39)
+		declaredAt: (32 to: 39)
+		by: accounts.
+	#_coverageTracker4449646_
+		coverAll:
+			{41 to: 51}
+		evaluating: [
+			receiver2 anySatisfy: [ :anAccount |
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker4449646_
+					cover: (68 to: 76)
+					declaredAt: (56 to: 64)
+					by: anAccount.
+				#_coverageTracker4449646_
+					coverAll:
+						{78 to: 91}
+					evaluating: [
+						receiver1 hasRegistered:
+							(#_coverageTracker4449646_
+								cover: (93 to: 104)
+								declaredAt: (16 to: 27)
+								by: aTransaction) ]
+					thatSends: #hasRegistered:
+					to: receiver1 ] value ]]
+		thatSends: #anySatisfy:
+		to: receiver2 ] value.! !
+!Behavior method!
+affectBalance: aBalance
+	#_coverageTracker4449686_ markAsExecuted.
+	^ [ | receiver1 |
+	receiver1 _ #_coverageTracker4449686_
+		cover: (28 to: 35)
+		declaredAt: (16 to: 23)
+		by: aBalance.
+	#_coverageTracker4449686_
+		coverAll:
+			{37 to: 37}
+		evaluating: [
+			receiver1 +
+				(#_coverageTracker4449686_
+					cover: (39 to: 43)
+					declaredAt: (39 to: 43)
+					by: value) ]
+		thatSends: #+
+		to: receiver1 ] value.! !
+!Behavior method!
+initializeOf: aPortfolio
+	#_coverageTracker4449734_ markAsExecuted.
+	#_coverageTracker4449734_
+		cover: (29 to: 35)
+		declaredAt: (29 to: 35)
+		by:
+			(account _ #_coverageTracker4449734_
+				cover: (40 to: 49)
+				declaredAt: (15 to: 24)
+				by: aPortfolio).! !
+!Behavior method!
+accountsSize
+	#_coverageTracker4449785_ markAsExecuted.
+	^ [ | receiver1 |
+	receiver1 _ #_coverageTracker4449785_
+		cover: (18 to: 25)
+		declaredAt: (18 to: 25)
+		by: accounts.
+	#_coverageTracker4449785_
+		coverAll:
+			{27 to: 30}
+		evaluating: [ receiver1 size ]
+		thatSends: #size
+		to: receiver1 ] value.! !
+!Behavior method!
+of: aPortfolio
+	#_coverageTracker4449823_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker4449823_
+		coverAll:
+			{21 to: 24}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker4449823_
+		coverAll:
+			{26 to: 28}
+		evaluating: [ receiver1 new ]
+		thatSends: #new
+		to: receiver1 ] value.
+	#_coverageTracker4449823_
+		coverAll:
+			{30 to: 42}
+		evaluating: [
+			receiver2 initializeOf:
+				(#_coverageTracker4449823_
+					cover: (44 to: 53)
+					declaredAt: (5 to: 14)
+					by: aPortfolio) ]
+		thatSends: #initializeOf:
+		to: receiver2 ] value.! !
+!Behavior method!
+fillReport: aReport
+	#_coverageTracker4449897_ markAsExecuted.
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker4449897_
+		cover: (23 to: 29)
+		declaredAt: (13 to: 19)
+		by: aReport.
+	#_coverageTracker4449897_
+		coverAll:
+			{31 to: 51}
+		evaluating: [
+			receiver2 addToReportDepositOf:
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker4449897_
+					coverAll:
+						{53 to: 56}
+					byLiteralOrPseudoVariable: self.
+				#_coverageTracker4449897_
+					coverAll:
+						{58 to: 62}
+					evaluating: [ receiver1 value ]
+					thatSends: #value
+					to: receiver1 ] value ]
+		thatSends: #addToReportDepositOf:
+		to: receiver2 ] value.! !
+!Behavior method!
+addTransactionsOf: anAccount
+	| indentation indentedSummary |
+	#_coverageTracker4449923_ markAsExecuted.
+	#_coverageTracker4449923_
+		cover: (65 to: 75)
+		declaredAt: (34 to: 44)
+		by:
+			(indentation _ #_coverageTracker4449923_
+				coverAll:
+					{80 to: 81}
+				byLiteralOrPseudoVariable: '').
+	[ | receiver3 |
+	receiver3 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker4449923_
+		cover: (85 to: 100)
+		declaredAt: (85 to: 100)
+		by: indentationLevel.
+	#_coverageTracker4449923_
+		coverAll:
+			{101 to: 101}
+		evaluating: [
+			receiver1 +
+				(#_coverageTracker4449923_
+					coverAll:
+						{102 to: 102}
+					byLiteralOrPseudoVariable: 1) ]
+		thatSends: #+
+		to: receiver1 ] value.
+	#_coverageTracker4449923_
+		coverAll:
+			{104 to: 115}
+		evaluating: [
+			receiver3 timesRepeat: [
+				#_coverageTracker4449923_
+					cover: (133 to: 143)
+					declaredAt: (34 to: 44)
+					by:
+						(indentation _ [ | receiver2 |
+						receiver2 _ #_coverageTracker4449923_
+							cover: (118 to: 128)
+							declaredAt: (34 to: 44)
+							by: indentation.
+						#_coverageTracker4449923_
+							coverAll:
+								{145 to: 145}
+							evaluating: [
+								receiver2 ,
+									(#_coverageTracker4449923_
+										coverAll:
+											{147 to: 151}
+										byLiteralOrPseudoVariable: '   ') ]
+							thatSends: #,
+							to: receiver2 ] value) ]]
+		thatSends: #timesRepeat:
+		to: receiver3 ] value.
+	#_coverageTracker4449923_
+		cover: (156 to: 170)
+		declaredAt: (46 to: 60)
+		by:
+			(indentedSummary _ [ | receiver7 |
+			receiver7 _ [ | receiver5 |
+			receiver5 _ [ | receiver4 |
+			receiver4 _ #_coverageTracker4449923_
+				coverAll:
+					{176 to: 189}
+				by: AccountSummary.
+			#_coverageTracker4449923_
+				coverAll:
+					{191 to: 193}
+				evaluating: [
+					receiver4 of:
+						(#_coverageTracker4449923_
+							cover: (195 to: 203)
+							declaredAt: (20 to: 28)
+							by: anAccount) ]
+				thatSends: #of:
+				to: receiver4 ] value.
+			#_coverageTracker4449923_
+				coverAll:
+					{206 to: 211}
+				evaluating: [ receiver5 report ]
+				thatSends: #report
+				to: receiver5 ] value.
+			#_coverageTracker4449923_
+				coverAll:
+					{213 to: 220}
+				evaluating: [
+					receiver7 collect: [ :reportLine |
+						[ | receiver6 |
+						receiver6 _ #_coverageTracker4449923_
+							cover: (237 to: 247)
+							declaredAt: (34 to: 44)
+							by: indentation.
+						#_coverageTracker4449923_
+							coverAll:
+								{249 to: 249}
+							evaluating: [
+								receiver6 ,
+									(#_coverageTracker4449923_
+										cover: (251 to: 260)
+										declaredAt: (224 to: 233)
+										by: reportLine) ]
+							thatSends: #,
+							to: receiver6 ] value ]]
+				thatSends: #collect:
+				to: receiver7 ] value).
+	[ | receiver8 |
+	receiver8 _ #_coverageTracker4449923_
+		cover: (265 to: 270)
+		declaredAt: (265 to: 270)
+		by: report.
+	#_coverageTracker4449923_
+		coverAll:
+			{272 to: 278}
+		evaluating: [
+			receiver8 addAll:
+				(#_coverageTracker4449923_
+					cover: (280 to: 294)
+					declaredAt: (46 to: 60)
+					by: indentedSummary) ]
+		thatSends: #addAll:
+		to: receiver8 ] value.! !
+!Behavior method!
+addTransactionsOf: anAccount
+	#_coverageTracker4449987_ markAsExecuted.! !
+!Behavior method!
+for: aValue
+	#_coverageTracker4450029_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker4450029_
+		coverAll:
+			{17 to: 20}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker4450029_
+		coverAll:
+			{22 to: 24}
+		evaluating: [ receiver1 new ]
+		thatSends: #new
+		to: receiver1 ] value.
+	#_coverageTracker4450029_
+		coverAll:
+			{26 to: 39}
+		evaluating: [
+			receiver2 initializeFor:
+				(#_coverageTracker4450029_
+					cover: (41 to: 46)
+					declaredAt: (6 to: 11)
+					by: aValue) ]
+		thatSends: #initializeFor:
+		to: receiver2 ] value.! !
+!Behavior method!
+named: aName with: anAccount
+	#_coverageTracker4450077_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker4450077_
+		coverAll:
+			{35 to: 38}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker4450077_
+		coverAll:
+			{40 to: 42}
+		evaluating: [ receiver1 new ]
+		thatSends: #new
+		to: receiver1 ] value.
+	#_coverageTracker4450077_
+		coverAll:
+			{44 to: 59. 67 to: 71}
+		evaluating: [
+			receiver2
+				initializeNamed:
+					(#_coverageTracker4450077_
+						cover: (61 to: 65)
+						declaredAt: (8 to: 12)
+						by: aName)
+				with:
+					(#_coverageTracker4450077_
+						cover: (73 to: 81)
+						declaredAt: (20 to: 28)
+						by: anAccount) ]
+		thatSends: #initializeNamed:with:
+		to: receiver2 ] value.! !
+!Behavior method!
+assertCanAdd: accountToAdd
+	#_coverageTracker4450131_ markAsExecuted.
+	[ | receiver3 |
+	receiver3 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker4450131_
+		coverAll:
+			{31 to: 34}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker4450131_
+		coverAll:
+			{36 to: 61}
+		evaluating: [
+			receiver1 anyRootParentIsComposedBy:
+				(#_coverageTracker4450131_
+					cover: (63 to: 74)
+					declaredAt: (15 to: 26)
+					by: accountToAdd) ]
+		thatSends: #anyRootParentIsComposedBy:
+		to: receiver1 ] value.
+	#_coverageTracker4450131_
+		coverAll:
+			{77 to: 83}
+		evaluating: [
+			receiver3 ifTrue: [
+				[ | receiver2 |
+				receiver2 _ #_coverageTracker4450131_
+					coverAll:
+						{87 to: 90}
+					byLiteralOrPseudoVariable: self.
+				#_coverageTracker4450131_
+					coverAll:
+						{92 to: 113}
+					evaluating: [ receiver2 signalCanNotAddAccount ]
+					thatSends: #signalCanNotAddAccount
+					to: receiver2 ] value ]]
+		thatSends: #ifTrue:
+		to: receiver3 ] value.! !
+!Behavior method!
+addNameOf: anAccount
+	| indentation |
+	#_coverageTracker4450178_ markAsExecuted.
+	#_coverageTracker4450178_
+		cover: (41 to: 51)
+		declaredAt: (26 to: 36)
+		by:
+			(indentation _ #_coverageTracker4450178_
+				coverAll:
+					{56 to: 57}
+				byLiteralOrPseudoVariable: '').
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker4450178_
+		cover: (61 to: 76)
+		declaredAt: (61 to: 76)
+		by: indentationLevel.
+	#_coverageTracker4450178_
+		coverAll:
+			{78 to: 89}
+		evaluating: [
+			receiver2 timesRepeat: [
+				#_coverageTracker4450178_
+					cover: (107 to: 117)
+					declaredAt: (26 to: 36)
+					by:
+						(indentation _ [ | receiver1 |
+						receiver1 _ #_coverageTracker4450178_
+							cover: (92 to: 102)
+							declaredAt: (26 to: 36)
+							by: indentation.
+						#_coverageTracker4450178_
+							coverAll:
+								{119 to: 119}
+							evaluating: [
+								receiver1 ,
+									(#_coverageTracker4450178_
+										coverAll:
+											{121 to: 125}
+										byLiteralOrPseudoVariable: '   ') ]
+							thatSends: #,
+							to: receiver1 ] value) ]]
+		thatSends: #timesRepeat:
+		to: receiver2 ] value.
+	[ | receiver5 |
+	receiver5 _ #_coverageTracker4450178_
+		cover: (130 to: 135)
+		declaredAt: (130 to: 135)
+		by: report.
+	#_coverageTracker4450178_
+		coverAll:
+			{137 to: 140}
+		evaluating: [
+			receiver5 add:
+				[ | receiver4 |
+				receiver4 _ #_coverageTracker4450178_
+					cover: (142 to: 152)
+					declaredAt: (26 to: 36)
+					by: indentation.
+				#_coverageTracker4450178_
+					coverAll:
+						{154 to: 154}
+					evaluating: [
+						receiver4 ,
+							[ | receiver3 |
+							receiver3 _ #_coverageTracker4450178_
+								cover: (156 to: 164)
+								declaredAt: (12 to: 20)
+								by: anAccount.
+							#_coverageTracker4450178_
+								coverAll:
+									{166 to: 169}
+								evaluating: [ receiver3 name ]
+								thatSends: #name
+								to: receiver3 ] value ]
+					thatSends: #,
+					to: receiver4 ] value ]
+		thatSends: #add:
+		to: receiver5 ] value.! !
+!Behavior method!
+value
+	#_coverageTracker4450231_ markAsExecuted.
+	^ #_coverageTracker4450231_
+		cover: (10 to: 14)
+		declaredAt: (10 to: 14)
+		by: value.! !
+!Behavior method!
+register: aTransaction
+	#_coverageTracker4450271_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker4450271_
+		cover: (26 to: 37)
+		declaredAt: (26 to: 37)
+		by: transactions.
+	#_coverageTracker4450271_
+		coverAll:
+			{39 to: 42}
+		evaluating: [
+			receiver1 add:
+				(#_coverageTracker4450271_
+					cover: (44 to: 55)
+					declaredAt: (11 to: 22)
+					by: aTransaction) ]
+		thatSends: #add:
+		to: receiver1 ] value.! !
+!Behavior method!
+addBalanceOf: anAccount
+	| indentation |
+	#_coverageTracker4450309_ markAsExecuted.
+	#_coverageTracker4450309_
+		cover: (44 to: 54)
+		declaredAt: (29 to: 39)
+		by:
+			(indentation _ #_coverageTracker4450309_
+				coverAll:
+					{59 to: 60}
+				byLiteralOrPseudoVariable: '').
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker4450309_
+		cover: (64 to: 79)
+		declaredAt: (64 to: 79)
+		by: indentationLevel.
+	#_coverageTracker4450309_
+		coverAll:
+			{81 to: 92}
+		evaluating: [
+			receiver2 timesRepeat: [
+				#_coverageTracker4450309_
+					cover: (110 to: 120)
+					declaredAt: (29 to: 39)
+					by:
+						(indentation _ [ | receiver1 |
+						receiver1 _ #_coverageTracker4450309_
+							cover: (95 to: 105)
+							declaredAt: (29 to: 39)
+							by: indentation.
+						#_coverageTracker4450309_
+							coverAll:
+								{122 to: 122}
+							evaluating: [
+								receiver1 ,
+									(#_coverageTracker4450309_
+										coverAll:
+											{124 to: 128}
+										byLiteralOrPseudoVariable: '   ') ]
+							thatSends: #,
+							to: receiver1 ] value) ]]
+		thatSends: #timesRepeat:
+		to: receiver2 ] value.
+	[ | receiver7 |
+	receiver7 _ #_coverageTracker4450309_
+		cover: (133 to: 138)
+		declaredAt: (133 to: 138)
+		by: report.
+	#_coverageTracker4450309_
+		coverAll:
+			{140 to: 143}
+		evaluating: [
+			receiver7 add:
+				[ | receiver6 |
+				receiver6 _ [ | receiver3 |
+				receiver3 _ #_coverageTracker4450309_
+					cover: (145 to: 155)
+					declaredAt: (29 to: 39)
+					by: indentation.
+				#_coverageTracker4450309_
+					coverAll:
+						{157 to: 157}
+					evaluating: [
+						receiver3 ,
+							(#_coverageTracker4450309_
+								coverAll:
+									{159 to: 170}
+								byLiteralOrPseudoVariable: 'Balance = ') ]
+					thatSends: #,
+					to: receiver3 ] value.
+				#_coverageTracker4450309_
+					coverAll:
+						{172 to: 172}
+					evaluating: [
+						receiver6 ,
+							[ | receiver5 |
+							receiver5 _ [ | receiver4 |
+							receiver4 _ #_coverageTracker4450309_
+								cover: (174 to: 182)
+								declaredAt: (15 to: 23)
+								by: anAccount.
+							#_coverageTracker4450309_
+								coverAll:
+									{184 to: 190}
+								evaluating: [ receiver4 balance ]
+								thatSends: #balance
+								to: receiver4 ] value.
+							#_coverageTracker4450309_
+								coverAll:
+									{192 to: 199}
+								evaluating: [ receiver5 asString ]
+								thatSends: #asString
+								to: receiver5 ] value ]
+					thatSends: #,
+					to: receiver6 ] value ]
+		thatSends: #add:
+		to: receiver7 ] value.! !
+!Behavior method!
+accountsIsEmpty
+	#_coverageTracker4450362_ markAsExecuted.
+	^ [ | receiver1 |
+	receiver1 _ #_coverageTracker4450362_
+		cover: (21 to: 28)
+		declaredAt: (21 to: 28)
+		by: accounts.
+	#_coverageTracker4450362_
+		coverAll:
+			{30 to: 36}
+		evaluating: [ receiver1 isEmpty ]
+		thatSends: #isEmpty
+		to: receiver1 ] value.! !
+!Behavior method!
+balance
+	#_coverageTracker4450417_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ #_coverageTracker4450417_
+		cover: (12 to: 23)
+		declaredAt: (12 to: 23)
+		by: transactions.
+	#_coverageTracker4450417_
+		coverAll:
+			{28 to: 34. 40 to: 44}
+		evaluating: [
+			receiver2
+				inject:
+					(#_coverageTracker4450417_
+						coverAll:
+							{36 to: 36}
+						byLiteralOrPseudoVariable: 0)
+				into: [ :currentBalance :transaction |
+					[ | receiver1 |
+					receiver1 _ #_coverageTracker4450417_
+						cover: (79 to: 89)
+						declaredAt: (65 to: 75)
+						by: transaction.
+					#_coverageTracker4450417_
+						coverAll:
+							{91 to: 104}
+						evaluating: [
+							receiver1 affectBalance:
+								(#_coverageTracker4450417_
+									cover: (106 to: 119)
+									declaredAt: (49 to: 62)
+									by: currentBalance) ]
+						thatSends: #affectBalance:
+						to: receiver1 ] value ]]
+		thatSends: #inject:into:
+		to: receiver2 ] value.! !
+!Behavior method!
+addTransactionsTo: aCollectionOfTransactions
+	#_coverageTracker4450463_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker4450463_
+		cover: (48 to: 72)
+		declaredAt: (20 to: 44)
+		by: aCollectionOfTransactions.
+	#_coverageTracker4450463_
+		coverAll:
+			{74 to: 80}
+		evaluating: [
+			receiver1 addAll:
+				(#_coverageTracker4450463_
+					cover: (82 to: 93)
+					declaredAt: (82 to: 93)
+					by: transactions) ]
+		thatSends: #addAll:
+		to: receiver1 ] value.! !
+!Behavior method!
+fillTreeReport: aTreeReport
+	#_coverageTracker4450517_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker4450517_
+		cover: (33 to: 43)
+		declaredAt: (17 to: 27)
+		by: aTreeReport.
+	#_coverageTracker4450517_
+		coverAll:
+			{45 to: 54}
+		evaluating: [
+			receiver1 addNameOf:
+				(#_coverageTracker4450517_
+					coverAll:
+						{56 to: 59}
+					byLiteralOrPseudoVariable: self) ]
+		thatSends: #addNameOf:
+		to: receiver1 ] value.
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker4450517_
+		cover: (63 to: 73)
+		declaredAt: (17 to: 27)
+		by: aTreeReport.
+	#_coverageTracker4450517_
+		coverAll:
+			{75 to: 94}
+		evaluating: [ receiver2 incrementIndentation ]
+		thatSends: #incrementIndentation
+		to: receiver2 ] value.
+	[ | receiver4 |
+	receiver4 _ #_coverageTracker4450517_
+		cover: (98 to: 105)
+		declaredAt: (98 to: 105)
+		by: accounts.
+	#_coverageTracker4450517_
+		coverAll:
+			{107 to: 109}
+		evaluating: [
+			receiver4 do: [ :account |
+				[ | receiver3 |
+				receiver3 _ #_coverageTracker4450517_
+					cover: (123 to: 129)
+					declaredAt: (113 to: 119)
+					by: account.
+				#_coverageTracker4450517_
+					coverAll:
+						{131 to: 145}
+					evaluating: [
+						receiver3 fillTreeReport:
+							(#_coverageTracker4450517_
+								cover: (147 to: 157)
+								declaredAt: (17 to: 27)
+								by: aTreeReport) ]
+					thatSends: #fillTreeReport:
+					to: receiver3 ] value ]]
+		thatSends: #do:
+		to: receiver4 ] value.
+	[ | receiver5 |
+	receiver5 _ #_coverageTracker4450517_
+		cover: (163 to: 173)
+		declaredAt: (17 to: 27)
+		by: aTreeReport.
+	#_coverageTracker4450517_
+		coverAll:
+			{175 to: 187}
+		evaluating: [
+			receiver5 addBalanceOf:
+				(#_coverageTracker4450517_
+					coverAll:
+						{189 to: 192}
+					byLiteralOrPseudoVariable: self) ]
+		thatSends: #addBalanceOf:
+		to: receiver5 ] value.
+	[ | receiver6 |
+	receiver6 _ #_coverageTracker4450517_
+		cover: (196 to: 206)
+		declaredAt: (17 to: 27)
+		by: aTreeReport.
+	#_coverageTracker4450517_
+		coverAll:
+			{208 to: 227}
+		evaluating: [ receiver6 decrementIndentation ]
+		thatSends: #decrementIndentation
+		to: receiver6 ] value.! !
+!Behavior method!
+add: accountToAdd
+	#_coverageTracker4450570_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker4450570_
+		coverAll:
+			{21 to: 24}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker4450570_
+		coverAll:
+			{26 to: 38}
+		evaluating: [
+			receiver1 assertCanAdd:
+				(#_coverageTracker4450570_
+					cover: (40 to: 51)
+					declaredAt: (6 to: 17)
+					by: accountToAdd) ]
+		thatSends: #assertCanAdd:
+		to: receiver1 ] value.
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker4450570_
+		cover: (58 to: 65)
+		declaredAt: (58 to: 65)
+		by: accounts.
+	#_coverageTracker4450570_
+		coverAll:
+			{67 to: 70}
+		evaluating: [
+			receiver2 add:
+				(#_coverageTracker4450570_
+					cover: (72 to: 83)
+					declaredAt: (6 to: 17)
+					by: accountToAdd) ]
+		thatSends: #add:
+		to: receiver2 ] value.
+	[ | receiver3 |
+	receiver3 _ #_coverageTracker4450570_
+		cover: (87 to: 98)
+		declaredAt: (6 to: 17)
+		by: accountToAdd.
+	#_coverageTracker4450570_
+		coverAll:
+			{100 to: 107}
+		evaluating: [
+			receiver3 addedTo:
+				(#_coverageTracker4450570_
+					coverAll:
+						{109 to: 112}
+					byLiteralOrPseudoVariable: self) ]
+		thatSends: #addedTo:
+		to: receiver3 ] value.! !
+!Behavior method!
+initializeNamed: aName with: anAccount
+	#_coverageTracker4450608_ markAsExecuted.
+	#_coverageTracker4450608_
+		cover: (42 to: 45)
+		declaredAt: (42 to: 45)
+		by:
+			(name _ #_coverageTracker4450608_
+				cover: (50 to: 54)
+				declaredAt: (18 to: 22)
+				by: aName).
+	#_coverageTracker4450608_
+		cover: (58 to: 65)
+		declaredAt: (58 to: 65)
+		by:
+			(accounts _ [ | receiver1 |
+			receiver1 _ #_coverageTracker4450608_
+				coverAll:
+					{70 to: 86}
+				by: OrderedCollection.
+			#_coverageTracker4450608_
+				coverAll:
+					{88 to: 92}
+				evaluating: [
+					receiver1 with:
+						(#_coverageTracker4450608_
+							cover: (94 to: 102)
+							declaredAt: (30 to: 38)
+							by: anAccount) ]
+				thatSends: #with:
+				to: receiver1 ] value).
+	#_coverageTracker4450608_
+		cover: (106 to: 112)
+		declaredAt: (106 to: 112)
+		by:
+			(parents _ [ | receiver2 |
+			receiver2 _ #_coverageTracker4450608_
+				coverAll:
+					{117 to: 133}
+				by: OrderedCollection.
+			#_coverageTracker4450608_
+				coverAll:
+					{135 to: 137}
+				evaluating: [ receiver2 new ]
+				thatSends: #new
+				to: receiver2 ] value).! !
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'LMR 6/1/2023 05:42:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'LMR 6/1/2023 05:42:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'LMR 6/1/2023 05:42:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'LMR 6/1/2023 05:42:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'LMR 6/1/2023 05:42:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'LMR 6/1/2023 05:42:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'LMR 6/1/2023 05:42:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'LMR 6/1/2023 05:42:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'LMR 6/1/2023 05:42:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'LMR 6/1/2023 05:42:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'LMR 6/1/2023 05:42:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'LMR 6/1/2023 05:43:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'LMR 6/1/2023 05:43:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'LMR 6/1/2023 05:43:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'LMR 6/1/2023 05:43:00'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'LMR 6/1/2023 05:43:00'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'LMR 6/1/2023 05:43:00'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'LMR 6/1/2023 05:43:00'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'LMR 6/1/2023 05:43:00'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'LMR 6/1/2023 05:43:00'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'LMR 6/1/2023 05:43:00'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'LMR 6/1/2023 05:43:00'!
+PASSED!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'LMR 6/1/2023 05:43:00'!
+PASSED!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'LMR 6/1/2023 05:43:01'!
+PASSED!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'LMR 6/1/2023 05:43:01'!
+PASSED!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'LMR 6/1/2023 05:43:01'!
+PASSED!
+
+!testRun: #ReportsTest #test05AccountWithOneTransferWithdrawHasItInItsAccountSummary stamp: 'LMR 6/1/2023 05:43:01'!
+PASSED!
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'LMR 6/1/2023 05:43:01'!
+PASSED!
+
+!testRun: #ReportsTest #test07PortfolioWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'LMR 6/1/2023 05:43:01'!
+PASSED!
+
+!testRun: #ReportsTest #test08NetTransferOfANewAccountIs0 stamp: 'LMR 6/1/2023 05:43:01'!
+PASSED!
+
+!testRun: #ReportsTest #test09AnAccountWithATransferHasItInItsNetTransfer stamp: 'LMR 6/1/2023 05:43:02'!
+PASSED!
+
+!testRun: #ReportsTest #test10AnAccountWithMultipleTransactionsHasACorrectNetTransfer stamp: 'LMR 6/1/2023 05:43:02'!
+PASSED!
+
+!testRun: #ReportsTest #test11APortfolioWithMultipleTransactionsHasACorrectNetTransfer stamp: 'LMR 6/1/2023 05:43:02'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'LMR 6/1/2023 05:43:02'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth stamp: 'LMR 6/1/2023 05:43:02'!
+PASSED!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'LMR 6/1/2023 05:43:02'!
+PASSED!
+
+!testRun: #TransferTest #test04WithdrawOfATransferKnowsItsTransfer stamp: 'LMR 6/1/2023 05:43:02'!
+PASSED!
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 05:43:02'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 05:43:02'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 05:43:02'!
+PASSED!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 05:43:02'!
+PASSED!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 05:43:02'!
+PASSED!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 05:43:03'!
+PASSED!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 05:43:03'!
+PASSED!
+
+!testRun: #TreeReportsTest #test08PortfolioTransactionTreeReportWorksRecursively stamp: 'LMR 6/1/2023 05:43:03'!
+PASSED!
+
+AccountTransaction subclass: #TransferLegs
+	instanceVariableNames: 'myTransfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #TransferLegs category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 05:47:46'!
+AccountTransaction subclass: #TransferLegs
+	instanceVariableNames: 'myTransfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+AccountTransaction subclass: #TransferDeposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #TransferDeposit category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 05:47:53'!
+AccountTransaction subclass: #TransferDeposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+AccountTransaction subclass: #TransferWithdraw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #TransferWithdraw category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 05:47:56'!
+AccountTransaction subclass: #TransferWithdraw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+TransferLegs subclass: #TransferDeposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #TransferDeposit category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 05:48:10'!
+TransferLegs subclass: #TransferDeposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+TransferLegs subclass: #TransferWithdraw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #TransferWithdraw category: 'Portfolio-Ejercicio' stamp: 'LMR 6/1/2023 05:48:20'!
+TransferLegs subclass: #TransferWithdraw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!TransferLegs methodsFor: 'initialization' stamp: 'LMR 6/1/2023 05:48:41'!
+initializeOn: anAccount fromTransfer: aTransfer
+
+	myTransfer := aTransfer.
+	anAccount register: self
+! !
+
+!methodRemoval: TransferDeposit #initializeOn:fromTransfer: stamp: 'LMR 6/1/2023 05:48:41'!
+initializeOn: anAccount fromTransfer: aTransfer
+
+	myTransfer := aTransfer.
+	anAccount register: self
+!
+!TransferLegs methodsFor: 'transfer' stamp: 'LMR 6/1/2023 05:48:46'!
+transfer
+
+	^myTransfer ! !
+
+!methodRemoval: TransferDeposit #transfer stamp: 'LMR 6/1/2023 05:48:46'!
+transfer
+
+	^myTransfer !
+!TransferLegs methodsFor: 'value' stamp: 'LMR 6/1/2023 05:49:04' overrides: 50621296!
+value
+	
+	^myTransfer value ! !
+
+!methodRemoval: TransferDeposit #value stamp: 'LMR 6/1/2023 05:49:04'!
+value
+	
+	^myTransfer value !
+!TransferLegs methodsFor: 'reports' stamp: 'LMR 6/1/2023 05:49:45' overrides: 50621290!
+fillReport: aReport
+
+	self subclassResponsibility.! !
+!TransferLegs methodsFor: 'balance' stamp: 'LMR 6/1/2023 05:50:08' overrides: 50621301!
+affectBalance: currentBalance 
+
+	self subclassResponsibility.! !
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'LMR 6/1/2023 05:50:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'LMR 6/1/2023 05:50:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'LMR 6/1/2023 05:50:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'LMR 6/1/2023 05:50:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'LMR 6/1/2023 05:50:43'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'LMR 6/1/2023 05:50:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'LMR 6/1/2023 05:50:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'LMR 6/1/2023 05:50:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'LMR 6/1/2023 05:50:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'LMR 6/1/2023 05:50:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'LMR 6/1/2023 05:50:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'LMR 6/1/2023 05:50:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'LMR 6/1/2023 05:50:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'LMR 6/1/2023 05:50:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'LMR 6/1/2023 05:50:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'LMR 6/1/2023 05:50:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'LMR 6/1/2023 05:50:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'LMR 6/1/2023 05:50:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'LMR 6/1/2023 05:50:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'LMR 6/1/2023 05:50:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'LMR 6/1/2023 05:50:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'LMR 6/1/2023 05:50:45'!
+PASSED!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'LMR 6/1/2023 05:50:45'!
+PASSED!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'LMR 6/1/2023 05:50:45'!
+PASSED!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'LMR 6/1/2023 05:50:46'!
+PASSED!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'LMR 6/1/2023 05:50:46'!
+PASSED!
+
+!testRun: #ReportsTest #test05AccountWithOneTransferWithdrawHasItInItsAccountSummary stamp: 'LMR 6/1/2023 05:50:46'!
+PASSED!
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'LMR 6/1/2023 05:50:46'!
+PASSED!
+
+!testRun: #ReportsTest #test07PortfolioWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'LMR 6/1/2023 05:50:46'!
+PASSED!
+
+!testRun: #ReportsTest #test08NetTransferOfANewAccountIs0 stamp: 'LMR 6/1/2023 05:50:46'!
+PASSED!
+
+!testRun: #ReportsTest #test09AnAccountWithATransferHasItInItsNetTransfer stamp: 'LMR 6/1/2023 05:50:46'!
+PASSED!
+
+!testRun: #ReportsTest #test10AnAccountWithMultipleTransactionsHasACorrectNetTransfer stamp: 'LMR 6/1/2023 05:50:46'!
+PASSED!
+
+!testRun: #ReportsTest #test11APortfolioWithMultipleTransactionsHasACorrectNetTransfer stamp: 'LMR 6/1/2023 05:50:46'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'LMR 6/1/2023 05:50:46'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth stamp: 'LMR 6/1/2023 05:50:46'!
+PASSED!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'LMR 6/1/2023 05:50:46'!
+PASSED!
+
+!testRun: #TransferTest #test04WithdrawOfATransferKnowsItsTransfer stamp: 'LMR 6/1/2023 05:50:47'!
+PASSED!
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 05:50:47'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 05:50:47'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 05:50:47'!
+PASSED!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 05:50:47'!
+PASSED!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 05:50:47'!
+PASSED!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 05:50:47'!
+PASSED!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 05:50:47'!
+PASSED!
+
+!testRun: #TreeReportsTest #test08PortfolioTransactionTreeReportWorksRecursively stamp: 'LMR 6/1/2023 05:50:47'!
+PASSED!
+
+----SNAPSHOT----(1 June 2023 05:53:57) CuisUniversity-5799.image priorSource: 9418740!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'LMR 6/1/2023 05:54:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'LMR 6/1/2023 05:54:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'LMR 6/1/2023 05:54:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'LMR 6/1/2023 05:54:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'LMR 6/1/2023 05:54:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'LMR 6/1/2023 05:54:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'LMR 6/1/2023 05:54:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'LMR 6/1/2023 05:54:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'LMR 6/1/2023 05:54:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'LMR 6/1/2023 05:54:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'LMR 6/1/2023 05:54:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'LMR 6/1/2023 05:54:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'LMR 6/1/2023 05:54:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'LMR 6/1/2023 05:54:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'LMR 6/1/2023 05:54:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'LMR 6/1/2023 05:54:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'LMR 6/1/2023 05:54:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'LMR 6/1/2023 05:54:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'LMR 6/1/2023 05:54:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'LMR 6/1/2023 05:54:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'LMR 6/1/2023 05:54:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'LMR 6/1/2023 05:54:11'!
+PASSED!
+
+!testRun: #ReportsTest #test01AccountSummaryOfANewAccountIsEmpty stamp: 'LMR 6/1/2023 05:54:11'!
+PASSED!
+
+!testRun: #ReportsTest #test02AccountWithOneDepositHasItInItsAccountSummary stamp: 'LMR 6/1/2023 05:54:11'!
+PASSED!
+
+!testRun: #ReportsTest #test03AccountWithOneWithdrawHasItInItsAccountSummary stamp: 'LMR 6/1/2023 05:54:11'!
+PASSED!
+
+!testRun: #ReportsTest #test04AccountWithOneTransferDepositHasItInItsAccountSummary stamp: 'LMR 6/1/2023 05:54:11'!
+PASSED!
+
+!testRun: #ReportsTest #test05AccountWithOneTransferWithdrawHasItInItsAccountSummary stamp: 'LMR 6/1/2023 05:54:11'!
+PASSED!
+
+!testRun: #ReportsTest #test06AccountWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'LMR 6/1/2023 05:54:12'!
+PASSED!
+
+!testRun: #ReportsTest #test07PortfolioWithMultipleTransactionsHasThemInItsAccountSummary stamp: 'LMR 6/1/2023 05:54:12'!
+PASSED!
+
+!testRun: #ReportsTest #test08NetTransferOfANewAccountIs0 stamp: 'LMR 6/1/2023 05:54:12'!
+PASSED!
+
+!testRun: #ReportsTest #test09AnAccountWithATransferHasItInItsNetTransfer stamp: 'LMR 6/1/2023 05:54:12'!
+PASSED!
+
+!testRun: #ReportsTest #test10AnAccountWithMultipleTransactionsHasACorrectNetTransfer stamp: 'LMR 6/1/2023 05:54:12'!
+PASSED!
+
+!testRun: #ReportsTest #test11APortfolioWithMultipleTransactionsHasACorrectNetTransfer stamp: 'LMR 6/1/2023 05:54:12'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenTwoAccountsAffectsTheirBalance stamp: 'LMR 6/1/2023 05:54:12'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferBetweenTwoAccountsKnowItsTransactionsAndIsRegisteredInBoth stamp: 'LMR 6/1/2023 05:54:12'!
+PASSED!
+
+!testRun: #TransferTest #test03DepositOfATransferKnowsItsTransfer stamp: 'LMR 6/1/2023 05:54:12'!
+PASSED!
+
+!testRun: #TransferTest #test04WithdrawOfATransferKnowsItsTransfer stamp: 'LMR 6/1/2023 05:54:12'!
+PASSED!
+
+!testRun: #TreeReportsTest #test01NewPortfolioOnlyHasItsNameOnItsReport stamp: 'LMR 6/1/2023 05:54:12'!
+PASSED!
+
+!testRun: #TreeReportsTest #test02PortfolioWithOneAccountHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 05:54:13'!
+PASSED!
+
+!testRun: #TreeReportsTest #test03PortfolioWithOnePortfolioHasBothNamesOnItsReport stamp: 'LMR 6/1/2023 05:54:13'!
+PASSED!
+
+!testRun: #TreeReportsTest #test04PortfolioWithManyAccountHasAllNamesOnItsReport stamp: 'LMR 6/1/2023 05:54:13'!
+PASSED!
+
+!testRun: #TreeReportsTest #test05PortfolioWithManyAccountAndPortfoliosHasAllNamesOnItsReportCorrectlyIndented stamp: 'LMR 6/1/2023 05:54:13'!
+PASSED!
+
+!testRun: #TreeReportsTest #test06NewPortfolioOnlyHasItsNameAnd0BalanceOnItsReport stamp: 'LMR 6/1/2023 05:54:13'!
+PASSED!
+
+!testRun: #TreeReportsTest #test07PortfolioWithOneAccountHasTheAccountsTransactionsAndBalanceOnReport stamp: 'LMR 6/1/2023 05:54:13'!
+PASSED!
+
+!testRun: #TreeReportsTest #test08PortfolioTransactionTreeReportWorksRecursively stamp: 'LMR 6/1/2023 05:54:13'!
+PASSED!
+
+----QUIT----(1 June 2023 05:54:17) CuisUniversity-5799.image priorSource: 9505647!
