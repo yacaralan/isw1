@@ -4234,3 +4234,286 @@ PASSED!
 ----SNAPSHOT----(5 June 2023 01:02:36) CuisUniversity-5832.image priorSource: 9529555!
 
 ----QUIT----(5 June 2023 01:02:47) CuisUniversity-5832.image priorSource: 9529763!
+
+----STARTUP---- (5 June 2023 15:27:07) as D:\OneDrive - dc.uba.ar\UBA\Inge1\cuis5832\windows64\CuisUniversity-5832.image!
+
+
+!classDefinition: #Window category: 'MarsRover-WithHeading' stamp: 'LMR 6/5/2023 15:39:10'!
+MarsRoverEventListener subclass: #Window
+	instanceVariableNames: 'window headingWindow'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!Window methodsFor: 'updating' stamp: 'LMR 6/5/2023 15:39:09'!
+updateHeading: aHeading
+	
+	headingWindow := aHeading.! !
+
+!classDefinition: #Window category: 'MarsRover-WithHeading' stamp: 'LMR 6/5/2023 15:39:30'!
+MarsRoverEventListener subclass: #Window
+	instanceVariableNames: 'window headingWindow positionWindow'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!Window methodsFor: 'updating' stamp: 'LMR 6/5/2023 15:39:29'!
+updatePosition: aPosition
+	
+	positionWindow := aPosition.! !
+!Logger methodsFor: 'updating' stamp: 'LMR 6/5/2023 15:40:06'!
+updateHeading: aHeading
+
+	log add: aHeading.! !
+!Logger methodsFor: 'updating' stamp: 'LMR 6/5/2023 15:40:28'!
+updatePosition: aPosition
+
+	log add: aPosition.! !
+!Observer methodsFor: 'updating' stamp: 'LMR 6/5/2023 15:40:44' prior: 50628671!
+updateHeading: aHeading
+
+	listeners at: 'heading' ifPresent: [:headingListeners | 
+		headingListeners do: [:listener | listener updateHeading: aHeading].
+		].! !
+!Observer methodsFor: 'updating' stamp: 'LMR 6/5/2023 15:40:48' prior: 50628645!
+updatePosition: aPosition
+
+	listeners at: 'position' ifPresent: [:positionListeners | 
+		positionListeners do: [:listener | listener updatePosition: aPosition].
+		].! !
+
+!methodRemoval: Logger #update: stamp: 'LMR 6/5/2023 15:40:55'!
+update: roverInfo
+
+	log add: roverInfo.!
+
+!methodRemoval: Window #update: stamp: 'LMR 6/5/2023 15:40:59'!
+update: roverInfo 
+	
+	window := roverInfo.!
+!MarsRoverEventListener methodsFor: 'updating' stamp: 'LMR 6/5/2023 15:41:08'!
+updateHeading: aHeading
+
+	self subclassResponsibility.! !
+!MarsRoverEventListener methodsFor: 'updating' stamp: 'LMR 6/5/2023 15:41:16'!
+updatePosition: aPosition
+
+	self subclassResponsibility.! !
+
+!methodRemoval: MarsRoverEventListener #update: stamp: 'LMR 6/5/2023 15:41:19'!
+update: roverInfo
+
+	self subclassResponsibility.!
+!Window methodsFor: 'initialization' stamp: 'LMR 6/5/2023 15:41:51' prior: 50625449 overrides: 50628521!
+initialize
+
+	headingWindow := 'nada'.
+	positionWindow := 'nada'.! !
+!Window methodsFor: 'showing' stamp: 'LMR 6/5/2023 15:42:06'!
+showHeading
+	
+	^headingWindow.! !
+!Window methodsFor: 'showing' stamp: 'LMR 6/5/2023 15:42:17'!
+showPosition
+	
+	^positionWindow.! !
+
+!methodRemoval: Window #show stamp: 'LMR 6/5/2023 15:42:21'!
+show
+	
+	^window.!
+
+MarsRoverEventListener subclass: #Window
+	instanceVariableNames: 'headingWindow positionWindow'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #Window category: 'MarsRover-WithHeading' stamp: 'LMR 6/5/2023 15:42:33'!
+MarsRoverEventListener subclass: #Window
+	instanceVariableNames: 'headingWindow positionWindow'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 15:42:49' prior: 50628935!
+test02StartingMarsRoverHasEmptyWindow
+	
+	| positionWindow |
+	positionWindow := Window new.
+	mrObserver addListener: positionWindow subscribedTo: positionSubscription.
+	
+	mrAt1At1HeadingNorth process: ''.
+	self assert: positionWindow showPosition equals: 'nada'.! !
+!LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 15:42:57' prior: 50628959!
+test04PositionWindowOfRoverHasLastPosition
+	
+	| positionWindow |
+	positionWindow := Window new.
+	mrObserver addListener: positionWindow subscribedTo: positionSubscription.
+	
+	mrAt1At1HeadingNorth process: 'f'.
+	self assert: 1@2 equals: positionWindow showPosition.! !
+!LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 15:43:02' prior: 50628984!
+test06PositionLoggerAndWindowOfRoverWorkAtTheSameTime
+	
+	| positionLogger positionWindow expected |
+	positionLogger := Logger new.	
+	positionWindow := Window new.
+	mrObserver addListener: positionLogger subscribedTo: positionSubscription.
+	mrObserver addListener: positionWindow subscribedTo: positionSubscription.
+	
+	mrAt1At1HeadingNorth process: 'f'.
+	expected := OrderedCollection with: 1@2.
+	self assert: expected equals: positionLogger show.
+	self assert: 1@2 equals: positionWindow showPosition.! !
+!LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 15:43:23' prior: 50629230!
+test08HeadingWindowOfNewRoverIsEmpty
+	
+	| headingWindow |
+	headingWindow := Window new.	
+	mrObserver addListener: headingWindow subscribedTo: headingSubscription.
+	
+	mrAt1At1HeadingNorth process: ''.
+	self assert: headingWindow showHeading equals: 'nada'.
+	! !
+!LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 15:43:29' prior: 50629254!
+test10HeadingWindowOfRoverRegistersLastHeading
+	
+	| headingWindow expected |
+	headingWindow := Window new.	
+	mrObserver addListener: headingWindow subscribedTo: headingSubscription.
+	
+	mrAt1At1HeadingNorth process: 'r'.
+	expected := 'Apuntando al Este'.
+	self assert: expected equals: headingWindow showHeading.
+	! !
+!LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 15:43:37' prior: 50629304!
+test12MarsRoverCanHaveMultipleHeadingLoggers
+	
+	| headingLogger headingWindow expected |
+	headingLogger := Logger new.	
+	headingWindow := Window new.	
+	mrObserver addListener: headingWindow subscribedTo: headingSubscription.
+	mrObserver addListener: headingLogger subscribedTo: headingSubscription.
+	
+	mrAt1At1HeadingNorth process: 'rlll'.
+	expected := OrderedCollection with: 'Apuntando al Este' with: 'Apuntando al Norte' with: 'Apuntando al Oeste' with: 'Apuntando al Sur'.
+	self assert: expected equals: headingLogger show.
+	self assert: 'Apuntando al Sur' equals: headingWindow showHeading.
+	! !
+!LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 15:45:09' prior: 50629325!
+test14WindowRegisterBothPositionAndHeading
+	
+	| bothWindow |
+	bothWindow := Window new.	
+	mrObserver addListener: bothWindow subscribedTo: bothSubscription.
+	
+	mrAt1At1HeadingNorth process: 'frlllf'.
+	self assert: 1@1 equals: bothWindow showPosition.
+	self assert: 'Apuntando hacia el Sur' equals: bothWindow showHeading.
+	! !
+!LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 15:45:23' prior: 50629653!
+test14WindowRegisterBothPositionAndHeading
+	
+	| bothWindow |
+	bothWindow := Window new.	
+	mrObserver addListener: bothWindow subscribedTo: bothSubscription.
+	
+	mrAt1At1HeadingNorth process: 'frlllf'.
+	self assert: 1@1 equals: bothWindow showPosition.
+	self assert: 'Apuntando al Sur' equals: bothWindow showHeading.
+	! !
+
+!methodRemoval: MarsRoverEventListener #show stamp: 'LMR 6/5/2023 15:45:32'!
+show
+
+	self subclassResponsibility.!
+
+!testRun: #LogTest #test01StartingMarsRoverHasEmptyLog stamp: 'LMR 6/5/2023 15:45:49'!
+PASSED!
+
+!testRun: #LogTest #test02StartingMarsRoverHasEmptyWindow stamp: 'LMR 6/5/2023 15:45:50'!
+PASSED!
+
+!testRun: #LogTest #test03PositionLoggerOfRoverRegistersMovement stamp: 'LMR 6/5/2023 15:45:50'!
+PASSED!
+
+!testRun: #LogTest #test04PositionWindowOfRoverHasLastPosition stamp: 'LMR 6/5/2023 15:45:50'!
+PASSED!
+
+!testRun: #LogTest #test05PositionLoggerOfRoverRegistersManyMovements stamp: 'LMR 6/5/2023 15:45:50'!
+PASSED!
+
+!testRun: #LogTest #test06PositionLoggerAndWindowOfRoverWorkAtTheSameTime stamp: 'LMR 6/5/2023 15:45:50'!
+PASSED!
+
+!testRun: #LogTest #test07HeadingLoggerOfNewRoverHasEmptyLog stamp: 'LMR 6/5/2023 15:45:50'!
+PASSED!
+
+!testRun: #LogTest #test08HeadingWindowOfNewRoverIsEmpty stamp: 'LMR 6/5/2023 15:45:50'!
+PASSED!
+
+!testRun: #LogTest #test09HeadingLoggerOfRoverRegistersARotation stamp: 'LMR 6/5/2023 15:45:50'!
+PASSED!
+
+!testRun: #LogTest #test10HeadingWindowOfRoverRegistersLastHeading stamp: 'LMR 6/5/2023 15:45:50'!
+PASSED!
+
+!testRun: #LogTest #test11HeadingLoggerOfRoverRegistersManyRotations stamp: 'LMR 6/5/2023 15:45:50'!
+PASSED!
+
+!testRun: #LogTest #test12MarsRoverCanHaveMultipleHeadingLoggers stamp: 'LMR 6/5/2023 15:45:50'!
+PASSED!
+
+!testRun: #LogTest #test13LoggerCanLogPositionAndHeading stamp: 'LMR 6/5/2023 15:45:51'!
+PASSED!
+
+!testRun: #LogTest #test14WindowRegisterBothPositionAndHeading stamp: 'LMR 6/5/2023 15:45:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'LMR 6/5/2023 15:45:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'LMR 6/5/2023 15:45:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'LMR 6/5/2023 15:45:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'LMR 6/5/2023 15:45:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'LMR 6/5/2023 15:45:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'LMR 6/5/2023 15:45:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'LMR 6/5/2023 15:45:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'LMR 6/5/2023 15:45:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'LMR 6/5/2023 15:45:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'LMR 6/5/2023 15:45:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'LMR 6/5/2023 15:45:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'LMR 6/5/2023 15:45:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'LMR 6/5/2023 15:45:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'LMR 6/5/2023 15:45:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'LMR 6/5/2023 15:45:52'!
+PASSED!
+
+----SNAPSHOT----(5 June 2023 15:45:58) CuisUniversity-5832.image priorSource: 9529851!
+
+----QUIT----(5 June 2023 15:46:06) CuisUniversity-5832.image priorSource: 9540206!

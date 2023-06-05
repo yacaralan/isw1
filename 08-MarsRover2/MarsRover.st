@@ -159,14 +159,13 @@ Object subclass: #MarsRoverEventListener
 	poolDictionaries: ''
 	category: 'MarsRover-WithHeading'!
 
-!MarsRoverEventListener methodsFor: 'showing' stamp: 'LMR 6/4/2023 23:56:09'!
-show
+!MarsRoverEventListener methodsFor: 'updating' stamp: 'LMR 6/5/2023 15:41:08'!
+updateHeading: aHeading
 
 	self subclassResponsibility.! !
 
-
-!MarsRoverEventListener methodsFor: 'updating' stamp: 'LMR 6/5/2023 00:00:30'!
-update: roverInfo
+!MarsRoverEventListener methodsFor: 'updating' stamp: 'LMR 6/5/2023 15:41:16'!
+updatePosition: aPosition
 
 	self subclassResponsibility.! !
 
@@ -190,10 +189,15 @@ show
 	^log! !
 
 
-!Logger methodsFor: 'updating' stamp: 'LMR 6/5/2023 00:00:37'!
-update: roverInfo
+!Logger methodsFor: 'updating' stamp: 'LMR 6/5/2023 15:40:06'!
+updateHeading: aHeading
 
-	log add: roverInfo.! !
+	log add: aHeading.! !
+
+!Logger methodsFor: 'updating' stamp: 'LMR 6/5/2023 15:40:28'!
+updatePosition: aPosition
+
+	log add: aPosition.! !
 
 
 !Logger methodsFor: 'initialization' stamp: 'LMR 6/4/2023 21:24:53'!
@@ -204,27 +208,38 @@ initialize
 
 !classDefinition: #Window category: 'MarsRover-WithHeading'!
 MarsRoverEventListener subclass: #Window
-	instanceVariableNames: 'window'
+	instanceVariableNames: 'headingWindow positionWindow'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'MarsRover-WithHeading'!
 
-!Window methodsFor: 'initialization' stamp: 'LMR 6/4/2023 18:56:39'!
+!Window methodsFor: 'initialization' stamp: 'LMR 6/5/2023 15:41:51'!
 initialize
 
-	window := 'nada'.! !
+	headingWindow := 'nada'.
+	positionWindow := 'nada'.! !
 
 
-!Window methodsFor: 'updating' stamp: 'LMR 6/5/2023 00:00:43'!
-update: roverInfo 
+!Window methodsFor: 'updating' stamp: 'LMR 6/5/2023 15:39:09'!
+updateHeading: aHeading
 	
-	window := roverInfo.! !
+	headingWindow := aHeading.! !
 
-
-!Window methodsFor: 'showing' stamp: 'LMR 6/4/2023 21:09:17'!
-show
+!Window methodsFor: 'updating' stamp: 'LMR 6/5/2023 15:39:29'!
+updatePosition: aPosition
 	
-	^window.! !
+	positionWindow := aPosition.! !
+
+
+!Window methodsFor: 'showing' stamp: 'LMR 6/5/2023 15:42:06'!
+showHeading
+	
+	^headingWindow.! !
+
+!Window methodsFor: 'showing' stamp: 'LMR 6/5/2023 15:42:17'!
+showPosition
+	
+	^positionWindow.! !
 
 
 !classDefinition: #MarsRoverHeading category: 'MarsRover-WithHeading'!
@@ -408,18 +423,18 @@ initialize
 	listeners := Dictionary new.! !
 
 
-!Observer methodsFor: 'updating' stamp: 'LMR 6/5/2023 00:17:11'!
+!Observer methodsFor: 'updating' stamp: 'LMR 6/5/2023 15:40:44'!
 updateHeading: aHeading
 
 	listeners at: 'heading' ifPresent: [:headingListeners | 
-		headingListeners do: [:listener | listener update: aHeading].
+		headingListeners do: [:listener | listener updateHeading: aHeading].
 		].! !
 
-!Observer methodsFor: 'updating' stamp: 'LMR 6/5/2023 00:16:01'!
+!Observer methodsFor: 'updating' stamp: 'LMR 6/5/2023 15:40:48'!
 updatePosition: aPosition
 
 	listeners at: 'position' ifPresent: [:positionListeners | 
-		positionListeners do: [:listener | listener update: aPosition].
+		positionListeners do: [:listener | listener updatePosition: aPosition].
 		].! !
 
 
@@ -448,7 +463,7 @@ test01StartingMarsRoverHasEmptyLog
 	mrAt1At1HeadingNorth process: ''.
 	self assert: positionLogger show isEmpty.! !
 
-!LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 00:41:44'!
+!LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 15:42:49'!
 test02StartingMarsRoverHasEmptyWindow
 	
 	| positionWindow |
@@ -456,7 +471,7 @@ test02StartingMarsRoverHasEmptyWindow
 	mrObserver addListener: positionWindow subscribedTo: positionSubscription.
 	
 	mrAt1At1HeadingNorth process: ''.
-	self assert: positionWindow show equals: 'nada'.! !
+	self assert: positionWindow showPosition equals: 'nada'.! !
 
 !LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 00:41:56'!
 test03PositionLoggerOfRoverRegistersMovement
@@ -469,7 +484,7 @@ test03PositionLoggerOfRoverRegistersMovement
 	expected := OrderedCollection with: 1@2.
 	self assert: expected equals: positionLogger show.! !
 
-!LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 00:42:10'!
+!LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 15:42:57'!
 test04PositionWindowOfRoverHasLastPosition
 	
 	| positionWindow |
@@ -477,7 +492,7 @@ test04PositionWindowOfRoverHasLastPosition
 	mrObserver addListener: positionWindow subscribedTo: positionSubscription.
 	
 	mrAt1At1HeadingNorth process: 'f'.
-	self assert: 1@2 equals: positionWindow show.! !
+	self assert: 1@2 equals: positionWindow showPosition.! !
 
 !LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 00:42:24'!
 test05PositionLoggerOfRoverRegistersManyMovements
@@ -490,7 +505,7 @@ test05PositionLoggerOfRoverRegistersManyMovements
 	expected := OrderedCollection with: 1@2 with: 1@3 with: 1@2 with: 1@3.
 	self assert: expected equals: positionLogger show.! !
 
-!LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 00:42:41'!
+!LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 15:43:02'!
 test06PositionLoggerAndWindowOfRoverWorkAtTheSameTime
 	
 	| positionLogger positionWindow expected |
@@ -502,7 +517,7 @@ test06PositionLoggerAndWindowOfRoverWorkAtTheSameTime
 	mrAt1At1HeadingNorth process: 'f'.
 	expected := OrderedCollection with: 1@2.
 	self assert: expected equals: positionLogger show.
-	self assert: 1@2 equals: positionWindow show.! !
+	self assert: 1@2 equals: positionWindow showPosition.! !
 
 !LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 00:43:42'!
 test07HeadingLoggerOfNewRoverHasEmptyLog
@@ -515,7 +530,7 @@ test07HeadingLoggerOfNewRoverHasEmptyLog
 	self assert: headingLogger show isEmpty.
 	! !
 
-!LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 00:46:49'!
+!LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 15:43:23'!
 test08HeadingWindowOfNewRoverIsEmpty
 	
 	| headingWindow |
@@ -523,7 +538,7 @@ test08HeadingWindowOfNewRoverIsEmpty
 	mrObserver addListener: headingWindow subscribedTo: headingSubscription.
 	
 	mrAt1At1HeadingNorth process: ''.
-	self assert: headingWindow show equals: 'nada'.
+	self assert: headingWindow showHeading equals: 'nada'.
 	! !
 
 !LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 00:46:51'!
@@ -538,7 +553,7 @@ test09HeadingLoggerOfRoverRegistersARotation
 	self assert: expected equals: headingLogger show.
 	! !
 
-!LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 00:46:54'!
+!LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 15:43:29'!
 test10HeadingWindowOfRoverRegistersLastHeading
 	
 	| headingWindow expected |
@@ -547,7 +562,7 @@ test10HeadingWindowOfRoverRegistersLastHeading
 	
 	mrAt1At1HeadingNorth process: 'r'.
 	expected := 'Apuntando al Este'.
-	self assert: expected equals: headingWindow show.
+	self assert: expected equals: headingWindow showHeading.
 	! !
 
 !LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 00:46:57'!
@@ -562,7 +577,7 @@ test11HeadingLoggerOfRoverRegistersManyRotations
 	self assert: expected equals: headingLogger show.
 	! !
 
-!LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 00:47:01'!
+!LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 15:43:37'!
 test12MarsRoverCanHaveMultipleHeadingLoggers
 	
 	| headingLogger headingWindow expected |
@@ -574,7 +589,7 @@ test12MarsRoverCanHaveMultipleHeadingLoggers
 	mrAt1At1HeadingNorth process: 'rlll'.
 	expected := OrderedCollection with: 'Apuntando al Este' with: 'Apuntando al Norte' with: 'Apuntando al Oeste' with: 'Apuntando al Sur'.
 	self assert: expected equals: headingLogger show.
-	self assert: 'Apuntando al Sur' equals: headingWindow show.
+	self assert: 'Apuntando al Sur' equals: headingWindow showHeading.
 	! !
 
 !LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 00:46:00'!
@@ -589,19 +604,16 @@ test13LoggerCanLogPositionAndHeading
 	self assert: expected equals: bothLogger show.
 	! !
 
-!LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 00:47:07'!
+!LogTest methodsFor: 'tests' stamp: 'LMR 6/5/2023 15:45:23'!
 test14WindowRegisterBothPositionAndHeading
 	
-	| bothWindow expected |
+	| bothWindow |
 	bothWindow := Window new.	
 	mrObserver addListener: bothWindow subscribedTo: bothSubscription.
 	
 	mrAt1At1HeadingNorth process: 'frlllf'.
-	expected := 1@1.
-	self assert: expected equals: bothWindow show.
-	mrAt1At1HeadingNorth process: 'lfl'.
-	expected := 'Apuntando al Norte'.
-	self assert: expected equals: bothWindow show.
+	self assert: 1@1 equals: bothWindow showPosition.
+	self assert: 'Apuntando al Sur' equals: bothWindow showHeading.
 	! !
 
 
