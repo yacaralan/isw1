@@ -5,7 +5,7 @@ TestCase subclass: #CartTests
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!CartTests methodsFor: 'setUp/tearDown' stamp: 'LMR 6/8/2023 18:13:27'!
+!CartTests methodsFor: 'setUp/tearDown' stamp: 'LMR 6/8/2023 18:20:40'!
 setUp
 
 	aBookCatalogue := Set with: #book1 with: #book2 with: #book3.
@@ -110,7 +110,7 @@ add: aBook
 	
 	self add: aBook amount: 1.! !
 
-!Cart methodsFor: 'add' stamp: 'LMR 6/8/2023 18:11:50'!
+!Cart methodsFor: 'add' stamp: 'LMR 6/8/2023 18:20:00'!
 add: aBook amount: anAmount 
 	
 	(storeCatalogue includes: aBook) ifFalse: [^self error: self class bookNotInStoreErrorDescrition].
@@ -124,13 +124,13 @@ listCart
 	^products.! !
 
 
-!Cart methodsFor: 'initialization' stamp: 'LMR 6/8/2023 18:12:23'!
+!Cart methodsFor: 'initialization' stamp: 'LMR 6/8/2023 18:20:16'!
 initialize
 
 	products := Bag new.
 	storeCatalogue := Set new.! !
 
-!Cart methodsFor: 'initialization' stamp: 'LMR 6/8/2023 18:12:59'!
+!Cart methodsFor: 'initialization' stamp: 'LMR 6/8/2023 18:20:23'!
 initializeWithCatalogue: aBookCatalogue 
 	
 	products := Bag new.
