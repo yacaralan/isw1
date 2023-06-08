@@ -5,10 +5,10 @@ TestCase subclass: #CartTests
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!CartTests methodsFor: 'setUp/tearDown' stamp: 'LMR 6/8/2023 01:41:50'!
+!CartTests methodsFor: 'setUp/tearDown' stamp: 'LMR 6/8/2023 18:13:27'!
 setUp
 
-	aBookCatalogue := Catalogue withBooks: (OrderedCollection with: #book1 with: #book2 with: #book3).
+	aBookCatalogue := Set with: #book1 with: #book2 with: #book3.
 	myCart := Cart withCatalogue: aBookCatalogue.! !
 
 
@@ -110,17 +110,12 @@ add: aBook
 	
 	self add: aBook amount: 1.! !
 
-!Cart methodsFor: 'add' stamp: 'LMR 6/8/2023 01:40:35'!
+!Cart methodsFor: 'add' stamp: 'LMR 6/8/2023 18:11:50'!
 add: aBook amount: anAmount 
 	
-	(storeCatalogue inStore: aBook) ifFalse: [^self error: self class bookNotInStoreErrorDescrition].
+	(storeCatalogue includes: aBook) ifFalse: [^self error: self class bookNotInStoreErrorDescrition].
 	anAmount <= 0 ifTrue: [^self error: self class invalidAmountOfItemsErrorDescription].
 	products add: aBook withOccurrences: anAmount.! !
-
-!Cart methodsFor: 'add' stamp: 'LMR 6/8/2023 00:47:30'!
-initialize
-
-	products := Bag new.! !
 
 
 !Cart methodsFor: 'list' stamp: 'LMR 6/8/2023 00:31:01'!
@@ -129,9 +124,16 @@ listCart
 	^products.! !
 
 
-!Cart methodsFor: 'initialization' stamp: 'LMR 6/8/2023 01:42:31'!
+!Cart methodsFor: 'initialization' stamp: 'LMR 6/8/2023 18:12:23'!
+initialize
+
+	products := Bag new.
+	storeCatalogue := Set new.! !
+
+!Cart methodsFor: 'initialization' stamp: 'LMR 6/8/2023 18:12:59'!
 initializeWithCatalogue: aBookCatalogue 
 	
+	products := Bag new.
 	storeCatalogue := aBookCatalogue.! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
@@ -155,33 +157,3 @@ bookNotInStoreErrorDescrition
 invalidAmountOfItemsErrorDescription
 
 	^'Invalid amount of items to add to cart'.! !
-
-
-!classDefinition: #Catalogue category: 'TusLibros'!
-Object subclass: #Catalogue
-	instanceVariableNames: 'bookCatalogue'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TusLibros'!
-
-!Catalogue methodsFor: 'initialization' stamp: 'LMR 6/8/2023 00:52:43'!
-initializeWithBooks: aBookCatalogue 
-	
-	bookCatalogue := aBookCatalogue.! !
-
-
-!Catalogue methodsFor: 'testing' stamp: 'LMR 6/8/2023 00:52:19'!
-inStore: aBook
-
-	^bookCatalogue includes: aBook.! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-!classDefinition: 'Catalogue class' category: 'TusLibros'!
-Catalogue class
-	instanceVariableNames: ''!
-
-!Catalogue class methodsFor: 'instance creation' stamp: 'LMR 6/8/2023 00:52:50'!
-withBooks: aBookCatalogue 
-	
-	^self new initializeWithBooks: aBookCatalogue ! !
