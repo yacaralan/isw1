@@ -1216,3 +1216,38 @@ test03CanAddMoreThanOneOfTheSameBook
 ----SNAPSHOT----(8 June 2023 01:43:33) CuisUniversity-5832.image priorSource: 9366758!
 
 ----QUIT----(8 June 2023 01:43:38) CuisUniversity-5832.image priorSource: 9409376!
+
+----STARTUP---- (8 June 2023 16:14:37) as D:\OneDrive - dc.uba.ar\UBA\Inge1\cuis5832\windows64\CuisUniversity-5832.image!
+
+!Cart methodsFor: 'add' stamp: 'LMR 6/8/2023 16:14:55' prior: 50625314!
+add: aBook 
+	
+	self add: aBook amount: 1.! !
+
+!testRun: #CartTests #test01NewCartStartsEmpty stamp: 'LMR 6/8/2023 16:14:59'!
+PASSED!
+
+!testRun: #CartTests #test02AddingABookToACartAddsIt stamp: 'LMR 6/8/2023 16:14:59'!
+PASSED!
+
+!testRun: #CartTests #test03CanAddMoreThanOneOfTheSameBook stamp: 'LMR 6/8/2023 16:14:59'!
+PASSED!
+
+!testRun: #CartTests #test04CanAddDifferentBooks stamp: 'LMR 6/8/2023 16:14:59'!
+PASSED!
+
+!testRun: #CartTests #test05CanAddMultipleCopiesOfABookAtOnce stamp: 'LMR 6/8/2023 16:14:59'!
+PASSED!
+
+!testRun: #CartTests #test06CanNotAddInvalidBook stamp: 'LMR 6/8/2023 16:14:59'!
+PASSED!
+
+!testRun: #CartTests #test07CanNotAddMultipleCopiesOfInvalidBookAtOnce stamp: 'LMR 6/8/2023 16:14:59'!
+PASSED!
+
+!testRun: #CartTests #test08CanNotAddInvalidAmountOfCopiesOfABookAtOnce stamp: 'LMR 6/8/2023 16:14:59'!
+PASSED!
+
+----SNAPSHOT----(8 June 2023 16:15:07) CuisUniversity-5832.image priorSource: 9409464!
+
+----QUIT----(8 June 2023 16:15:10) CuisUniversity-5832.image priorSource: 9410594!

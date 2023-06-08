@@ -105,11 +105,10 @@ isEmpty
 	^products isEmpty.! !
 
 
-!Cart methodsFor: 'add' stamp: 'LMR 6/8/2023 01:20:06'!
+!Cart methodsFor: 'add' stamp: 'LMR 6/8/2023 16:14:55'!
 add: aBook 
 	
-	(storeCatalogue inStore: aBook) ifFalse: [^self error: self class bookNotInStoreErrorDescrition].
-	products add: aBook.! !
+	self add: aBook amount: 1.! !
 
 !Cart methodsFor: 'add' stamp: 'LMR 6/8/2023 01:40:35'!
 add: aBook amount: anAmount 
