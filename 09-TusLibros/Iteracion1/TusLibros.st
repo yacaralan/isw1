@@ -91,6 +91,12 @@ test08CanNotAddInvalidAmountOfCopiesOfABookAtOnce
 	self canNotAdd: -2 copiesOfBook: #book1 toCart: myCart errorDescription: Cart invalidAmountOfItemsErrorDescription.
 	self assert: myCart isEmpty.! !
 
+!CartTests methodsFor: 'tests' stamp: 'LMR 6/8/2023 18:26:58'!
+test09CanNotAddInvalidAmountOfCopies
+
+	self canNotAdd: 1.1 copiesOfBook: #book1 toCart: myCart errorDescription: Cart invalidAmountOfItemsErrorDescription.
+	self assert: myCart isEmpty.! !
+
 
 !classDefinition: #Cart category: 'TusLibros'!
 Object subclass: #Cart
@@ -110,18 +116,24 @@ add: aBook
 	
 	self add: aBook amount: 1.! !
 
-!Cart methodsFor: 'add' stamp: 'LMR 6/8/2023 18:20:00'!
+!Cart methodsFor: 'add' stamp: 'LMR 6/8/2023 18:25:34'!
 add: aBook amount: anAmount 
 	
-	(storeCatalogue includes: aBook) ifFalse: [^self error: self class bookNotInStoreErrorDescrition].
-	anAmount <= 0 ifTrue: [^self error: self class invalidAmountOfItemsErrorDescription].
+	self canAddBook: aBook withAmount: anAmount.
 	products add: aBook withOccurrences: anAmount.! !
 
 
-!Cart methodsFor: 'list' stamp: 'LMR 6/8/2023 00:31:01'!
+!Cart methodsFor: 'list' stamp: 'LMR 6/8/2023 18:34:36'!
 listCart
 	
-	^products.! !
+	^products copy.! !
+
+
+!Cart methodsFor: 'validations' stamp: 'LMR 6/8/2023 18:33:08'!
+canAddBook: aBook withAmount: anAmount
+
+	(storeCatalogue includes: aBook) ifFalse: [self error: self class bookNotInStoreErrorDescrition].
+	((anAmount isKindOf: Integer) and: anAmount > 0) ifFalse: [self error: self class invalidAmountOfItemsErrorDescription]! !
 
 
 !Cart methodsFor: 'initialization' stamp: 'LMR 6/8/2023 18:20:16'!

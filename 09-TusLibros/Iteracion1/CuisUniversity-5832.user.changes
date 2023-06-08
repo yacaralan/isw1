@@ -1310,3 +1310,269 @@ PASSED!
 ----SNAPSHOT----(8 June 2023 18:21:05) CuisUniversity-5832.image priorSource: 9384013!
 
 ----QUIT----(8 June 2023 18:21:13) CuisUniversity-5832.image priorSource: 9386162!
+
+----STARTUP---- (8 June 2023 18:22:46) as /home/clinux01/Descargas/linux64/CuisUniversity-5832.image!
+
+!Cart methodsFor: 'add' stamp: 'LMR 6/8/2023 18:23:31' prior: 50624907!
+add: aBook amount: anAmount 
+	
+	(storeCatalogue includes: aBook) ifFalse: [^self error: self class bookNotInStoreErrorDescrition].
+	(anAmount isKindOf: Integer & anAmount <= 0) ifTrue: [^self error: self class invalidAmountOfItemsErrorDescription].
+	products add: aBook withOccurrences: anAmount.! !
+
+!testRun: #CartTests #test01NewCartStartsEmpty stamp: 'LMR 6/8/2023 18:23:35'!
+PASSED!
+
+!testRun: #CartTests #test02AddingABookToACartAddsIt stamp: 'LMR 6/8/2023 18:23:35'!
+ERROR!
+
+!testRun: #CartTests #test03CanAddMoreThanOneOfTheSameBook stamp: 'LMR 6/8/2023 18:23:35'!
+ERROR!
+
+!testRun: #CartTests #test04CanAddDifferentBooks stamp: 'LMR 6/8/2023 18:23:35'!
+ERROR!
+
+!testRun: #CartTests #test05CanAddMultipleCopiesOfABookAtOnce stamp: 'LMR 6/8/2023 18:23:35'!
+ERROR!
+
+!testRun: #CartTests #test06CanNotAddInvalidBook stamp: 'LMR 6/8/2023 18:23:35'!
+PASSED!
+
+!testRun: #CartTests #test07CanNotAddMultipleCopiesOfInvalidBookAtOnce stamp: 'LMR 6/8/2023 18:23:35'!
+PASSED!
+
+!testRun: #CartTests #test08CanNotAddInvalidAmountOfCopiesOfABookAtOnce stamp: 'LMR 6/8/2023 18:23:35'!
+ERROR!
+!Cart methodsFor: 'add' stamp: 'LMR 6/8/2023 18:24:10' prior: 50624977!
+add: aBook amount: anAmount 
+	
+	(storeCatalogue includes: aBook) ifFalse: [^self error: self class bookNotInStoreErrorDescrition].
+	((anAmount isKindOf: Integer) and: anAmount <= 0) ifTrue: [^self error: self class invalidAmountOfItemsErrorDescription].
+	products add: aBook withOccurrences: anAmount.! !
+
+!testRun: #CartTests #test01NewCartStartsEmpty stamp: 'LMR 6/8/2023 18:24:13'!
+PASSED!
+
+!testRun: #CartTests #test02AddingABookToACartAddsIt stamp: 'LMR 6/8/2023 18:24:13'!
+PASSED!
+
+!testRun: #CartTests #test03CanAddMoreThanOneOfTheSameBook stamp: 'LMR 6/8/2023 18:24:13'!
+PASSED!
+
+!testRun: #CartTests #test04CanAddDifferentBooks stamp: 'LMR 6/8/2023 18:24:13'!
+PASSED!
+
+!testRun: #CartTests #test05CanAddMultipleCopiesOfABookAtOnce stamp: 'LMR 6/8/2023 18:24:13'!
+PASSED!
+
+!testRun: #CartTests #test06CanNotAddInvalidBook stamp: 'LMR 6/8/2023 18:24:13'!
+PASSED!
+
+!testRun: #CartTests #test07CanNotAddMultipleCopiesOfInvalidBookAtOnce stamp: 'LMR 6/8/2023 18:24:13'!
+PASSED!
+
+!testRun: #CartTests #test08CanNotAddInvalidAmountOfCopiesOfABookAtOnce stamp: 'LMR 6/8/2023 18:24:13'!
+PASSED!
+!Cart methodsFor: 'add' stamp: 'LMR 6/8/2023 18:24:31' prior: 50625014!
+add: aBook amount: anAmount 
+	
+	(storeCatalogue includes: aBook) ifFalse: [self error: self class bookNotInStoreErrorDescrition].
+	((anAmount isKindOf: Integer) and: anAmount <= 0) ifTrue: [self error: self class invalidAmountOfItemsErrorDescription].
+	products add: aBook withOccurrences: anAmount.! !
+!Cart methodsFor: 'add' stamp: 'LMR 6/8/2023 18:25:34'!
+canAddBook: aBook withAmount: anAmount
+
+	(storeCatalogue includes: aBook) ifFalse: [self error: self class bookNotInStoreErrorDescrition].
+	((anAmount isKindOf: Integer) and: anAmount <= 0) ifTrue: [self error: self class invalidAmountOfItemsErrorDescription]! !
+!Cart methodsFor: 'add' stamp: 'LMR 6/8/2023 18:25:34' prior: 50625051!
+add: aBook amount: anAmount 
+	
+	self canAddBook: aBook withAmount: anAmount.
+	products add: aBook withOccurrences: anAmount.! !
+
+!testRun: #CartTests #test01NewCartStartsEmpty stamp: 'LMR 6/8/2023 18:25:57'!
+PASSED!
+
+!testRun: #CartTests #test02AddingABookToACartAddsIt stamp: 'LMR 6/8/2023 18:25:57'!
+PASSED!
+
+!testRun: #CartTests #test03CanAddMoreThanOneOfTheSameBook stamp: 'LMR 6/8/2023 18:25:57'!
+PASSED!
+
+!testRun: #CartTests #test04CanAddDifferentBooks stamp: 'LMR 6/8/2023 18:25:57'!
+PASSED!
+
+!testRun: #CartTests #test05CanAddMultipleCopiesOfABookAtOnce stamp: 'LMR 6/8/2023 18:25:57'!
+PASSED!
+
+!testRun: #CartTests #test06CanNotAddInvalidBook stamp: 'LMR 6/8/2023 18:25:57'!
+PASSED!
+
+!testRun: #CartTests #test07CanNotAddMultipleCopiesOfInvalidBookAtOnce stamp: 'LMR 6/8/2023 18:25:57'!
+PASSED!
+
+!testRun: #CartTests #test08CanNotAddInvalidAmountOfCopiesOfABookAtOnce stamp: 'LMR 6/8/2023 18:25:57'!
+PASSED!
+!CartTests methodsFor: 'tests' stamp: 'LMR 6/8/2023 18:26:58'!
+test09CanNotAddInvalidAmountOfCopies
+
+	self canNotAdd: 1.1 copiesOfBook: #book1 toCart: myCart errorDescription: Cart invalidAmountOfItemsErrorDescription.
+	self assert: myCart isEmpty.! !
+
+!testRun: #CartTests #test09CanNotAddInvalidAmountOfCopies stamp: 'LMR 6/8/2023 18:26:59'!
+FAILURE!
+
+1.1 isKindOf: Integer!
+!Cart methodsFor: 'validations' stamp: 'LMR 6/8/2023 18:28:33' prior: 50625063!
+canAddBook: aBook withAmount: anAmount
+
+	(storeCatalogue includes: aBook) ifFalse: [self error: self class bookNotInStoreErrorDescrition].
+	((anAmount isKindOf: Integer) or: anAmount <= 0) ifTrue: [self error: self class invalidAmountOfItemsErrorDescription]! !
+
+!testRun: #CartTests #test01NewCartStartsEmpty stamp: 'LMR 6/8/2023 18:28:39'!
+PASSED!
+
+!testRun: #CartTests #test02AddingABookToACartAddsIt stamp: 'LMR 6/8/2023 18:28:39'!
+ERROR!
+
+!testRun: #CartTests #test03CanAddMoreThanOneOfTheSameBook stamp: 'LMR 6/8/2023 18:28:39'!
+ERROR!
+
+!testRun: #CartTests #test04CanAddDifferentBooks stamp: 'LMR 6/8/2023 18:28:39'!
+ERROR!
+
+!testRun: #CartTests #test05CanAddMultipleCopiesOfABookAtOnce stamp: 'LMR 6/8/2023 18:28:39'!
+ERROR!
+
+!testRun: #CartTests #test06CanNotAddInvalidBook stamp: 'LMR 6/8/2023 18:28:39'!
+PASSED!
+
+!testRun: #CartTests #test07CanNotAddMultipleCopiesOfInvalidBookAtOnce stamp: 'LMR 6/8/2023 18:28:39'!
+PASSED!
+
+!testRun: #CartTests #test08CanNotAddInvalidAmountOfCopiesOfABookAtOnce stamp: 'LMR 6/8/2023 18:28:39'!
+PASSED!
+
+!testRun: #CartTests #test09CanNotAddInvalidAmountOfCopies stamp: 'LMR 6/8/2023 18:28:39'!
+FAILURE!
+
+!testRun: #CartTests #test02AddingABookToACartAddsIt stamp: 'LMR 6/8/2023 18:28:57'!
+ERROR!
+
+1 isKindOf: Integer!
+
+1341 isKindOf: Integer!
+
+!testRun: #CartTests #test01NewCartStartsEmpty stamp: 'LMR 6/8/2023 18:29:54'!
+PASSED!
+
+!testRun: #CartTests #test02AddingABookToACartAddsIt stamp: 'LMR 6/8/2023 18:29:54'!
+ERROR!
+
+!testRun: #CartTests #test03CanAddMoreThanOneOfTheSameBook stamp: 'LMR 6/8/2023 18:29:54'!
+ERROR!
+
+!testRun: #CartTests #test04CanAddDifferentBooks stamp: 'LMR 6/8/2023 18:29:54'!
+ERROR!
+
+!testRun: #CartTests #test05CanAddMultipleCopiesOfABookAtOnce stamp: 'LMR 6/8/2023 18:29:54'!
+ERROR!
+
+!testRun: #CartTests #test06CanNotAddInvalidBook stamp: 'LMR 6/8/2023 18:29:54'!
+PASSED!
+
+!testRun: #CartTests #test07CanNotAddMultipleCopiesOfInvalidBookAtOnce stamp: 'LMR 6/8/2023 18:29:54'!
+PASSED!
+
+!testRun: #CartTests #test08CanNotAddInvalidAmountOfCopiesOfABookAtOnce stamp: 'LMR 6/8/2023 18:29:54'!
+PASSED!
+
+!testRun: #CartTests #test09CanNotAddInvalidAmountOfCopies stamp: 'LMR 6/8/2023 18:29:54'!
+FAILURE!
+
+!testRun: #CartTests #test02AddingABookToACartAddsIt stamp: 'LMR 6/8/2023 18:29:59'!
+ERROR!
+
+1341!
+
+SmallInteger new isKindOf: Integer!
+
+SmallInteger isKindOf: Integer!
+
+!testRun: #CartTests #test03CanAddMoreThanOneOfTheSameBook stamp: 'LMR 6/8/2023 18:30:54'!
+ERROR!
+!Cart methodsFor: 'validations' stamp: 'LMR 6/8/2023 18:32:38' prior: 50625118!
+canAddBook: aBook withAmount: anAmount
+
+	(storeCatalogue includes: aBook) ifFalse: [self error: self class bookNotInStoreErrorDescrition].
+	((anAmount isKindOf: Integer) and: anAmount > 0) ifTrue: [self error: self class invalidAmountOfItemsErrorDescription]! !
+
+!testRun: #CartTests #test01NewCartStartsEmpty stamp: 'LMR 6/8/2023 18:32:43'!
+PASSED!
+
+!testRun: #CartTests #test02AddingABookToACartAddsIt stamp: 'LMR 6/8/2023 18:32:43'!
+ERROR!
+
+!testRun: #CartTests #test03CanAddMoreThanOneOfTheSameBook stamp: 'LMR 6/8/2023 18:32:43'!
+ERROR!
+
+!testRun: #CartTests #test04CanAddDifferentBooks stamp: 'LMR 6/8/2023 18:32:43'!
+ERROR!
+
+!testRun: #CartTests #test05CanAddMultipleCopiesOfABookAtOnce stamp: 'LMR 6/8/2023 18:32:43'!
+ERROR!
+
+!testRun: #CartTests #test06CanNotAddInvalidBook stamp: 'LMR 6/8/2023 18:32:43'!
+PASSED!
+
+!testRun: #CartTests #test07CanNotAddMultipleCopiesOfInvalidBookAtOnce stamp: 'LMR 6/8/2023 18:32:43'!
+PASSED!
+
+!testRun: #CartTests #test08CanNotAddInvalidAmountOfCopiesOfABookAtOnce stamp: 'LMR 6/8/2023 18:32:43'!
+FAILURE!
+
+!testRun: #CartTests #test09CanNotAddInvalidAmountOfCopies stamp: 'LMR 6/8/2023 18:32:43'!
+FAILURE!
+
+!testRun: #CartTests #test02AddingABookToACartAddsIt stamp: 'LMR 6/8/2023 18:32:47'!
+ERROR!
+!Cart methodsFor: 'validations' stamp: 'LMR 6/8/2023 18:33:08' prior: 50625197!
+canAddBook: aBook withAmount: anAmount
+
+	(storeCatalogue includes: aBook) ifFalse: [self error: self class bookNotInStoreErrorDescrition].
+	((anAmount isKindOf: Integer) and: anAmount > 0) ifFalse: [self error: self class invalidAmountOfItemsErrorDescription]! !
+
+!testRun: #CartTests #test01NewCartStartsEmpty stamp: 'LMR 6/8/2023 18:33:18'!
+PASSED!
+
+!testRun: #CartTests #test02AddingABookToACartAddsIt stamp: 'LMR 6/8/2023 18:33:18'!
+PASSED!
+
+!testRun: #CartTests #test03CanAddMoreThanOneOfTheSameBook stamp: 'LMR 6/8/2023 18:33:18'!
+PASSED!
+
+!testRun: #CartTests #test04CanAddDifferentBooks stamp: 'LMR 6/8/2023 18:33:18'!
+PASSED!
+
+!testRun: #CartTests #test05CanAddMultipleCopiesOfABookAtOnce stamp: 'LMR 6/8/2023 18:33:18'!
+PASSED!
+
+!testRun: #CartTests #test06CanNotAddInvalidBook stamp: 'LMR 6/8/2023 18:33:18'!
+PASSED!
+
+!testRun: #CartTests #test07CanNotAddMultipleCopiesOfInvalidBookAtOnce stamp: 'LMR 6/8/2023 18:33:18'!
+PASSED!
+
+!testRun: #CartTests #test08CanNotAddInvalidAmountOfCopiesOfABookAtOnce stamp: 'LMR 6/8/2023 18:33:18'!
+PASSED!
+
+!testRun: #CartTests #test09CanNotAddInvalidAmountOfCopies stamp: 'LMR 6/8/2023 18:33:18'!
+PASSED!
+
+----SNAPSHOT----(8 June 2023 18:34:15) CuisUniversity-5832.image priorSource: 9386250!
+!Cart methodsFor: 'list' stamp: 'LMR 6/8/2023 18:34:36' prior: 50624831!
+listCart
+	
+	^products copy.! !
+
+----QUIT----(8 June 2023 18:34:51) CuisUniversity-5832.image priorSource: 9396064!
