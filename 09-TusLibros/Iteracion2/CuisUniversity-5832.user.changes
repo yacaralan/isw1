@@ -1897,3 +1897,396 @@ PASSED!
 ----SNAPSHOT----(12 June 2023 00:52:23) CuisUniversity-5832.image priorSource: 9472356!
 
 ----QUIT----(12 June 2023 00:53:42) CuisUniversity-5832.image priorSource: 9510626!
+
+----STARTUP---- (12 June 2023 14:57:23) as D:\OneDrive - dc.uba.ar\UBA\Inge1\cuis5832\windows64\CuisUniversity-5832.image!
+
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'LMR 6/12/2023 14:58:20'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'LMR 6/12/2023 14:58:20'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'LMR 6/12/2023 14:58:20'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'LMR 6/12/2023 14:58:20'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'LMR 6/12/2023 14:58:20'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'LMR 6/12/2023 14:58:21'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'LMR 6/12/2023 14:58:21'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'LMR 6/12/2023 14:58:21'!
+PASSED!
+
+!testRun: #CheckoutTest #test01CanNotCheckoutEmptyCart stamp: 'LMR 6/12/2023 14:58:21'!
+PASSED!
+
+!testRun: #CheckoutTest #test02CartWithOneItemChecksoutCorrectly stamp: 'LMR 6/12/2023 14:58:21'!
+PASSED!
+
+!testRun: #CheckoutTest #test03CartWithMoreThanOneItemChecksoutCorrectly stamp: 'LMR 6/12/2023 14:58:21'!
+PASSED!
+
+!testRun: #CheckoutTest #test04CanNotCheckoutWithCardWithEmptyName stamp: 'LMR 6/12/2023 14:58:21'!
+PASSED!
+
+!testRun: #CheckoutTest #test05CanNotCheckoutWithCardWithInvalidNumberOfDigits stamp: 'LMR 6/12/2023 14:58:21'!
+PASSED!
+
+!testRun: #CheckoutTest #test06CanNotCheckoutWithExpiredCard stamp: 'LMR 6/12/2023 14:58:21'!
+PASSED!
+
+!testRun: #CheckoutTest #test07CanNotCheckOutIfCardHasInsufficientFunds stamp: 'LMR 6/12/2023 14:58:21'!
+PASSED!
+
+!testRun: #CheckoutTest #test08CanNotCheckOutIfCardIsStolen stamp: 'LMR 6/12/2023 14:58:21'!
+PASSED!
+!Checkout methodsFor: 'checkout' stamp: 'LMR 6/12/2023 15:02:21'!
+validateCard
+
+	creditCard hasEmptyName ifTrue: [self error: self class canNotCheckoutWithCardWithEmptyName].
+	creditCard has16DigitNumber ifFalse: [self error: self class canNotCheckoutWithCardWithInvalidNumberOfDigits].
+	creditCard isExpired ifTrue: [self error: self class canNotCheckoutWithExpiredCard]! !
+!Checkout methodsFor: 'checkout' stamp: 'LMR 6/12/2023 15:02:21' prior: 50627632!
+checkout
+	
+	cart isEmpty ifTrue: [self error: self class emptyCartErrorDescription.].
+	self validateCard.
+	cart sendProductsTo: self.
+	self debitTotal.
+	^total.! !
+!Checkout methodsFor: 'checkout' stamp: 'LMR 6/12/2023 15:02:30'!
+validateCart
+
+	^ cart isEmpty ifTrue: [self error: self class emptyCartErrorDescription.]! !
+!Checkout methodsFor: 'checkout' stamp: 'LMR 6/12/2023 15:02:30' prior: 50628933!
+checkout
+	
+	self validateCart.
+	self validateCard.
+	cart sendProductsTo: self.
+	self debitTotal.
+	^total.! !
+
+!classDefinition: #CheckoutTest category: 'TusLibros' stamp: 'LMR 6/12/2023 15:12:00'!
+TestCase subclass: #CheckoutTest
+	instanceVariableNames: 'myCart myPriceList anExpiredCreditCard anUnamedCard anInvalidCard aCardWithInsufficientFunds aStolenCard aCardFunds myMockMerchantProcessor aValidCard aCardWithMoreThan30CharactersOnItsNae'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CheckoutTest methodsFor: 'tests' stamp: 'LMR 6/12/2023 15:11:57'!
+test09CanNotCheckoutIfCardNameLenghtExceeds30Characters
+
+	| aCheckout |
+	myCart add: 3 of: 'book1'.
+	aCheckout := Checkout of: myCart withCard: aCardWithMoreThan30CharactersOnItsNae withPrices: myPriceList.
+	self should: [myMockMerchantProcessor debit: aCheckout checkout fromCard: aCardWithMoreThan30CharactersOnItsNae.]
+	raise: Error - MessageNotUnderstood
+	withExceptionDo: [:anError | self assert: anError messageText equals: Checkout invalidDefinitionErrorDescription].! !
+!CheckoutTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/12/2023 15:13:50' prior: 50628732 overrides: 16961394!
+setUp
+
+	myCart := Cart acceptingItemsOf: (OrderedCollection with: 'book1' with: 'book2' with: 'book3').
+	myPriceList := Dictionary new.
+	myPriceList at: 'book1' put: 100.
+	myPriceList at: 'book2' put: 50.
+	myPriceList at: 'book3' put: 10.
+	
+	anExpiredCreditCard := (CreditCard name: 'Jorge' number: '1234567890123456' expirationDate: (GregorianMonthOfYear current previous)).
+	anUnamedCard := (CreditCard name: '' number: '1234567891123456' expirationDate: (GregorianMonthOfYear current next)).
+	anInvalidCard := (CreditCard name: 'Jorge' number: '12345678' expirationDate: (GregorianMonthOfYear current next)).
+	aValidCard := (CreditCard name: 'Jorge' number: '1234567890123457' expirationDate: (GregorianMonthOfYear current next)).
+	aCardWithInsufficientFunds := (CreditCard name: 'Jorge' number: '1034567890123456' expirationDate: (GregorianMonthOfYear current next)).
+	aStolenCard := (CreditCard name: 'Jorge' number: '1204567890123456' expirationDate: (GregorianMonthOfYear current next)).
+	aCardWithMoreThan30CharactersOnItsNae := (CreditCard name: 'HolaComoEstasMeLlamoJorgeGonzales' number: '1204560890123456' expirationDate: (GregorianMonthOfYear current next)).! !
+
+!classDefinition: #CheckoutTest category: 'TusLibros' stamp: 'LMR 6/12/2023 15:13:57'!
+TestCase subclass: #CheckoutTest
+	instanceVariableNames: 'myCart myPriceList anExpiredCreditCard anUnamedCard anInvalidCard aCardWithInsufficientFunds aStolenCard aCardFunds myMockMerchantProcessor aValidCard aCardWithMoreThan30CharactersOnItsName'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CheckoutTest methodsFor: 'as yet unclassified' stamp: 'LMR 6/12/2023 15:13:57' prior: 50628985 overrides: 16961394!
+setUp
+
+	myCart := Cart acceptingItemsOf: (OrderedCollection with: 'book1' with: 'book2' with: 'book3').
+	myPriceList := Dictionary new.
+	myPriceList at: 'book1' put: 100.
+	myPriceList at: 'book2' put: 50.
+	myPriceList at: 'book3' put: 10.
+	
+	anExpiredCreditCard := (CreditCard name: 'Jorge' number: '1234567890123456' expirationDate: (GregorianMonthOfYear current previous)).
+	anUnamedCard := (CreditCard name: '' number: '1234567891123456' expirationDate: (GregorianMonthOfYear current next)).
+	anInvalidCard := (CreditCard name: 'Jorge' number: '12345678' expirationDate: (GregorianMonthOfYear current next)).
+	aValidCard := (CreditCard name: 'Jorge' number: '1234567890123457' expirationDate: (GregorianMonthOfYear current next)).
+	aCardWithInsufficientFunds := (CreditCard name: 'Jorge' number: '1034567890123456' expirationDate: (GregorianMonthOfYear current next)).
+	aStolenCard := (CreditCard name: 'Jorge' number: '1204567890123456' expirationDate: (GregorianMonthOfYear current next)).
+	aCardWithMoreThan30CharactersOnItsName := (CreditCard name: 'HolaComoEstasMeLlamoJorgeGonzales' number: '1204560890123456' expirationDate: (GregorianMonthOfYear current next)).! !
+!CheckoutTest methodsFor: 'as yet unclassified' stamp: 'LMR 6/12/2023 15:13:57' prior: 50628966!
+test09CanNotCheckoutIfCardNameLenghtExceeds30Characters
+
+	| aCheckout |
+	myCart add: 3 of: 'book1'.
+	aCheckout := Checkout of: myCart withCard: aCardWithMoreThan30CharactersOnItsName withPrices: myPriceList.
+	self should: [myMockMerchantProcessor debit: aCheckout checkout fromCard: aCardWithMoreThan30CharactersOnItsName.]
+	raise: Error - MessageNotUnderstood
+	withExceptionDo: [:anError | self assert: anError messageText equals: Checkout invalidDefinitionErrorDescription].! !
+!Checkout class methodsFor: 'error descriptions' stamp: 'LMR 6/12/2023 15:14:41'!
+cardNameIsTooLongErrorDescription
+	
+	^'Credit card name is too long'.! !
+
+!testRun: #CheckoutTest #test01CanNotCheckoutEmptyCart stamp: 'LMR 6/12/2023 15:14:47'!
+PASSED!
+
+!testRun: #CheckoutTest #test02CartWithOneItemChecksoutCorrectly stamp: 'LMR 6/12/2023 15:14:47'!
+PASSED!
+
+!testRun: #CheckoutTest #test03CartWithMoreThanOneItemChecksoutCorrectly stamp: 'LMR 6/12/2023 15:14:47'!
+PASSED!
+
+!testRun: #CheckoutTest #test04CanNotCheckoutWithCardWithEmptyName stamp: 'LMR 6/12/2023 15:14:47'!
+PASSED!
+
+!testRun: #CheckoutTest #test05CanNotCheckoutWithCardWithInvalidNumberOfDigits stamp: 'LMR 6/12/2023 15:14:47'!
+PASSED!
+
+!testRun: #CheckoutTest #test06CanNotCheckoutWithExpiredCard stamp: 'LMR 6/12/2023 15:14:47'!
+PASSED!
+
+!testRun: #CheckoutTest #test07CanNotCheckOutIfCardHasInsufficientFunds stamp: 'LMR 6/12/2023 15:14:47'!
+PASSED!
+
+!testRun: #CheckoutTest #test08CanNotCheckOutIfCardIsStolen stamp: 'LMR 6/12/2023 15:14:47'!
+PASSED!
+
+!testRun: #CheckoutTest #test09CanNotCheckoutIfCardNameLenghtExceeds30Characters stamp: 'LMR 6/12/2023 15:14:47'!
+ERROR!
+
+!testRun: #CheckoutTest #test09CanNotCheckoutIfCardNameLenghtExceeds30Characters stamp: 'LMR 6/12/2023 15:14:47'!
+ERROR!
+!CheckoutTest methodsFor: 'tests' stamp: 'LMR 6/12/2023 15:15:10' prior: 50629079!
+test09CanNotCheckoutIfCardNameLenghtExceeds30Characters
+
+	| aCheckout |
+	myCart add: 3 of: 'book1'.
+	aCheckout := Checkout of: myCart withCard: aCardWithMoreThan30CharactersOnItsName withPrices: myPriceList.
+	self should: [myMockMerchantProcessor debit: aCheckout checkout fromCard: aCardWithMoreThan30CharactersOnItsName.]
+	raise: Error - MessageNotUnderstood
+	withExceptionDo: [:anError | self assert: anError messageText equals: Checkout cardNameIsTooLongErrorDescription].! !
+
+!testRun: #CheckoutTest #test09CanNotCheckoutIfCardNameLenghtExceeds30Characters stamp: 'LMR 6/12/2023 15:15:12'!
+FAILURE!
+!Checkout methodsFor: 'checkout' stamp: 'LMR 6/12/2023 15:16:44' prior: 50628920!
+validateCard
+
+	creditCard hasEmptyName ifTrue: [self error: self class canNotCheckoutWithCardWithEmptyName].
+	creditCard has16DigitNumber ifFalse: [self error: self class canNotCheckoutWithCardWithInvalidNumberOfDigits].
+	creditCard isExpired ifTrue: [self error: self class canNotCheckoutWithExpiredCard].
+	creditCard name size > 30 ifTrue: [self error: self class cardNameIsTooLongErrorDescription].! !
+
+!testRun: #CheckoutTest #test01CanNotCheckoutEmptyCart stamp: 'LMR 6/12/2023 15:16:49'!
+PASSED!
+
+!testRun: #CheckoutTest #test02CartWithOneItemChecksoutCorrectly stamp: 'LMR 6/12/2023 15:16:49'!
+PASSED!
+
+!testRun: #CheckoutTest #test03CartWithMoreThanOneItemChecksoutCorrectly stamp: 'LMR 6/12/2023 15:16:49'!
+PASSED!
+
+!testRun: #CheckoutTest #test04CanNotCheckoutWithCardWithEmptyName stamp: 'LMR 6/12/2023 15:16:50'!
+PASSED!
+
+!testRun: #CheckoutTest #test05CanNotCheckoutWithCardWithInvalidNumberOfDigits stamp: 'LMR 6/12/2023 15:16:50'!
+PASSED!
+
+!testRun: #CheckoutTest #test06CanNotCheckoutWithExpiredCard stamp: 'LMR 6/12/2023 15:16:50'!
+PASSED!
+
+!testRun: #CheckoutTest #test07CanNotCheckOutIfCardHasInsufficientFunds stamp: 'LMR 6/12/2023 15:16:50'!
+PASSED!
+
+!testRun: #CheckoutTest #test08CanNotCheckOutIfCardIsStolen stamp: 'LMR 6/12/2023 15:16:50'!
+PASSED!
+
+!testRun: #CheckoutTest #test09CanNotCheckoutIfCardNameLenghtExceeds30Characters stamp: 'LMR 6/12/2023 15:16:50'!
+FAILURE!
+
+!testRun: #CheckoutTest #test09CanNotCheckoutIfCardNameLenghtExceeds30Characters stamp: 'LMR 6/12/2023 15:16:50'!
+FAILURE!
+!CreditCard methodsFor: 'as yet unclassified' stamp: 'LMR 6/12/2023 15:18:01'!
+nameExceedsMaximumLength
+
+	^name size > 30.! !
+!Checkout methodsFor: 'checkout' stamp: 'LMR 6/12/2023 15:18:23' prior: 50629159!
+validateCard
+
+	creditCard hasEmptyName ifTrue: [self error: self class canNotCheckoutWithCardWithEmptyName].
+	creditCard has16DigitNumber ifFalse: [self error: self class canNotCheckoutWithCardWithInvalidNumberOfDigits].
+	creditCard isExpired ifTrue: [self error: self class canNotCheckoutWithExpiredCard].
+	creditCard nameExceedsMaximumLength ifTrue: [self error: self class cardNameIsTooLongErrorDescription].! !
+
+!testRun: #CheckoutTest #test01CanNotCheckoutEmptyCart stamp: 'LMR 6/12/2023 15:18:26'!
+PASSED!
+
+!testRun: #CheckoutTest #test02CartWithOneItemChecksoutCorrectly stamp: 'LMR 6/12/2023 15:18:27'!
+PASSED!
+
+!testRun: #CheckoutTest #test03CartWithMoreThanOneItemChecksoutCorrectly stamp: 'LMR 6/12/2023 15:18:27'!
+PASSED!
+
+!testRun: #CheckoutTest #test04CanNotCheckoutWithCardWithEmptyName stamp: 'LMR 6/12/2023 15:18:27'!
+PASSED!
+
+!testRun: #CheckoutTest #test05CanNotCheckoutWithCardWithInvalidNumberOfDigits stamp: 'LMR 6/12/2023 15:18:27'!
+PASSED!
+
+!testRun: #CheckoutTest #test06CanNotCheckoutWithExpiredCard stamp: 'LMR 6/12/2023 15:18:27'!
+PASSED!
+
+!testRun: #CheckoutTest #test07CanNotCheckOutIfCardHasInsufficientFunds stamp: 'LMR 6/12/2023 15:18:27'!
+PASSED!
+
+!testRun: #CheckoutTest #test08CanNotCheckOutIfCardIsStolen stamp: 'LMR 6/12/2023 15:18:27'!
+PASSED!
+
+!testRun: #CheckoutTest #test09CanNotCheckoutIfCardNameLenghtExceeds30Characters stamp: 'LMR 6/12/2023 15:18:27'!
+PASSED!
+!CheckoutTest methodsFor: 'tests' stamp: 'LMR 6/12/2023 15:26:57'!
+test08CanNotCheckoutIfCardNameLenghtExceeds30Characters
+
+	| aCheckout |
+	myCart add: 3 of: 'book1'.
+	aCheckout := Checkout of: myCart withCard: aCardWithMoreThan30CharactersOnItsName withPrices: myPriceList.
+	self should: [myMockMerchantProcessor debit: aCheckout checkout fromCard: aCardWithMoreThan30CharactersOnItsName.]
+	raise: Error - MessageNotUnderstood
+	withExceptionDo: [:anError | self assert: anError messageText equals: Checkout cardNameIsTooLongErrorDescription].! !
+
+!methodRemoval: CheckoutTest #test09CanNotCheckoutIfCardNameLenghtExceeds30Characters stamp: 'LMR 6/12/2023 15:26:57'!
+test09CanNotCheckoutIfCardNameLenghtExceeds30Characters
+
+	| aCheckout |
+	myCart add: 3 of: 'book1'.
+	aCheckout := Checkout of: myCart withCard: aCardWithMoreThan30CharactersOnItsName withPrices: myPriceList.
+	self should: [myMockMerchantProcessor debit: aCheckout checkout fromCard: aCardWithMoreThan30CharactersOnItsName.]
+	raise: Error - MessageNotUnderstood
+	withExceptionDo: [:anError | self assert: anError messageText equals: Checkout cardNameIsTooLongErrorDescription].!
+!CheckoutTest methodsFor: 'tests' stamp: 'LMR 6/12/2023 15:27:05'!
+test09CanNotCheckOutIfCardIsStolen
+
+	| aCheckout |
+	myCart add: 3 of: 'book1'.
+	aCheckout := Checkout of: myCart withCard: aStolenCard withPrices: myPriceList.
+	self should: [myMockMerchantProcessor debit: aCheckout checkout fromCard: aStolenCard.]
+	raise: Error - MessageNotUnderstood
+	withExceptionDo: [:anError | self assert: anError messageText equals: MockMerchantProcessor stolenCardErrorDescription].! !
+
+!methodRemoval: CheckoutTest #test08CanNotCheckOutIfCardIsStolen stamp: 'LMR 6/12/2023 15:27:05'!
+test08CanNotCheckOutIfCardIsStolen
+
+	| aCheckout |
+	myCart add: 3 of: 'book1'.
+	aCheckout := Checkout of: myCart withCard: aStolenCard withPrices: myPriceList.
+	self should: [myMockMerchantProcessor debit: aCheckout checkout fromCard: aStolenCard.]
+	raise: Error - MessageNotUnderstood
+	withExceptionDo: [:anError | self assert: anError messageText equals: MockMerchantProcessor stolenCardErrorDescription].!
+!CheckoutTest methodsFor: 'tests' stamp: 'LMR 6/12/2023 15:27:28'!
+test07CanNotCheckoutIfCardNameLenghtExceeds30Characters
+
+	| aCheckout |
+	myCart add: 3 of: 'book1'.
+	aCheckout := Checkout of: myCart withCard: aCardWithMoreThan30CharactersOnItsName withPrices: myPriceList.
+	self should: [myMockMerchantProcessor debit: aCheckout checkout fromCard: aCardWithMoreThan30CharactersOnItsName.]
+	raise: Error - MessageNotUnderstood
+	withExceptionDo: [:anError | self assert: anError messageText equals: Checkout cardNameIsTooLongErrorDescription].! !
+
+!methodRemoval: CheckoutTest #test08CanNotCheckoutIfCardNameLenghtExceeds30Characters stamp: 'LMR 6/12/2023 15:27:28'!
+test08CanNotCheckoutIfCardNameLenghtExceeds30Characters
+
+	| aCheckout |
+	myCart add: 3 of: 'book1'.
+	aCheckout := Checkout of: myCart withCard: aCardWithMoreThan30CharactersOnItsName withPrices: myPriceList.
+	self should: [myMockMerchantProcessor debit: aCheckout checkout fromCard: aCardWithMoreThan30CharactersOnItsName.]
+	raise: Error - MessageNotUnderstood
+	withExceptionDo: [:anError | self assert: anError messageText equals: Checkout cardNameIsTooLongErrorDescription].!
+!CheckoutTest methodsFor: 'tests' stamp: 'LMR 6/12/2023 15:27:32'!
+test08CanNotCheckOutIfCardHasInsufficientFunds
+
+	| aCheckout |
+	myCart add: 3 of: 'book1'.
+	aCheckout := Checkout of: myCart withCard: aCardWithInsufficientFunds withPrices: myPriceList.
+	self should: [myMockMerchantProcessor debit: aCheckout checkout fromCard: aCardWithInsufficientFunds.]
+	raise: Error - MessageNotUnderstood
+	withExceptionDo: [:anError | self assert: anError messageText equals: MockMerchantProcessor insufficientFundsErrorDescription].! !
+
+!methodRemoval: CheckoutTest #test07CanNotCheckOutIfCardHasInsufficientFunds stamp: 'LMR 6/12/2023 15:27:32'!
+test07CanNotCheckOutIfCardHasInsufficientFunds
+
+	| aCheckout |
+	myCart add: 3 of: 'book1'.
+	aCheckout := Checkout of: myCart withCard: aCardWithInsufficientFunds withPrices: myPriceList.
+	self should: [myMockMerchantProcessor debit: aCheckout checkout fromCard: aCardWithInsufficientFunds.]
+	raise: Error - MessageNotUnderstood
+	withExceptionDo: [:anError | self assert: anError messageText equals: MockMerchantProcessor insufficientFundsErrorDescription].!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'LMR 6/12/2023 15:31:13'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'LMR 6/12/2023 15:31:13'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'LMR 6/12/2023 15:31:13'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'LMR 6/12/2023 15:31:13'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'LMR 6/12/2023 15:31:13'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'LMR 6/12/2023 15:31:13'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'LMR 6/12/2023 15:31:14'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'LMR 6/12/2023 15:31:14'!
+PASSED!
+
+!testRun: #CheckoutTest #test01CanNotCheckoutEmptyCart stamp: 'LMR 6/12/2023 15:31:14'!
+PASSED!
+
+!testRun: #CheckoutTest #test02CartWithOneItemChecksoutCorrectly stamp: 'LMR 6/12/2023 15:31:14'!
+PASSED!
+
+!testRun: #CheckoutTest #test03CartWithMoreThanOneItemChecksoutCorrectly stamp: 'LMR 6/12/2023 15:31:14'!
+PASSED!
+
+!testRun: #CheckoutTest #test04CanNotCheckoutWithCardWithEmptyName stamp: 'LMR 6/12/2023 15:31:14'!
+PASSED!
+
+!testRun: #CheckoutTest #test05CanNotCheckoutWithCardWithInvalidNumberOfDigits stamp: 'LMR 6/12/2023 15:31:14'!
+PASSED!
+
+!testRun: #CheckoutTest #test06CanNotCheckoutWithExpiredCard stamp: 'LMR 6/12/2023 15:31:14'!
+PASSED!
+
+!testRun: #CheckoutTest #test07CanNotCheckoutIfCardNameLenghtExceeds30Characters stamp: 'LMR 6/12/2023 15:31:14'!
+PASSED!
+
+!testRun: #CheckoutTest #test08CanNotCheckOutIfCardHasInsufficientFunds stamp: 'LMR 6/12/2023 15:31:14'!
+PASSED!
+
+!testRun: #CheckoutTest #test09CanNotCheckOutIfCardIsStolen stamp: 'LMR 6/12/2023 15:31:14'!
+PASSED!
+
+----SNAPSHOT----(12 June 2023 15:31:32) CuisUniversity-5832.image priorSource: 9510715!
+
+----QUIT----(12 June 2023 15:31:35) CuisUniversity-5832.image priorSource: 9529750!

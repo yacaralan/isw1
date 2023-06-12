@@ -115,7 +115,7 @@ itemSellByTheStore
 
 !classDefinition: #CheckoutTest category: 'TusLibros'!
 TestCase subclass: #CheckoutTest
-	instanceVariableNames: 'myCart myPriceList anExpiredCreditCard anUnamedCard anInvalidCard aCardWithInsufficientFunds aStolenCard aCardFunds myMockMerchantProcessor aValidCard'
+	instanceVariableNames: 'myCart myPriceList anExpiredCreditCard anUnamedCard anInvalidCard aCardWithInsufficientFunds aStolenCard aCardFunds myMockMerchantProcessor aValidCard aCardWithMoreThan30CharactersOnItsName'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros'!
@@ -176,8 +176,18 @@ test06CanNotCheckoutWithExpiredCard
 	raise: Error - MessageNotUnderstood
 	withExceptionDo: [:anError | self assert: anError messageText equals: Checkout canNotCheckoutWithExpiredCard].! !
 
-!CheckoutTest methodsFor: 'tests' stamp: 'LMR 6/12/2023 00:22:15'!
-test07CanNotCheckOutIfCardHasInsufficientFunds
+!CheckoutTest methodsFor: 'tests' stamp: 'LMR 6/12/2023 15:27:28'!
+test07CanNotCheckoutIfCardNameLenghtExceeds30Characters
+
+	| aCheckout |
+	myCart add: 3 of: 'book1'.
+	aCheckout := Checkout of: myCart withCard: aCardWithMoreThan30CharactersOnItsName withPrices: myPriceList.
+	self should: [myMockMerchantProcessor debit: aCheckout checkout fromCard: aCardWithMoreThan30CharactersOnItsName.]
+	raise: Error - MessageNotUnderstood
+	withExceptionDo: [:anError | self assert: anError messageText equals: Checkout cardNameIsTooLongErrorDescription].! !
+
+!CheckoutTest methodsFor: 'tests' stamp: 'LMR 6/12/2023 15:27:32'!
+test08CanNotCheckOutIfCardHasInsufficientFunds
 
 	| aCheckout |
 	myCart add: 3 of: 'book1'.
@@ -186,8 +196,8 @@ test07CanNotCheckOutIfCardHasInsufficientFunds
 	raise: Error - MessageNotUnderstood
 	withExceptionDo: [:anError | self assert: anError messageText equals: MockMerchantProcessor insufficientFundsErrorDescription].! !
 
-!CheckoutTest methodsFor: 'tests' stamp: 'LMR 6/12/2023 00:40:10'!
-test08CanNotCheckOutIfCardIsStolen
+!CheckoutTest methodsFor: 'tests' stamp: 'LMR 6/12/2023 15:27:05'!
+test09CanNotCheckOutIfCardIsStolen
 
 	| aCheckout |
 	myCart add: 3 of: 'book1'.
@@ -197,7 +207,7 @@ test08CanNotCheckOutIfCardIsStolen
 	withExceptionDo: [:anError | self assert: anError messageText equals: MockMerchantProcessor stolenCardErrorDescription].! !
 
 
-!CheckoutTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/12/2023 00:49:35'!
+!CheckoutTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/12/2023 15:13:57'!
 setUp
 
 	myCart := Cart acceptingItemsOf: (OrderedCollection with: 'book1' with: 'book2' with: 'book3').
@@ -212,7 +222,7 @@ setUp
 	aValidCard := (CreditCard name: 'Jorge' number: '1234567890123457' expirationDate: (GregorianMonthOfYear current next)).
 	aCardWithInsufficientFunds := (CreditCard name: 'Jorge' number: '1034567890123456' expirationDate: (GregorianMonthOfYear current next)).
 	aStolenCard := (CreditCard name: 'Jorge' number: '1204567890123456' expirationDate: (GregorianMonthOfYear current next)).
-	! !
+	aCardWithMoreThan30CharactersOnItsName := (CreditCard name: 'HolaComoEstasMeLlamoJorgeGonzales' number: '1204560890123456' expirationDate: (GregorianMonthOfYear current next)).! !
 
 
 !classDefinition: #Cart category: 'TusLibros'!
@@ -282,7 +292,7 @@ add: aQuantity of: anItem
 	items add: anItem withOccurrences: aQuantity.! !
 
 
-!Cart methodsFor: 'as yet unclassified' stamp: 'LMR 6/11/2023 22:15:29'!
+!Cart methodsFor: 'checkout' stamp: 'LMR 6/11/2023 22:15:29'!
 sendProductsTo: aCheckout
 
 	items do: [:item | aCheckout processProducts: item.]! !
@@ -316,27 +326,38 @@ initializeOf: aCart withCard: aCreditCard withPrices: aPriceList
 	merchantProcessor := MockMerchantProcessor new.! !
 
 
-!Checkout methodsFor: 'checkout' stamp: 'LMR 6/11/2023 23:22:19'!
+!Checkout methodsFor: 'checkout' stamp: 'LMR 6/12/2023 15:02:30'!
 checkout
 	
-	cart isEmpty ifTrue: [self error: self class emptyCartErrorDescription.].
-	creditCard hasEmptyName ifTrue: [self error: self class canNotCheckoutWithCardWithEmptyName].
-	creditCard has16DigitNumber ifFalse: [self error: self class canNotCheckoutWithCardWithInvalidNumberOfDigits].
-	creditCard isExpired ifTrue: [self error: self class canNotCheckoutWithExpiredCard].
+	self validateCart.
+	self validateCard.
 	cart sendProductsTo: self.
 	self debitTotal.
 	^total.! !
 
-
-!Checkout methodsFor: 'as yet unclassified' stamp: 'LMR 6/11/2023 23:23:26'!
+!Checkout methodsFor: 'checkout' stamp: 'LMR 6/11/2023 23:23:26'!
 debitTotal
 
 	merchantProcessor debit: total fromCard: creditCard.! !
 
-!Checkout methodsFor: 'as yet unclassified' stamp: 'LMR 6/11/2023 22:12:19'!
+!Checkout methodsFor: 'checkout' stamp: 'LMR 6/11/2023 22:12:19'!
 processProducts: aProduct
 
 	total := total + (priceList at: aProduct).! !
+
+
+!Checkout methodsFor: 'validations' stamp: 'LMR 6/12/2023 15:18:23'!
+validateCard
+
+	creditCard hasEmptyName ifTrue: [self error: self class canNotCheckoutWithCardWithEmptyName].
+	creditCard has16DigitNumber ifFalse: [self error: self class canNotCheckoutWithCardWithInvalidNumberOfDigits].
+	creditCard isExpired ifTrue: [self error: self class canNotCheckoutWithExpiredCard].
+	creditCard nameExceedsMaximumLength ifTrue: [self error: self class cardNameIsTooLongErrorDescription].! !
+
+!Checkout methodsFor: 'validations' stamp: 'LMR 6/12/2023 15:02:30'!
+validateCart
+
+	^ cart isEmpty ifTrue: [self error: self class emptyCartErrorDescription.]! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -365,6 +386,11 @@ canNotCheckoutWithExpiredCard
 	
 	^'Can not checkout with an expired credit card'.! !
 
+!Checkout class methodsFor: 'error descriptions' stamp: 'LMR 6/12/2023 15:14:41'!
+cardNameIsTooLongErrorDescription
+	
+	^'Credit card name is too long'.! !
+
 !Checkout class methodsFor: 'error descriptions' stamp: 'LMR 6/11/2023 21:46:57'!
 emptyCartErrorDescription
 	
@@ -386,25 +412,31 @@ initializeName: aName number: aCreditCardNumber expirationDate: aGregorianMonthO
 	expirationDate := aGregorianMonthOfYear.! !
 
 
-!CreditCard methodsFor: 'as yet unclassified' stamp: 'LMR 6/12/2023 00:20:28'!
+!CreditCard methodsFor: 'number' stamp: 'LMR 6/12/2023 00:32:05'!
+number
+
+	^creditCardNumber.! !
+
+
+!CreditCard methodsFor: 'testing' stamp: 'LMR 6/12/2023 00:20:28'!
 has16DigitNumber
 
 	^creditCardNumber size = 16.! !
 
-!CreditCard methodsFor: 'as yet unclassified' stamp: 'LMR 6/11/2023 22:25:59'!
+!CreditCard methodsFor: 'testing' stamp: 'LMR 6/11/2023 22:25:59'!
 hasEmptyName
 
 	^name isEmpty.! !
 
-!CreditCard methodsFor: 'as yet unclassified' stamp: 'LMR 6/12/2023 00:15:38'!
+!CreditCard methodsFor: 'testing' stamp: 'LMR 6/12/2023 00:15:38'!
 isExpired
 
 	^expirationDate < GregorianMonthOfYear current.! !
 
-!CreditCard methodsFor: 'as yet unclassified' stamp: 'LMR 6/12/2023 00:32:05'!
-number
+!CreditCard methodsFor: 'testing' stamp: 'LMR 6/12/2023 15:18:01'!
+nameExceedsMaximumLength
 
-	^creditCardNumber.! !
+	^name size > 30.! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -425,13 +457,7 @@ Object subclass: #MockMerchantProcessor
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!MockMerchantProcessor methodsFor: 'as yet unclassified' stamp: 'LMR 6/12/2023 00:49:47'!
-debit: anAmount fromCard: aCreditCard
-
-	(stolenCards includes: aCreditCard number) ifTrue: [self error: self class stolenCardErrorDescription].
-	(anAmount > (cardFunds at: aCreditCard number)) ifTrue: [self error: self class insufficientFundsErrorDescription].! !
-
-!MockMerchantProcessor methodsFor: 'as yet unclassified' stamp: 'LMR 6/12/2023 00:49:23'!
+!MockMerchantProcessor methodsFor: 'initialization' stamp: 'LMR 6/12/2023 00:49:23'!
 initialize
 
 	cardFunds := Dictionary new.
@@ -441,18 +467,25 @@ initialize
 	cardFunds at: '1204567890123456' put: 250.	
 	stolenCards :=  OrderedCollection with: '1204567890123456'.! !
 
+
+!MockMerchantProcessor methodsFor: 'debit' stamp: 'LMR 6/12/2023 00:49:47'!
+debit: anAmount fromCard: aCreditCard
+
+	(stolenCards includes: aCreditCard number) ifTrue: [self error: self class stolenCardErrorDescription].
+	(anAmount > (cardFunds at: aCreditCard number)) ifTrue: [self error: self class insufficientFundsErrorDescription].! !
+
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
 !classDefinition: 'MockMerchantProcessor class' category: 'TusLibros'!
 MockMerchantProcessor class
 	instanceVariableNames: ''!
 
-!MockMerchantProcessor class methodsFor: 'as yet unclassified' stamp: 'LMR 6/11/2023 23:31:19'!
+!MockMerchantProcessor class methodsFor: 'error descriptions' stamp: 'LMR 6/11/2023 23:31:19'!
 insufficientFundsErrorDescription
 
 	^'Insufficient funds for purchase'.! !
 
-!MockMerchantProcessor class methodsFor: 'as yet unclassified' stamp: 'LMR 6/12/2023 00:40:36'!
+!MockMerchantProcessor class methodsFor: 'error descriptions' stamp: 'LMR 6/12/2023 00:40:36'!
 stolenCardErrorDescription
 
 	^'Stolen card'.! !
