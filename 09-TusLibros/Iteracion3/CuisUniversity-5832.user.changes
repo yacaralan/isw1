@@ -1,0 +1,748 @@
+
+
+----QUIT----(30 May 2023 00:05:32) CuisUniversity-5832.image priorSource: 4928100!
+
+----STARTUP---- (30 May 2023 00:05:33) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5832.image!
+
+
+----QUIT----(30 May 2023 00:05:33) CuisUniversity-5832.image priorSource: 9366537!
+
+----STARTUP---- (12 June 2023 20:52:46) as /home/clinux01/Escritorio/linux64/CuisUniversity-5832.image!
+
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'LMR 6/12/2023 20:52:54'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'LMR 6/12/2023 20:52:54'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'LMR 6/12/2023 20:52:54'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'LMR 6/12/2023 20:52:54'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'LMR 6/12/2023 20:52:54'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'LMR 6/12/2023 20:52:54'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'LMR 6/12/2023 20:52:54'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'LMR 6/12/2023 20:52:54'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'LMR 6/12/2023 20:52:54'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'LMR 6/12/2023 20:52:54'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'LMR 6/12/2023 20:52:54'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'LMR 6/12/2023 20:52:54'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'LMR 6/12/2023 20:52:54'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'LMR 6/12/2023 20:52:54'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'LMR 6/12/2023 20:52:54'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'LMR 6/12/2023 20:52:54'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'LMR 6/12/2023 20:52:54'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test04CanAddItemsToACreatedCart stamp: 'LMR 6/12/2023 20:52:54'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'LMR 6/12/2023 20:52:54'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'LMR 6/12/2023 20:52:54'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'LMR 6/12/2023 20:52:54'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'LMR 6/12/2023 20:52:54'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'LMR 6/12/2023 20:52:54'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'LMR 6/12/2023 20:52:54'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'LMR 6/12/2023 20:52:54'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test12CanNotCheckoutAnEmptyCart stamp: 'LMR 6/12/2023 20:52:54'!
+PASSED!
+
+today := DateAndTime now.!
+
+Month month: today monthIndex year: today yearNumber + 1!
+
+DateAndTime year: 2010 month: 1 day: 1 hour: 1 minute: 0 second: 0!
+
+	DateAndTime now!
+!StoreTestObjectsFactory methodsFor: 'initialization' stamp: 'LMR 6/12/2023 21:08:30' prior: 50626569 overrides: 16920235!
+initialize
+
+	"today := DateAndTime now"
+	DateAndTime year: 2010 month: 1 day: 1 hour: 1 minute: 0 second: 0.! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'LMR 6/12/2023 21:08:33'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'LMR 6/12/2023 21:08:33'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'LMR 6/12/2023 21:08:33'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'LMR 6/12/2023 21:08:33'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'LMR 6/12/2023 21:08:33'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'LMR 6/12/2023 21:08:33'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'LMR 6/12/2023 21:08:33'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'LMR 6/12/2023 21:08:33'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'LMR 6/12/2023 21:08:33'!
+ERROR!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'LMR 6/12/2023 21:08:33'!
+ERROR!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'LMR 6/12/2023 21:08:33'!
+ERROR!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'LMR 6/12/2023 21:08:33'!
+ERROR!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'LMR 6/12/2023 21:08:33'!
+ERROR!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'LMR 6/12/2023 21:08:33'!
+ERROR!
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'LMR 6/12/2023 21:08:33'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'LMR 6/12/2023 21:08:33'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'LMR 6/12/2023 21:08:33'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test04CanAddItemsToACreatedCart stamp: 'LMR 6/12/2023 21:08:33'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'LMR 6/12/2023 21:08:33'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'LMR 6/12/2023 21:08:33'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'LMR 6/12/2023 21:08:33'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'LMR 6/12/2023 21:08:33'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'LMR 6/12/2023 21:08:33'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'LMR 6/12/2023 21:08:33'!
+ERROR!
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'LMR 6/12/2023 21:08:33'!
+ERROR!
+
+!testRun: #RestInterfaceTest #test12CanNotCheckoutAnEmptyCart stamp: 'LMR 6/12/2023 21:08:33'!
+ERROR!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'LMR 6/12/2023 21:08:38'!
+ERROR!
+!StoreTestObjectsFactory methodsFor: 'initialization' stamp: 'LMR 6/12/2023 21:08:53' prior: 50626683 overrides: 16920235!
+initialize
+
+	"today := DateAndTime now"
+	today := DateAndTime year: 2010 month: 1 day: 1 hour: 1 minute: 0 second: 0.! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'LMR 6/12/2023 21:08:58'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'LMR 6/12/2023 21:08:58'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'LMR 6/12/2023 21:08:58'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'LMR 6/12/2023 21:08:58'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'LMR 6/12/2023 21:08:58'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'LMR 6/12/2023 21:08:58'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'LMR 6/12/2023 21:08:58'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'LMR 6/12/2023 21:08:58'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'LMR 6/12/2023 21:08:58'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'LMR 6/12/2023 21:08:58'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'LMR 6/12/2023 21:08:58'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'LMR 6/12/2023 21:08:58'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'LMR 6/12/2023 21:08:58'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'LMR 6/12/2023 21:08:58'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'LMR 6/12/2023 21:08:58'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'LMR 6/12/2023 21:08:58'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'LMR 6/12/2023 21:08:58'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test04CanAddItemsToACreatedCart stamp: 'LMR 6/12/2023 21:08:58'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'LMR 6/12/2023 21:08:58'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'LMR 6/12/2023 21:08:58'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'LMR 6/12/2023 21:08:58'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'LMR 6/12/2023 21:08:58'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'LMR 6/12/2023 21:08:58'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'LMR 6/12/2023 21:08:58'!
+FAILURE!
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'LMR 6/12/2023 21:08:58'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test12CanNotCheckoutAnEmptyCart stamp: 'LMR 6/12/2023 21:08:58'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'LMR 6/12/2023 21:08:58'!
+FAILURE!
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'LMR 6/12/2023 21:09:11'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'LMR 6/12/2023 21:09:11'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'LMR 6/12/2023 21:09:11'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test04CanAddItemsToACreatedCart stamp: 'LMR 6/12/2023 21:09:11'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'LMR 6/12/2023 21:09:11'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'LMR 6/12/2023 21:09:11'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'LMR 6/12/2023 21:09:11'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'LMR 6/12/2023 21:09:11'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'LMR 6/12/2023 21:09:11'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'LMR 6/12/2023 21:09:11'!
+FAILURE!
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'LMR 6/12/2023 21:09:11'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test12CanNotCheckoutAnEmptyCart stamp: 'LMR 6/12/2023 21:09:11'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'LMR 6/12/2023 21:09:11'!
+FAILURE!
+!RestInterfaceTest methodsFor: 'tests' stamp: 'LMR 6/12/2023 21:09:47'!
+_test10CanCheckoutACart
+
+	| interface cartId  |
+
+	interface := self createDefaultInterface.
+
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	interface add: self validBook quantity: 1 toCartIdentifiedAs: cartId.
+	self
+		shouldnt: [interface 
+			checkOutCartIdentifiedAs: cartId 
+			withCreditCardNumbered: '1111222233334444' 
+			ownedBy: 'Juan Perez' 
+			expiringOn: testObjectsFactory notExpiredMonthOfYear ]
+		raise: Error - MessageNotUnderstood
+		
+		! !
+
+!methodRemoval: RestInterfaceTest #test10CanCheckoutACart stamp: 'LMR 6/12/2023 21:09:47'!
+test10CanCheckoutACart
+
+	| interface cartId  |
+
+	interface := self createDefaultInterface.
+
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	interface add: self validBook quantity: 1 toCartIdentifiedAs: cartId.
+	self
+		shouldnt: [interface 
+			checkOutCartIdentifiedAs: cartId 
+			withCreditCardNumbered: '1111222233334444' 
+			ownedBy: 'Juan Perez' 
+			expiringOn: testObjectsFactory notExpiredMonthOfYear ]
+		raise: Error - MessageNotUnderstood
+		
+		!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'LMR 6/12/2023 21:09:50'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'LMR 6/12/2023 21:09:50'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'LMR 6/12/2023 21:09:50'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'LMR 6/12/2023 21:09:50'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'LMR 6/12/2023 21:09:50'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'LMR 6/12/2023 21:09:50'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'LMR 6/12/2023 21:09:50'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'LMR 6/12/2023 21:09:50'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'LMR 6/12/2023 21:09:50'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'LMR 6/12/2023 21:09:50'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'LMR 6/12/2023 21:09:50'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'LMR 6/12/2023 21:09:50'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'LMR 6/12/2023 21:09:50'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'LMR 6/12/2023 21:09:50'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'LMR 6/12/2023 21:09:50'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'LMR 6/12/2023 21:09:50'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'LMR 6/12/2023 21:09:50'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test04CanAddItemsToACreatedCart stamp: 'LMR 6/12/2023 21:09:50'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'LMR 6/12/2023 21:09:50'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'LMR 6/12/2023 21:09:50'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'LMR 6/12/2023 21:09:50'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'LMR 6/12/2023 21:09:50'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'LMR 6/12/2023 21:09:50'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'LMR 6/12/2023 21:09:50'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test12CanNotCheckoutAnEmptyCart stamp: 'LMR 6/12/2023 21:09:50'!
+PASSED!
+!RestInterfaceTest methodsFor: 'tests' stamp: 'LMR 6/12/2023 21:10:36'!
+test10CanCheckoutACart
+
+	| interface cartId  |
+
+	interface := self createDefaultInterface.
+
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	interface add: self validBook quantity: 1 toCartIdentifiedAs: cartId.
+	self
+		shouldnt: [interface 
+			checkOutCartIdentifiedAs: cartId 
+			withCreditCardNumbered: '1111222233334444' 
+			ownedBy: 'Juan Perez' 
+			expiringOn: testObjectsFactory notExpiredMonthOfYear ]
+		raise: Error - MessageNotUnderstood
+		
+		! !
+
+!methodRemoval: RestInterfaceTest #_test10CanCheckoutACart stamp: 'LMR 6/12/2023 21:10:36'!
+_test10CanCheckoutACart
+
+	| interface cartId  |
+
+	interface := self createDefaultInterface.
+
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	interface add: self validBook quantity: 1 toCartIdentifiedAs: cartId.
+	self
+		shouldnt: [interface 
+			checkOutCartIdentifiedAs: cartId 
+			withCreditCardNumbered: '1111222233334444' 
+			ownedBy: 'Juan Perez' 
+			expiringOn: testObjectsFactory notExpiredMonthOfYear ]
+		raise: Error - MessageNotUnderstood
+		
+		!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'LMR 6/12/2023 21:10:41'!
+FAILURE!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'LMR 6/12/2023 21:10:41'!
+FAILURE!
+
+testObjectsFactory notExpiredMonthOfYear!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'LMR 6/12/2023 21:12:03'!
+FAILURE!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'LMR 6/12/2023 21:12:09'!
+FAILURE!
+
+aCreditCard isExpiredOn: aDate!
+
+today := DateAndTime year: 2010 month: 1 day: 1 hour: 1 minute: 0 second: 0.!
+
+Month month: today monthIndex year: today yearNumber + 1.!
+
+today := DateAndTime year: 2010 month: 1 day: 1 hour: 1 minute: 0 second: 0 nanoSecond: 0 offset: DateAndTime localOffset.!
+!StoreTestObjectsFactory methodsFor: 'initialization' stamp: 'LMR 6/12/2023 21:28:03' prior: 50626780 overrides: 16920235!
+initialize
+
+	"today := DateAndTime now"
+	today := DateAndTime year: 2010 month: 1 day: 1 hour: 1 minute: 0 second: 0 nanoSecond: 0 offset: DateAndTime localOffset.! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'LMR 6/12/2023 21:28:12'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'LMR 6/12/2023 21:28:12'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'LMR 6/12/2023 21:28:12'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'LMR 6/12/2023 21:28:12'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'LMR 6/12/2023 21:28:12'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'LMR 6/12/2023 21:28:12'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'LMR 6/12/2023 21:28:12'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'LMR 6/12/2023 21:28:12'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'LMR 6/12/2023 21:28:12'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'LMR 6/12/2023 21:28:12'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'LMR 6/12/2023 21:28:12'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'LMR 6/12/2023 21:28:12'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'LMR 6/12/2023 21:28:12'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'LMR 6/12/2023 21:28:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'LMR 6/12/2023 21:28:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'LMR 6/12/2023 21:28:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'LMR 6/12/2023 21:28:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test04CanAddItemsToACreatedCart stamp: 'LMR 6/12/2023 21:28:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'LMR 6/12/2023 21:28:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'LMR 6/12/2023 21:28:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'LMR 6/12/2023 21:28:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'LMR 6/12/2023 21:28:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'LMR 6/12/2023 21:28:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'LMR 6/12/2023 21:28:12'!
+FAILURE!
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'LMR 6/12/2023 21:28:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test12CanNotCheckoutAnEmptyCart stamp: 'LMR 6/12/2023 21:28:12'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'LMR 6/12/2023 21:28:12'!
+FAILURE!
+!StoreTestObjectsFactory methodsFor: 'initialization' stamp: 'LMR 6/12/2023 21:28:35' prior: 50627101 overrides: 16920235!
+initialize
+
+	today := DateAndTime now
+	"today := DateAndTime year: 2010 month: 1 day: 1 hour: 1 minute: 0 second: 0 nanoSecond: 0 offset: DateAndTime localOffset."! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'LMR 6/12/2023 21:28:37'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'LMR 6/12/2023 21:28:37'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'LMR 6/12/2023 21:28:37'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'LMR 6/12/2023 21:28:37'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'LMR 6/12/2023 21:28:37'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'LMR 6/12/2023 21:28:37'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'LMR 6/12/2023 21:28:37'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'LMR 6/12/2023 21:28:37'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'LMR 6/12/2023 21:28:37'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'LMR 6/12/2023 21:28:37'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'LMR 6/12/2023 21:28:37'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'LMR 6/12/2023 21:28:37'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'LMR 6/12/2023 21:28:37'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'LMR 6/12/2023 21:28:37'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'LMR 6/12/2023 21:28:37'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'LMR 6/12/2023 21:28:37'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'LMR 6/12/2023 21:28:37'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test04CanAddItemsToACreatedCart stamp: 'LMR 6/12/2023 21:28:37'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'LMR 6/12/2023 21:28:37'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'LMR 6/12/2023 21:28:37'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'LMR 6/12/2023 21:28:37'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'LMR 6/12/2023 21:28:37'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'LMR 6/12/2023 21:28:37'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'LMR 6/12/2023 21:28:37'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'LMR 6/12/2023 21:28:37'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test12CanNotCheckoutAnEmptyCart stamp: 'LMR 6/12/2023 21:28:37'!
+PASSED!
+!StoreTestObjectsFactory methodsFor: 'initialization' stamp: 'LMR 6/12/2023 21:30:19' prior: 50627200 overrides: 16920235!
+initialize
+
+	"today := DateAndTime now"
+	today := DateAndTime year: 2010 month: May day: 1 hour: 1 minute: 0 second: 0 nanoSecond: 0 offset: DateAndTime localOffset.! !
+!StoreTestObjectsFactory methodsFor: 'initialization' stamp: 'LMR 6/12/2023 21:31:08' prior: 50627296 overrides: 16920235!
+initialize
+
+	"today := DateAndTime now"
+	today := DateAndTime year: 2010 month: 1 day: 1 hour: 1 minute: 0 second: 0 nanoSecond: 0 offset: DateAndTime localOffset.! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'LMR 6/12/2023 21:31:11'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'LMR 6/12/2023 21:31:11'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'LMR 6/12/2023 21:31:11'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'LMR 6/12/2023 21:31:11'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'LMR 6/12/2023 21:31:11'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'LMR 6/12/2023 21:31:11'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'LMR 6/12/2023 21:31:11'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'LMR 6/12/2023 21:31:11'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'LMR 6/12/2023 21:31:11'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'LMR 6/12/2023 21:31:11'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'LMR 6/12/2023 21:31:11'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'LMR 6/12/2023 21:31:11'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'LMR 6/12/2023 21:31:11'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'LMR 6/12/2023 21:31:11'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test01CanCreateCartWithValidUserAndPassword stamp: 'LMR 6/12/2023 21:31:11'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test02CanNotCreateCartWithInvalidUser stamp: 'LMR 6/12/2023 21:31:11'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test03CanNotCreateCartWithInvalidPassword stamp: 'LMR 6/12/2023 21:31:11'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test04CanAddItemsToACreatedCart stamp: 'LMR 6/12/2023 21:31:11'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test05CanNotAddItemToNotCreatedCart stamp: 'LMR 6/12/2023 21:31:11'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test06CanNotAddItemNotSellByTheStore stamp: 'LMR 6/12/2023 21:31:11'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'LMR 6/12/2023 21:31:11'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test08CanNotListCartOfInvalidCartId stamp: 'LMR 6/12/2023 21:31:11'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'LMR 6/12/2023 21:31:11'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'LMR 6/12/2023 21:31:11'!
+FAILURE!
+
+!testRun: #RestInterfaceTest #test11CanNotCheckoutANotCreatedCart stamp: 'LMR 6/12/2023 21:31:11'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test12CanNotCheckoutAnEmptyCart stamp: 'LMR 6/12/2023 21:31:11'!
+PASSED!
+
+!testRun: #RestInterfaceTest #test10CanCheckoutACart stamp: 'LMR 6/12/2023 21:31:11'!
+FAILURE!
+!StoreTestObjectsFactory methodsFor: 'initialization' stamp: 'LMR 6/12/2023 21:32:56' prior: 50627306 overrides: 16920235!
+initialize
+
+	today := DateAndTime now.
+	"today := DateAndTime year: 2010 month: 1 day: 1 hour: 1 minute: 0 second: 0 nanoSecond: 0 offset: DateAndTime localOffset."! !
+
+----SNAPSHOT----(12 June 2023 21:33:05) CuisUniversity-5832.image priorSource: 9437850!
+
+----QUIT----(12 June 2023 21:33:14) CuisUniversity-5832.image priorSource: 9464391!
