@@ -5,12 +5,12 @@ TestCase subclass: #CartTest
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!CartTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/17/2013 18:10'!
+!CartTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 00:19:14'!
 test01NewCartsAreCreatedEmpty
 
 	self assert: testObjectsFactory createCart isEmpty! !
 
-!CartTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/17/2013 18:10'!
+!CartTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 00:19:14'!
 test02CanNotAddItemsThatDoNotBelongToStore
 
 	| cart |
@@ -24,7 +24,7 @@ test02CanNotAddItemsThatDoNotBelongToStore
 			self assert: anError messageText = cart invalidItemErrorMessage.
 			self assert: cart isEmpty ]! !
 
-!CartTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/17/2013 18:10'!
+!CartTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 00:19:14'!
 test03AfterAddingAnItemTheCartIsNotEmptyAnymore
 
 	| cart |
@@ -34,7 +34,7 @@ test03AfterAddingAnItemTheCartIsNotEmptyAnymore
 	cart add: testObjectsFactory itemSellByTheStore.
 	self deny: cart isEmpty ! !
 
-!CartTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/17/2013 18:10'!
+!CartTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 00:19:14'!
 test04CanNotAddNonPositiveNumberOfItems
 
 	| cart |
@@ -48,7 +48,7 @@ test04CanNotAddNonPositiveNumberOfItems
 			self assert: anError messageText = cart invalidQuantityErrorMessage.
 			self assert: cart isEmpty ]! !
 
-!CartTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/17/2013 18:10'!
+!CartTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 00:19:14'!
 test05CanNotAddMoreThanOneItemNotSellByTheStore
 
 	| cart |
@@ -62,7 +62,7 @@ test05CanNotAddMoreThanOneItemNotSellByTheStore
 			self assert: anError messageText = cart invalidItemErrorMessage.
 			self assert: cart isEmpty ]! !
 
-!CartTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/17/2013 18:11'!
+!CartTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 00:19:14'!
 test06CartRemembersAddedItems
 
 	| cart |
@@ -72,7 +72,7 @@ test06CartRemembersAddedItems
 	cart add: testObjectsFactory itemSellByTheStore.
 	self assert: (cart includes: testObjectsFactory itemSellByTheStore)! !
 
-!CartTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/17/2013 18:11'!
+!CartTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 00:19:14'!
 test07CartDoesNotHoldNotAddedItems
 
 	| cart |
@@ -81,7 +81,7 @@ test07CartDoesNotHoldNotAddedItems
 	
 	self deny: (cart includes: testObjectsFactory itemSellByTheStore)! !
 
-!CartTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/17/2013 18:11'!
+!CartTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 00:19:14'!
 test08CartRemembersTheNumberOfAddedItems
 
 	| cart |
@@ -92,7 +92,7 @@ test08CartRemembersTheNumberOfAddedItems
 	self assert: (cart occurrencesOf: testObjectsFactory itemSellByTheStore) = 2! !
 
 
-!CartTest methodsFor: 'setup' stamp: 'HernanWilkinson 6/17/2013 18:09'!
+!CartTest methodsFor: 'setup' stamp: 'LMR 6/15/2023 00:19:14'!
 setUp 
 
 	testObjectsFactory := StoreTestObjectsFactory new.! !
@@ -105,7 +105,7 @@ TestCase subclass: #CashierTest
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!CashierTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/17/2013 18:50'!
+!CashierTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 00:19:15'!
 test01CanNotCheckoutAnEmptyCart
 
 	| salesBook |
@@ -123,7 +123,7 @@ test01CanNotCheckoutAnEmptyCart
 			self assert: anError messageText = Cashier cartCanNotBeEmptyErrorMessage.
 			self assert: salesBook isEmpty ]! !
 
-!CashierTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/17/2013 18:51'!
+!CashierTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 00:19:15'!
 test02CalculatedTotalIsCorrect
 
 	| cart cashier |
@@ -140,7 +140,7 @@ test02CalculatedTotalIsCorrect
 		
 	self assert: cashier checkOut = (testObjectsFactory itemSellByTheStorePrice * 2)! !
 
-!CashierTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/17/2013 18:51'!
+!CashierTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 00:19:15'!
 test03CanNotCheckoutWithAnExpiredCreditCart
 
 	| cart salesBook |
@@ -161,7 +161,7 @@ test03CanNotCheckoutWithAnExpiredCreditCart
 			self assert: anError messageText = Cashier canNotChargeAnExpiredCreditCardErrorMessage.
 			self assert: salesBook isEmpty ]! !
 
-!CashierTest methodsFor: 'tests' stamp: 'ARM 6/11/2023 13:50:03'!
+!CashierTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 00:19:15'!
 test04CheckoutRegistersASale
 
 	| cart cashier salesBook total |
@@ -182,7 +182,7 @@ test04CheckoutRegistersASale
 	self assert: salesBook size = 1.
 	self assert: salesBook first = total.! !
 
-!CashierTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/17/2013 19:00'!
+!CashierTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 00:19:15'!
 test05CashierChargesCreditCardUsingMerchantProcessor
 
 	| cart cashier salesBook total creditCard debitedAmout debitedCreditCard  |
@@ -207,7 +207,7 @@ test05CashierChargesCreditCardUsingMerchantProcessor
 	self assert: debitedCreditCard = creditCard.
 	self assert: debitedAmout = total.! !
 
-!CashierTest methodsFor: 'tests' stamp: 'ARM 6/11/2023 14:10:01'!
+!CashierTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 00:19:15'!
 test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit
 
 	| cart cashier salesBook creditCard |
@@ -233,19 +233,19 @@ test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit
 			self assert: salesBook isEmpty ]! !
 
 
-!CashierTest methodsFor: 'setup' stamp: 'HernanWilkinson 6/17/2013 19:03'!
+!CashierTest methodsFor: 'setup' stamp: 'LMR 6/15/2023 00:19:15'!
 setUp 
 
 	testObjectsFactory := StoreTestObjectsFactory new.
 	debitBehavior := [ :anAmount :aCreditCard | ]! !
 
 
-!CashierTest methodsFor: 'merchant processor protocol' stamp: 'ARM 6/11/2023 14:09:42'!
+!CashierTest methodsFor: 'merchant processor protocol' stamp: 'LMR 6/15/2023 00:19:15'!
 creditCardHasNoCreditErrorMessage
 	
 	^'Credit card has no credit'! !
 
-!CashierTest methodsFor: 'merchant processor protocol' stamp: 'HernanWilkinson 6/17/2013 19:02'!
+!CashierTest methodsFor: 'merchant processor protocol' stamp: 'LMR 6/15/2023 00:19:15'!
 debit: anAmount from: aCreditCard 
 
 	^debitBehavior value: anAmount value: aCreditCard ! !
@@ -253,67 +253,69 @@ debit: anAmount from: aCreditCard
 
 !classDefinition: #RestInterfaceTest category: 'TusLibros'!
 TestCase subclass: #RestInterfaceTest
-	instanceVariableNames: 'testObjectsFactory'
+	instanceVariableNames: 'testObjectsFactory actualTime'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!RestInterfaceTest methodsFor: 'setUp/tearDown' stamp: 'HernanWilkinson 6/22/2013 00:15'!
+!RestInterfaceTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/15/2023 00:19:17'!
 anotherValidBook
 	
 	^testObjectsFactory anotherItemSellByTheStore ! !
 
-!RestInterfaceTest methodsFor: 'setUp/tearDown' stamp: 'ARM 6/11/2023 14:12:44'!
+!RestInterfaceTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/15/2023 01:31:08'!
 createDefaultInterface
 	
 	^RestInterface
 		authenticatingWith: self
 		acceptingItemsOf: testObjectsFactory defaultCatalog
-		merchantProcessor: self.! !
+		merchantProcessor: self
+		withClock: self.! !
 
-!RestInterfaceTest methodsFor: 'setUp/tearDown' stamp: 'HernanWilkinson 6/21/2013 23:49'!
+!RestInterfaceTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/15/2023 00:19:17'!
 invalidBook
 
 	^testObjectsFactory itemNotSellByTheStore ! !
 
-!RestInterfaceTest methodsFor: 'setUp/tearDown' stamp: 'HernanWilkinson 6/21/2013 23:25'!
+!RestInterfaceTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/15/2023 00:19:17'!
 invalidCartId
 	
 	"Devuelvo nil porque seguro que siempre sera un id invalido, no importa que sea el id - Hernan"
 	^nil! !
 
-!RestInterfaceTest methodsFor: 'setUp/tearDown' stamp: 'HernanWilkinson 6/21/2013 23:06'!
+!RestInterfaceTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/15/2023 00:19:17'!
 invalidPassword
 	
 	^'invalidPassword'! !
 
-!RestInterfaceTest methodsFor: 'setUp/tearDown' stamp: 'HernanWilkinson 6/21/2013 22:30'!
+!RestInterfaceTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/15/2023 00:19:16'!
 invalidUser
 
 	^'invalidUser'! !
 
-!RestInterfaceTest methodsFor: 'setUp/tearDown' stamp: 'HernanWilkinson 6/21/2013 23:43'!
+!RestInterfaceTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/15/2023 02:05:12'!
 setUp 
 
 	testObjectsFactory := StoreTestObjectsFactory new.
+	actualTime := testObjectsFactory today.
 ! !
 
-!RestInterfaceTest methodsFor: 'setUp/tearDown' stamp: 'HernanWilkinson 6/21/2013 23:50'!
+!RestInterfaceTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/15/2023 00:19:16'!
 validBook
 	
 	^testObjectsFactory itemSellByTheStore ! !
 
-!RestInterfaceTest methodsFor: 'setUp/tearDown' stamp: 'HernanWilkinson 6/21/2013 22:27'!
+!RestInterfaceTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/15/2023 00:19:17'!
 validUser
 	
 	^'validUser'! !
 
-!RestInterfaceTest methodsFor: 'setUp/tearDown' stamp: 'HernanWilkinson 6/21/2013 22:28'!
+!RestInterfaceTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/15/2023 00:19:17'!
 validUserPassword
 	
 	^'validUserPassword'! !
 
-!RestInterfaceTest methodsFor: 'setUp/tearDown' stamp: 'HernanWilkinson 6/21/2013 22:43'!
+!RestInterfaceTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/15/2023 00:19:16'!
 validUsersAndPasswords
 	
 	^Dictionary new
@@ -321,7 +323,7 @@ validUsersAndPasswords
 		yourself! !
 
 
-!RestInterfaceTest methodsFor: 'authenticator protocol' stamp: 'ARM 6/11/2023 13:57:02'!
+!RestInterfaceTest methodsFor: 'authenticator protocol' stamp: 'LMR 6/15/2023 00:19:16'!
 is: aUser authenticatingWith: aPassword 
 	| storedPassword |
 	
@@ -329,7 +331,7 @@ is: aUser authenticatingWith: aPassword
 	^aPassword = storedPassword ! !
 
 
-!RestInterfaceTest methodsFor: 'tests' stamp: 'ARM 6/11/2023 14:00:14'!
+!RestInterfaceTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 00:19:17'!
 test01CanCreateCartWithValidUserAndPassword
 
 	| interface cartID |
@@ -340,7 +342,7 @@ test01CanCreateCartWithValidUserAndPassword
 	
 	self assert: (interface listCartIdentifiedAs: cartID) isEmpty! !
 
-!RestInterfaceTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/21/2013 23:03'!
+!RestInterfaceTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 00:19:16'!
 test02CanNotCreateCartWithInvalidUser
 
 	| interface |
@@ -353,7 +355,7 @@ test02CanNotCreateCartWithInvalidUser
 		withExceptionDo: [ :anError | 
 			self assert: anError messageText = interface invalidUserAndOrPasswordErrorDescription ]! !
 
-!RestInterfaceTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/21/2013 23:06'!
+!RestInterfaceTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 00:19:16'!
 test03CanNotCreateCartWithInvalidPassword
 
 	| interface |
@@ -366,7 +368,7 @@ test03CanNotCreateCartWithInvalidPassword
 		withExceptionDo: [ :anError | 
 			self assert: anError messageText = interface invalidUserAndOrPasswordErrorDescription ]! !
 
-!RestInterfaceTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/21/2013 23:15'!
+!RestInterfaceTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 00:19:16'!
 test04CanAddItemsToACreatedCart
 
 	| interface cartId |
@@ -379,7 +381,7 @@ test04CanAddItemsToACreatedCart
 		raise: Error - MessageNotUnderstood
 		! !
 
-!RestInterfaceTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/21/2013 23:24'!
+!RestInterfaceTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 00:19:17'!
 test05CanNotAddItemToNotCreatedCart
 
 	| interface |
@@ -393,7 +395,7 @@ test05CanNotAddItemToNotCreatedCart
 			self assert: anError messageText = interface invalidCartIdErrorDescription ]
 		! !
 
-!RestInterfaceTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/21/2013 23:41'!
+!RestInterfaceTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 00:19:16'!
 test06CanNotAddItemNotSellByTheStore
 
 	| interface cartId |
@@ -408,7 +410,7 @@ test06CanNotAddItemNotSellByTheStore
 			self assert: anError messageText = interface invalidItemErrorMessage ]
 		! !
 
-!RestInterfaceTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/22/2013 00:05'!
+!RestInterfaceTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 00:19:16'!
 test07ListCartOfAnEmptyCartReturnsAnEmptyBag
 
 	| interface cartId |
@@ -419,7 +421,7 @@ test07ListCartOfAnEmptyCartReturnsAnEmptyBag
 	self assert: (interface listCartIdentifiedAs: cartId) isEmpty 
 	! !
 
-!RestInterfaceTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/22/2013 00:08'!
+!RestInterfaceTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 00:19:17'!
 test08CanNotListCartOfInvalidCartId
 
 	| interface |
@@ -433,7 +435,7 @@ test08CanNotListCartOfInvalidCartId
 			self assert: anError messageText = interface invalidCartIdErrorDescription ]
 	! !
 
-!RestInterfaceTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/22/2013 00:15'!
+!RestInterfaceTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 00:19:16'!
 test09ListCartReturnsTheRightNumberOfItems
 
 	| interface cartId cartContent |
@@ -449,7 +451,7 @@ test09ListCartReturnsTheRightNumberOfItems
 	self assert: (cartContent occurrencesOf: self anotherValidBook) = 2
 ! !
 
-!RestInterfaceTest methodsFor: 'tests' stamp: 'LMR 6/12/2023 21:10:36'!
+!RestInterfaceTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 00:19:16'!
 test10CanCheckoutACart
 
 	| interface cartId  |
@@ -468,7 +470,7 @@ test10CanCheckoutACart
 		
 		! !
 
-!RestInterfaceTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/22/2013 11:10'!
+!RestInterfaceTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 00:19:16'!
 test11CanNotCheckoutANotCreatedCart
 
 	| interface |
@@ -487,7 +489,7 @@ test11CanNotCheckoutANotCreatedCart
 		
 		! !
 
-!RestInterfaceTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/22/2013 11:13'!
+!RestInterfaceTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 00:19:16'!
 test12CanNotCheckoutAnEmptyCart
 
 	| interface cartId |
@@ -507,6 +509,50 @@ test12CanNotCheckoutAnEmptyCart
 		
 		! !
 
+!RestInterfaceTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 02:14:32'!
+test13CanNotOperateOnACart30MinutesAfterLastUpdate
+
+	| interface cartId |
+
+	interface := self createDefaultInterface.
+
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	
+	self setClock: actualTime + (Duration minutes: 40).
+	
+	self
+		should: [interface add: self validBook quantity: 1 toCartIdentifiedAs: cartId.]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = interface cartSessionExpiredErrorDescription ]! !
+
+!RestInterfaceTest methodsFor: 'tests' stamp: 'LMR 6/15/2023 02:14:25'!
+test14PerformingAnOperationOnACartUpdateSTimeStamp
+
+	| interface cartId |
+
+	interface := self createDefaultInterface.
+
+	cartId := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	
+	self setClock: actualTime + (Duration minutes: 20).
+	interface add: self validBook quantity: 1 toCartIdentifiedAs: cartId.
+	self setClock: actualTime + (Duration minutes: 20).
+	self
+		shouldnt: [interface add: self validBook quantity: 1 toCartIdentifiedAs: cartId.]
+		raise: Error - MessageNotUnderstood.! !
+
+
+!RestInterfaceTest methodsFor: 'clock protocol' stamp: 'LMR 6/15/2023 01:57:57'!
+getTime
+	
+	^actualTime.! !
+
+!RestInterfaceTest methodsFor: 'clock protocol' stamp: 'LMR 6/15/2023 01:23:30'!
+setClock: aTime
+	
+	actualTime := aTime.! !
+
 
 !classDefinition: #Cart category: 'TusLibros'!
 Object subclass: #Cart
@@ -515,29 +561,29 @@ Object subclass: #Cart
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!Cart methodsFor: 'error messages' stamp: 'HernanWilkinson 6/21/2013 23:59'!
+!Cart methodsFor: 'error messages' stamp: 'LMR 6/15/2023 00:19:13'!
 invalidItemErrorMessage
 	
 	^self class invalidItemErrorMessage ! !
 
-!Cart methodsFor: 'error messages' stamp: 'HernanWilkinson 6/22/2013 00:00'!
+!Cart methodsFor: 'error messages' stamp: 'LMR 6/15/2023 00:19:13'!
 invalidQuantityErrorMessage
 	
 	^self class invalidQuantityErrorMessage ! !
 
 
-!Cart methodsFor: 'assertions' stamp: 'HernanWilkinson 6/17/2013 18:06'!
+!Cart methodsFor: 'assertions' stamp: 'LMR 6/15/2023 00:19:13'!
 assertIsValidItem: anItem
 
 	(catalog includesKey: anItem) ifFalse: [ self error: self invalidItemErrorMessage ]! !
 
-!Cart methodsFor: 'assertions' stamp: 'HernanWilkinson 6/17/2013 17:51'!
+!Cart methodsFor: 'assertions' stamp: 'LMR 6/15/2023 00:19:13'!
 assertIsValidQuantity: aQuantity
 
 	aQuantity strictlyPositive ifFalse: [ self error: self invalidQuantityErrorMessage ]! !
 
 
-!Cart methodsFor: 'content' stamp: 'HernanWilkinson 6/22/2013 00:20'!
+!Cart methodsFor: 'content' stamp: 'LMR 6/15/2023 00:19:14'!
 content
 	
 	^Bag new
@@ -545,42 +591,42 @@ content
 		yourself ! !
 
 
-!Cart methodsFor: 'initialization' stamp: 'HernanWilkinson 6/17/2013 17:48'!
+!Cart methodsFor: 'initialization' stamp: 'LMR 6/15/2023 00:19:14'!
 initializeAcceptingItemsOf: aCatalog
 
 	catalog := aCatalog.
 	items := OrderedCollection new.! !
 
 
-!Cart methodsFor: 'queries' stamp: 'HernanWilkinson 6/17/2013 17:45'!
+!Cart methodsFor: 'queries' stamp: 'LMR 6/15/2023 00:19:14'!
 occurrencesOf: anItem
 
 	^items occurrencesOf: anItem  ! !
 
 
-!Cart methodsFor: 'testing' stamp: 'HernanWilkinson 6/17/2013 17:44'!
+!Cart methodsFor: 'testing' stamp: 'LMR 6/15/2023 00:19:13'!
 includes: anItem
 
 	^items includes: anItem ! !
 
-!Cart methodsFor: 'testing' stamp: 'HernanWilkinson 6/17/2013 17:44'!
+!Cart methodsFor: 'testing' stamp: 'LMR 6/15/2023 00:19:13'!
 isEmpty
 	
 	^items isEmpty ! !
 
 
-!Cart methodsFor: 'total' stamp: 'HernanWilkinson 6/17/2013 19:09'!
+!Cart methodsFor: 'total' stamp: 'LMR 6/15/2023 00:19:13'!
 total
 
 	^ items sum: [ :anItem | catalog at: anItem ]! !
 
 
-!Cart methodsFor: 'adding' stamp: 'HernanWilkinson 6/17/2013 17:44'!
+!Cart methodsFor: 'adding' stamp: 'LMR 6/15/2023 00:19:13'!
 add: anItem
 
 	^ self add: 1 of: anItem ! !
 
-!Cart methodsFor: 'adding' stamp: 'HernanWilkinson 6/17/2013 17:51'!
+!Cart methodsFor: 'adding' stamp: 'LMR 6/15/2023 00:19:13'!
 add: aQuantity of: anItem
 
 	self assertIsValidQuantity: aQuantity.
@@ -594,18 +640,18 @@ add: aQuantity of: anItem
 Cart class
 	instanceVariableNames: ''!
 
-!Cart class methodsFor: 'error messages' stamp: 'HernanWilkinson 6/21/2013 23:59'!
+!Cart class methodsFor: 'error messages' stamp: 'LMR 6/15/2023 00:19:14'!
 invalidItemErrorMessage
 	
 	^'Item is not in catalog'! !
 
-!Cart class methodsFor: 'error messages' stamp: 'HernanWilkinson 6/22/2013 00:00'!
+!Cart class methodsFor: 'error messages' stamp: 'LMR 6/15/2023 00:19:14'!
 invalidQuantityErrorMessage
 	
 	^'Invalid number of items'! !
 
 
-!Cart class methodsFor: 'instance creation' stamp: 'HernanWilkinson 6/17/2013 17:48'!
+!Cart class methodsFor: 'instance creation' stamp: 'LMR 6/15/2023 00:19:14'!
 acceptingItemsOf: aCatalog
 
 	^self new initializeAcceptingItemsOf: aCatalog ! !
@@ -618,31 +664,31 @@ Object subclass: #Cashier
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!Cashier methodsFor: 'checkout - private' stamp: 'HernanWilkinson 6/17/2013 19:08'!
+!Cashier methodsFor: 'checkout - private' stamp: 'LMR 6/15/2023 00:19:14'!
 calculateTotal
 
 	total := cart total.
 	! !
 
-!Cashier methodsFor: 'checkout - private' stamp: 'ARM 6/11/2023 13:49:52'!
+!Cashier methodsFor: 'checkout - private' stamp: 'LMR 6/15/2023 00:19:14'!
 createSale
 
 	^ total
 ! !
 
-!Cashier methodsFor: 'checkout - private' stamp: 'HernanWilkinson 6/17/2013 19:06'!
+!Cashier methodsFor: 'checkout - private' stamp: 'LMR 6/15/2023 00:19:14'!
 debitTotal
 
 	merchantProcessor debit: total from: creditCard.
 	! !
 
-!Cashier methodsFor: 'checkout - private' stamp: 'HernanWilkinson 6/17/2013 19:06'!
+!Cashier methodsFor: 'checkout - private' stamp: 'LMR 6/15/2023 00:19:14'!
 registerSale
 
 	salesBook add: self createSale! !
 
 
-!Cashier methodsFor: 'checkout' stamp: 'HernanWilkinson 6/17/2013 19:06'!
+!Cashier methodsFor: 'checkout' stamp: 'LMR 6/15/2023 00:19:14'!
 checkOut
 
 	self calculateTotal.
@@ -652,7 +698,7 @@ checkOut
 	^ total! !
 
 
-!Cashier methodsFor: 'initialization' stamp: 'HernanWilkinson 6/17/2013 18:53'!
+!Cashier methodsFor: 'initialization' stamp: 'LMR 6/15/2023 00:19:14'!
 initializeToCheckout: aCart charging: aCreditCard throught: aMerchantProcessor registeringOn: aSalesBook
 	
 	cart := aCart.
@@ -666,18 +712,18 @@ initializeToCheckout: aCart charging: aCreditCard throught: aMerchantProcessor r
 Cashier class
 	instanceVariableNames: ''!
 
-!Cashier class methodsFor: 'assertions' stamp: 'HernanWilkinson 6/17/2013 18:22'!
+!Cashier class methodsFor: 'assertions' stamp: 'LMR 6/15/2023 00:19:15'!
 assertIsNotEmpty: aCart 
 	
 	aCart isEmpty ifTrue: [self error: self cartCanNotBeEmptyErrorMessage ]! !
 
-!Cashier class methodsFor: 'assertions' stamp: 'HernanWilkinson 6/17/2013 18:23'!
+!Cashier class methodsFor: 'assertions' stamp: 'LMR 6/15/2023 00:19:14'!
 assertIsNotExpired: aCreditCard on: aDate
 	
 	(aCreditCard isExpiredOn: aDate) ifTrue: [ self error: self canNotChargeAnExpiredCreditCardErrorMessage ]! !
 
 
-!Cashier class methodsFor: 'instance creation' stamp: 'HernanWilkinson 6/17/2013 18:51'!
+!Cashier class methodsFor: 'instance creation' stamp: 'LMR 6/15/2023 00:19:15'!
 toCheckout: aCart charging: aCreditCard throught: aMerchantProcessor on: aDate registeringOn: aSalesBook
 	
 	self assertIsNotEmpty: aCart.
@@ -686,12 +732,12 @@ toCheckout: aCart charging: aCreditCard throught: aMerchantProcessor on: aDate r
 	^self new initializeToCheckout: aCart charging: aCreditCard throught: aMerchantProcessor registeringOn: aSalesBook! !
 
 
-!Cashier class methodsFor: 'error messages' stamp: 'HernanWilkinson 6/17/2013 18:21'!
+!Cashier class methodsFor: 'error messages' stamp: 'LMR 6/15/2023 00:19:15'!
 canNotChargeAnExpiredCreditCardErrorMessage
 	
 	^'Can not charge an expired credit card'! !
 
-!Cashier class methodsFor: 'error messages' stamp: 'HernanWilkinson 6/17/2013 17:56'!
+!Cashier class methodsFor: 'error messages' stamp: 'LMR 6/15/2023 00:19:15'!
 cartCanNotBeEmptyErrorMessage
 	
 	^'Can not check out an empty cart'! !
@@ -704,13 +750,13 @@ Object subclass: #CreditCard
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!CreditCard methodsFor: 'testing' stamp: 'HernanWilkinson 6/17/2013 18:39'!
+!CreditCard methodsFor: 'testing' stamp: 'LMR 6/15/2023 00:19:15'!
 isExpiredOn: aDate 
 	
 	^expiration start < (Month month: aDate monthIndex year: aDate yearNumber) start ! !
 
 
-!CreditCard methodsFor: 'initialization' stamp: 'HernanWilkinson 6/17/2013 18:38'!
+!CreditCard methodsFor: 'initialization' stamp: 'LMR 6/15/2023 00:19:15'!
 initializeExpiringOn: aMonth 
 	
 	expiration := aMonth ! !
@@ -721,7 +767,7 @@ initializeExpiringOn: aMonth
 CreditCard class
 	instanceVariableNames: ''!
 
-!CreditCard class methodsFor: 'instance creation' stamp: 'HernanWilkinson 6/17/2013 18:38'!
+!CreditCard class methodsFor: 'instance creation' stamp: 'LMR 6/15/2023 00:19:15'!
 expiringOn: aMonth 
 	
 	^self new initializeExpiringOn: aMonth! !
@@ -729,51 +775,45 @@ expiringOn: aMonth
 
 !classDefinition: #RestInterface category: 'TusLibros'!
 Object subclass: #RestInterface
-	instanceVariableNames: 'authenticationSystem carts catalog lastId merchantProcessor salesBook'
+	instanceVariableNames: 'authenticationSystem carts catalog lastId merchantProcessor salesBook clock cartTimeStamps'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!RestInterface methodsFor: 'as yet unclassified' stamp: 'HernanWilkinson 6/21/2013 23:58'!
-add: aBook quantity: anAmount toCartIdentifiedAs: aCartId
-
-	| cart |
-	
-	cart := carts at: aCartId ifAbsent: [ self signalInvalidCartId ].
-	cart add: anAmount of: aBook ! !
-
-!RestInterface methodsFor: 'as yet unclassified' stamp: 'HernanWilkinson 6/22/2013 11:17'!
+!RestInterface methodsFor: 'error descriptions' stamp: 'LMR 6/15/2023 00:19:16'!
 cartCanNotBeEmptyErrorMessage
 	
 	^Cashier cartCanNotBeEmptyErrorMessage ! !
 
-!RestInterface methodsFor: 'as yet unclassified' stamp: 'HernanWilkinson 6/22/2013 11:16'!
-checkOutCartIdentifiedAs: aCartId withCreditCardNumbered: aCreditCartNumber ownedBy: anOwner expiringOn: anExpirationMonthOfYear
+!RestInterface methodsFor: 'error descriptions' stamp: 'LMR 6/15/2023 01:55:06'!
+cartSessionExpiredErrorDescription	
+	
+	^'Your cart session has expired'.! !
 
-	| cart |
+!RestInterface methodsFor: 'error descriptions' stamp: 'LMR 6/15/2023 00:19:15'!
+invalidCartIdErrorDescription
 	
-	cart := carts at: aCartId ifAbsent: [self signalInvalidCartId ].
-	
-	Cashier 
-		toCheckout: cart 
-		charging: (CreditCard expiringOn: anExpirationMonthOfYear) 
-		throught: merchantProcessor 
-		on: self today 
-		registeringOn: salesBook! !
+	^'Invalid cart id'! !
 
-!RestInterface methodsFor: 'as yet unclassified' stamp: 'HernanWilkinson 6/21/2013 23:34'!
-createCartFor: aUser authenticatedWith: aPassword
+!RestInterface methodsFor: 'error descriptions' stamp: 'LMR 6/15/2023 00:19:15'!
+invalidItemErrorMessage
+	
+	^Cart invalidItemErrorMessage ! !
 
-	| cartId |
+!RestInterface methodsFor: 'error descriptions' stamp: 'LMR 6/15/2023 00:19:15'!
+invalidUserAndOrPasswordErrorDescription
 	
-	(self is: aUser authenticatingWith: aPassword) ifFalse: [ self signalInvalidUserAndOrPassword ].
-	
-	cartId := self generateCartId.
-	carts at: cartId put: (Cart acceptingItemsOf: catalog).
-	
-	^cartId ! !
+	^'Invalid user and/or password'! !
 
-!RestInterface methodsFor: 'as yet unclassified' stamp: 'HernanWilkinson 6/21/2013 23:32'!
+
+!RestInterface methodsFor: 'authentication' stamp: 'LMR 6/15/2023 00:19:15'!
+is: aUser authenticatingWith: aPassword 
+	
+	^authenticationSystem is: aUser authenticatingWith: aPassword 
+! !
+
+
+!RestInterface methodsFor: 'cart id' stamp: 'LMR 6/15/2023 00:19:16'!
 generateCartId
 	
 	"Recuerden que esto es un ejemplo, por lo que voy a generar ids numericos consecutivos, pero en una 
@@ -782,59 +822,89 @@ generateCartId
 	lastId := lastId + 1.
 	^lastId! !
 
-!RestInterface methodsFor: 'as yet unclassified' stamp: 'ARM 6/11/2023 14:13:23'!
-initializeAuthenticatingWith: anAuthenticationSystem acceptingItemsOf: aCatalog merchantProcessor: anMP
 
-	authenticationSystem := anAuthenticationSystem.
-	catalog := aCatalog.
-	carts := Dictionary new.
-	lastId := 0.
-	merchantProcessor := anMP! !
-
-!RestInterface methodsFor: 'as yet unclassified' stamp: 'HernanWilkinson 6/21/2013 23:27'!
-invalidCartIdErrorDescription
+!RestInterface methodsFor: 'card date validation' stamp: 'LMR 6/15/2023 00:19:15'!
+today
 	
-	^'Invalid cart id'! !
+	^DateAndTime now! !
 
-!RestInterface methodsFor: 'as yet unclassified' stamp: 'HernanWilkinson 6/21/2013 23:59'!
-invalidItemErrorMessage
+
+!RestInterface methodsFor: 'signaling' stamp: 'LMR 6/15/2023 01:56:06'!
+signalCartSessionExpired
 	
-	^Cart invalidItemErrorMessage ! !
+	self error: self cartSessionExpiredErrorDescription	.! !
 
-!RestInterface methodsFor: 'as yet unclassified' stamp: 'HernanWilkinson 6/21/2013 23:03'!
-invalidUserAndOrPasswordErrorDescription
+!RestInterface methodsFor: 'signaling' stamp: 'LMR 6/15/2023 00:19:16'!
+signalInvalidCartId
 	
-	^'Invalid user and/or password'! !
+	self error: self invalidCartIdErrorDescription ! !
 
-!RestInterface methodsFor: 'as yet unclassified' stamp: 'ARM 6/11/2023 13:54:36'!
-is: aUser authenticatingWith: aPassword 
+!RestInterface methodsFor: 'signaling' stamp: 'LMR 6/15/2023 00:19:16'!
+signalInvalidUserAndOrPassword
 	
-	^authenticationSystem is: aUser authenticatingWith: aPassword 
-! !
+	self error: self invalidUserAndOrPasswordErrorDescription! !
 
-!RestInterface methodsFor: 'as yet unclassified' stamp: 'HernanWilkinson 6/22/2013 00:19'!
+
+!RestInterface methodsFor: 'cart operations' stamp: 'LMR 6/15/2023 02:15:34'!
+add: aBook quantity: anAmount toCartIdentifiedAs: aCartId
+
+	| cart |
+	
+	cart := carts at: aCartId ifAbsent: [ self signalInvalidCartId ].
+	cartTimeStamps at: aCartId ifPresent: [:aTimeStamp | ((aTimeStamp + (Duration minutes: 30)) < clock getTime) ifTrue: [self signalCartSessionExpired]].
+	cart add: anAmount of: aBook.
+	cartTimeStamps at: aCartId put: clock getTime.! !
+
+!RestInterface methodsFor: 'cart operations' stamp: 'LMR 6/15/2023 02:16:05'!
+checkOutCartIdentifiedAs: aCartId withCreditCardNumbered: aCreditCartNumber ownedBy: anOwner expiringOn: anExpirationMonthOfYear
+
+	| cart |
+	
+	cart := carts at: aCartId ifAbsent: [self signalInvalidCartId ].
+	cartTimeStamps at: aCartId ifPresent: [:aTimeStamp | ((aTimeStamp + (Duration minutes: 30)) < clock getTime) ifTrue: [self signalCartSessionExpired]].
+	
+	Cashier 
+		toCheckout: cart 
+		charging: (CreditCard expiringOn: anExpirationMonthOfYear) 
+		throught: merchantProcessor 
+		on: self today 
+		registeringOn: salesBook.
+	cartTimeStamps at: aCartId put: clock getTime.! !
+
+!RestInterface methodsFor: 'cart operations' stamp: 'LMR 6/15/2023 01:57:36'!
+createCartFor: aUser authenticatedWith: aPassword
+
+	| cartId |
+	
+	(self is: aUser authenticatingWith: aPassword) ifFalse: [ self signalInvalidUserAndOrPassword ].
+	
+	cartId := self generateCartId.
+	carts at: cartId put: (Cart acceptingItemsOf: catalog).
+	cartTimeStamps at: cartId put: clock getTime.
+	
+	^cartId ! !
+
+!RestInterface methodsFor: 'cart operations' stamp: 'LMR 6/15/2023 02:16:17'!
 listCartIdentifiedAs: aCartId
 
 	| cart |
 	
 	cart := carts at: aCartId ifAbsent: [ self signalInvalidCartId ].
-	
+	cartTimeStamps at: aCartId ifPresent: [:aTimeStamp | ((aTimeStamp + (Duration minutes: 30)) < clock getTime) ifTrue: [self signalCartSessionExpired]].
+	cartTimeStamps at: aCartId put: clock getTime.
 	^cart content! !
 
-!RestInterface methodsFor: 'as yet unclassified' stamp: 'HernanWilkinson 6/21/2013 23:27'!
-signalInvalidCartId
-	
-	self error: self invalidCartIdErrorDescription ! !
 
-!RestInterface methodsFor: 'as yet unclassified' stamp: 'HernanWilkinson 6/21/2013 23:02'!
-signalInvalidUserAndOrPassword
+!RestInterface methodsFor: 'initialization' stamp: 'LMR 6/15/2023 01:58:37'!
+initializeAuthenticatingWith: anAuthenticationSystem acceptingItemsOf: aCatalog merchantProcessor: anMP withClock: aClock 
 	
-	self error: self invalidUserAndOrPasswordErrorDescription! !
-
-!RestInterface methodsFor: 'as yet unclassified' stamp: 'HernanWilkinson 6/22/2013 11:17'!
-today
-	
-	^DateAndTime now! !
+	authenticationSystem := anAuthenticationSystem.
+	catalog := aCatalog.
+	carts := Dictionary new.
+	lastId := 0.
+	merchantProcessor := anMP.
+	clock := aClock.
+	cartTimeStamps := Dictionary new.! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -842,10 +912,10 @@ today
 RestInterface class
 	instanceVariableNames: ''!
 
-!RestInterface class methodsFor: 'as yet unclassified' stamp: 'ARM 6/11/2023 14:13:04'!
-authenticatingWith: aValidUsersAndPasswords acceptingItemsOf: aCatalog merchantProcessor: anMP
+!RestInterface class methodsFor: 'instance creation' stamp: 'LMR 6/15/2023 01:32:55'!
+authenticatingWith: aValidUsersAndPasswords acceptingItemsOf: aCatalog merchantProcessor: anMP withClock: aClock 
 
-	^self new initializeAuthenticatingWith: aValidUsersAndPasswords acceptingItemsOf: aCatalog merchantProcessor: anMP! !
+	^self new initializeAuthenticatingWith: aValidUsersAndPasswords acceptingItemsOf: aCatalog merchantProcessor: anMP withClock: aClock.! !
 
 
 !classDefinition: #StoreTestObjectsFactory category: 'TusLibros'!
@@ -855,38 +925,38 @@ Object subclass: #StoreTestObjectsFactory
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!StoreTestObjectsFactory methodsFor: 'items' stamp: 'HernanWilkinson 6/22/2013 00:16'!
+!StoreTestObjectsFactory methodsFor: 'items' stamp: 'LMR 6/15/2023 00:19:17'!
 anotherItemSellByTheStore
 	
 	^'anotherValidBook'! !
 
-!StoreTestObjectsFactory methodsFor: 'items' stamp: 'HernanWilkinson 6/22/2013 00:16'!
+!StoreTestObjectsFactory methodsFor: 'items' stamp: 'LMR 6/15/2023 00:19:17'!
 anotherItemSellByTheStorePrice
 	
 	^15! !
 
-!StoreTestObjectsFactory methodsFor: 'items' stamp: 'HernanWilkinson 6/17/2013 18:08'!
+!StoreTestObjectsFactory methodsFor: 'items' stamp: 'LMR 6/15/2023 00:19:17'!
 itemNotSellByTheStore
 	
 	^'invalidBook'! !
 
-!StoreTestObjectsFactory methodsFor: 'items' stamp: 'HernanWilkinson 6/17/2013 18:08'!
+!StoreTestObjectsFactory methodsFor: 'items' stamp: 'LMR 6/15/2023 00:19:17'!
 itemSellByTheStore
 	
 	^ 'validBook'! !
 
-!StoreTestObjectsFactory methodsFor: 'items' stamp: 'HernanWilkinson 6/17/2013 18:08'!
+!StoreTestObjectsFactory methodsFor: 'items' stamp: 'LMR 6/15/2023 00:19:17'!
 itemSellByTheStorePrice
 	
 	^10! !
 
 
-!StoreTestObjectsFactory methodsFor: 'cart' stamp: 'HernanWilkinson 6/17/2013 18:08'!
+!StoreTestObjectsFactory methodsFor: 'cart' stamp: 'LMR 6/15/2023 00:19:17'!
 createCart
 	
 	^Cart acceptingItemsOf: self defaultCatalog! !
 
-!StoreTestObjectsFactory methodsFor: 'cart' stamp: 'HernanWilkinson 6/22/2013 00:16'!
+!StoreTestObjectsFactory methodsFor: 'cart' stamp: 'LMR 6/15/2023 00:19:17'!
 defaultCatalog
 	
 	^ Dictionary new
@@ -895,30 +965,30 @@ defaultCatalog
 		yourself ! !
 
 
-!StoreTestObjectsFactory methodsFor: 'credit card' stamp: 'HernanWilkinson 6/17/2013 18:37'!
+!StoreTestObjectsFactory methodsFor: 'credit card' stamp: 'LMR 6/15/2023 00:19:17'!
 expiredCreditCard
 	
 	^CreditCard expiringOn: (Month month: today monthIndex year: today yearNumber - 1)! !
 
-!StoreTestObjectsFactory methodsFor: 'credit card' stamp: 'HernanWilkinson 6/22/2013 11:06'!
+!StoreTestObjectsFactory methodsFor: 'credit card' stamp: 'LMR 6/15/2023 00:19:17'!
 notExpiredCreditCard
 	
 	^CreditCard expiringOn: self notExpiredMonthOfYear! !
 
-!StoreTestObjectsFactory methodsFor: 'credit card' stamp: 'HernanWilkinson 6/22/2013 11:06'!
+!StoreTestObjectsFactory methodsFor: 'credit card' stamp: 'LMR 6/15/2023 00:19:17'!
 notExpiredMonthOfYear
 
 	^ Month month: today monthIndex year: today yearNumber + 1! !
 
 
-!StoreTestObjectsFactory methodsFor: 'initialization' stamp: 'LMR 6/12/2023 21:32:56'!
+!StoreTestObjectsFactory methodsFor: 'initialization' stamp: 'LMR 6/15/2023 00:19:17'!
 initialize
 
 	today := DateAndTime now.
 	"today := DateAndTime year: 2010 month: 1 day: 1 hour: 1 minute: 0 second: 0 nanoSecond: 0 offset: DateAndTime localOffset."! !
 
 
-!StoreTestObjectsFactory methodsFor: 'date' stamp: 'HernanWilkinson 6/17/2013 18:37'!
+!StoreTestObjectsFactory methodsFor: 'date' stamp: 'LMR 6/15/2023 00:19:17'!
 today
 	
 	^ today! !
