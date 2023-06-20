@@ -339,6 +339,36 @@ today
 	self subclassResponsibility ! !
 
 
+!classDefinition: #ConcurrentExecuter category: 'TusLibros-Model'!
+Object subclass: #ConcurrentExecuter
+	instanceVariableNames: 'blocks'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!ConcurrentExecuter methodsFor: 'value' stamp: 'LMR 6/20/2023 17:40:42'!
+valueAndWait
+	
+	| aSemaphore |
+	aSemaphore := Semaphore new.
+	blocks do: [:block | 
+		[block ensure: [aSemaphore signal]] fork.
+	].
+	blocks size timesRepeat: [aSemaphore wait].! !
+
+
+!ConcurrentExecuter methodsFor: 'add' stamp: 'LMR 6/20/2023 17:39:13'!
+addBlockToExecute: aClosure.
+	
+	blocks add: aClosure.! !
+
+
+!ConcurrentExecuter methodsFor: 'initialization' stamp: 'LMR 6/20/2023 17:41:43'!
+initialize
+
+	blocks := OrderedCollection new.! !
+
+
 !classDefinition: #CreditCard category: 'TusLibros-Model'!
 Object subclass: #CreditCard
 	instanceVariableNames: 'expiration number ownerName'
@@ -753,18 +783,17 @@ salesBook
 	^ salesBook! !
 
 
-!TusLibrosSystemFacade methodsFor: 'private' stamp: 'LMR 6/19/2023 16:24:01'!
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'LMR 6/20/2023 17:46:32'!
 bookPerformance: anItem
 
-	| bookPerformance totalMoney totalSales readySemaphore |
+	| bookPerformance totalMoney totalSales aConcurrentExecuter |
 
 	bookPerformance := Dictionary new.
 	
-	readySemaphore := Semaphore new.
-	[totalSales := self totalSalesOf: anItem.
-	readySemaphore signal.] fork.
-	totalMoney := self totalMoneyRaisedBy: anItem.
-	readySemaphore wait.
+	aConcurrentExecuter := ConcurrentExecuter new.
+	aConcurrentExecuter addBlockToExecute: [totalSales := self totalSalesOf: anItem.].
+	aConcurrentExecuter addBlockToExecute: [totalMoney := self totalMoneyRaisedBy: anItem.].
+	aConcurrentExecuter valueAndWait.
 	
 	bookPerformance at: 'quantity' put: totalSales.
 	bookPerformance at: 'total' put: totalMoney.
@@ -790,18 +819,17 @@ salesDoneBy: aUser
 	"Esto es un indicio de que por ahi conviene empezar a pensar en modelar un SaleBook - Hernan"
 	^ salesBook select: [ :aSale | aSale wasDoneBy: aUser ]! !
 
-!TusLibrosSystemFacade methodsFor: 'private' stamp: 'LMR 6/19/2023 16:25:17'!
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'LMR 6/20/2023 17:46:44'!
 storePerformance
 
-	| totalMoney totalSales performance readySemaphore |
+	| totalMoney totalSales performance aConcurrentExecuter |
 	
 	performance := Dictionary new.
 	
-	readySemaphore := Semaphore new.
-	[totalSales := self totalSales.
-	readySemaphore signal.] fork.
-	totalMoney := self totalMoneyRaised.
-	readySemaphore wait.
+	aConcurrentExecuter := ConcurrentExecuter new.
+	aConcurrentExecuter addBlockToExecute: [totalSales := self totalSales.].
+	aConcurrentExecuter addBlockToExecute: [totalMoney := self totalMoneyRaised.].
+	aConcurrentExecuter valueAndWait.
 	
 	performance at: 'quantity' put: totalSales.
 	performance at: 'total' put: totalMoney.
