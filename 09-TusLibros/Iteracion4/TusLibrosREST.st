@@ -221,7 +221,7 @@ add: quantity of: bookIsbn toCartIdentifiedAs: cartId successClosure: aSuccessCl
 		ifSuccessDo: aSuccessClosure
 		onErrorDo: anErrorClosure.! !
 
-!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/22/2023 15:32:52'!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/22/2023 19:20:10'!
 asyncHttpRequest: requestPath withFields: fieldDict ifSuccessDo: aSuccessClosure onErrorDo: anErrorClosure
 	
 	"Al usar anErrorClosure en el ifFalse del isSuccess no se levanta un popup si el server esta caido ya que falla html submit
@@ -229,11 +229,13 @@ asyncHttpRequest: requestPath withFields: fieldDict ifSuccessDo: aSuccessClosure
 	ejecuta un bloque de error (podria ser uno distinto al anErrorClosure para el caso de que el server este caido)  - Lucas"
 
 	[
-		| resp |
-		resp := WebClient htmlSubmit: (self url,'/', requestPath) fields: fieldDict.
-		resp isSuccess 
-			ifTrue:[aSuccessClosure value: (WebUtils jsonDecode: ((resp content) readStream))]
-			ifFalse:[anErrorClosure value: resp content]
+		[
+			| resp |
+			resp := WebClient htmlSubmit: (self url,'/', requestPath) fields: fieldDict.
+			resp isSuccess 
+				ifTrue:[aSuccessClosure value: (WebUtils jsonDecode: ((resp content) readStream))]
+				ifFalse:[anErrorClosure value: resp content]
+		] on: Error do: [:anError | anErrorClosure value: anError messageText].
 	] fork.! !
 
 !TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/22/2023 15:25:09'!

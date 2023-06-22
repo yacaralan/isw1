@@ -2665,3 +2665,27 @@ asyncHttpRequest: requestPath withFields: fieldDict ifSuccessDo: aSuccessClosure
 ----SNAPSHOT----(22 June 2023 15:33:33) CuisUniversity-5832.image priorSource: 12303870!
 
 ----QUIT----(22 June 2023 15:33:35) CuisUniversity-5832.image priorSource: 12303960!
+
+
+----STARTUP---- (22 June 2023 19:17:57) as /home/clinux01/Escritorio/linux64/CuisUniversity-5832.image!
+
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/22/2023 19:20:10' prior: 50666850!
+asyncHttpRequest: requestPath withFields: fieldDict ifSuccessDo: aSuccessClosure onErrorDo: anErrorClosure
+	
+	"Al usar anErrorClosure en el ifFalse del isSuccess no se levanta un popup si el server esta caido ya que falla html submit
+	si queremos que no se levante el debugger en ese caso tenemos que hacer un on:do: para el htmlSubmit donde en el do se
+	ejecuta un bloque de error (podria ser uno distinto al anErrorClosure para el caso de que el server este caido)  - Lucas"
+
+	[
+		[
+			| resp |
+			resp := WebClient htmlSubmit: (self url,'/', requestPath) fields: fieldDict.
+			resp isSuccess 
+				ifTrue:[aSuccessClosure value: (WebUtils jsonDecode: ((resp content) readStream))]
+				ifFalse:[anErrorClosure value: resp content]
+		] on: Error do: [:anError | anErrorClosure value: anError messageText].
+	] fork.! !
+
+----SNAPSHOT----(22 June 2023 19:21:42) CuisUniversity-5832.image priorSource: 10779756!
+
+----QUIT----(22 June 2023 19:22:25) CuisUniversity-5832.image priorSource: 10780881!
