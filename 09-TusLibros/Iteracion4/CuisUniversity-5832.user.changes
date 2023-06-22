@@ -1881,3 +1881,696 @@ PASSED!
 ----SNAPSHOT----(20 June 2023 18:48:24) CuisUniversity-5832.image priorSource: 10997855!
 
 ----QUIT----(20 June 2023 18:49:13) CuisUniversity-5832.image priorSource: 11007135!
+
+----STARTUP---- (21 June 2023 23:48:58) as D:\OneDrive - dc.uba.ar\UBA\Inge1\cuis5832\windows64\CuisUniversity-5832.image!
+
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+
+WebServer reset.!
+
+WebServer reset.!
+!TusLibrosClientTestWindowModel methodsFor: 'concurrency and error handling' stamp: 'LMR 6/21/2023 23:50:48' prior: 50712746!
+forkAndInformOnError: aClosure
+
+	[
+		aClosure
+			on: Error
+			do: [:anError | 
+				self triggerEvent: #errorArrisen withArguments: (Array with: anError messageText).
+			]	
+	] value.! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/21/2023 23:51:00' prior: 50712574!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+	
+	[self httpRequest: 'addToCart'
+		withFields: fieldDict
+		ifSuccessDo: [:resp |
+			(WebUtils jsonDecode: ((resp content) readStream))
+		]] fork.! !
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/21/2023 23:51:56' prior: 50715260!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+	
+	self httpRequest: 'addToCart'
+		withFields: fieldDict
+		ifSuccessDo: [:resp |
+			(WebUtils jsonDecode: ((resp content) readStream))
+		].! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/21/2023 23:53:11' prior: 50712599!
+httpRequest: requestPath withFields: fieldDict ifSuccessDo: successClosure
+
+	[| resp |
+	
+	resp := WebClient htmlSubmit: (self url,'/', requestPath) fields: fieldDict.
+	
+	resp isSuccess 
+		ifTrue:[successClosure value: resp]
+		ifFalse:[self error: resp content]] fork.! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/21/2023 23:53:42' prior: 50712587!
+createCartFor: aUser password: aPassword
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
+	
+	self httpRequest: 'createCart'
+		withFields: fieldDict
+		ifSuccessDo: [:resp |
+			^(WebUtils jsonDecode: ((resp content) readStream))
+		].! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/21/2023 23:53:52' prior: 50712610!
+listCart: cartId
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	self httpRequest: 'listCart'
+		withFields: fieldDict
+		ifSuccessDo: [:resp | 
+			^(WebUtils jsonDecode: ((resp content) readStream)) asOrderedCollection
+		].! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/21/2023 23:54:55' prior: 50715291!
+httpRequest: requestPath withFields: fieldDict ifSuccessDo: successClosure
+
+	[| resp |
+	
+	resp := WebClient htmlSubmit: (self url,'/', requestPath) fields: fieldDict.
+	
+	resp isSuccess 
+		ifTrue:[successClosure value: (WebUtils jsonDecode: ((resp content) readStream))]
+		ifFalse:[self error: resp content]] fork.! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/21/2023 23:55:39' prior: 50715277!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+	
+	self httpRequest: 'addToCart'
+		withFields: fieldDict
+		ifSuccessDo: [:status |].! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/21/2023 23:55:43' prior: 50715345!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+	
+	self httpRequest: 'addToCart'
+		withFields: fieldDict
+		ifSuccessDo: [:status | ].! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/21/2023 23:55:59' prior: 50715303!
+createCartFor: aUser password: aPassword
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
+	
+	self httpRequest: 'createCart'
+		withFields: fieldDict
+		ifSuccessDo: [:resp |
+			^resp
+		].! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/21/2023 23:56:11' prior: 50715357!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+	
+	self httpRequest: 'addToCart'
+		withFields: fieldDict
+		ifSuccessDo: [:resp | ^resp].! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/21/2023 23:56:19' prior: 50715369!
+createCartFor: aUser password: aPassword
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
+	
+	self httpRequest: 'createCart'
+		withFields: fieldDict
+		ifSuccessDo: [:resp | ^resp].! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/21/2023 23:56:38' prior: 50715316!
+listCart: cartId
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	self httpRequest: 'listCart'
+		withFields: fieldDict
+		ifSuccessDo: [:resp | ^resp asOrderedCollection].! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/21/2023 23:57:30'!
+listCart: cartId successClosure: aSuccessClosure
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	self httpRequest: 'listCart'
+		withFields: fieldDict
+		ifSuccessDo: aSuccessClosure.! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/21/2023 23:57:50'!
+createCartFor: aUser password: aPassword successClosure: aSuccessClosure
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
+	
+	self httpRequest: 'createCart'
+		withFields: fieldDict
+		ifSuccessDo: aSuccessClosure.! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/21/2023 23:58:01'!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId successClosure: aSuccessClosure
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+	
+	self httpRequest: 'addToCart'
+		withFields: fieldDict
+		ifSuccessDo: aSuccessClosure.! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'LMR 6/21/2023 23:58:42' prior: 50712710!
+addToCart
+
+	| cartId bookIsbn |
+
+	self forkAndInformOnError: [
+		(self areCartIdAndBookSelected) ifTrue:[
+			cartId := self selectedCartId.
+			bookIsbn := self selectedBook.
+			restInterface add: 1 of: bookIsbn toCartIdentifiedAs: cartId successClosure: [self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId)].
+		]
+	]! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'LMR 6/21/2023 23:59:15' prior: 50715451!
+addToCart
+
+	| cartId bookIsbn |
+
+	self forkAndInformOnError: [
+		(self areCartIdAndBookSelected) ifTrue:[
+			cartId := self selectedCartId.
+			bookIsbn := self selectedBook.
+			restInterface add: 1 of: bookIsbn toCartIdentifiedAs: cartId successClosure: [:status | self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId)].
+		]
+	]! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'LMR 6/22/2023 00:00:34' prior: 50712724!
+createCart
+
+	self forkAndInformOnError: [
+		restInterface createCartFor: 'hernan' password: 'smalltalk' successClosure: [:newCartId | cartIds add: newCartId.
+		self triggerEvent: #newCartIdArrived.]
+	].
+	! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'LMR 6/22/2023 00:01:58' prior: 50712734!
+listCart
+
+	| cartId |
+	
+	self forkAndInformOnError: [
+		(self isCartIdSelected) ifTrue:[
+			cartId := self selectedCartId.
+			restInterface listCart: cartId successClosure: [:cartContents | currentSelectedCartContent := cartContents asOrderedCollection.
+				self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId.].
+		].
+	]! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+
+!methodRemoval: TusLibrosClientRestInterface #createCartFor:password: stamp: 'LMR 6/22/2023 00:03:20'!
+createCartFor: aUser password: aPassword
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
+	
+	self httpRequest: 'createCart'
+		withFields: fieldDict
+		ifSuccessDo: [:resp | ^resp].!
+
+!methodRemoval: TusLibrosClientRestInterface #add:of:toCartIdentifiedAs: stamp: 'LMR 6/22/2023 00:03:23'!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+	
+	self httpRequest: 'addToCart'
+		withFields: fieldDict
+		ifSuccessDo: [:resp | ^resp].!
+
+!methodRemoval: TusLibrosClientRestInterface #listCart: stamp: 'LMR 6/22/2023 00:03:27'!
+listCart: cartId
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	self httpRequest: 'listCart'
+		withFields: fieldDict
+		ifSuccessDo: [:resp | ^resp asOrderedCollection].!
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'LMR 6/22/2023 00:04:48' prior: 50715466!
+addToCart
+
+	| cartId bookIsbn |
+
+	self forkAndInformOnError: [
+		(self areCartIdAndBookSelected) ifTrue:[
+			cartId := self selectedCartId.
+			bookIsbn := self selectedBook.
+			restInterface add: 1 of: bookIsbn toCartIdentifiedAs: cartId
+			successClosure: [:status | self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId)].
+		]
+	]! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'LMR 6/22/2023 00:05:01' prior: 50715481!
+createCart
+
+	self forkAndInformOnError: [
+		restInterface createCartFor: 'hernan' password: 'smalltalk'
+		successClosure: [:newCartId | cartIds add: newCartId.
+			self triggerEvent: #newCartIdArrived.]
+	].
+	! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'LMR 6/22/2023 00:05:09' prior: 50715491!
+listCart
+
+	| cartId |
+	
+	self forkAndInformOnError: [
+		(self isCartIdSelected) ifTrue:[
+			cartId := self selectedCartId.
+			restInterface listCart: cartId
+			successClosure: [:cartContents | currentSelectedCartContent := cartContents asOrderedCollection.
+				self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId.].
+		].
+	]! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'LMR 6/22/2023 00:06:37' prior: 50715541!
+addToCart
+
+	| cartId bookIsbn |
+
+	self forkAndInformOnError: [
+		(self areCartIdAndBookSelected) ifTrue:[
+			cartId := self selectedCartId.
+			bookIsbn := self selectedBook.
+			restInterface add: 1 of: bookIsbn toCartIdentifiedAs: cartId
+			successClosure: [:status | self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId)]
+			errorClosure: [:errorDescription | self triggerEvent: #errorArrisen withArguments: (Array with: errorDescription).].
+		]
+	]! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'LMR 6/22/2023 00:06:58' prior: 50715556!
+createCart
+
+	self forkAndInformOnError: [
+		restInterface createCartFor: 'hernan' password: 'smalltalk'
+		successClosure: [:newCartId | cartIds add: newCartId.
+			self triggerEvent: #newCartIdArrived.]
+		errorClosure: [:errorDescription | self triggerEvent: #errorArrisen withArguments: (Array with: errorDescription).].
+	].
+	! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'LMR 6/22/2023 00:07:07' prior: 50715567!
+listCart
+
+	| cartId |
+	
+	self forkAndInformOnError: [
+		(self isCartIdSelected) ifTrue:[
+			cartId := self selectedCartId.
+			restInterface listCart: cartId
+			successClosure: [:cartContents | currentSelectedCartContent := cartContents asOrderedCollection.
+				self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId.]
+			errorClosure: [:errorDescription | self triggerEvent: #errorArrisen withArguments: (Array with: errorDescription).].
+		].
+	]! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/22/2023 00:07:51'!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId successClosure: aSuccessClosure errorClosure: anErrorClosure
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+	
+	self httpRequest: 'addToCart'
+		withFields: fieldDict
+		ifSuccessDo: aSuccessClosure
+		onErrorDo: anErrorClosure.! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/22/2023 00:08:20'!
+createCartFor: aUser password: aPassword successClosure: aSuccessClosure errorClosure: anErrorClosure
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
+	
+	self httpRequest: 'createCart'
+		withFields: fieldDict
+		ifSuccessDo: aSuccessClosure
+		onErrorDo: anErrorClosure.! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/22/2023 00:08:39'!
+listCart: cartId successClosure: aSuccessClosure errorClosure: anErrorClosure
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	self httpRequest: 'listCart'
+		withFields: fieldDict
+		ifSuccessDo: aSuccessClosure.! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/22/2023 00:08:46' prior: 50715660!
+listCart: cartId successClosure: aSuccessClosure errorClosure: anErrorClosure
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	self httpRequest: 'listCart'
+		withFields: fieldDict
+		ifSuccessDo: aSuccessClosure
+		onErrorDo: anErrorClosure.! !
+
+!methodRemoval: TusLibrosClientRestInterface #listCart:successClosure: stamp: 'LMR 6/22/2023 00:08:51'!
+listCart: cartId successClosure: aSuccessClosure
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	self httpRequest: 'listCart'
+		withFields: fieldDict
+		ifSuccessDo: aSuccessClosure.!
+
+!methodRemoval: TusLibrosClientRestInterface #add:of:toCartIdentifiedAs:successClosure: stamp: 'LMR 6/22/2023 00:08:53'!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId successClosure: aSuccessClosure
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+	
+	self httpRequest: 'addToCart'
+		withFields: fieldDict
+		ifSuccessDo: aSuccessClosure.!
+
+!methodRemoval: TusLibrosClientRestInterface #createCartFor:password:successClosure: stamp: 'LMR 6/22/2023 00:08:56'!
+createCartFor: aUser password: aPassword successClosure: aSuccessClosure
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
+	
+	self httpRequest: 'createCart'
+		withFields: fieldDict
+		ifSuccessDo: aSuccessClosure.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/22/2023 00:09:30'!
+httpRequest: requestPath withFields: fieldDict ifSuccessDo: successClosure onErrorDo: anErrorClosure
+
+	[| resp |
+	
+	resp := WebClient htmlSubmit: (self url,'/', requestPath) fields: fieldDict.
+	
+	resp isSuccess 
+		ifTrue:[successClosure value: (WebUtils jsonDecode: ((resp content) readStream))]
+		ifFalse:[anErrorClosure value: resp content]] fork.! !
+
+!methodRemoval: TusLibrosClientRestInterface #httpRequest:withFields:ifSuccessDo: stamp: 'LMR 6/22/2023 00:09:34'!
+httpRequest: requestPath withFields: fieldDict ifSuccessDo: successClosure
+
+	[| resp |
+	
+	resp := WebClient htmlSubmit: (self url,'/', requestPath) fields: fieldDict.
+	
+	resp isSuccess 
+		ifTrue:[successClosure value: (WebUtils jsonDecode: ((resp content) readStream))]
+		ifFalse:[self error: resp content]] fork.!
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'LMR 6/22/2023 00:10:18' prior: 50715582!
+addToCart
+
+	| cartId bookIsbn |
+
+	
+	(self areCartIdAndBookSelected) ifTrue:[
+		cartId := self selectedCartId.
+		bookIsbn := self selectedBook.
+		restInterface add: 1 of: bookIsbn toCartIdentifiedAs: cartId
+		successClosure: [:status | self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId)]
+		errorClosure: [:errorDescription | self triggerEvent: #errorArrisen withArguments: (Array with: errorDescription).].
+	]! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'LMR 6/22/2023 00:10:33' prior: 50715601!
+createCart
+
+	restInterface createCartFor: 'hernan' password: 'smalltalk'
+	successClosure: [:newCartId | cartIds add: newCartId.
+		self triggerEvent: #newCartIdArrived.]
+	errorClosure: [:errorDescription | self triggerEvent: #errorArrisen withArguments: (Array with: errorDescription).].
+	! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'LMR 6/22/2023 00:10:48' prior: 50715615!
+listCart
+
+	| cartId |
+	
+	(self isCartIdSelected) ifTrue:[
+		cartId := self selectedCartId.
+		restInterface listCart: cartId
+		successClosure: [:cartContents | currentSelectedCartContent := cartContents asOrderedCollection.
+			self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId.]
+		errorClosure: [:errorDescription | self triggerEvent: #errorArrisen withArguments: (Array with: errorDescription).].
+	].! !
+
+!methodRemoval: TusLibrosClientTestWindowModel #forkAndInformOnError: stamp: 'LMR 6/22/2023 00:10:54'!
+forkAndInformOnError: aClosure
+
+	[
+		aClosure
+			on: Error
+			do: [:anError | 
+				self triggerEvent: #errorArrisen withArguments: (Array with: anError messageText).
+			]	
+	] value.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/22/2023 00:11:37' prior: 50715718!
+httpRequest: requestPath withFields: fieldDict ifSuccessDo: successClosure onErrorDo: anErrorClosure
+
+	[
+		| resp |
+		resp := WebClient htmlSubmit: (self url,'/', requestPath) fields: fieldDict.
+		resp isSuccess 
+			ifTrue:[successClosure value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[anErrorClosure value: resp content]
+	] fork.! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+
+WebServer reset.!
+
+WebServer reset.!
+!TusLibrosServerRestInterface methodsFor: 'rest interface' stamp: 'LMR 6/22/2023 00:16:51' prior: 50712842!
+addToCart: aRequest
+
+	| bookIsbn cartId quantity |
+	(Delay forSeconds: 3) wait.
+	
+	self withFieldsOf: aRequest do: [ :requestFields |
+		cartId := self cartIdFrom: requestFields.
+		bookIsbn := self bookIsbnFrom: requestFields.
+		quantity := self bookQuantityFrom: requestFields].
+	
+	self 
+		answer: [
+			systemFacade add: quantity of: bookIsbn toCartIdentifiedAs: cartId.
+			self error: 'hola'.
+			'OK' ]
+		to: aRequest.! !
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+
+WebServer reset.!
+
+WebServer reset.!
+!TusLibrosServerRestInterface methodsFor: 'rest interface' stamp: 'LMR 6/22/2023 00:17:32' prior: 50715823!
+addToCart: aRequest
+
+	| bookIsbn cartId quantity |
+	(Delay forSeconds: 3) wait.
+	
+	self withFieldsOf: aRequest do: [ :requestFields |
+		cartId := self cartIdFrom: requestFields.
+		bookIsbn := self bookIsbnFrom: requestFields.
+		quantity := self bookQuantityFrom: requestFields].
+	
+	self 
+		answer: [
+			systemFacade add: quantity of: bookIsbn toCartIdentifiedAs: cartId.
+			'OK' ]
+		to: aRequest.! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'LMR 6/22/2023 00:17:47'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'LMR 6/22/2023 00:17:47'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'LMR 6/22/2023 00:17:47'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'LMR 6/22/2023 00:17:47'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'LMR 6/22/2023 00:17:47'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'LMR 6/22/2023 00:17:47'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'LMR 6/22/2023 00:17:47'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'LMR 6/22/2023 00:17:48'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'LMR 6/22/2023 00:17:48'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'LMR 6/22/2023 00:17:48'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'LMR 6/22/2023 00:17:48'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'LMR 6/22/2023 00:17:48'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'LMR 6/22/2023 00:17:48'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'LMR 6/22/2023 00:17:48'!
+PASSED!
+
+!testRun: #CreditCardTest #test01CreditCardNumberWithLessThan16DigitsIsNotValid stamp: 'LMR 6/22/2023 00:17:48'!
+PASSED!
+
+!testRun: #CreditCardTest #test02CreditCardNumberWithMoreThan16DigitsIsNotValid stamp: 'LMR 6/22/2023 00:17:48'!
+PASSED!
+
+!testRun: #CreditCardTest #test03CreditCardNumberShouldBeDigitsOnly stamp: 'LMR 6/22/2023 00:17:48'!
+PASSED!
+
+!testRun: #CreditCardTest #test04NameCanNotBeEmpty stamp: 'LMR 6/22/2023 00:17:48'!
+PASSED!
+
+!testRun: #CreditCardTest #test05IsExpiredOnNextExpirationMonth stamp: 'LMR 6/22/2023 00:17:48'!
+PASSED!
+
+!testRun: #CreditCardTest #test06IsNotExpiredOnExpirationMonth stamp: 'LMR 6/22/2023 00:17:49'!
+PASSED!
+
+!testRun: #CreditCardTest #test07CanGetCreditCardInfoFromIt stamp: 'LMR 6/22/2023 00:17:49'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'LMR 6/22/2023 00:17:49'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'LMR 6/22/2023 00:17:49'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'LMR 6/22/2023 00:17:49'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'LMR 6/22/2023 00:17:49'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'LMR 6/22/2023 00:17:49'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'LMR 6/22/2023 00:17:49'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'LMR 6/22/2023 00:17:49'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'LMR 6/22/2023 00:17:49'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CheckOutReturnsTransactionIdAndImpactsCustomerPurchases stamp: 'LMR 6/22/2023 00:17:49'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10_1_CanNotCheckoutAnAlreadyCheckedOutCart stamp: 'LMR 6/22/2023 00:17:49'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'LMR 6/22/2023 00:17:49'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'LMR 6/22/2023 00:17:50'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'LMR 6/22/2023 00:17:50'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'LMR 6/22/2023 00:17:50'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'LMR 6/22/2023 00:17:50'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'LMR 6/22/2023 00:17:50'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'LMR 6/22/2023 00:17:50'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'LMR 6/22/2023 00:17:50'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'LMR 6/22/2023 00:17:50'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'LMR 6/22/2023 00:17:51'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'LMR 6/22/2023 00:17:52'!
+PASSED!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+
+WebServer reset.!
+
+WebServer reset.!
+
+----SNAPSHOT----(22 June 2023 00:19:03) CuisUniversity-5832.image priorSource: 12274820!
+
+----QUIT----(22 June 2023 00:19:52) CuisUniversity-5832.image priorSource: 12299580!

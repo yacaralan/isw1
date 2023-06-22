@@ -209,55 +209,52 @@ Object subclass: #TusLibrosClientRestInterface
 	poolDictionaries: ''
 	category: 'TusLibrosREST'!
 
-!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/20/2023 18:45:47'!
-add: quantity of: bookIsbn toCartIdentifiedAs: cartId
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/22/2023 00:07:51'!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId successClosure: aSuccessClosure errorClosure: anErrorClosure
 
 	| fieldDict |
 	
 	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
 	
-	^self httpRequest: 'addToCart'
+	self httpRequest: 'addToCart'
 		withFields: fieldDict
-		ifSuccessDo: [:resp |
-			(WebUtils jsonDecode: ((resp content) readStream))
-		].! !
+		ifSuccessDo: aSuccessClosure
+		onErrorDo: anErrorClosure.! !
 
-!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/20/2023 18:45:52'!
-createCartFor: aUser password: aPassword
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/22/2023 00:08:20'!
+createCartFor: aUser password: aPassword successClosure: aSuccessClosure errorClosure: anErrorClosure
 
 	| fieldDict |
 	
 	fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
 	
-	^self httpRequest: 'createCart'
+	self httpRequest: 'createCart'
 		withFields: fieldDict
-		ifSuccessDo: [:resp |
-			(WebUtils jsonDecode: ((resp content) readStream))
-		].! !
+		ifSuccessDo: aSuccessClosure
+		onErrorDo: anErrorClosure.! !
 
-!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/20/2023 18:42:07'!
-httpRequest: requestPath withFields: fieldDict ifSuccessDo: successClosure
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/22/2023 00:11:37'!
+httpRequest: requestPath withFields: fieldDict ifSuccessDo: successClosure onErrorDo: anErrorClosure
 
-	| resp |
-	
-	resp := WebClient htmlSubmit: (self url,'/', requestPath) fields: fieldDict.
-	
-	resp isSuccess 
-		ifTrue:[^successClosure value: resp]
-		ifFalse:[^self error: resp content].! !
+	[
+		| resp |
+		resp := WebClient htmlSubmit: (self url,'/', requestPath) fields: fieldDict.
+		resp isSuccess 
+			ifTrue:[successClosure value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[anErrorClosure value: resp content]
+	] fork.! !
 
-!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/20/2023 18:45:55'!
-listCart: cartId
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/22/2023 00:08:46'!
+listCart: cartId successClosure: aSuccessClosure errorClosure: anErrorClosure
 
 	| fieldDict |
 	
 	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
 	
-	^self httpRequest: 'listCart'
+	self httpRequest: 'listCart'
 		withFields: fieldDict
-		ifSuccessDo: [:resp | 
-			(WebUtils jsonDecode: ((resp content) readStream)) asOrderedCollection
-		].! !
+		ifSuccessDo: aSuccessClosure
+		onErrorDo: anErrorClosure.! !
 
 
 !TusLibrosClientRestInterface methodsFor: 'initialization' stamp: 'LMR 6/16/2023 01:55:40'!
@@ -339,56 +336,41 @@ cartIdsIndex: anIndex
 	! !
 
 
-!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'LMR 6/20/2023 17:26:52'!
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'LMR 6/22/2023 00:10:18'!
 addToCart
 
 	| cartId bookIsbn |
 
-	self forkAndInformOnError: [
-		(self areCartIdAndBookSelected) ifTrue:[
-			cartId := self selectedCartId.
-			bookIsbn := self selectedBook.
-			restInterface add: 1 of: bookIsbn toCartIdentifiedAs: cartId.
-			self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId).
-		]
+	
+	(self areCartIdAndBookSelected) ifTrue:[
+		cartId := self selectedCartId.
+		bookIsbn := self selectedBook.
+		restInterface add: 1 of: bookIsbn toCartIdentifiedAs: cartId
+		successClosure: [:status | self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId)]
+		errorClosure: [:errorDescription | self triggerEvent: #errorArrisen withArguments: (Array with: errorDescription).].
 	]! !
 
-!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'LMR 6/20/2023 17:26:48'!
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'LMR 6/22/2023 00:10:33'!
 createCart
 
-	| newCartId |
-	
-	self forkAndInformOnError: [
-		newCartId := restInterface createCartFor: 'hernan' password: 'smalltalk'.
-		cartIds add: newCartId.
-		self triggerEvent: #newCartIdArrived.
-	].
+	restInterface createCartFor: 'hernan' password: 'smalltalk'
+	successClosure: [:newCartId | cartIds add: newCartId.
+		self triggerEvent: #newCartIdArrived.]
+	errorClosure: [:errorDescription | self triggerEvent: #errorArrisen withArguments: (Array with: errorDescription).].
 	! !
 
-!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'LMR 6/20/2023 17:27:22'!
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'LMR 6/22/2023 00:10:48'!
 listCart
 
 	| cartId |
 	
-	self forkAndInformOnError: [
-		(self isCartIdSelected) ifTrue:[
-			cartId := self selectedCartId.
-			currentSelectedCartContent := restInterface listCart: cartId.
-			self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId.
-		].
-	]! !
-
-
-!TusLibrosClientTestWindowModel methodsFor: 'concurrency and error handling' stamp: 'LMR 6/20/2023 17:14:17'!
-forkAndInformOnError: aClosure
-
-	[
-		aClosure
-			on: Error
-			do: [:anError | 
-				self triggerEvent: #errorArrisen withArguments: (Array with: anError messageText).
-			]	
-	] fork.! !
+	(self isCartIdSelected) ifTrue:[
+		cartId := self selectedCartId.
+		restInterface listCart: cartId
+		successClosure: [:cartContents | currentSelectedCartContent := cartContents asOrderedCollection.
+			self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId.]
+		errorClosure: [:errorDescription | self triggerEvent: #errorArrisen withArguments: (Array with: errorDescription).].
+	].! !
 
 
 !TusLibrosClientTestWindowModel methodsFor: 'initialization' stamp: 'LMR 6/16/2023 01:55:41'!
@@ -470,7 +452,7 @@ withFieldsOf: aRequest do: aBlock
 			close: true ]! !
 
 
-!TusLibrosServerRestInterface methodsFor: 'rest interface' stamp: 'LMR 6/20/2023 14:35:22'!
+!TusLibrosServerRestInterface methodsFor: 'rest interface' stamp: 'LMR 6/22/2023 00:17:32'!
 addToCart: aRequest
 
 	| bookIsbn cartId quantity |
