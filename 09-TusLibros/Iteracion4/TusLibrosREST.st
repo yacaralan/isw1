@@ -209,49 +209,53 @@ Object subclass: #TusLibrosClientRestInterface
 	poolDictionaries: ''
 	category: 'TusLibrosREST'!
 
-!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/22/2023 00:07:51'!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/22/2023 15:25:09'!
 add: quantity of: bookIsbn toCartIdentifiedAs: cartId successClosure: aSuccessClosure errorClosure: anErrorClosure
 
 	| fieldDict |
 	
 	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
 	
-	self httpRequest: 'addToCart'
+	self asyncHttpRequest: 'addToCart'
 		withFields: fieldDict
 		ifSuccessDo: aSuccessClosure
 		onErrorDo: anErrorClosure.! !
 
-!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/22/2023 00:08:20'!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/22/2023 15:32:52'!
+asyncHttpRequest: requestPath withFields: fieldDict ifSuccessDo: aSuccessClosure onErrorDo: anErrorClosure
+	
+	"Al usar anErrorClosure en el ifFalse del isSuccess no se levanta un popup si el server esta caido ya que falla html submit
+	si queremos que no se levante el debugger en ese caso tenemos que hacer un on:do: para el htmlSubmit donde en el do se
+	ejecuta un bloque de error (podria ser uno distinto al anErrorClosure para el caso de que el server este caido)  - Lucas"
+
+	[
+		| resp |
+		resp := WebClient htmlSubmit: (self url,'/', requestPath) fields: fieldDict.
+		resp isSuccess 
+			ifTrue:[aSuccessClosure value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[anErrorClosure value: resp content]
+	] fork.! !
+
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/22/2023 15:25:09'!
 createCartFor: aUser password: aPassword successClosure: aSuccessClosure errorClosure: anErrorClosure
 
 	| fieldDict |
 	
 	fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
 	
-	self httpRequest: 'createCart'
+	self asyncHttpRequest: 'createCart'
 		withFields: fieldDict
 		ifSuccessDo: aSuccessClosure
 		onErrorDo: anErrorClosure.! !
 
-!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/22/2023 00:11:37'!
-httpRequest: requestPath withFields: fieldDict ifSuccessDo: successClosure onErrorDo: anErrorClosure
-
-	[
-		| resp |
-		resp := WebClient htmlSubmit: (self url,'/', requestPath) fields: fieldDict.
-		resp isSuccess 
-			ifTrue:[successClosure value: (WebUtils jsonDecode: ((resp content) readStream))]
-			ifFalse:[anErrorClosure value: resp content]
-	] fork.! !
-
-!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/22/2023 00:08:46'!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/22/2023 15:25:09'!
 listCart: cartId successClosure: aSuccessClosure errorClosure: anErrorClosure
 
 	| fieldDict |
 	
 	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
 	
-	self httpRequest: 'listCart'
+	self asyncHttpRequest: 'listCart'
 		withFields: fieldDict
 		ifSuccessDo: aSuccessClosure
 		onErrorDo: anErrorClosure.! !

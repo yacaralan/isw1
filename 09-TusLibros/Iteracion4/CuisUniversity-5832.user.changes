@@ -2574,3 +2574,94 @@ WebServer reset.!
 ----SNAPSHOT----(22 June 2023 00:19:03) CuisUniversity-5832.image priorSource: 12274820!
 
 ----QUIT----(22 June 2023 00:19:52) CuisUniversity-5832.image priorSource: 12299580!
+
+----STARTUP---- (22 June 2023 15:24:26) as D:\OneDrive - dc.uba.ar\UBA\Inge1\cuis5832\windows64\CuisUniversity-5832.image!
+
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/22/2023 15:25:08'!
+asyncHttpRequest: requestPath withFields: fieldDict ifSuccessDo: successClosure onErrorDo: anErrorClosure
+
+	[
+		| resp |
+		resp := WebClient htmlSubmit: (self url,'/', requestPath) fields: fieldDict.
+		resp isSuccess 
+			ifTrue:[successClosure value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[anErrorClosure value: resp content]
+	] fork.! !
+!TusLibrosClientRestInterface methodsFor: 'as yet unclassified' stamp: 'LMR 6/22/2023 15:25:09' prior: 50715647!
+createCartFor: aUser password: aPassword successClosure: aSuccessClosure errorClosure: anErrorClosure
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
+	
+	self asyncHttpRequest: 'createCart'
+		withFields: fieldDict
+		ifSuccessDo: aSuccessClosure
+		onErrorDo: anErrorClosure.! !
+!TusLibrosClientRestInterface methodsFor: 'as yet unclassified' stamp: 'LMR 6/22/2023 15:25:09' prior: 50715633!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId successClosure: aSuccessClosure errorClosure: anErrorClosure
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+	
+	self asyncHttpRequest: 'addToCart'
+		withFields: fieldDict
+		ifSuccessDo: aSuccessClosure
+		onErrorDo: anErrorClosure.! !
+!TusLibrosClientRestInterface methodsFor: 'as yet unclassified' stamp: 'LMR 6/22/2023 15:25:09' prior: 50715671!
+listCart: cartId successClosure: aSuccessClosure errorClosure: anErrorClosure
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	self asyncHttpRequest: 'listCart'
+		withFields: fieldDict
+		ifSuccessDo: aSuccessClosure
+		onErrorDo: anErrorClosure.! !
+
+!methodRemoval: TusLibrosClientRestInterface #httpRequest:withFields:ifSuccessDo:onErrorDo: stamp: 'LMR 6/22/2023 15:25:09'!
+httpRequest: requestPath withFields: fieldDict ifSuccessDo: successClosure onErrorDo: anErrorClosure
+
+	[
+		| resp |
+		resp := WebClient htmlSubmit: (self url,'/', requestPath) fields: fieldDict.
+		resp isSuccess 
+			ifTrue:[successClosure value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[anErrorClosure value: resp content]
+	] fork.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/22/2023 15:32:10' prior: 50716022!
+asyncHttpRequest: requestPath withFields: fieldDict ifSuccessDo: successClosure onErrorDo: anErrorClosure
+	
+	"Al usar anErrorClosure en el ifFalse del isSuccess no se levanta un popup si el server esta caido ya que falla html submit
+	si queremos que no se levante el debugger en ese caso tenemos que hacer un on:do: para el htmlSubmit donde en el do se
+	ejecuta un bloque de error (podria ser uno distinto al anErrorClosure para el caso de que el server este caido)  - Lucas"
+
+	[
+		| resp |
+		resp := WebClient htmlSubmit: (self url,'/', requestPath) fields: fieldDict.
+		resp isSuccess 
+			ifTrue:[successClosure value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[anErrorClosure value: resp content]
+	] fork.! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'LMR 6/22/2023 15:32:52' prior: 50716094!
+asyncHttpRequest: requestPath withFields: fieldDict ifSuccessDo: aSuccessClosure onErrorDo: anErrorClosure
+	
+	"Al usar anErrorClosure en el ifFalse del isSuccess no se levanta un popup si el server esta caido ya que falla html submit
+	si queremos que no se levante el debugger en ese caso tenemos que hacer un on:do: para el htmlSubmit donde en el do se
+	ejecuta un bloque de error (podria ser uno distinto al anErrorClosure para el caso de que el server este caido)  - Lucas"
+
+	[
+		| resp |
+		resp := WebClient htmlSubmit: (self url,'/', requestPath) fields: fieldDict.
+		resp isSuccess 
+			ifTrue:[aSuccessClosure value: (WebUtils jsonDecode: ((resp content) readStream))]
+			ifFalse:[anErrorClosure value: resp content]
+	] fork.! !
+
+----SNAPSHOT----(22 June 2023 15:33:04) CuisUniversity-5832.image priorSource: 12299670!
+
+----SNAPSHOT----(22 June 2023 15:33:33) CuisUniversity-5832.image priorSource: 12303870!
+
+----QUIT----(22 June 2023 15:33:35) CuisUniversity-5832.image priorSource: 12303960!
