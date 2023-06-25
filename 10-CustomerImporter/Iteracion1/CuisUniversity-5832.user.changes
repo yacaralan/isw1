@@ -2648,3 +2648,208 @@ test01Import
 ----SNAPSHOT----(25 June 2023 17:35:25) CuisUniversity-5832.image priorSource: 12415286!
 
 ----QUIT----(25 June 2023 17:35:33) CuisUniversity-5832.image priorSource: 12425452!
+
+----STARTUP---- (25 June 2023 17:46:30) as D:\OneDrive - dc.uba.ar\UBA\Inge1\cuis5832\windows64\CuisUniversity-5832.image!
+
+!ImportTest methodsFor: 'testing' stamp: 'LMR 6/25/2023 17:48:29' prior: 50719912!
+test01Import
+
+	| pepe juan inputStream |
+	
+	inputStream := ReadStream on: {'C,Pepe,Sanchez,D,22333444'. 'A,San Martin,3322,Olivos,1636,BsAs'. 'A,Maipu,888,Florida,1122,Buenos Aires'. 'C,Juan,Perez,C,23-25666777-9. A,Alem,1122,CABA,1001,CABA'}.
+	(CustomerImporter importingCustomersFromStream: (inputStream) toSession: session) import.
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	pepe := self getCustomerWithIdType: 'D' idNumber: '22333444' andAssertThatCustomerHasName: 'Pepe' lastName: 'Sanchez' amountOfAddresses: 2.
+	self assertThatCustomer: pepe hasAnAddressOnStreetNamed: 'San Martin' withStreetNumber: 3322 onTown: 'Olivos' withZipCode: 1636 inProvince: 'BsAs'.
+	self assertThatCustomer: pepe hasAnAddressOnStreetNamed: 'Maipu' withStreetNumber: 888 onTown: 'Florida' withZipCode: 1122 inProvince: 'Buenos Aires'.
+	
+	juan := self getCustomerWithIdType: 'C' idNumber: '23-25666777-9' andAssertThatCustomerHasName: 'Juan' lastName: 'Perez' amountOfAddresses: 1.
+	self assertThatCustomer: juan hasAnAddressOnStreetNamed: 'Alem' withStreetNumber: 1122 onTown: 'CABA' withZipCode: 1001 inProvince: 'CABA'.! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/25/2023 17:48:32'!
+FAILURE!
+!ImportTest methodsFor: 'testing' stamp: 'LMR 6/25/2023 17:51:56' prior: 50719956!
+test01Import
+
+	| pepe juan inputStream |
+	
+	inputStream := ReadStream on: {'C,Pepe,Sanchez,D,22333444'. 'A,San Martin,3322,Olivos,1636,BsAs'. 'A,Maipu,888,Florida,1122,Buenos Aires'. 'C,Juan,Perez,C,23-25666777-9'. 'A,Alem,1122,CABA,1001,CABA'}.
+	(CustomerImporter importingCustomersFromStream: (inputStream) toSession: session) import.
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	pepe := self getCustomerWithIdType: 'D' idNumber: '22333444' andAssertThatCustomerHasName: 'Pepe' lastName: 'Sanchez' amountOfAddresses: 2.
+	self assertThatCustomer: pepe hasAnAddressOnStreetNamed: 'San Martin' withStreetNumber: 3322 onTown: 'Olivos' withZipCode: 1636 inProvince: 'BsAs'.
+	self assertThatCustomer: pepe hasAnAddressOnStreetNamed: 'Maipu' withStreetNumber: 888 onTown: 'Florida' withZipCode: 1122 inProvince: 'Buenos Aires'.
+	
+	juan := self getCustomerWithIdType: 'C' idNumber: '23-25666777-9' andAssertThatCustomerHasName: 'Juan' lastName: 'Perez' amountOfAddresses: 1.
+	self assertThatCustomer: juan hasAnAddressOnStreetNamed: 'Alem' withStreetNumber: 1122 onTown: 'CABA' withZipCode: 1001 inProvince: 'CABA'.! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/25/2023 17:52:00'!
+FAILURE!
+!ImportTest methodsFor: 'testing' stamp: 'LMR 6/25/2023 17:53:15' prior: 50719997!
+test01Import
+
+	| pepe juan inputStream |
+	
+	inputStream := ReadStream on: {'C,Pepe,Sanchez,D,22333444
+	A,San Martin,3322,Olivos,1636,BsAs
+	A,Maipu,888,Florida,1122,Buenos Aires
+	C,Juan,Perez,C,23-25666777-9
+	A,Alem,1122,CABA,1001,CABA'}.
+	(CustomerImporter importingCustomersFromStream: (inputStream) toSession: session) import.
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	pepe := self getCustomerWithIdType: 'D' idNumber: '22333444' andAssertThatCustomerHasName: 'Pepe' lastName: 'Sanchez' amountOfAddresses: 2.
+	self assertThatCustomer: pepe hasAnAddressOnStreetNamed: 'San Martin' withStreetNumber: 3322 onTown: 'Olivos' withZipCode: 1636 inProvince: 'BsAs'.
+	self assertThatCustomer: pepe hasAnAddressOnStreetNamed: 'Maipu' withStreetNumber: 888 onTown: 'Florida' withZipCode: 1122 inProvince: 'Buenos Aires'.
+	
+	juan := self getCustomerWithIdType: 'C' idNumber: '23-25666777-9' andAssertThatCustomerHasName: 'Juan' lastName: 'Perez' amountOfAddresses: 1.
+	self assertThatCustomer: juan hasAnAddressOnStreetNamed: 'Alem' withStreetNumber: 1122 onTown: 'CABA' withZipCode: 1001 inProvince: 'CABA'.! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/25/2023 17:53:18'!
+FAILURE!
+
+ReadStream on: {'C,Pepe,Sanchez,D,22333444
+	A,San Martin,3322,Olivos,1636,BsAs
+	A,Maipu,888,Florida,1122,Buenos Aires
+	C,Juan,Perez,C,23-25666777-9
+	A,Alem,1122,CABA,1001,CABA'} nextLine!
+
+(ReadStream on: {'C,Pepe,Sanchez,D,22333444
+	A,San Martin,3322,Olivos,1636,BsAs
+	A,Maipu,888,Florida,1122,Buenos Aires
+	C,Juan,Perez,C,23-25666777-9
+	A,Alem,1122,CABA,1001,CABA'}) nextLine!
+
+(ReadStream on: {'C,Pepe,Sanchez,D,22333444
+'.	'A,San Martin,3322,Olivos,1636,BsAs
+'.	'A,Maipu,888,Florida,1122,Buenos Aires
+'.	'C,Juan,Perez,C,23-25666777-9
+'.	'A,Alem,1122,CABA,1001,CABA'}) nextLine!
+
+(ReadStream on: {'C,Pepe,Sanchez,D,22333444
+'.	'A,San Martin,3322,Olivos,1636,BsAs
+'.	'A,Maipu,888,Florida,1122,Buenos Aires
+'.	'C,Juan,Perez,C,23-25666777-9
+'.	'A,Alem,1122,CABA,1001,CABA'}) next!
+
+(ReadStream on: 'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA') nextLine!
+!ImportTest methodsFor: 'testing' stamp: 'LMR 6/25/2023 17:56:29' prior: 50720038!
+test01Import
+
+	| pepe juan inputStream |
+	
+	inputStream := ReadStream on: 'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'.
+	(CustomerImporter importingCustomersFromStream: (inputStream) toSession: session) import.
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	pepe := self getCustomerWithIdType: 'D' idNumber: '22333444' andAssertThatCustomerHasName: 'Pepe' lastName: 'Sanchez' amountOfAddresses: 2.
+	self assertThatCustomer: pepe hasAnAddressOnStreetNamed: 'San Martin' withStreetNumber: 3322 onTown: 'Olivos' withZipCode: 1636 inProvince: 'BsAs'.
+	self assertThatCustomer: pepe hasAnAddressOnStreetNamed: 'Maipu' withStreetNumber: 888 onTown: 'Florida' withZipCode: 1122 inProvince: 'Buenos Aires'.
+	
+	juan := self getCustomerWithIdType: 'C' idNumber: '23-25666777-9' andAssertThatCustomerHasName: 'Juan' lastName: 'Perez' amountOfAddresses: 1.
+	self assertThatCustomer: juan hasAnAddressOnStreetNamed: 'Alem' withStreetNumber: 1122 onTown: 'CABA' withZipCode: 1001 inProvince: 'CABA'.! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/25/2023 17:56:30'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/25/2023 17:56:31'!
+PASSED!
+!ImportTest methodsFor: 'testing' stamp: 'LMR 6/25/2023 17:57:07' prior: 50720109!
+test01Import
+
+	| pepe juan inputStream |
+	
+	"inputStream := UniFileStream new open: 'input.txt' forWrite: false."
+	inputStream := ReadStream on: 'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'.
+	(CustomerImporter importingCustomersFromStream: (inputStream) toSession: session) import.
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	pepe := self getCustomerWithIdType: 'D' idNumber: '22333444' andAssertThatCustomerHasName: 'Pepe' lastName: 'Sanchez' amountOfAddresses: 2.
+	self assertThatCustomer: pepe hasAnAddressOnStreetNamed: 'San Martin' withStreetNumber: 3322 onTown: 'Olivos' withZipCode: 1636 inProvince: 'BsAs'.
+	self assertThatCustomer: pepe hasAnAddressOnStreetNamed: 'Maipu' withStreetNumber: 888 onTown: 'Florida' withZipCode: 1122 inProvince: 'Buenos Aires'.
+	
+	juan := self getCustomerWithIdType: 'C' idNumber: '23-25666777-9' andAssertThatCustomerHasName: 'Juan' lastName: 'Perez' amountOfAddresses: 1.
+	self assertThatCustomer: juan hasAnAddressOnStreetNamed: 'Alem' withStreetNumber: 1122 onTown: 'CABA' withZipCode: 1001 inProvince: 'CABA'.! !
+!Customer methodsFor: 'addresses' stamp: 'LMR 6/25/2023 18:01:48' prior: 50716577!
+addressesOnStreetNamed: aStreetName
+
+	^ addresses detect: [:anAddress | anAddress streetName = aStreetName].! !
+!Customer methodsFor: 'addresses' stamp: 'LMR 6/25/2023 18:02:19'!
+getAddressOnStreetNamed: aStreetName
+
+	^ addresses detect: [:anAddress | anAddress streetName = aStreetName].! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'LMR 6/25/2023 18:02:20' prior: 50719093!
+assertThatCustomer: aCustomer hasAnAddressOnStreetNamed: aStreetName withStreetNumber: aStreetNumber onTown: aTown withZipCode: aZipCode inProvince: aProvince     
+
+	| anAddress |
+	anAddress := (aCustomer getAddressOnStreetNamed: aStreetName) first.
+	self assert: aStreetNumber equals: anAddress streetNumber.
+	self assert: aTown equals: anAddress town.
+	self assert: aZipCode equals: anAddress zipCode.
+	self assert: aProvince equals: anAddress province! !
+
+!methodRemoval: Customer #addressesOnStreetNamed: stamp: 'LMR 6/25/2023 18:02:20'!
+addressesOnStreetNamed: aStreetName
+
+	^ addresses detect: [:anAddress | anAddress streetName = aStreetName].!
+!ImportTest methodsFor: 'testing' stamp: 'LMR 6/25/2023 18:02:40' prior: 50720205!
+assertThatCustomer: aCustomer hasAnAddressOnStreetNamed: aStreetName withStreetNumber: aStreetNumber onTown: aTown withZipCode: aZipCode inProvince: aProvince     
+
+	| anAddress |
+	anAddress := aCustomer getAddressOnStreetNamed: aStreetName.
+	self assert: aStreetNumber equals: anAddress streetNumber.
+	self assert: aTown equals: anAddress town.
+	self assert: aZipCode equals: anAddress zipCode.
+	self assert: aProvince equals: anAddress province! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/25/2023 18:02:44'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/25/2023 18:02:45'!
+PASSED!
+!ImportTest methodsFor: 'testing' stamp: 'LMR 6/25/2023 18:02:56' prior: 50720152!
+test01Import
+
+	| pepe juan inputStream |
+	"inputStream := UniFileStream new open: 'input.txt' forWrite: false."
+	inputStream := ReadStream on: 'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'.
+	(CustomerImporter importingCustomersFromStream: (inputStream) toSession: session) import.
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	pepe := self getCustomerWithIdType: 'D' idNumber: '22333444' andAssertThatCustomerHasName: 'Pepe' lastName: 'Sanchez' amountOfAddresses: 2.
+	self assertThatCustomer: pepe hasAnAddressOnStreetNamed: 'San Martin' withStreetNumber: 3322 onTown: 'Olivos' withZipCode: 1636 inProvince: 'BsAs'.
+	self assertThatCustomer: pepe hasAnAddressOnStreetNamed: 'Maipu' withStreetNumber: 888 onTown: 'Florida' withZipCode: 1122 inProvince: 'Buenos Aires'.
+	
+	juan := self getCustomerWithIdType: 'C' idNumber: '23-25666777-9' andAssertThatCustomerHasName: 'Juan' lastName: 'Perez' amountOfAddresses: 1.
+	self assertThatCustomer: juan hasAnAddressOnStreetNamed: 'Alem' withStreetNumber: 1122 onTown: 'CABA' withZipCode: 1001 inProvince: 'CABA'.! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/25/2023 18:04:46'!
+PASSED!
+
+----SNAPSHOT----(25 June 2023 18:04:49) CuisUniversity-5832.image priorSource: 12425542!
+
+----QUIT----(25 June 2023 18:05:03) CuisUniversity-5832.image priorSource: 12436535!

@@ -5,11 +5,11 @@ TestCase subclass: #ImportTest
 	poolDictionaries: ''
 	category: 'CustomerImporter'!
 
-!ImportTest methodsFor: 'testing' stamp: 'LMR 6/25/2023 17:00:30'!
+!ImportTest methodsFor: 'testing' stamp: 'LMR 6/25/2023 18:02:40'!
 assertThatCustomer: aCustomer hasAnAddressOnStreetNamed: aStreetName withStreetNumber: aStreetNumber onTown: aTown withZipCode: aZipCode inProvince: aProvince     
 
 	| anAddress |
-	anAddress := (aCustomer addressesOnStreetNamed: aStreetName) first.
+	anAddress := aCustomer getAddressOnStreetNamed: aStreetName.
 	self assert: aStreetNumber equals: anAddress streetNumber.
 	self assert: aTown equals: anAddress town.
 	self assert: aZipCode equals: anAddress zipCode.
@@ -25,12 +25,16 @@ getCustomerWithIdType: idType idNumber: idNumber andAssertThatCustomerHasName: a
 	self assert: amountOfAddresses equals: (customer amountOfAddresses).
 	^customer! !
 
-!ImportTest methodsFor: 'testing' stamp: 'LMR 6/25/2023 17:35:03'!
+!ImportTest methodsFor: 'testing' stamp: 'LMR 6/25/2023 18:02:56'!
 test01Import
 
 	| pepe juan inputStream |
-	
-	inputStream := UniFileStream new open: 'input.txt' forWrite: false.
+	"inputStream := UniFileStream new open: 'input.txt' forWrite: false."
+	inputStream := ReadStream on: 'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'.
 	(CustomerImporter importingCustomersFromStream: (inputStream) toSession: session) import.
 	
 	self assert: 2 equals: (session selectAllOfType: Customer) size.
@@ -136,14 +140,14 @@ addresses
 	^ addresses! !
 
 !Customer methodsFor: 'addresses' stamp: 'LMR 6/25/2023 16:04:04'!
-addressesOnStreetNamed: aStreetName
-
-	^ addresses select: [:anAddress | anAddress streetName = aStreetName].! !
-
-!Customer methodsFor: 'addresses' stamp: 'LMR 6/25/2023 16:04:04'!
 amountOfAddresses
 
 	^ addresses size! !
+
+!Customer methodsFor: 'addresses' stamp: 'LMR 6/25/2023 18:02:19'!
+getAddressOnStreetNamed: aStreetName
+
+	^ addresses detect: [:anAddress | anAddress streetName = aStreetName].! !
 
 
 !Customer methodsFor: 'name' stamp: 'LMR 6/25/2023 16:04:04'!
