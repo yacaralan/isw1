@@ -5,64 +5,218 @@ TestCase subclass: #ImportTest
 	poolDictionaries: ''
 	category: 'CustomerImporter'!
 
-!ImportTest methodsFor: 'testing' stamp: 'LMR 6/22/2023 21:49:35'!
+!ImportTest methodsFor: 'testing' stamp: 'LMR 6/25/2023 17:00:30'!
+assertThatCustomer: aCustomer hasAnAddressOnStreetNamed: aStreetName withStreetNumber: aStreetNumber onTown: aTown withZipCode: aZipCode inProvince: aProvince     
+
+	| anAddress |
+	anAddress := (aCustomer addressesOnStreetNamed: aStreetName) first.
+	self assert: aStreetNumber equals: anAddress streetNumber.
+	self assert: aTown equals: anAddress town.
+	self assert: aZipCode equals: anAddress zipCode.
+	self assert: aProvince equals: anAddress province! !
+
+!ImportTest methodsFor: 'testing' stamp: 'LMR 6/25/2023 16:34:49'!
+getCustomerWithIdType: idType idNumber: idNumber andAssertThatCustomerHasName: aCustomerName lastName: aCustomerLastName amountOfAddresses: amountOfAddresses    
+
+	| customer |
+	customer := (session select: [:aCustomer | aCustomer identificationType = idType and: [aCustomer identificationNumber = idNumber]] ofType: Customer) atRandom.
+	self assert: aCustomerName equals: (customer firstName).
+	self assert: aCustomerLastName equals: (customer lastName).
+	self assert: amountOfAddresses equals: (customer amountOfAddresses).
+	^customer! !
+
+!ImportTest methodsFor: 'testing' stamp: 'LMR 6/25/2023 17:35:03'!
 test01Import
 
-	| pepe juan pepeSanMartinAddress pepeMaipuAddress juanAlemAddress |
-	self importCustomers.
+	| pepe juan inputStream |
+	
+	inputStream := UniFileStream new open: 'input.txt' forWrite: false.
+	(CustomerImporter importingCustomersFromStream: (inputStream) toSession: session) import.
 	
 	self assert: 2 equals: (session selectAllOfType: Customer) size.
 	
-	pepe := (session select: [:aCustomer | aCustomer identificationType = 'D' and: [aCustomer identificationNumber = '22333444']] ofType: Customer) atRandom.
-	self assert: 'Pepe' equals: (pepe firstName).
-	self assert: 'Sanchez' equals: (pepe lastName).
-	self assert: 2 equals: (pepe amountOfAddresses).
+	pepe := self getCustomerWithIdType: 'D' idNumber: '22333444' andAssertThatCustomerHasName: 'Pepe' lastName: 'Sanchez' amountOfAddresses: 2.
+	self assertThatCustomer: pepe hasAnAddressOnStreetNamed: 'San Martin' withStreetNumber: 3322 onTown: 'Olivos' withZipCode: 1636 inProvince: 'BsAs'.
+	self assertThatCustomer: pepe hasAnAddressOnStreetNamed: 'Maipu' withStreetNumber: 888 onTown: 'Florida' withZipCode: 1122 inProvince: 'Buenos Aires'.
 	
-	juan := (session select: [:aCustomer | aCustomer identificationType = 'C' and: [aCustomer identificationNumber = '23-25666777-9']] ofType: Customer) atRandom.
-	self assert: 'Juan' equals: (juan firstName).
-	self assert: 'Perez' equals: (juan lastName).
-	self assert: 1 equals: (juan amountOfAddresses).
-	
-	pepeSanMartinAddress := (pepe addressesOnStreetNamed: 'San Martin') first.
-	self assert: 3322 equals: pepeSanMartinAddress streetNumber.
-	self assert: 'Olivos' equals: pepeSanMartinAddress town.
-	self assert: 1636 equals: pepeSanMartinAddress zipCode.
-	self assert: 'BsAs' equals: pepeSanMartinAddress province. 
-	pepeMaipuAddress := (pepe addressesOnStreetNamed: 'Maipu') first.
-	self assert: 888 equals: pepeMaipuAddress streetNumber.
-	self assert: 'Florida' equals: pepeMaipuAddress town.
-	self assert: 1122 equals: pepeMaipuAddress zipCode.
-	self assert: 'Buenos Aires' equals: pepeMaipuAddress province.
-	
-	juanAlemAddress := (juan addressesOnStreetNamed: 'Alem') first.
-	self assert: 1122 equals: juanAlemAddress streetNumber.
-	self assert: 'CABA' equals: juanAlemAddress town.
-	self assert: 1001 equals: juanAlemAddress zipCode.
-	self assert: 'CABA' equals: juanAlemAddress province.! !
+	juan := self getCustomerWithIdType: 'C' idNumber: '23-25666777-9' andAssertThatCustomerHasName: 'Juan' lastName: 'Perez' amountOfAddresses: 1.
+	self assertThatCustomer: juan hasAnAddressOnStreetNamed: 'Alem' withStreetNumber: 1122 onTown: 'CABA' withZipCode: 1001 inProvince: 'CABA'.! !
 
 
-!ImportTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/22/2023 20:31:32'!
+!ImportTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/25/2023 16:04:05'!
 setUp
 
 	session := DataBaseSession for: (Array with: Address with: Customer).
 	session beginTransaction! !
 
-!ImportTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/22/2023 20:34:18'!
+!ImportTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/25/2023 16:04:05'!
 tearDown
 
 	session commit.
 	session close! !
 
+
+!classDefinition: #Address category: 'CustomerImporter'!
+Object subclass: #Address
+	instanceVariableNames: 'id streetName streetNumber town zipCode province'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
 
-!ImportTest methodsFor: 'as yet unclassified' stamp: 'LMR 6/22/2023 21:19:48'!
-importCustomers
+!Address methodsFor: 'province' stamp: 'LMR 6/25/2023 16:04:03'!
+province
+
+	^province! !
+
+!Address methodsFor: 'province' stamp: 'LMR 6/25/2023 16:04:02'!
+province: aProvince
+
+	province := aProvince
+	! !
+
+
+!Address methodsFor: 'street' stamp: 'LMR 6/25/2023 16:04:03'!
+streetName
+
+	^streetName ! !
+
+!Address methodsFor: 'street' stamp: 'LMR 6/25/2023 16:04:03'!
+streetName: aStreetName
+
+	streetName := aStreetName ! !
+
+!Address methodsFor: 'street' stamp: 'LMR 6/25/2023 16:04:03'!
+streetNumber
+
+	^streetNumber ! !
+
+!Address methodsFor: 'street' stamp: 'LMR 6/25/2023 16:04:03'!
+streetNumber: aStreetNumber
+
+	streetNumber := aStreetNumber ! !
+
+
+!Address methodsFor: 'twon' stamp: 'LMR 6/25/2023 16:04:03'!
+town
+
+	^town! !
+
+!Address methodsFor: 'twon' stamp: 'LMR 6/25/2023 16:04:03'!
+town: aTown
+
+	town := aTown! !
+
+
+!Address methodsFor: 'zip code' stamp: 'LMR 6/25/2023 16:04:03'!
+zipCode
+
+	^zipCode! !
+
+!Address methodsFor: 'zip code' stamp: 'LMR 6/25/2023 16:04:03'!
+zipCode: aZipCode
+
+	zipCode := aZipCode! !
+
+
+!classDefinition: #Customer category: 'CustomerImporter'!
+Object subclass: #Customer
+	instanceVariableNames: 'id firstName lastName identificationType identificationNumber addresses'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!Customer methodsFor: 'addresses' stamp: 'LMR 6/25/2023 16:04:04'!
+addAddress: anAddress
+
+	addresses add: anAddress ! !
+
+!Customer methodsFor: 'addresses' stamp: 'LMR 6/25/2023 16:04:03'!
+addresses
+
+	^ addresses! !
+
+!Customer methodsFor: 'addresses' stamp: 'LMR 6/25/2023 16:04:04'!
+addressesOnStreetNamed: aStreetName
+
+	^ addresses select: [:anAddress | anAddress streetName = aStreetName].! !
+
+!Customer methodsFor: 'addresses' stamp: 'LMR 6/25/2023 16:04:04'!
+amountOfAddresses
+
+	^ addresses size! !
+
+
+!Customer methodsFor: 'name' stamp: 'LMR 6/25/2023 16:04:04'!
+firstName
+
+	^firstName ! !
+
+!Customer methodsFor: 'name' stamp: 'LMR 6/25/2023 16:04:04'!
+firstName: aName
+
+	firstName := aName! !
+
+!Customer methodsFor: 'name' stamp: 'LMR 6/25/2023 16:04:04'!
+lastName
+
+	^lastName ! !
+
+!Customer methodsFor: 'name' stamp: 'LMR 6/25/2023 16:04:04'!
+lastName: aLastName
+
+	lastName := aLastName
+! !
+
+
+!Customer methodsFor: 'identification' stamp: 'LMR 6/25/2023 16:04:04'!
+identificationNumber
+
+	^identificationNumber ! !
+
+!Customer methodsFor: 'identification' stamp: 'LMR 6/25/2023 16:04:04'!
+identificationNumber: anIdentificationNumber
+
+	identificationNumber := anIdentificationNumber! !
+
+!Customer methodsFor: 'identification' stamp: 'LMR 6/25/2023 16:04:04'!
+identificationType
+
+	^identificationType ! !
+
+!Customer methodsFor: 'identification' stamp: 'LMR 6/25/2023 16:04:04'!
+identificationType: anIdentificationType
+
+	identificationType := anIdentificationType! !
+
+
+!Customer methodsFor: 'initialization' stamp: 'LMR 6/25/2023 16:04:03'!
+initialize
+
+	super initialize.
+	addresses := OrderedCollection new.! !
+
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'inputStream session'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!CustomerImporter methodsFor: 'initialization' stamp: 'LMR 6/25/2023 17:24:40'!
+initializeImportingCustomersFromStream: anInputStream toSession: aSession
+	
+	inputStream := anInputStream.
+	session := aSession.! !
+
+
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/25/2023 17:24:20'!
+import
 
 	"
 	self importCustomers
 	"
-	| inputStream  newCustomer line |
-
-	inputStream := UniFileStream new open: 'input.txt' forWrite: false.
+	| newCustomer line |
 
 	line := inputStream nextLine.
 	[ line notNil ] whileTrue: [
@@ -90,145 +244,15 @@ importCustomers
 	inputStream close.
 	! !
 
-
-!classDefinition: #Address category: 'CustomerImporter'!
-Object subclass: #Address
-	instanceVariableNames: 'id streetName streetNumber town zipCode province'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'CustomerImporter'!
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
-!Address methodsFor: 'province' stamp: 'HAW 5/22/2022 00:19:29'!
-province
+!classDefinition: 'CustomerImporter class' category: 'CustomerImporter'!
+CustomerImporter class
+	instanceVariableNames: ''!
 
-	^province! !
-
-!Address methodsFor: 'province' stamp: 'HAW 5/22/2022 00:19:29'!
-province: aProvince
-
-	province := aProvince
-	! !
-
-
-!Address methodsFor: 'street' stamp: 'HAW 5/22/2022 00:19:29'!
-streetName
-
-	^streetName ! !
-
-!Address methodsFor: 'street' stamp: 'HAW 5/22/2022 00:19:29'!
-streetName: aStreetName
-
-	streetName := aStreetName ! !
-
-!Address methodsFor: 'street' stamp: 'HAW 5/22/2022 00:19:29'!
-streetNumber
-
-	^streetNumber ! !
-
-!Address methodsFor: 'street' stamp: 'HAW 5/22/2022 00:19:29'!
-streetNumber: aStreetNumber
-
-	streetNumber := aStreetNumber ! !
-
-
-!Address methodsFor: 'twon' stamp: 'HAW 5/22/2022 00:19:29'!
-town
-
-	^town! !
-
-!Address methodsFor: 'twon' stamp: 'HAW 5/22/2022 00:19:29'!
-town: aTown
-
-	town := aTown! !
-
-
-!Address methodsFor: 'zip code' stamp: 'HAW 5/22/2022 00:19:29'!
-zipCode
-
-	^zipCode! !
-
-!Address methodsFor: 'zip code' stamp: 'HAW 5/22/2022 00:19:29'!
-zipCode: aZipCode
-
-	zipCode := aZipCode! !
-
-
-!classDefinition: #Customer category: 'CustomerImporter'!
-Object subclass: #Customer
-	instanceVariableNames: 'id firstName lastName identificationType identificationNumber addresses'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'CustomerImporter'!
-
-!Customer methodsFor: 'addresses' stamp: 'HAW 5/22/2022 00:19:29'!
-addAddress: anAddress
-
-	addresses add: anAddress ! !
-
-!Customer methodsFor: 'addresses' stamp: 'HAW 5/22/2022 00:19:29'!
-addresses
-
-	^ addresses! !
-
-!Customer methodsFor: 'addresses' stamp: 'LMR 6/22/2023 21:46:39'!
-addressesOnStreetNamed: aStreetName
-
-	^ addresses select: [:anAddress | anAddress streetName = aStreetName].! !
-
-!Customer methodsFor: 'addresses' stamp: 'LMR 6/22/2023 21:37:52'!
-amountOfAddresses
-
-	^ addresses size! !
-
-
-!Customer methodsFor: 'name' stamp: 'HAW 5/22/2022 00:19:29'!
-firstName
-
-	^firstName ! !
-
-!Customer methodsFor: 'name' stamp: 'HAW 5/22/2022 00:19:29'!
-firstName: aName
-
-	firstName := aName! !
-
-!Customer methodsFor: 'name' stamp: 'HAW 5/22/2022 00:19:29'!
-lastName
-
-	^lastName ! !
-
-!Customer methodsFor: 'name' stamp: 'HAW 5/22/2022 00:19:29'!
-lastName: aLastName
-
-	lastName := aLastName
-! !
-
-
-!Customer methodsFor: 'identification' stamp: 'HAW 5/22/2022 00:19:29'!
-identificationNumber
-
-	^identificationNumber ! !
-
-!Customer methodsFor: 'identification' stamp: 'HAW 5/22/2022 00:19:29'!
-identificationNumber: anIdentificationNumber
-
-	identificationNumber := anIdentificationNumber! !
-
-!Customer methodsFor: 'identification' stamp: 'HAW 5/22/2022 00:19:29'!
-identificationType
-
-	^identificationType ! !
-
-!Customer methodsFor: 'identification' stamp: 'HAW 5/22/2022 00:19:29'!
-identificationType: anIdentificationType
-
-	identificationType := anIdentificationType! !
-
-
-!Customer methodsFor: 'initialization' stamp: 'HAW 5/22/2022 00:19:29'!
-initialize
-
-	super initialize.
-	addresses := OrderedCollection new.! !
+!CustomerImporter class methodsFor: 'instance creation' stamp: 'LMR 6/25/2023 17:24:20'!
+importingCustomersFromStream: anInputStream toSession: aSession
+	^self new initializeImportingCustomersFromStream: anInputStream toSession: aSession! !
 
 
 !classDefinition: #DataBaseSession category: 'CustomerImporter'!
@@ -238,47 +262,47 @@ Object subclass: #DataBaseSession
 	poolDictionaries: ''
 	category: 'CustomerImporter'!
 
-!DataBaseSession methodsFor: 'transaction management' stamp: 'HAW 5/22/2022 00:19:29'!
+!DataBaseSession methodsFor: 'transaction management' stamp: 'LMR 6/25/2023 16:04:04'!
 beginTransaction
 
 	! !
 
-!DataBaseSession methodsFor: 'transaction management' stamp: 'HAW 5/22/2022 19:17:36'!
+!DataBaseSession methodsFor: 'transaction management' stamp: 'LMR 6/25/2023 16:04:04'!
 commit
 
 	(tables at: Customer ifAbsent: [#()]) do: [ :aCustomer | self persistAddressesOf: aCustomer ]
 	! !
 
 
-!DataBaseSession methodsFor: 'closing' stamp: 'HAW 5/22/2022 00:19:29'!
+!DataBaseSession methodsFor: 'closing' stamp: 'LMR 6/25/2023 16:04:04'!
 close
 
 	! !
 
 
-!DataBaseSession methodsFor: 'persistence - private' stamp: 'HAW 5/22/2022 00:19:29'!
+!DataBaseSession methodsFor: 'persistence - private' stamp: 'LMR 6/25/2023 16:04:04'!
 defineIdOf: anObject
 
 	anObject instVarNamed: 'id' put: (self newIdFor: anObject).! !
 
-!DataBaseSession methodsFor: 'persistence - private' stamp: 'HAW 5/22/2022 00:19:29'!
+!DataBaseSession methodsFor: 'persistence - private' stamp: 'LMR 6/25/2023 16:04:04'!
 delay
 
 	(Delay forMilliseconds: 100) wait! !
 
-!DataBaseSession methodsFor: 'persistence - private' stamp: 'HAW 5/22/2022 19:29:06'!
+!DataBaseSession methodsFor: 'persistence - private' stamp: 'LMR 6/25/2023 16:04:04'!
 objectsOfType: aType
 
 	^ tables at: aType ifAbsent: [ #() ]! !
 
-!DataBaseSession methodsFor: 'persistence - private' stamp: 'HAW 5/22/2022 00:19:29'!
+!DataBaseSession methodsFor: 'persistence - private' stamp: 'LMR 6/25/2023 16:04:04'!
 persistAddressesOf: anObjectWithAddresses
 
 	anObjectWithAddresses addresses do: [ :anAddress | self persist: anAddress ]
 	! !
 
 
-!DataBaseSession methodsFor: 'initialization' stamp: 'HAW 5/22/2022 00:19:29'!
+!DataBaseSession methodsFor: 'initialization' stamp: 'LMR 6/25/2023 16:04:04'!
 initializeFor: aConfiguration
 
 	configuration := aConfiguration.
@@ -286,14 +310,14 @@ initializeFor: aConfiguration
 	id := 0.! !
 
 
-!DataBaseSession methodsFor: 'id' stamp: 'HAW 5/22/2022 00:19:29'!
+!DataBaseSession methodsFor: 'id' stamp: 'LMR 6/25/2023 16:04:04'!
 newIdFor: anObject
 
 	id := id + 1.
 	^id! !
 
 
-!DataBaseSession methodsFor: 'persistance' stamp: 'HAW 5/22/2022 00:19:29'!
+!DataBaseSession methodsFor: 'persistance' stamp: 'LMR 6/25/2023 16:04:04'!
 persist: anObject
 
 	| table |
@@ -307,13 +331,13 @@ persist: anObject
 	(anObject isKindOf: Customer) ifTrue: [ self persistAddressesOf: anObject ].! !
 
 
-!DataBaseSession methodsFor: 'selecting' stamp: 'HAW 5/22/2022 19:29:06'!
+!DataBaseSession methodsFor: 'selecting' stamp: 'LMR 6/25/2023 16:04:04'!
 select: aCondition ofType: aType
 
 	self delay.
 	^(self objectsOfType: aType) select: aCondition ! !
 
-!DataBaseSession methodsFor: 'selecting' stamp: 'HAW 5/22/2022 19:29:06'!
+!DataBaseSession methodsFor: 'selecting' stamp: 'LMR 6/25/2023 16:04:04'!
 selectAllOfType: aType
 
 	self delay.
@@ -325,7 +349,7 @@ selectAllOfType: aType
 DataBaseSession class
 	instanceVariableNames: ''!
 
-!DataBaseSession class methodsFor: 'instance creation' stamp: 'HAW 5/22/2022 00:19:29'!
+!DataBaseSession class methodsFor: 'instance creation' stamp: 'LMR 6/25/2023 16:04:05'!
 for: aConfiguration
 
 	^self new initializeFor: aConfiguration! !
