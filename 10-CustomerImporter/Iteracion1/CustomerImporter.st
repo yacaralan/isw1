@@ -5,27 +5,54 @@ TestCase subclass: #ImportTest
 	poolDictionaries: ''
 	category: 'CustomerImporter'!
 
-!ImportTest methodsFor: 'testing' stamp: 'LMR 6/25/2023 18:02:56'!
-test01Import
+!ImportTest methodsFor: 'inputs' stamp: 'LMR 6/26/2023 17:55:52'!
+inputStreamForTest01
 
-	| pepe juan inputStream |
-	"inputStream := UniFileStream new open: 'input.txt' forWrite: false."
-	inputStream := ReadStream on: 'C,Pepe,Sanchez,D,22333444
+	^ReadStream on: 'C,Pepe,Sanchez,D,22333444
 A,San Martin,3322,Olivos,1636,BsAs
 A,Maipu,888,Florida,1122,Buenos Aires
 C,Juan,Perez,C,23-25666777-9
-A,Alem,1122,CABA,1001,CABA'.
-	(CustomerImporter importingCustomersFromStream: (inputStream) toSession: session) import.
-	
-	self assert: 2 equals: (session selectAllOfType: Customer) size.
-	
-	pepe := self getCustomerWithIdType: 'D' idNumber: '22333444' andAssertThatCustomerHasName: 'Pepe' lastName: 'Sanchez' amountOfAddresses: 2.
-	self assertThatCustomer: pepe hasAnAddressOnStreetNamed: 'San Martin' withStreetNumber: 3322 onTown: 'Olivos' withZipCode: 1636 inProvince: 'BsAs'.
-	self assertThatCustomer: pepe hasAnAddressOnStreetNamed: 'Maipu' withStreetNumber: 888 onTown: 'Florida' withZipCode: 1122 inProvince: 'Buenos Aires'.
-	
-	juan := self getCustomerWithIdType: 'C' idNumber: '23-25666777-9' andAssertThatCustomerHasName: 'Juan' lastName: 'Perez' amountOfAddresses: 1.
-	self assertThatCustomer: juan hasAnAddressOnStreetNamed: 'Alem' withStreetNumber: 1122 onTown: 'CABA' withZipCode: 1001 inProvince: 'CABA'.! !
+A,Alem,1122,CABA,1001,CABA'! !
 
+
+!ImportTest methodsFor: 'testing' stamp: 'LMR 6/26/2023 18:29:55'!
+test01Import
+
+	self importingFrom: self inputStreamForTest01 into: session.
+	
+	self assertRightNumberOfCustomersImported.
+	
+	self assertPepeSanchezIsImportedCorrectly.
+	
+	self assertJuanPerezIsImportedCorrectly! !
+
+
+!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/26/2023 18:33:04'!
+assertAmountOfCustomersEquals: anExpectedAmountOfCustomers
+
+	^ self assert: anExpectedAmountOfCustomers equals: (session selectAllOfType: Customer) size! !
+
+!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/26/2023 18:29:06'!
+assertJuanPerezIsImportedCorrectly
+
+	| juan |
+	juan := self selectCustomerWithIdType: 'C' withIdNumber: '23-25666777-9'.
+	self assertThatCustomer: juan hasName: 'Juan' lastName: 'Perez' amountOfAddresses: 1.
+	self assertThatCustomer: juan hasAnAddressOnStreetNamed: 'Alem' withStreetNumber: 1122 onTown: 'CABA' withZipCode: 1001 inProvince: 'CABA'! !
+
+!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/26/2023 18:28:37'!
+assertPepeSanchezIsImportedCorrectly
+
+	| pepe |
+	pepe := self selectCustomerWithIdType: 'D' withIdNumber: '22333444'.
+	self assertThatCustomer: pepe hasName: 'Pepe' lastName: 'Sanchez' amountOfAddresses: 2.
+	self assertThatCustomer: pepe hasAnAddressOnStreetNamed: 'San Martin' withStreetNumber: 3322 onTown: 'Olivos' withZipCode: 1636 inProvince: 'BsAs'.
+	self assertThatCustomer: pepe hasAnAddressOnStreetNamed: 'Maipu' withStreetNumber: 888 onTown: 'Florida' withZipCode: 1122 inProvince: 'Buenos Aires'! !
+
+!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/26/2023 18:33:04'!
+assertRightNumberOfCustomersImported
+
+	self assertAmountOfCustomersEquals: 2! !
 
 !ImportTest methodsFor: 'assertions' stamp: 'LMR 6/25/2023 18:02:40'!
 assertThatCustomer: aCustomer hasAnAddressOnStreetNamed: aStreetName withStreetNumber: aStreetNumber onTown: aTown withZipCode: aZipCode inProvince: aProvince     
@@ -37,15 +64,12 @@ assertThatCustomer: aCustomer hasAnAddressOnStreetNamed: aStreetName withStreetN
 	self assert: aZipCode equals: anAddress zipCode.
 	self assert: aProvince equals: anAddress province! !
 
-!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/25/2023 16:34:49'!
-getCustomerWithIdType: idType idNumber: idNumber andAssertThatCustomerHasName: aCustomerName lastName: aCustomerLastName amountOfAddresses: amountOfAddresses    
+!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/26/2023 18:16:37'!
+assertThatCustomer: aCustomer hasName: aCustomerName lastName: aCustomerLastName amountOfAddresses: amountOfAddresses    
 
-	| customer |
-	customer := (session select: [:aCustomer | aCustomer identificationType = idType and: [aCustomer identificationNumber = idNumber]] ofType: Customer) atRandom.
-	self assert: aCustomerName equals: (customer firstName).
-	self assert: aCustomerLastName equals: (customer lastName).
-	self assert: amountOfAddresses equals: (customer amountOfAddresses).
-	^customer! !
+	self assert: aCustomerName equals: (aCustomer firstName).
+	self assert: aCustomerLastName equals: (aCustomer lastName).
+	self assert: amountOfAddresses equals: (aCustomer amountOfAddresses).! !
 
 
 !ImportTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/25/2023 16:04:05'!
@@ -59,6 +83,18 @@ tearDown
 
 	session commit.
 	session close! !
+
+
+!ImportTest methodsFor: 'get customer' stamp: 'LMR 6/26/2023 18:14:02'!
+selectCustomerWithIdType: idType withIdNumber: idNumber
+
+	^ (session select: [:aCustomer | aCustomer identificationType = idType and: [aCustomer identificationNumber = idNumber]] ofType: Customer) atRandom! !
+
+
+!ImportTest methodsFor: 'importing' stamp: 'LMR 6/26/2023 18:09:05'!
+importingFrom: anInputStream into: aSession
+
+	(CustomerImporter importingCustomersFromStream: anInputStream toSession: aSession) import.! !
 
 
 !classDefinition: #Address category: 'CustomerImporter'!
