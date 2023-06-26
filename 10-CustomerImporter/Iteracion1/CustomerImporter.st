@@ -5,26 +5,6 @@ TestCase subclass: #ImportTest
 	poolDictionaries: ''
 	category: 'CustomerImporter'!
 
-!ImportTest methodsFor: 'testing' stamp: 'LMR 6/25/2023 18:02:40'!
-assertThatCustomer: aCustomer hasAnAddressOnStreetNamed: aStreetName withStreetNumber: aStreetNumber onTown: aTown withZipCode: aZipCode inProvince: aProvince     
-
-	| anAddress |
-	anAddress := aCustomer getAddressOnStreetNamed: aStreetName.
-	self assert: aStreetNumber equals: anAddress streetNumber.
-	self assert: aTown equals: anAddress town.
-	self assert: aZipCode equals: anAddress zipCode.
-	self assert: aProvince equals: anAddress province! !
-
-!ImportTest methodsFor: 'testing' stamp: 'LMR 6/25/2023 16:34:49'!
-getCustomerWithIdType: idType idNumber: idNumber andAssertThatCustomerHasName: aCustomerName lastName: aCustomerLastName amountOfAddresses: amountOfAddresses    
-
-	| customer |
-	customer := (session select: [:aCustomer | aCustomer identificationType = idType and: [aCustomer identificationNumber = idNumber]] ofType: Customer) atRandom.
-	self assert: aCustomerName equals: (customer firstName).
-	self assert: aCustomerLastName equals: (customer lastName).
-	self assert: amountOfAddresses equals: (customer amountOfAddresses).
-	^customer! !
-
 !ImportTest methodsFor: 'testing' stamp: 'LMR 6/25/2023 18:02:56'!
 test01Import
 
@@ -45,6 +25,27 @@ A,Alem,1122,CABA,1001,CABA'.
 	
 	juan := self getCustomerWithIdType: 'C' idNumber: '23-25666777-9' andAssertThatCustomerHasName: 'Juan' lastName: 'Perez' amountOfAddresses: 1.
 	self assertThatCustomer: juan hasAnAddressOnStreetNamed: 'Alem' withStreetNumber: 1122 onTown: 'CABA' withZipCode: 1001 inProvince: 'CABA'.! !
+
+
+!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/25/2023 18:02:40'!
+assertThatCustomer: aCustomer hasAnAddressOnStreetNamed: aStreetName withStreetNumber: aStreetNumber onTown: aTown withZipCode: aZipCode inProvince: aProvince     
+
+	| anAddress |
+	anAddress := aCustomer getAddressOnStreetNamed: aStreetName.
+	self assert: aStreetNumber equals: anAddress streetNumber.
+	self assert: aTown equals: anAddress town.
+	self assert: aZipCode equals: anAddress zipCode.
+	self assert: aProvince equals: anAddress province! !
+
+!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/25/2023 16:34:49'!
+getCustomerWithIdType: idType idNumber: idNumber andAssertThatCustomerHasName: aCustomerName lastName: aCustomerLastName amountOfAddresses: amountOfAddresses    
+
+	| customer |
+	customer := (session select: [:aCustomer | aCustomer identificationType = idType and: [aCustomer identificationNumber = idNumber]] ofType: Customer) atRandom.
+	self assert: aCustomerName equals: (customer firstName).
+	self assert: aCustomerLastName equals: (customer lastName).
+	self assert: amountOfAddresses equals: (customer amountOfAddresses).
+	^customer! !
 
 
 !ImportTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/25/2023 16:04:05'!
