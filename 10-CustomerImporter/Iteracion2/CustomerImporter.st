@@ -5,8 +5,8 @@ TestCase subclass: #ImportTest
 	poolDictionaries: ''
 	category: 'CustomerImporter'!
 
-!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 20:49:37'!
-test01Import
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/27/2023 18:58:38'!
+test01ValidImport
 
 	CustomerImporter valueFrom: self validImportData into: session.
 
@@ -14,75 +14,99 @@ test01Import
 	self assertPepeSanchezWasImportedCorrecty.
 	self assertJuanPerezWasImportedCorrectly ! !
 
-!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 20:47:56'!
-test02Import
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/27/2023 20:12:47'!
+test02CanNotImportNilInput
 
-	self should: [CustomerImporter valueFrom: nil into: session] raise: Error - MessageNotUnderstood withExceptionDo: [:anError | self assert: CustomerImporter nilInputErrorDescription equals: anError messageText].! !
+	self assertThatImportingFrom: nil raisesErrorWithDescription: CustomerImporter nilInputErrorDescription.
+	self assertThatSessionIsEmpty.! !
 
-!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 20:53:50'!
-test03Import
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/27/2023 20:12:47'!
+test03CanNotImportAddressBeforeCustomer
 
 	| inputStream |
 	inputStream := ReadStream on: 'A,San Martin,3322,Olivos,1636,BsAs
 C,Pepe,Sanchez,D,22333444
 A,Maipu,888,Florida,1122,Buenos Aires'.
-	self should: [CustomerImporter valueFrom: inputStream into: session] raise: Error - MessageNotUnderstood withExceptionDo: [:anError | self assert: CustomerImporter firstLineAddressErrorDescription equals: anError messageText].! !
+	self assertThatImportingFrom: inputStream raisesErrorWithDescription: CustomerImporter firstLineAddressErrorDescription.
+	self assertThatSessionIsEmpty! !
 
-!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 21:01:52'!
-test04Import
-
-	| inputStream |
-	inputStream := ReadStream on: 'C,Pepe,San,chez,D,22333444'.
-	self should: [CustomerImporter valueFrom: inputStream into: session] raise: Error - MessageNotUnderstood withExceptionDo: [:anError | self assert: CustomerImporter InvalidAmountOfFieldsErrorDescription equals: anError messageText].! !
-
-!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 21:05:46'!
-test05Import
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/27/2023 20:12:47'!
+test04CanNotImportCustomerWithExtraFields
 
 	| inputStream |
+	inputStream := ReadStream on: 'C,Juan,Perez,C,23-25666777-9
+C,Pepe,San,chez,D,22333444'.
+	self assertThatImportingFrom: inputStream raisesErrorWithDescription: CustomerImporter InvalidAmountOfFieldsErrorDescription.
+	self assertCustomerWithIdentificationType: 'C' number: '23-25666777-9' hasFirstName: 'Juan' lastName: 'Perez'! !
+
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/27/2023 20:12:47'!
+test05CanNotImportAddressWithExtraFields
+
+	| inputStream pepe |
 	inputStream := ReadStream on: 'C,Pepe,Sanchez,D,22333444
 A,San Ma,rtin,3322,Olivos,1636,BsAs'.
-	self should: [CustomerImporter valueFrom: inputStream into: session] raise: Error - MessageNotUnderstood withExceptionDo: [:anError | self assert: CustomerImporter InvalidAmountOfFieldsErrorDescription equals: anError messageText].! !
+	self assertThatImportingFrom: inputStream raisesErrorWithDescription: CustomerImporter InvalidAmountOfFieldsErrorDescription.
+	pepe := self assertCustomerWithIdentificationType: 'D' number: '22333444' hasFirstName: 'Pepe' lastName: 'Sanchez'.
+	self assertThatCustomer: pepe hasNoAddressesAtStreetNamed: 'San Ma'.! !
 
-!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 21:23:03'!
-test06Import
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/27/2023 20:12:47'!
+test06CanNotImportLineWithEmptyFields
 
 	| inputStream |
 	inputStream := ReadStream on: 'C,Pepe,,Sanchez,D,22333444'.
-	self should: [CustomerImporter valueFrom: inputStream into: session] raise: Error - MessageNotUnderstood withExceptionDo: [:anError | self assert: CustomerImporter emptyFieldErrorDescription equals: anError messageText].! !
+	self assertThatImportingFrom: inputStream raisesErrorWithDescription: CustomerImporter emptyFieldErrorDescription.
+	self assertThatSessionIsEmpty! !
 
-!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 21:35:14'!
-test07Import
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/27/2023 20:14:38'!
+test07CanNotImportRecordWithInvalidType
 
 	| inputStream |
 	inputStream := ReadStream on: 'J,Pepe,Sanchez,D,22333444'.
-	self should: [CustomerImporter valueFrom: inputStream into: session] raise: Error - MessageNotUnderstood withExceptionDo: [:anError | self assert: CustomerImporter invalidRecordErrorDescrition equals: anError messageText].! !
+	self assertThatImportingFrom: inputStream raisesErrorWithDescription: CustomerImporter invalidRecordErrorDescrition.
+	self assertThatSessionIsEmpty.
+	
+	inputStream := ReadStream on: 'Carlos,Pepe,Sanchez,D,22333444'.
+	self assertThatImportingFrom: inputStream raisesErrorWithDescription: CustomerImporter invalidRecordErrorDescrition.
+	self assertThatSessionIsEmpty! !
 
-!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 21:43:29'!
-test08Import
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/27/2023 19:59:39'!
+test08ImportingEmptyStreamResultsInEmptySession
 
 	| inputStream |
 	inputStream := ReadStream on: ''.
 	CustomerImporter valueFrom: inputStream into: session.
-	self assert: (session selectAllOfType: Customer) isEmpty.
-	self assert: (session selectAllOfType: Address) isEmpty.! !
+	self assertThatSessionIsEmpty.! !
 
-!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 21:47:06'!
-test09Import
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/27/2023 20:12:47'!
+test09CanNotImportEmptyLine
 
 	| inputStream |
 	inputStream := ReadStream on: '
 '.
-	self should: [CustomerImporter valueFrom: inputStream into: session] raise: Error - MessageNotUnderstood withExceptionDo: [:anError | self assert: CustomerImporter emptyFieldErrorDescription equals: anError messageText].! !
+	self assertThatImportingFrom: inputStream raisesErrorWithDescription: CustomerImporter emptyFieldErrorDescription.
+	self assertThatSessionIsEmpty.! !
 
-!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 21:59:00'!
-test10Import
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/27/2023 20:14:51'!
+test10CanNotImportCustomerWithMissingFields
 
 	| inputStream |
-	inputStream := ReadStream on: 'Carlos,Pepe,Sanchez,D,22333444'.
-	self should: [CustomerImporter valueFrom: inputStream into: session] raise: Error - MessageNotUnderstood withExceptionDo: [:anError | self assert: CustomerImporter invalidRecordErrorDescrition equals: anError messageText].! !
+	inputStream := ReadStream on: 'C,Juan,Perez,C,23-25666777-9
+C,Pepe,Sanchez,D'.
+	self assertThatImportingFrom: inputStream raisesErrorWithDescription: CustomerImporter InvalidAmountOfFieldsErrorDescription.
+	self assertCustomerWithIdentificationType: 'C' number: '23-25666777-9' hasFirstName: 'Juan' lastName: 'Perez'! !
+
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/27/2023 20:14:56'!
+test11CanNotImportAddressWithMissingFields
+
+	| inputStream pepe |
+	inputStream := ReadStream on: 'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636'.
+	self assertThatImportingFrom: inputStream raisesErrorWithDescription: CustomerImporter InvalidAmountOfFieldsErrorDescription.
+	pepe := self assertCustomerWithIdentificationType: 'D' number: '22333444' hasFirstName: 'Pepe' lastName: 'Sanchez'.
+	self assertThatCustomer: pepe hasNoAddressesAtStreetNamed: 'San Ma'! !
 
 
-!ImportTest methodsFor: 'assertions' stamp: 'HAW 5/22/2022 18:22:05'!
+!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/27/2023 18:47:42'!
 assertAddressOf: importedCustomer at: aStreetName hasNumber: aNumber town: aTown zipCode: aZipCode province: aProvince
 
 	| importedAddress |
@@ -96,7 +120,7 @@ assertAddressOf: importedCustomer at: aStreetName hasNumber: aNumber town: aTown
 
 	! !
 
-!ImportTest methodsFor: 'assertions' stamp: 'HAW 5/22/2022 18:27:57'!
+!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/27/2023 18:47:42'!
 assertCustomerWithIdentificationType: anIdType number: anIdNumber hasFirstName: aFirstName lastName: aLastName
 
 	| importedCustomer |
@@ -112,12 +136,12 @@ assertCustomerWithIdentificationType: anIdType number: anIdNumber hasFirstName: 
 
 	! !
 
-!ImportTest methodsFor: 'assertions' stamp: 'HAW 5/22/2022 18:12:18'!
+!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/27/2023 18:47:42'!
 assertImportedRightNumberOfCustomers
 
 	^ self assert: 2 equals: (session selectAllOfType: Customer) size! !
 
-!ImportTest methodsFor: 'assertions' stamp: 'HAW 5/22/2022 18:28:45'!
+!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/27/2023 18:47:42'!
 assertJuanPerezWasImportedCorrectly
 
 	| importedCustomer |
@@ -126,7 +150,7 @@ assertJuanPerezWasImportedCorrectly
 	self assertAddressOf: importedCustomer at: 'Alem' hasNumber: 1122 town: 'CABA' zipCode: 1001 province: 'CABA'
 	! !
 
-!ImportTest methodsFor: 'assertions' stamp: 'HAW 5/22/2022 18:28:05'!
+!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/27/2023 18:47:41'!
 assertPepeSanchezWasImportedCorrecty
 
 	| importedCustomer |
@@ -138,15 +162,44 @@ assertPepeSanchezWasImportedCorrecty
 
 	! !
 
+!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/27/2023 20:15:33'!
+assertThatCustomer: aCustomer hasNoAddressesAtStreetNamed: streetName 
 
-!ImportTest methodsFor: 'setUp/tearDown' stamp: 'HAW 5/22/2022 00:27:50'!
+	|bool|
+	bool := false.
+	aCustomer addressAt: streetName ifNone: [bool := true].
+	self assert: bool! !
+
+!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/27/2023 20:12:47'!
+assertThatImportingFrom: inputStream raisesErrorWithDescription: expectedErrorDesciption 
+
+	^ self should: [CustomerImporter valueFrom: inputStream into: session] raise: Error - MessageNotUnderstood withExceptionDo: [:anError | self assert: expectedErrorDesciption equals: anError messageText.]! !
+
+!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/27/2023 20:12:36'!
+assertThatSessionIsEmpty
+
+	self assertThatThereAreNoCustomersOnSession.
+	self assertThatThereAreNoAddressesOnSession! !
+
+!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/27/2023 19:36:25'!
+assertThatThereAreNoAddressesOnSession
+
+	^ self assert: (session selectAllOfType: Address) isEmpty! !
+
+!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/27/2023 18:57:24'!
+assertThatThereAreNoCustomersOnSession
+
+	^ self assert: (session selectAllOfType: Customer) isEmpty! !
+
+
+!ImportTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/27/2023 18:47:41'!
 setUp
 
 	session := DataBaseSession for: (Array with: Address with: Customer).
 	session beginTransaction.
 ! !
 
-!ImportTest methodsFor: 'setUp/tearDown' stamp: 'HAW 5/22/2022 00:28:23'!
+!ImportTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/27/2023 18:47:42'!
 tearDown
 
 	session commit.
@@ -154,15 +207,17 @@ tearDown
 	! !
 
 
-!ImportTest methodsFor: 'customer' stamp: 'HAW 5/22/2022 18:14:22'!
+!ImportTest methodsFor: 'customer' stamp: 'LMR 6/27/2023 19:03:30'!
 customerWithIdentificationType: anIdType number: anIdNumber
 
-	^ (session
+	| selection |
+	selection := session
 		select: [ :aCustomer | aCustomer identificationType = anIdType and: [ aCustomer identificationNumber = anIdNumber ]]
-		ofType: Customer) anyOne! !
+		ofType: Customer.
+	^(selection) anyOne! !
 
 
-!ImportTest methodsFor: 'test data' stamp: 'HAW 5/22/2022 18:08:08'!
+!ImportTest methodsFor: 'test data' stamp: 'LMR 6/27/2023 18:47:43'!
 validImportData
 
 	^ ReadStream on:
@@ -180,67 +235,67 @@ Object subclass: #Address
 	poolDictionaries: ''
 	category: 'CustomerImporter'!
 
-!Address methodsFor: 'province' stamp: 'HAW 5/22/2022 00:19:29'!
+!Address methodsFor: 'province' stamp: 'LMR 6/27/2023 18:47:34'!
 province
 
 	^province! !
 
-!Address methodsFor: 'province' stamp: 'HAW 5/22/2022 00:19:29'!
+!Address methodsFor: 'province' stamp: 'LMR 6/27/2023 18:47:35'!
 province: aProvince
 
 	province := aProvince
 	! !
 
 
-!Address methodsFor: 'street' stamp: 'HAW 5/22/2022 17:55:46'!
+!Address methodsFor: 'street' stamp: 'LMR 6/27/2023 18:47:36'!
 isAt: aStreetName
 
 	^streetName = aStreetName ! !
 
-!Address methodsFor: 'street' stamp: 'HAW 5/22/2022 00:19:29'!
+!Address methodsFor: 'street' stamp: 'LMR 6/27/2023 18:47:35'!
 streetName
 
 	^streetName ! !
 
-!Address methodsFor: 'street' stamp: 'HAW 5/22/2022 00:19:29'!
+!Address methodsFor: 'street' stamp: 'LMR 6/27/2023 18:47:35'!
 streetName: aStreetName
 
 	streetName := aStreetName ! !
 
-!Address methodsFor: 'street' stamp: 'HAW 5/22/2022 00:19:29'!
+!Address methodsFor: 'street' stamp: 'LMR 6/27/2023 18:47:34'!
 streetNumber
 
 	^streetNumber ! !
 
-!Address methodsFor: 'street' stamp: 'HAW 5/22/2022 00:19:29'!
+!Address methodsFor: 'street' stamp: 'LMR 6/27/2023 18:47:35'!
 streetNumber: aStreetNumber
 
 	streetNumber := aStreetNumber ! !
 
 
-!Address methodsFor: 'twon' stamp: 'HAW 5/22/2022 00:19:29'!
+!Address methodsFor: 'twon' stamp: 'LMR 6/27/2023 18:47:35'!
 town
 
 	^town! !
 
-!Address methodsFor: 'twon' stamp: 'HAW 5/22/2022 00:19:29'!
+!Address methodsFor: 'twon' stamp: 'LMR 6/27/2023 18:47:35'!
 town: aTown
 
 	town := aTown! !
 
 
-!Address methodsFor: 'zip code' stamp: 'HAW 5/22/2022 00:19:29'!
+!Address methodsFor: 'zip code' stamp: 'LMR 6/27/2023 18:47:35'!
 zipCode
 
 	^zipCode! !
 
-!Address methodsFor: 'zip code' stamp: 'HAW 5/22/2022 00:19:29'!
+!Address methodsFor: 'zip code' stamp: 'LMR 6/27/2023 18:47:35'!
 zipCode: aZipCode
 
 	zipCode := aZipCode! !
 
 
-!Address methodsFor: 'initialization' stamp: 'LMR 6/26/2023 19:46:37'!
+!Address methodsFor: 'initialization' stamp: 'LMR 6/27/2023 18:47:36'!
 initializeFromData: addressData 
 	
 	streetName := addressData second.
@@ -255,7 +310,7 @@ initializeFromData: addressData
 Address class
 	instanceVariableNames: ''!
 
-!Address class methodsFor: 'instance creation' stamp: 'LMR 6/26/2023 19:45:50'!
+!Address class methodsFor: 'instance creation' stamp: 'LMR 6/27/2023 18:47:36'!
 fromData: addressData 
 	
 	^self new initializeFromData: addressData ! !
@@ -268,66 +323,66 @@ Object subclass: #Customer
 	poolDictionaries: ''
 	category: 'CustomerImporter'!
 
-!Customer methodsFor: 'addresses' stamp: 'HAW 5/22/2022 00:19:29'!
+!Customer methodsFor: 'addresses' stamp: 'LMR 6/27/2023 18:47:36'!
 addAddress: anAddress
 
 	addresses add: anAddress ! !
 
-!Customer methodsFor: 'addresses' stamp: 'HAW 5/22/2022 17:55:17'!
+!Customer methodsFor: 'addresses' stamp: 'LMR 6/27/2023 18:47:37'!
 addressAt: aStreetName ifNone: aNoneBlock
 
 	^addresses detect: [ :address | address isAt: aStreetName ] ifNone: aNoneBlock ! !
 
-!Customer methodsFor: 'addresses' stamp: 'HAW 5/22/2022 00:19:29'!
+!Customer methodsFor: 'addresses' stamp: 'LMR 6/27/2023 18:47:36'!
 addresses
 
 	^ addresses! !
 
 
-!Customer methodsFor: 'name' stamp: 'HAW 5/22/2022 00:19:29'!
+!Customer methodsFor: 'name' stamp: 'LMR 6/27/2023 18:47:37'!
 firstName
 
 	^firstName ! !
 
-!Customer methodsFor: 'name' stamp: 'HAW 5/22/2022 00:19:29'!
+!Customer methodsFor: 'name' stamp: 'LMR 6/27/2023 18:47:36'!
 firstName: aName
 
 	firstName := aName! !
 
-!Customer methodsFor: 'name' stamp: 'HAW 5/22/2022 00:19:29'!
+!Customer methodsFor: 'name' stamp: 'LMR 6/27/2023 18:47:36'!
 lastName
 
 	^lastName ! !
 
-!Customer methodsFor: 'name' stamp: 'HAW 5/22/2022 00:19:29'!
+!Customer methodsFor: 'name' stamp: 'LMR 6/27/2023 18:47:36'!
 lastName: aLastName
 
 	lastName := aLastName
 ! !
 
 
-!Customer methodsFor: 'identification' stamp: 'HAW 5/22/2022 00:19:29'!
+!Customer methodsFor: 'identification' stamp: 'LMR 6/27/2023 18:47:37'!
 identificationNumber
 
 	^identificationNumber ! !
 
-!Customer methodsFor: 'identification' stamp: 'HAW 5/22/2022 00:19:29'!
+!Customer methodsFor: 'identification' stamp: 'LMR 6/27/2023 18:47:36'!
 identificationNumber: anIdentificationNumber
 
 	identificationNumber := anIdentificationNumber! !
 
-!Customer methodsFor: 'identification' stamp: 'HAW 5/22/2022 00:19:29'!
+!Customer methodsFor: 'identification' stamp: 'LMR 6/27/2023 18:47:36'!
 identificationType
 
 	^identificationType ! !
 
-!Customer methodsFor: 'identification' stamp: 'HAW 5/22/2022 00:19:29'!
+!Customer methodsFor: 'identification' stamp: 'LMR 6/27/2023 18:47:36'!
 identificationType: anIdentificationType
 
 	identificationType := anIdentificationType! !
 
 
-!Customer methodsFor: 'initialization' stamp: 'LMR 6/26/2023 19:35:03'!
+!Customer methodsFor: 'initialization' stamp: 'LMR 6/27/2023 18:47:37'!
 initializeFromData: customerData 
 	
 	super initialize.
@@ -343,7 +398,7 @@ initializeFromData: customerData
 Customer class
 	instanceVariableNames: ''!
 
-!Customer class methodsFor: 'instance creation' stamp: 'LMR 6/26/2023 19:33:42'!
+!Customer class methodsFor: 'instance creation' stamp: 'LMR 6/27/2023 18:47:37'!
 fromData: customerData 
 	
 	^self new initializeFromData: customerData ! !
@@ -356,49 +411,50 @@ Object subclass: #CustomerImporter
 	poolDictionaries: ''
 	category: 'CustomerImporter'!
 
-!CustomerImporter methodsFor: 'initialization' stamp: 'HAW 5/22/2022 18:06:47'!
+!CustomerImporter methodsFor: 'initialization' stamp: 'LMR 6/27/2023 18:48:17'!
 initializeFrom: aReadStream into: aSession
+	
 	session := aSession.
 	readStream := aReadStream.! !
 
 
-!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/26/2023 21:56:31'!
+!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/27/2023 18:47:39'!
 assertThatRecordHasFieldAmountEqualTo: aFieldAmount
 
 	^ lineFields size = aFieldAmount ifFalse: [self error: self class InvalidAmountOfFieldsErrorDescription]! !
 
-!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/26/2023 21:50:17'!
+!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/27/2023 18:47:38'!
 extractFields
 
 	lineFields := line findTokens: $,.
 	self hasEmptyFields ifTrue: [self error: self class emptyFieldErrorDescription].! !
 
-!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/26/2023 21:50:17'!
+!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/27/2023 18:47:38'!
 hasEmptyFields
 
 	^ lineFields size - 1 ~= (line occurrencesOf: $,)! !
 
-!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/26/2023 20:21:40'!
+!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/27/2023 18:47:37'!
 hasNextLine
 
 	line := readStream nextLine.
 	^line notNil! !
 
-!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/26/2023 21:56:31'!
+!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/27/2023 18:47:39'!
 importAddress
 
 	self assertThatRecordHasFieldAmountEqualTo: 6.
 	newCustomer ifNil: [self error: self class firstLineAddressErrorDescription].
 	newCustomer addAddress: (Address fromData: lineFields).! !
 
-!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/26/2023 21:56:51'!
+!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/27/2023 18:47:39'!
 importCustomer
 
 	self assertThatRecordHasFieldAmountEqualTo: 5.
 	newCustomer := Customer fromData: lineFields.
 	session persist: newCustomer.! !
 
-!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/26/2023 21:38:10'!
+!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/27/2023 18:47:38'!
 importDataFromCurrentLine
 
 	self extractFields.
@@ -406,18 +462,18 @@ importDataFromCurrentLine
 	self isAddressRecord ifTrue: [ self importAddress. ^self].
 	self error: self class invalidRecordErrorDescrition.! !
 
-!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/26/2023 20:14:51'!
+!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/27/2023 18:47:38'!
 isAddressRecord
 
 	^lineFields first = 'A'! !
 
-!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/26/2023 20:14:04'!
+!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/27/2023 18:47:37'!
 isCustomerRecord
 
 	^lineFields first = 'C'! !
 
 
-!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 20:21:27'!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/27/2023 18:47:38'!
 value
 
 	[ self hasNextLine ] whileTrue: [ self importDataFromCurrentLine ].! !
@@ -428,40 +484,40 @@ value
 CustomerImporter class
 	instanceVariableNames: ''!
 
-!CustomerImporter class methodsFor: 'instance creation' stamp: 'LMR 6/26/2023 20:46:22'!
+!CustomerImporter class methodsFor: 'instance creation' stamp: 'LMR 6/27/2023 18:47:39'!
 from: aReadStream into: aSession
 	
 	aReadStream ifNil: [self error: self nilInputErrorDescription].
 	^self new initializeFrom: aReadStream into: aSession! !
 
 
-!CustomerImporter class methodsFor: 'importing' stamp: 'HAW 5/22/2022 18:11:27'!
+!CustomerImporter class methodsFor: 'importing' stamp: 'LMR 6/27/2023 18:47:39'!
 valueFrom: aReadStream into: aSession
 
 	^(self from: aReadStream into: aSession) value! !
 
 
-!CustomerImporter class methodsFor: 'error description' stamp: 'LMR 6/26/2023 21:02:38'!
+!CustomerImporter class methodsFor: 'error description' stamp: 'LMR 6/27/2023 18:47:40'!
 InvalidAmountOfFieldsErrorDescription
 
 	^'Invalid amount of fields'! !
 
-!CustomerImporter class methodsFor: 'error description' stamp: 'LMR 6/26/2023 21:23:45'!
+!CustomerImporter class methodsFor: 'error description' stamp: 'LMR 6/27/2023 18:47:39'!
 emptyFieldErrorDescription
 
 	^'Empty field'! !
 
-!CustomerImporter class methodsFor: 'error description' stamp: 'LMR 6/26/2023 20:54:25'!
+!CustomerImporter class methodsFor: 'error description' stamp: 'LMR 6/27/2023 18:47:39'!
 firstLineAddressErrorDescription
 
 	^'First line can not be an address'! !
 
-!CustomerImporter class methodsFor: 'error description' stamp: 'LMR 6/26/2023 21:37:08'!
+!CustomerImporter class methodsFor: 'error description' stamp: 'LMR 6/27/2023 18:47:39'!
 invalidRecordErrorDescrition
 
 	^'Invalid record'! !
 
-!CustomerImporter class methodsFor: 'error description' stamp: 'LMR 6/26/2023 20:45:01'!
+!CustomerImporter class methodsFor: 'error description' stamp: 'LMR 6/27/2023 18:47:39'!
 nilInputErrorDescription
 
 	^'Input stream is nil'! !
@@ -474,47 +530,47 @@ Object subclass: #DataBaseSession
 	poolDictionaries: ''
 	category: 'CustomerImporter'!
 
-!DataBaseSession methodsFor: 'transaction management' stamp: 'HAW 5/22/2022 00:19:29'!
+!DataBaseSession methodsFor: 'transaction management' stamp: 'LMR 6/27/2023 18:47:40'!
 beginTransaction
 
 	! !
 
-!DataBaseSession methodsFor: 'transaction management' stamp: 'HAW 5/22/2022 19:17:36'!
+!DataBaseSession methodsFor: 'transaction management' stamp: 'LMR 6/27/2023 18:47:41'!
 commit
 
 	(tables at: Customer ifAbsent: [#()]) do: [ :aCustomer | self persistAddressesOf: aCustomer ]
 	! !
 
 
-!DataBaseSession methodsFor: 'closing' stamp: 'HAW 5/22/2022 00:19:29'!
+!DataBaseSession methodsFor: 'closing' stamp: 'LMR 6/27/2023 18:47:40'!
 close
 
 	! !
 
 
-!DataBaseSession methodsFor: 'persistence - private' stamp: 'HAW 5/22/2022 00:19:29'!
+!DataBaseSession methodsFor: 'persistence - private' stamp: 'LMR 6/27/2023 18:47:40'!
 defineIdOf: anObject
 
 	anObject instVarNamed: 'id' put: (self newIdFor: anObject).! !
 
-!DataBaseSession methodsFor: 'persistence - private' stamp: 'HAW 5/22/2022 00:19:29'!
+!DataBaseSession methodsFor: 'persistence - private' stamp: 'LMR 6/27/2023 18:47:41'!
 delay
 
 	(Delay forMilliseconds: 100) wait! !
 
-!DataBaseSession methodsFor: 'persistence - private' stamp: 'HAW 5/22/2022 19:29:06'!
+!DataBaseSession methodsFor: 'persistence - private' stamp: 'LMR 6/27/2023 18:47:40'!
 objectsOfType: aType
 
 	^ tables at: aType ifAbsent: [ #() ]! !
 
-!DataBaseSession methodsFor: 'persistence - private' stamp: 'HAW 5/22/2022 00:19:29'!
+!DataBaseSession methodsFor: 'persistence - private' stamp: 'LMR 6/27/2023 18:47:41'!
 persistAddressesOf: anObjectWithAddresses
 
 	anObjectWithAddresses addresses do: [ :anAddress | self persist: anAddress ]
 	! !
 
 
-!DataBaseSession methodsFor: 'initialization' stamp: 'HAW 5/22/2022 00:19:29'!
+!DataBaseSession methodsFor: 'initialization' stamp: 'LMR 6/27/2023 18:47:40'!
 initializeFor: aConfiguration
 
 	configuration := aConfiguration.
@@ -522,14 +578,14 @@ initializeFor: aConfiguration
 	id := 0.! !
 
 
-!DataBaseSession methodsFor: 'id' stamp: 'HAW 5/22/2022 00:19:29'!
+!DataBaseSession methodsFor: 'id' stamp: 'LMR 6/27/2023 18:47:40'!
 newIdFor: anObject
 
 	id := id + 1.
 	^id! !
 
 
-!DataBaseSession methodsFor: 'persistance' stamp: 'HAW 5/22/2022 00:19:29'!
+!DataBaseSession methodsFor: 'persistance' stamp: 'LMR 6/27/2023 18:47:40'!
 persist: anObject
 
 	| table |
@@ -543,13 +599,13 @@ persist: anObject
 	(anObject isKindOf: Customer) ifTrue: [ self persistAddressesOf: anObject ].! !
 
 
-!DataBaseSession methodsFor: 'selecting' stamp: 'HAW 5/22/2022 19:29:06'!
+!DataBaseSession methodsFor: 'selecting' stamp: 'LMR 6/27/2023 18:47:41'!
 select: aCondition ofType: aType
 
 	self delay.
 	^(self objectsOfType: aType) select: aCondition ! !
 
-!DataBaseSession methodsFor: 'selecting' stamp: 'HAW 5/22/2022 19:29:06'!
+!DataBaseSession methodsFor: 'selecting' stamp: 'LMR 6/27/2023 18:47:40'!
 selectAllOfType: aType
 
 	self delay.
@@ -561,7 +617,7 @@ selectAllOfType: aType
 DataBaseSession class
 	instanceVariableNames: ''!
 
-!DataBaseSession class methodsFor: 'instance creation' stamp: 'HAW 5/22/2022 00:19:29'!
+!DataBaseSession class methodsFor: 'instance creation' stamp: 'LMR 6/27/2023 18:47:41'!
 for: aConfiguration
 
 	^self new initializeFor: aConfiguration! !
