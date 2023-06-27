@@ -1,0 +1,1645 @@
+
+
+----QUIT----(30 May 2023 00:05:32) CuisUniversity-5832.image priorSource: 4928100!
+
+----STARTUP---- (30 May 2023 00:05:33) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5832.image!
+
+
+----QUIT----(30 May 2023 00:05:33) CuisUniversity-5832.image priorSource: 9366537!
+
+
+----STARTUP---- (26 June 2023 19:06:06) as /home/clinux01/Escritorio/linux64/CuisUniversity-5832.image!
+
+
+----SNAPSHOT----(26 June 2023 19:06:28) CuisUniversity-5832.image priorSource: 9509134!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:08:15'!
+lineIsCustomer: line
+
+	^ line beginsWith: 'C'! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:08:15' prior: 50628661 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(self lineIsCustomer: line) ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:08:29'!
+lineIsAddress: line
+
+	^ line beginsWith: 'A'! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:08:29' prior: 50628826 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(self lineIsCustomer: line) ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(self lineIsAddress: line) ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:09:50'!
+addAddressFromLine: line toCustomer: newCustomer
+
+	| addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:09:50' prior: 50628863 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(self lineIsCustomer: line) ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(self lineIsAddress: line) ifTrue: [ self addAddressFromLine: line toCustomer: newCustomer ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:10:49' prior: 50628895!
+addAddressFromLine: line toCustomer: newCustomer
+
+	| addressData newAddress |
+	addressData := line findTokens: $,.
+	newAddress := Address new.
+	newCustomer addAddress: newAddress.
+	newAddress streetName: addressData second.
+	newAddress streetNumber: addressData third asNumber .
+	newAddress town: addressData fourth.
+	newAddress zipCode: addressData fifth asNumber .
+	newAddress province: addressData sixth! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:12:46' prior: 50628912 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(self lineIsCustomer: line) ifTrue: [ | customerData newCustomer |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		"(self lineIsAddress: line) ifTrue: [ self addAddressFromLine: line toCustomer: newCustomer ]."
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:12:59'!
+addCustomerFromLine: line
+
+	| customerData newCustomer |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:12:59' prior: 50628952 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(self lineIsCustomer: line) ifTrue: [ self addCustomerFromLine: line ].
+
+		"(self lineIsAddress: line) ifTrue: [ self addAddressFromLine: line toCustomer: newCustomer ]."
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:13:21' prior: 50628990 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| line newCustomer |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(self lineIsCustomer: line) ifTrue: [ newCustomer := self addCustomerFromLine: line ].
+
+		(self lineIsAddress: line) ifTrue: [ self addAddressFromLine: line toCustomer: newCustomer ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:13:53' prior: 50628974!
+addCustomerFromLine: line
+
+	| customerData newCustomer |
+	customerData := line findTokens: $,.
+	newCustomer := Customer new.
+	newCustomer firstName: customerData second.
+	newCustomer lastName: customerData third.
+	newCustomer identificationType: customerData fourth.
+	newCustomer identificationNumber: customerData fifth.
+	session persist: newCustomer.
+	^newCustomer.! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 19:13:57'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:16:23' prior: 50629004 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	"| line newCustomer |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: "[| line newCustomer |
+		(self lineIsCustomer: line) ifTrue: [ newCustomer := self addCustomerFromLine: line ].
+		(self lineIsAddress: line) ifTrue: [ self addAddressFromLine: line toCustomer: newCustomer ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:16:49' prior: 50629036 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	"| line newCustomer |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: "[| line newCustomer |
+		(self lineIsCustomer: line) ifTrue: [ newCustomer := self addCustomerFromLine: line ].
+		(self lineIsAddress: line) ifTrue: [ self addAddressFromLine: line toCustomer: newCustomer ].
+
+		" line := readStream nextLine. " ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:17:45'!
+importDataFromLine
+
+	| line newCustomer |
+		(self lineIsCustomer: line) ifTrue: [ newCustomer := self addCustomerFromLine: line ].
+		(self lineIsAddress: line) ifTrue: [ self addAddressFromLine: line toCustomer: newCustomer ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:17:45' prior: 50629051 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	"| line newCustomer |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: "[self importDataFromLine.
+
+		" line := readStream nextLine. " ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:18:21' prior: 50629065!
+importDataFromLine
+
+	| line newCustomer |
+	(self lineIsCustomer: line) ifTrue: [ newCustomer := self addCustomerFromLine: line ].
+	(self lineIsAddress: line) ifTrue: [ self addAddressFromLine: line toCustomer: newCustomer ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:19:24'!
+importDataFromLine: aLine
+
+	| line newCustomer |
+	(self lineIsCustomer: line) ifTrue: [ newCustomer := self addCustomerFromLine: line ].
+	(self lineIsAddress: line) ifTrue: [ self addAddressFromLine: line toCustomer: newCustomer ]! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'LMR 6/26/2023 19:19:24' prior: 50629076 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	"| line newCustomer |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: "[self importDataFromLine: line.
+
+		" line := readStream nextLine. " ].
+
+	! !
+
+!methodRemoval: CustomerImporter #importDataFromLine stamp: 'LMR 6/26/2023 19:19:24'!
+importDataFromLine
+
+	| line newCustomer |
+	(self lineIsCustomer: line) ifTrue: [ newCustomer := self addCustomerFromLine: line ].
+	(self lineIsAddress: line) ifTrue: [ self addAddressFromLine: line toCustomer: newCustomer ]!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:19:37' prior: 50629095!
+importDataFromLine: aLine
+
+	| newCustomer |
+	(self lineIsCustomer: aLine) ifTrue: [ newCustomer := self addCustomerFromLine: aLine ].
+	(self lineIsAddress: aLine) ifTrue: [ self addAddressFromLine: aLine toCustomer: newCustomer ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:19:55' prior: 50629107 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [self importDataFromLine: line.
+		 line := readStream nextLine.  ].
+
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 19:19:57'!
+ERROR!
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 19:19:57'!
+ERROR!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:16:49' prior: 50629137 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	"| line newCustomer |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: "[| line newCustomer |
+		(self lineIsCustomer: line) ifTrue: [ newCustomer := self addCustomerFromLine: line ].
+		(self lineIsAddress: line) ifTrue: [ self addAddressFromLine: line toCustomer: newCustomer ].
+
+		" line := readStream nextLine. " ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:22:10' prior: 50629151 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| line newCustomer |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(self lineIsCustomer: line) ifTrue: [ newCustomer := self addCustomerFromLine: line ].
+		(self lineIsAddress: line) ifTrue: [ self addAddressFromLine: line toCustomer: newCustomer ].
+
+		 line := readStream nextLine.  ].
+
+	! !
+
+!methodRemoval: CustomerImporter #importDataFromLine: stamp: 'LMR 6/26/2023 19:22:22'!
+importDataFromLine: aLine
+
+	| newCustomer |
+	(self lineIsCustomer: aLine) ifTrue: [ newCustomer := self addCustomerFromLine: aLine ].
+	(self lineIsAddress: aLine) ifTrue: [ self addAddressFromLine: aLine toCustomer: newCustomer ]!
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 19:22:28'!
+FAILURE!
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 19:22:37'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:24:30' prior: 50629167 overrides: 16902254!
+value
+
+	| line newCustomer |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(self lineIsCustomer: line) ifTrue: [ newCustomer := self addCustomerFromLine: line ].
+		(self lineIsAddress: line) ifTrue: [ self addAddressFromLine: line toCustomer: newCustomer ].
+		 line := readStream nextLine.  ].
+
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 19:24:35'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:30:15' prior: 50629018!
+addCustomerFromLine: line
+
+	| customerData newCustomer |
+	customerData := line findTokens: $,.
+	newCustomer := Customer fromData: customerData.
+	session persist: newCustomer.
+	^newCustomer.! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 19:30:19'!
+ERROR!
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 19:30:19'!
+ERROR!
+!Customer class methodsFor: 'instance creation' stamp: 'LMR 6/26/2023 19:30:25'!
+fromData: anOrderedCollection 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeFromData: anOrderedCollection ! !
+!Customer class methodsFor: 'instance creation' stamp: 'LMR 6/26/2023 19:30:40' prior: 50629227!
+fromData: anOrderedCollection 
+	
+	^self new initializeFromData: anOrderedCollection ! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 19:30:40'!
+ERROR!
+
+!classDefinition: #Customer category: 'CustomerImporter' stamp: 'LMR 6/26/2023 19:30:44'!
+Object subclass: #Customer
+	instanceVariableNames: 'id firstName lastName identificationType identificationNumber addresses orderedCollection'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!Customer methodsFor: 'initialization' stamp: 'LMR 6/26/2023 19:30:44'!
+initializeFromData: anOrderedCollection 
+	self shouldBeImplemented.
+	orderedCollection := anOrderedCollection.! !
+!Customer methodsFor: 'initialization' stamp: 'LMR 6/26/2023 19:31:44' prior: 50629254!
+initializeFromData: customerData 
+	
+	self firstName: customerData second.
+	self lastName: customerData third.
+	self identificationType: customerData fourth.
+	self identificationNumber: customerData fifth.! !
+!Customer methodsFor: 'initialization' stamp: 'LMR 6/26/2023 19:32:07' prior: 50629261!
+initializeFromData: customerData 
+	
+	firstName := customerData second.
+	self lastName: customerData third.
+	self identificationType: customerData fourth.
+	self identificationNumber: customerData fifth.! !
+!Customer methodsFor: 'initialization' stamp: 'LMR 6/26/2023 19:32:51' prior: 50629271!
+initializeFromData: customerData 
+	
+	firstName := customerData second.
+	lastName := customerData third.
+	identificationType := customerData fourth.
+	identificationNumber := customerData fifth.! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 19:32:54'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 19:33:02'!
+PASSED!
+
+Object subclass: #Customer
+	instanceVariableNames: 'id firstName lastName identificationType identificationNumber addresses'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classDefinition: #Customer category: 'CustomerImporter' stamp: 'LMR 6/26/2023 19:33:31'!
+Object subclass: #Customer
+	instanceVariableNames: 'id firstName lastName identificationType identificationNumber addresses'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!Customer class methodsFor: 'instance creation' stamp: 'LMR 6/26/2023 19:33:42' prior: 50629236!
+fromData: customerData 
+	
+	^self new initializeFromData: customerData ! !
+!Customer methodsFor: 'initialization' stamp: 'LMR 6/26/2023 19:34:24' prior: 50629281!
+initializeFromData: customerData 
+	
+	firstName := customerData second.
+	lastName := customerData third.
+	identificationType := customerData fourth.
+	identificationNumber := customerData fifth.
+	addresses := OrderedCollection new.! !
+!Customer methodsFor: 'initialization' stamp: 'LMR 6/26/2023 19:35:03' prior: 50629317!
+initializeFromData: customerData 
+	
+	super initialize.
+	firstName := customerData second.
+	lastName := customerData third.
+	identificationType := customerData fourth.
+	identificationNumber := customerData fifth.
+	addresses := OrderedCollection new.! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 19:35:07'!
+PASSED!
+
+!methodRemoval: Customer #initialize stamp: 'LMR 6/26/2023 19:35:12'!
+initialize
+
+	super initialize.
+	addresses := OrderedCollection new.!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:38:34' prior: 50629197 overrides: 16902254!
+value
+
+	| linex newCustomer |
+
+	linex := readStream nextLine.
+	[ linex notNil ] whileTrue: [
+		(self lineIsCustomer: linex) ifTrue: [ newCustomer := self addCustomerFromLine: linex ].
+		(self lineIsAddress: linex) ifTrue: [ self addAddressFromLine: linex toCustomer: newCustomer ].
+		 linex := readStream nextLine.  ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:38:38' prior: 50629347 overrides: 16902254!
+value
+
+	| linex newCustomerx |
+
+	linex := readStream nextLine.
+	[ linex notNil ] whileTrue: [
+		(self lineIsCustomer: linex) ifTrue: [ newCustomerx := self addCustomerFromLine: linex ].
+		(self lineIsAddress: linex) ifTrue: [ self addAddressFromLine: linex toCustomer: newCustomerx ].
+		 linex := readStream nextLine.  ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:38:47' prior: 50628820!
+lineIsCustomer: x
+
+	^ x beginsWith: 'C'! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:38:53' prior: 50629375!
+lineIsCustomer: linex
+
+	^ linex beginsWith: 'C'! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:39:00' prior: 50628858!
+lineIsAddress: linex
+
+	^ linex beginsWith: 'A'! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:39:05' prior: 50629213!
+addCustomerFromLine: linex
+
+	| customerData newCustomer |
+	customerData := linex findTokens: $,.
+	newCustomer := Customer fromData: customerData.
+	session persist: newCustomer.
+	^newCustomer.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:39:20' prior: 50629390!
+addCustomerFromLine: linex
+
+	| customerData newCustomerx |
+	customerData := linex findTokens: $,.
+	newCustomerx := Customer fromData: customerData.
+	session persist: newCustomerx.
+	^newCustomerx.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:39:31' prior: 50628935!
+addAddressFromLine: linex toCustomer: newCustomer
+
+	| addressData newAddress |
+	addressData := linex findTokens: $,.
+	newAddress := Address new.
+	newCustomer addAddress: newAddress.
+	newAddress streetName: addressData second.
+	newAddress streetNumber: addressData third asNumber .
+	newAddress town: addressData fourth.
+	newAddress zipCode: addressData fifth asNumber .
+	newAddress province: addressData sixth! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:39:35' prior: 50629409!
+addAddressFromLine: linex toCustomer: newCustomerx
+
+	| addressData newAddress |
+	addressData := linex findTokens: $,.
+	newAddress := Address new.
+	newCustomerx addAddress: newAddress.
+	newAddress streetName: addressData second.
+	newAddress streetNumber: addressData third asNumber .
+	newAddress town: addressData fourth.
+	newAddress zipCode: addressData fifth asNumber .
+	newAddress province: addressData sixth! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:39:59' prior: 50629361 overrides: 16902254!
+value
+
+	| line newCustomerx |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(self lineIsCustomer: line) ifTrue: [ newCustomerx := self addCustomerFromLine: line ].
+		(self lineIsAddress: line) ifTrue: [ self addAddressFromLine: line toCustomer: newCustomerx ].
+		 line := readStream nextLine.  ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:40:02' prior: 50629442 overrides: 16902254!
+value
+
+	| line newCustomer |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(self lineIsCustomer: line) ifTrue: [ newCustomer := self addCustomerFromLine: line ].
+		(self lineIsAddress: line) ifTrue: [ self addAddressFromLine: line toCustomer: newCustomer ].
+		 line := readStream nextLine.  ].
+
+	! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'LMR 6/26/2023 19:40:05' prior: 50629456 overrides: 16902254!
+value
+
+	|  newCustomer |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(self lineIsCustomer: line) ifTrue: [ newCustomer := self addCustomerFromLine: line ].
+		(self lineIsAddress: line) ifTrue: [ self addAddressFromLine: line toCustomer: newCustomer ].
+		 line := readStream nextLine.  ].
+
+	! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'LMR 6/26/2023 19:40:05'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream line'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'LMR 6/26/2023 19:40:09' prior: 50629470 overrides: 16902254!
+value
+
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(self lineIsCustomer: line) ifTrue: [ newCustomer := self addCustomerFromLine: line ].
+		(self lineIsAddress: line) ifTrue: [ self addAddressFromLine: line toCustomer: newCustomer ].
+		 line := readStream nextLine.  ].
+
+	! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'LMR 6/26/2023 19:40:09'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream line newCustomer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:40:13' prior: 50629492 overrides: 16902254!
+value
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(self lineIsCustomer: line) ifTrue: [ newCustomer := self addCustomerFromLine: line ].
+		(self lineIsAddress: line) ifTrue: [ self addAddressFromLine: line toCustomer: newCustomer ].
+		 line := readStream nextLine.  ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:40:31'!
+lineIsCustomer
+
+	^line beginsWith: 'C'! !
+
+!methodRemoval: CustomerImporter #lineIsCustomer: stamp: 'LMR 6/26/2023 19:40:34'!
+lineIsCustomer: linex
+
+	^ linex beginsWith: 'C'!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:40:46'!
+lineIsAddress
+
+	^line beginsWith: 'A'! !
+
+!methodRemoval: CustomerImporter #lineIsAddress: stamp: 'LMR 6/26/2023 19:40:49'!
+lineIsAddress: linex
+
+	^ linex beginsWith: 'A'!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:41:02'!
+addCustomerFromLine
+
+	| customerData |
+	customerData := line findTokens: $,.
+	newCustomer := Customer fromData: customerData.
+	session persist: newCustomer.
+	^newCustomer.! !
+
+!methodRemoval: CustomerImporter #addCustomerFromLine: stamp: 'LMR 6/26/2023 19:41:13'!
+addCustomerFromLine: linex
+
+	| customerData newCustomerx |
+	customerData := linex findTokens: $,.
+	newCustomerx := Customer fromData: customerData.
+	session persist: newCustomerx.
+	^newCustomerx.!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:41:31'!
+addAddressFromLineToCustomer
+
+	| addressData newAddress |
+	addressData := line findTokens: $,.
+	newAddress := Address new.
+	newCustomer addAddress: newAddress.
+	newAddress streetName: addressData second.
+	newAddress streetNumber: addressData third asNumber .
+	newAddress town: addressData fourth.
+	newAddress zipCode: addressData fifth asNumber .
+	newAddress province: addressData sixth! !
+
+!methodRemoval: CustomerImporter #addAddressFromLine:toCustomer: stamp: 'LMR 6/26/2023 19:41:33'!
+addAddressFromLine: linex toCustomer: newCustomerx
+
+	| addressData newAddress |
+	addressData := linex findTokens: $,.
+	newAddress := Address new.
+	newCustomerx addAddress: newAddress.
+	newAddress streetName: addressData second.
+	newAddress streetNumber: addressData third asNumber .
+	newAddress town: addressData fourth.
+	newAddress zipCode: addressData fifth asNumber .
+	newAddress province: addressData sixth!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:41:54' prior: 50629514 overrides: 16902254!
+value
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(self lineIsCustomer) ifTrue: [ newCustomer := self addCustomerFromLine ].
+		(self lineIsAddress) ifTrue: [ self addAddressFromLineToCustomer ].
+		 line := readStream nextLine.  ].
+
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 19:41:56'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:43:47'!
+importDataFromCurrentLine
+
+	(self lineIsCustomer) ifTrue: [ newCustomer := self addCustomerFromLine ].
+		(self lineIsAddress) ifTrue: [ self addAddressFromLineToCustomer ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:43:47' prior: 50629591 overrides: 16902254!
+value
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		self importDataFromCurrentLine.
+		 line := readStream nextLine.  ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:44:02' prior: 50629613 overrides: 16902254!
+value
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		self importDataFromCurrentLine.
+		line := readStream nextLine.  ].
+
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 19:44:04'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:45:06' prior: 50629559!
+addAddressFromLineToCustomer
+
+	| addressData newAddress |
+	addressData := line findTokens: $,.
+	newAddress := Address fromData: addressData.
+	newCustomer addAddress: newAddress.! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 19:45:29'!
+ERROR!
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 19:45:29'!
+ERROR!
+!Address class methodsFor: 'instance creation' stamp: 'LMR 6/26/2023 19:45:32'!
+fromData: anOrderedCollection 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeFromData: anOrderedCollection ! !
+!Address class methodsFor: 'instance creation' stamp: 'LMR 6/26/2023 19:45:50' prior: 50629644!
+fromData: addressData 
+	
+	^self new initializeFromData: addressData ! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 19:45:51'!
+ERROR!
+
+!classDefinition: #Address category: 'CustomerImporter' stamp: 'LMR 6/26/2023 19:46:00'!
+Object subclass: #Address
+	instanceVariableNames: 'id streetName streetNumber town zipCode province addressData_CHANGE_ME'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!Address methodsFor: 'initialization' stamp: 'LMR 6/26/2023 19:46:00'!
+initializeFromData: addressData 
+	self shouldBeImplemented.
+	addressData_CHANGE_ME := addressData.! !
+!Address methodsFor: 'initialization' stamp: 'LMR 6/26/2023 19:46:37' prior: 50629669!
+initializeFromData: addressData 
+	
+	streetName := addressData second.
+	streetNumber := addressData third asNumber .
+	town := addressData fourth.
+	zipCode := addressData fifth asNumber .
+	province := addressData sixth.! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 19:46:44'!
+PASSED!
+
+Object subclass: #Address
+	instanceVariableNames: 'id streetName streetNumber town zipCode province'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classDefinition: #Address category: 'CustomerImporter' stamp: 'LMR 6/26/2023 19:47:22'!
+Object subclass: #Address
+	instanceVariableNames: 'id streetName streetNumber town zipCode province'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 19:47:36'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:48:10' prior: 50629631!
+addAddressFromLineToCustomer
+
+	| addressData |
+	addressData := line findTokens: $,.
+	newCustomer addAddress: Address fromData: addressData.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:48:45' prior: 50629704!
+addAddressFromLineToCustomer
+
+	| addressData |
+	addressData := line findTokens: $,.
+	newCustomer addAddress: (Address fromData: addressData).! !
+
+----SNAPSHOT----(26 June 2023 19:49:44) CuisUniversity-5832.image priorSource: 9509325!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:50:19' prior: 50629542!
+addCustomerFromLine
+
+	| customerData |
+	customerData := line findTokens: $,.
+	newCustomer := Customer fromData: customerData.
+	session persist: newCustomer.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:50:33' prior: 50629604!
+importDataFromCurrentLine
+
+	(self lineIsCustomer) ifTrue: [ self addCustomerFromLine ].
+		(self lineIsAddress) ifTrue: [ self addAddressFromLineToCustomer ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 19:50:40' prior: 50629731!
+importDataFromCurrentLine
+
+	(self lineIsCustomer) ifTrue: [ self addCustomerFromLine ].
+	(self lineIsAddress) ifTrue: [ self addAddressFromLineToCustomer ].! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 19:50:44'!
+PASSED!
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'LMR 6/26/2023 20:01:18'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream line newCustomer lineFields'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter methodsFor: 'category-name' stamp: 'LMR 6/26/2023 20:01:16' prior: 50629739!
+importDataFromCurrentLine
+
+	lineFields := line findTokens: $,.
+	(self lineIsCustomer) ifTrue: [ self addCustomerFromLine ].
+	(self lineIsAddress) ifTrue: [ self addAddressFromLineToCustomer ].! !
+!CustomerImporter methodsFor: 'category-name' stamp: 'LMR 6/26/2023 20:01:30' prior: 50629723!
+addCustomerFromLine
+
+	| customerData |
+	customerData := lineFields.
+	newCustomer := Customer fromData: customerData.
+	session persist: newCustomer.! !
+!CustomerImporter methodsFor: 'category-name' stamp: 'LMR 6/26/2023 20:01:38' prior: 50629712!
+addAddressFromLineToCustomer
+
+	| addressData |
+	addressData := lineFields.
+	newCustomer addAddress: (Address fromData: addressData).! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 20:01:41'!
+PASSED!
+!CustomerImporter methodsFor: 'category-name' stamp: 'LMR 6/26/2023 20:08:34' prior: 50629769!
+addCustomerFromLine
+
+	newCustomer := Customer fromData: lineFields.
+	session persist: newCustomer.! !
+!CustomerImporter methodsFor: 'category-name' stamp: 'LMR 6/26/2023 20:08:41' prior: 50629777!
+addAddressFromLineToCustomer
+
+	newCustomer addAddress: (Address fromData: lineFields).! !
+!CustomerImporter methodsFor: 'category-name' stamp: 'LMR 6/26/2023 20:12:41'!
+isCustomerRecord
+
+	^line beginsWith: 'C'! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'LMR 6/26/2023 20:12:41' prior: 50629759!
+importDataFromCurrentLine
+
+	lineFields := line findTokens: $,.
+	(self isCustomerRecord) ifTrue: [ self addCustomerFromLine ].
+	(self lineIsAddress) ifTrue: [ self addAddressFromLineToCustomer ].! !
+
+!methodRemoval: CustomerImporter #lineIsCustomer stamp: 'LMR 6/26/2023 20:12:41'!
+lineIsCustomer
+
+	^line beginsWith: 'C'!
+!CustomerImporter methodsFor: 'category-name' stamp: 'LMR 6/26/2023 20:14:04' prior: 50629800!
+isCustomerRecord
+
+	^lineFields first = 'C'! !
+!CustomerImporter methodsFor: 'category-name' stamp: 'LMR 6/26/2023 20:14:47'!
+isAddressRecord
+
+	^line beginsWith: 'A'! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'LMR 6/26/2023 20:14:47' prior: 50629805!
+importDataFromCurrentLine
+
+	lineFields := line findTokens: $,.
+	(self isCustomerRecord) ifTrue: [ self addCustomerFromLine ].
+	(self isAddressRecord) ifTrue: [ self addAddressFromLineToCustomer ].! !
+
+!methodRemoval: CustomerImporter #lineIsAddress stamp: 'LMR 6/26/2023 20:14:47'!
+lineIsAddress
+
+	^line beginsWith: 'A'!
+!CustomerImporter methodsFor: 'category-name' stamp: 'LMR 6/26/2023 20:14:51' prior: 50629822!
+isAddressRecord
+
+	^lineFields first = 'A'! !
+!CustomerImporter methodsFor: 'category-name' stamp: 'LMR 6/26/2023 20:15:22'!
+separateLineIntoFields
+
+	^ lineFields := line findTokens: $,! !
+!CustomerImporter methodsFor: 'category-name' stamp: 'LMR 6/26/2023 20:15:22' prior: 50629827!
+importDataFromCurrentLine
+
+	self separateLineIntoFields.
+	(self isCustomerRecord) ifTrue: [ self addCustomerFromLine ].
+	(self isAddressRecord) ifTrue: [ self addAddressFromLineToCustomer ].! !
+!CustomerImporter methodsFor: 'category-name' stamp: 'LMR 6/26/2023 20:15:30' prior: 50629844!
+separateLineIntoFields
+
+	lineFields := line findTokens: $,! !
+!CustomerImporter methodsFor: 'category-name' stamp: 'LMR 6/26/2023 20:15:45' prior: 50629849!
+importDataFromCurrentLine
+
+	self separateLineIntoFields.
+	self isCustomerRecord ifTrue: [ self addCustomerFromLine ].
+	self isAddressRecord ifTrue: [ self addAddressFromLineToCustomer ].! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 20:15:54'!
+PASSED!
+!CustomerImporter methodsFor: 'category-name' stamp: 'LMR 6/26/2023 20:16:35'!
+importAddress
+
+	newCustomer addAddress: (Address fromData: lineFields).! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'LMR 6/26/2023 20:16:35' prior: 50629864!
+importDataFromCurrentLine
+
+	self separateLineIntoFields.
+	self isCustomerRecord ifTrue: [ self addCustomerFromLine ].
+	self isAddressRecord ifTrue: [ self importAddress ].! !
+
+!methodRemoval: CustomerImporter #addAddressFromLineToCustomer stamp: 'LMR 6/26/2023 20:16:35'!
+addAddressFromLineToCustomer
+
+	newCustomer addAddress: (Address fromData: lineFields).!
+!CustomerImporter methodsFor: 'category-name' stamp: 'LMR 6/26/2023 20:16:46'!
+importCustomer
+
+	newCustomer := Customer fromData: lineFields.
+	session persist: newCustomer.! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'LMR 6/26/2023 20:16:46' prior: 50629881!
+importDataFromCurrentLine
+
+	self separateLineIntoFields.
+	self isCustomerRecord ifTrue: [ self importCustomer ].
+	self isAddressRecord ifTrue: [ self importAddress ].! !
+
+!methodRemoval: CustomerImporter #addCustomerFromLine stamp: 'LMR 6/26/2023 20:16:46'!
+addCustomerFromLine
+
+	newCustomer := Customer fromData: lineFields.
+	session persist: newCustomer.!
+!CustomerImporter methodsFor: 'category-name' stamp: 'LMR 6/26/2023 20:19:26'!
+extractFields
+
+	lineFields := line findTokens: $,! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'LMR 6/26/2023 20:19:26' prior: 50629902!
+importDataFromCurrentLine
+
+	self extractFields.
+	self isCustomerRecord ifTrue: [ self importCustomer ].
+	self isAddressRecord ifTrue: [ self importAddress ].! !
+
+!methodRemoval: CustomerImporter #separateLineIntoFields stamp: 'LMR 6/26/2023 20:19:26'!
+separateLineIntoFields
+
+	lineFields := line findTokens: $,!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 20:20:35' prior: 50629621 overrides: 16902254!
+value
+
+	[ line := readStream nextLine.
+	line notNil ] whileTrue: [ self importDataFromCurrentLine ].
+
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 20:20:39'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 20:21:13'!
+hasNextLine
+
+	line := readStream nextLine.
+	line notNil! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 20:21:13' prior: 50629935 overrides: 16902254!
+value
+
+	[ self hasNextLine ] whileTrue: [ self importDataFromCurrentLine ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/26/2023 20:21:27' prior: 50629950 overrides: 16902254!
+value
+
+	[ self hasNextLine ] whileTrue: [ self importDataFromCurrentLine ].! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 20:21:28'!
+ERROR!
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 20:21:28'!
+ERROR!
+!CustomerImporter methodsFor: 'category-name' stamp: 'LMR 6/26/2023 20:21:40' prior: 50629944!
+hasNextLine
+
+	line := readStream nextLine.
+	^line notNil! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 20:22:17'!
+PASSED!
+
+----SNAPSHOT----(26 June 2023 20:27:57) CuisUniversity-5832.image priorSource: 9538192!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 20:43:38'!
+test02Import
+
+	self should: [CustomerImporter valueFrom: nil into: session] raise: Error - MessageNotUnderstood withMessageText: [:messageText | self assert: CustomerImporter inputStreamCanNotBeEmptyErrorDescription equals: messageText].! !
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 20:44:21' prior: 50629978!
+test02Import
+
+	self should: [CustomerImporter valueFrom: nil into: session] raise: Error - MessageNotUnderstood withMessageText: [:messageText | self assert: CustomerImporter nilInputErrorDescription equals: messageText].! !
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 20:44:30' prior: 50629989!
+test02Import
+
+	self should: [CustomerImporter valueFrom: nil into: session] raise: Error - MessageNotUnderstood withMessageText: [:messageText | self assert: CustomerImporter nilInputErrorDescription equals: messageText].! !
+!CustomerImporter class methodsFor: 'nil' stamp: 'LMR 6/26/2023 20:45:01'!
+nilInputErrorDescription
+
+	^'Input stream is nil'! !
+!CustomerImporter class methodsFor: 'instance creation' stamp: 'LMR 6/26/2023 20:46:22' prior: 50628702!
+from: aReadStream into: aSession
+	
+	aReadStream ifNil: [self error: self nilInputErrorDescription].
+	^self new initializeFrom: aReadStream into: aSession! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 20:46:35'!
+PASSED!
+
+!testRun: #ImportTest #test02Import stamp: 'LMR 6/26/2023 20:46:35'!
+ERROR!
+
+!testRun: #ImportTest #test02Import stamp: 'LMR 6/26/2023 20:46:35'!
+ERROR!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 20:47:56' prior: 50629999!
+test02Import
+
+	self should: [CustomerImporter valueFrom: nil into: session] raise: Error - MessageNotUnderstood withExceptionDo: [:anError | self assert: CustomerImporter nilInputErrorDescription equals: anError messageText].! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 20:48:06'!
+PASSED!
+
+!testRun: #ImportTest #test02Import stamp: 'LMR 6/26/2023 20:48:06'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 20:49:37' prior: 50628410!
+test01Import
+
+	CustomerImporter valueFrom: self validImportData into: session.
+
+	self assertImportedRightNumberOfCustomers.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly ! !
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 20:52:13'!
+test03Import
+
+	| inputStream |
+	inputStream := ReadStream on: 'A,San Martin,3322,Olivos,1636,BsAs
+C,Pepe,Sanchez,D,22333444
+A,Maipu,888,Florida,1122,Buenos Aires'.
+	self should: [CustomerImporter valueFrom: inputStream into: session] raise: Error - MessageNotUnderstood withExceptionDo: [:anError | self assert: CustomerImporter canNotAddAddressBeforeCustomerErrorDescription equals: anError messageText].! !
+!CustomerImporter class methodsFor: 'error description' stamp: 'LMR 6/26/2023 20:52:55'!
+canNotAddAddressBeforeCustomerErrorDescription
+
+	^'Can not add address before customer'! !
+!CustomerImporter class methodsFor: 'error description' stamp: 'LMR 6/26/2023 20:53:50'!
+firstLineAddressErrorDescription
+
+	^'Can not add address before customer'! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'LMR 6/26/2023 20:53:50' prior: 50630053!
+test03Import
+
+	| inputStream |
+	inputStream := ReadStream on: 'A,San Martin,3322,Olivos,1636,BsAs
+C,Pepe,Sanchez,D,22333444
+A,Maipu,888,Florida,1122,Buenos Aires'.
+	self should: [CustomerImporter valueFrom: inputStream into: session] raise: Error - MessageNotUnderstood withExceptionDo: [:anError | self assert: CustomerImporter firstLineAddressErrorDescription equals: anError messageText].! !
+
+!methodRemoval: CustomerImporter class #canNotAddAddressBeforeCustomerErrorDescription stamp: 'LMR 6/26/2023 20:53:50'!
+canNotAddAddressBeforeCustomerErrorDescription
+
+	^'Can not add address before customer'!
+!CustomerImporter class methodsFor: 'error description' stamp: 'LMR 6/26/2023 20:54:25' prior: 50630075!
+firstLineAddressErrorDescription
+
+	^'First line can not be an address'! !
+
+!testRun: #ImportTest #test03Import stamp: 'LMR 6/26/2023 20:54:34'!
+ERROR!
+!CustomerImporter methodsFor: 'category-name' stamp: 'LMR 6/26/2023 20:56:46' prior: 50629875!
+importAddress
+
+	newCustomer ifNil: [self error: self class firstLineAddressErrorDescription].
+	newCustomer addAddress: (Address fromData: lineFields).! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 20:56:48'!
+PASSED!
+
+!testRun: #ImportTest #test02Import stamp: 'LMR 6/26/2023 20:56:49'!
+PASSED!
+
+!testRun: #ImportTest #test03Import stamp: 'LMR 6/26/2023 20:56:49'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 21:01:52'!
+test04Import
+
+	| inputStream |
+	inputStream := ReadStream on: 'C,Pepe,San,chez,D,22333444'.
+	self should: [CustomerImporter valueFrom: inputStream into: session] raise: Error - MessageNotUnderstood withExceptionDo: [:anError | self assert: CustomerImporter InvalidAmountOfFieldsErrorDescription equals: anError messageText].! !
+
+!testRun: #ImportTest #test04Import stamp: 'LMR 6/26/2023 21:02:00'!
+FAILURE!
+!CustomerImporter class methodsFor: 'error description' stamp: 'LMR 6/26/2023 21:02:38'!
+InvalidAmountOfFieldsErrorDescription
+
+	^'Invalid amount of fields'! !
+!CustomerImporter methodsFor: 'category-name' stamp: 'LMR 6/26/2023 21:04:47' prior: 50629895!
+importCustomer
+
+	lineFields size = 5 ifFalse: [self error: self class InvalidAmountOfFieldsErrorDescription].
+	newCustomer := Customer fromData: lineFields.
+	session persist: newCustomer.! !
+
+!testRun: #ImportTest #test04Import stamp: 'LMR 6/26/2023 21:04:53'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 21:04:54'!
+PASSED!
+
+!testRun: #ImportTest #test02Import stamp: 'LMR 6/26/2023 21:04:54'!
+PASSED!
+
+!testRun: #ImportTest #test03Import stamp: 'LMR 6/26/2023 21:04:54'!
+PASSED!
+
+!testRun: #ImportTest #test04Import stamp: 'LMR 6/26/2023 21:04:54'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 21:05:46'!
+test05Import
+
+	| inputStream |
+	inputStream := ReadStream on: 'C,Pepe,Sanchez,D,22333444
+A,San Ma,rtin,3322,Olivos,1636,BsAs'.
+	self should: [CustomerImporter valueFrom: inputStream into: session] raise: Error - MessageNotUnderstood withExceptionDo: [:anError | self assert: CustomerImporter InvalidAmountOfFieldsErrorDescription equals: anError messageText].! !
+
+!testRun: #ImportTest #test05Import stamp: 'LMR 6/26/2023 21:05:48'!
+FAILURE!
+!CustomerImporter methodsFor: 'category-name' stamp: 'LMR 6/26/2023 21:06:19' prior: 50630112!
+importAddress
+
+	lineFields size = 6 ifFalse: [self error: self class InvalidAmountOfFieldsErrorDescription].
+	newCustomer ifNil: [self error: self class firstLineAddressErrorDescription].
+	newCustomer addAddress: (Address fromData: lineFields).! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 21:06:21'!
+PASSED!
+
+!testRun: #ImportTest #test02Import stamp: 'LMR 6/26/2023 21:06:21'!
+PASSED!
+
+!testRun: #ImportTest #test03Import stamp: 'LMR 6/26/2023 21:06:21'!
+PASSED!
+
+!testRun: #ImportTest #test04Import stamp: 'LMR 6/26/2023 21:06:21'!
+PASSED!
+
+!testRun: #ImportTest #test05Import stamp: 'LMR 6/26/2023 21:06:21'!
+PASSED!
+
+record := 'A,San Martin,3322,Olivos,1636,BsAs'.
+comas := record count: $,.!
+
+record := 'A,San Martin,3322,Olivos,1636,BsAs'.!
+
+comas := record count: $,!
+
+comas := record count: $,.!
+
+comas := record count: [$,].!
+
+comas := record count: [:aChar | aChar = $,].!
+
+comas := record count: [:aChar | aChar = $,].!
+
+comas := record occurrencesOf: $,.!
+
+record := 'A,San Martin,3322,Olivos,1636,BsAs'.
+comas := record occurrencesOf: $,.
+
+record size - 1 = comas.!
+
+line := 'A,San Martin,3322,Olivos,1636,BsAs'.
+record := line findTokens: $,.
+comas := record occurrencesOf: $,.
+
+record size - 1 = comas. false !
+
+record := line findTokens: $,.!
+
+comas := record occurrencesOf: $,.!
+
+line := 'A,San Martin,3322,Olivos,1636,BsAs'.
+record := line findTokens: $,.
+comas := line occurrencesOf: $,.
+
+record size - 1 = comas.!
+
+line := 'A,San Martin,,3322,Olivos,1636,BsAs'.
+record := line findTokens: $,.
+comas := line occurrencesOf: $,.
+
+record size - 1 = comas.!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 21:23:03'!
+test06Import
+
+	| inputStream |
+	inputStream := ReadStream on: 'C,Pepe,,Sanchez,D,22333444'.
+	self should: [CustomerImporter valueFrom: inputStream into: session] raise: Error - MessageNotUnderstood withExceptionDo: [:anError | self assert: CustomerImporter emptyFieldErrorDescription equals: anError messageText].! !
+!CustomerImporter class methodsFor: 'error description' stamp: 'LMR 6/26/2023 21:23:45'!
+emptyFieldErrorDescription
+
+	^'Empty field'! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 21:25:22'!
+PASSED!
+
+!testRun: #ImportTest #test02Import stamp: 'LMR 6/26/2023 21:25:22'!
+PASSED!
+
+!testRun: #ImportTest #test03Import stamp: 'LMR 6/26/2023 21:25:22'!
+PASSED!
+
+!testRun: #ImportTest #test04Import stamp: 'LMR 6/26/2023 21:25:22'!
+PASSED!
+
+!testRun: #ImportTest #test05Import stamp: 'LMR 6/26/2023 21:25:22'!
+PASSED!
+
+!testRun: #ImportTest #test06Import stamp: 'LMR 6/26/2023 21:25:23'!
+FAILURE!
+
+!testRun: #ImportTest #test06Import stamp: 'LMR 6/26/2023 21:25:23'!
+FAILURE!
+!CustomerImporter methodsFor: 'category-name' stamp: 'LMR 6/26/2023 21:25:48' prior: 50629916!
+extractFields
+
+	lineFields := line findTokens: $,.
+	(lineFields size - 1 = line occurrencesOf: $,) ifFalse: [self error: self class emptyFieldErrorDescription].! !
+
+!testRun: #ImportTest #test06Import stamp: 'LMR 6/26/2023 21:25:52'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 21:25:59'!
+ERROR!
+
+!testRun: #ImportTest #test02Import stamp: 'LMR 6/26/2023 21:25:59'!
+PASSED!
+
+!testRun: #ImportTest #test03Import stamp: 'LMR 6/26/2023 21:25:59'!
+ERROR!
+
+!testRun: #ImportTest #test04Import stamp: 'LMR 6/26/2023 21:25:59'!
+ERROR!
+
+!testRun: #ImportTest #test05Import stamp: 'LMR 6/26/2023 21:25:59'!
+ERROR!
+
+!testRun: #ImportTest #test06Import stamp: 'LMR 6/26/2023 21:25:59'!
+ERROR!
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 21:26:10'!
+ERROR!
+!CustomerImporter methodsFor: 'category-name' stamp: 'LMR 6/26/2023 21:26:48' prior: 50630274!
+extractFields
+
+	lineFields := line findTokens: $,.
+	lineFields size - 1 = (line occurrencesOf: $,) ifFalse: [self error: self class emptyFieldErrorDescription].! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 21:26:49'!
+PASSED!
+
+!testRun: #ImportTest #test02Import stamp: 'LMR 6/26/2023 21:26:50'!
+PASSED!
+
+!testRun: #ImportTest #test03Import stamp: 'LMR 6/26/2023 21:26:50'!
+PASSED!
+
+!testRun: #ImportTest #test04Import stamp: 'LMR 6/26/2023 21:26:50'!
+PASSED!
+
+!testRun: #ImportTest #test05Import stamp: 'LMR 6/26/2023 21:26:50'!
+PASSED!
+
+!testRun: #ImportTest #test06Import stamp: 'LMR 6/26/2023 21:26:50'!
+PASSED!
+
+----SNAPSHOT----(26 June 2023 21:27:06) CuisUniversity-5832.image priorSource: 9546377!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 21:35:14'!
+test07Import
+
+	| inputStream |
+	inputStream := ReadStream on: 'J,Pepe,Sanchez,D,22333444'.
+	self should: [CustomerImporter valueFrom: inputStream into: session] raise: Error - MessageNotUnderstood withExceptionDo: [:anError | self assert: CustomerImporter invalidRecordErrorDescrition equals: anError messageText].! !
+
+!testRun: #ImportTest #test07Import stamp: 'LMR 6/26/2023 21:35:31'!
+FAILURE!
+!CustomerImporter class methodsFor: 'error description' stamp: 'LMR 6/26/2023 21:37:08'!
+invalidRecordErrorDescrition
+
+	^'Invalid record'! !
+!CustomerImporter methodsFor: 'category-name' stamp: 'LMR 6/26/2023 21:38:10' prior: 50629921!
+importDataFromCurrentLine
+
+	self extractFields.
+	self isCustomerRecord ifTrue: [ self importCustomer. ^self ].
+	self isAddressRecord ifTrue: [ self importAddress. ^self].
+	self error: self class invalidRecordErrorDescrition.! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 21:38:13'!
+PASSED!
+
+!testRun: #ImportTest #test02Import stamp: 'LMR 6/26/2023 21:38:13'!
+PASSED!
+
+!testRun: #ImportTest #test03Import stamp: 'LMR 6/26/2023 21:38:13'!
+PASSED!
+
+!testRun: #ImportTest #test04Import stamp: 'LMR 6/26/2023 21:38:13'!
+PASSED!
+
+!testRun: #ImportTest #test05Import stamp: 'LMR 6/26/2023 21:38:13'!
+PASSED!
+
+!testRun: #ImportTest #test06Import stamp: 'LMR 6/26/2023 21:38:13'!
+PASSED!
+
+!testRun: #ImportTest #test07Import stamp: 'LMR 6/26/2023 21:38:13'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 21:39:20'!
+test08Import
+
+	| inputStream |
+	inputStream := ReadStream on: ''.
+	CustomerImporter valueFrom: inputStream into: session.
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 21:41:53' prior: 50630375!
+test08Import
+
+	| inputStream |
+	inputStream := ReadStream on: ''.
+	CustomerImporter valueFrom: inputStream into: session.
+	self assert: (session selectAllOfType: Customer) size.
+	self assert: (session selectAllOfType: Address) size.! !
+
+!testRun: #ImportTest #test08Import stamp: 'LMR 6/26/2023 21:41:59'!
+ERROR!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 21:42:15' prior: 50630382!
+test08Import
+
+	| inputStream |
+	inputStream := ReadStream on: ''.
+	CustomerImporter valueFrom: inputStream into: session.
+	self assert: ((session selectAllOfType: Customer) size).
+	self assert: ((session selectAllOfType: Address) size).! !
+
+!testRun: #ImportTest #test08Import stamp: 'LMR 6/26/2023 21:42:16'!
+ERROR!
+
+!testRun: #ImportTest #test08Import stamp: 'LMR 6/26/2023 21:43:07'!
+ERROR!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 21:43:29' prior: 50630395!
+test08Import
+
+	| inputStream |
+	inputStream := ReadStream on: ''.
+	CustomerImporter valueFrom: inputStream into: session.
+	self assert: (session selectAllOfType: Customer) isEmpty.
+	self assert: (session selectAllOfType: Address) isEmpty.! !
+
+!testRun: #ImportTest #test08Import stamp: 'LMR 6/26/2023 21:43:30'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 21:43:31'!
+PASSED!
+
+!testRun: #ImportTest #test02Import stamp: 'LMR 6/26/2023 21:43:31'!
+PASSED!
+
+!testRun: #ImportTest #test03Import stamp: 'LMR 6/26/2023 21:43:31'!
+PASSED!
+
+!testRun: #ImportTest #test04Import stamp: 'LMR 6/26/2023 21:43:31'!
+PASSED!
+
+!testRun: #ImportTest #test05Import stamp: 'LMR 6/26/2023 21:43:31'!
+PASSED!
+
+!testRun: #ImportTest #test06Import stamp: 'LMR 6/26/2023 21:43:31'!
+PASSED!
+
+!testRun: #ImportTest #test07Import stamp: 'LMR 6/26/2023 21:43:31'!
+PASSED!
+
+!testRun: #ImportTest #test08Import stamp: 'LMR 6/26/2023 21:43:31'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 21:43:45'!
+test09Import
+
+	| inputStream |
+	inputStream := ReadStream on: '
+'.
+	CustomerImporter valueFrom: inputStream into: session.
+	self assert: (session selectAllOfType: Customer) isEmpty.
+	self assert: (session selectAllOfType: Address) isEmpty.! !
+
+!testRun: #ImportTest #test09Import stamp: 'LMR 6/26/2023 21:43:47'!
+ERROR!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 21:46:30' prior: 50630442!
+test09Import
+
+	| inputStream |
+	inputStream := ReadStream on: '
+'.
+	self should: [CustomerImporter valueFrom: inputStream into: session] raise: Error.! !
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 21:47:06' prior: 50630455!
+test09Import
+
+	| inputStream |
+	inputStream := ReadStream on: '
+'.
+	self should: [CustomerImporter valueFrom: inputStream into: session] raise: Error - MessageNotUnderstood withExceptionDo: [:anError | self assert: CustomerImporter emptyFieldErrorDescription equals: anError messageText].! !
+
+!testRun: #ImportTest #test09Import stamp: 'LMR 6/26/2023 21:47:07'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 21:47:07'!
+PASSED!
+
+!testRun: #ImportTest #test02Import stamp: 'LMR 6/26/2023 21:47:07'!
+PASSED!
+
+!testRun: #ImportTest #test03Import stamp: 'LMR 6/26/2023 21:47:07'!
+PASSED!
+
+!testRun: #ImportTest #test04Import stamp: 'LMR 6/26/2023 21:47:07'!
+PASSED!
+
+!testRun: #ImportTest #test05Import stamp: 'LMR 6/26/2023 21:47:07'!
+PASSED!
+
+!testRun: #ImportTest #test06Import stamp: 'LMR 6/26/2023 21:47:07'!
+PASSED!
+
+!testRun: #ImportTest #test07Import stamp: 'LMR 6/26/2023 21:47:07'!
+PASSED!
+
+!testRun: #ImportTest #test08Import stamp: 'LMR 6/26/2023 21:47:08'!
+PASSED!
+
+!testRun: #ImportTest #test09Import stamp: 'LMR 6/26/2023 21:47:08'!
+PASSED!
+!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/26/2023 21:50:04' prior: 50630302!
+extractFields
+
+	lineFields := line findTokens: $,.
+	lineFields size - 1 ~= (line occurrencesOf: $,) ifTrue: [self error: self class emptyFieldErrorDescription].! !
+!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/26/2023 21:50:17'!
+hasEmptyFields
+
+	^ lineFields size - 1 ~= (line occurrencesOf: $,)! !
+!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/26/2023 21:50:17' prior: 50630500!
+extractFields
+
+	lineFields := line findTokens: $,.
+	self hasEmptyFields ifTrue: [self error: self class emptyFieldErrorDescription].! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 21:50:25'!
+PASSED!
+
+!testRun: #ImportTest #test02Import stamp: 'LMR 6/26/2023 21:50:25'!
+PASSED!
+
+!testRun: #ImportTest #test03Import stamp: 'LMR 6/26/2023 21:50:25'!
+PASSED!
+
+!testRun: #ImportTest #test04Import stamp: 'LMR 6/26/2023 21:50:25'!
+PASSED!
+
+!testRun: #ImportTest #test05Import stamp: 'LMR 6/26/2023 21:50:26'!
+PASSED!
+
+!testRun: #ImportTest #test06Import stamp: 'LMR 6/26/2023 21:50:26'!
+PASSED!
+
+!testRun: #ImportTest #test07Import stamp: 'LMR 6/26/2023 21:50:26'!
+PASSED!
+
+!testRun: #ImportTest #test08Import stamp: 'LMR 6/26/2023 21:50:26'!
+PASSED!
+
+!testRun: #ImportTest #test09Import stamp: 'LMR 6/26/2023 21:50:26'!
+PASSED!
+!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/26/2023 21:53:32'!
+assertAddressHasCorrectAmountOfFields
+
+	^ lineFields size = 6 ifFalse: [self error: self class InvalidAmountOfFieldsErrorDescription]! !
+!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/26/2023 21:53:32' prior: 50630187!
+importAddress
+
+	self assertAddressHasCorrectAmountOfFields.
+	newCustomer ifNil: [self error: self class firstLineAddressErrorDescription].
+	newCustomer addAddress: (Address fromData: lineFields).! !
+!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/26/2023 21:54:55'!
+assertAddressHasCorrectAmountOfFields: aFieldAmount
+
+	^ lineFields size = 6 ifFalse: [self error: self class InvalidAmountOfFieldsErrorDescription]! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'LMR 6/26/2023 21:54:55' prior: 50630549!
+importAddress
+
+	self assertAddressHasCorrectAmountOfFields: 6.
+	newCustomer ifNil: [self error: self class firstLineAddressErrorDescription].
+	newCustomer addAddress: (Address fromData: lineFields).! !
+
+!methodRemoval: CustomerImporter #assertAddressHasCorrectAmountOfFields stamp: 'LMR 6/26/2023 21:54:55'!
+assertAddressHasCorrectAmountOfFields
+
+	^ lineFields size = 6 ifFalse: [self error: self class InvalidAmountOfFieldsErrorDescription]!
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'LMR 6/26/2023 21:54:55' prior: 50630558!
+assertAddressHasCorrectAmountOfFields: aFieldAmount
+
+	^ lineFields size = aFieldAmount ifFalse: [self error: self class InvalidAmountOfFieldsErrorDescription]! !
+!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/26/2023 21:56:31'!
+assertThatRecordHasFieldAmountEqualTo: aFieldAmount
+
+	^ lineFields size = aFieldAmount ifFalse: [self error: self class InvalidAmountOfFieldsErrorDescription]! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'LMR 6/26/2023 21:56:31' prior: 50630566!
+importAddress
+
+	self assertThatRecordHasFieldAmountEqualTo: 6.
+	newCustomer ifNil: [self error: self class firstLineAddressErrorDescription].
+	newCustomer addAddress: (Address fromData: lineFields).! !
+
+!methodRemoval: CustomerImporter #assertAddressHasCorrectAmountOfFields: stamp: 'LMR 6/26/2023 21:56:31'!
+assertAddressHasCorrectAmountOfFields: aFieldAmount
+
+	^ lineFields size = aFieldAmount ifFalse: [self error: self class InvalidAmountOfFieldsErrorDescription]!
+!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/26/2023 21:56:51' prior: 50630149!
+importCustomer
+
+	self assertThatRecordHasFieldAmountEqualTo: 5.
+	newCustomer := Customer fromData: lineFields.
+	session persist: newCustomer.! !
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 21:56:52'!
+PASSED!
+
+!testRun: #ImportTest #test02Import stamp: 'LMR 6/26/2023 21:56:52'!
+PASSED!
+
+!testRun: #ImportTest #test03Import stamp: 'LMR 6/26/2023 21:56:52'!
+PASSED!
+
+!testRun: #ImportTest #test04Import stamp: 'LMR 6/26/2023 21:56:52'!
+PASSED!
+
+!testRun: #ImportTest #test05Import stamp: 'LMR 6/26/2023 21:56:52'!
+PASSED!
+
+!testRun: #ImportTest #test06Import stamp: 'LMR 6/26/2023 21:56:52'!
+PASSED!
+
+!testRun: #ImportTest #test07Import stamp: 'LMR 6/26/2023 21:56:52'!
+PASSED!
+
+!testRun: #ImportTest #test08Import stamp: 'LMR 6/26/2023 21:56:53'!
+PASSED!
+
+!testRun: #ImportTest #test09Import stamp: 'LMR 6/26/2023 21:56:53'!
+PASSED!
+
+----SNAPSHOT----(26 June 2023 21:57:48) CuisUniversity-5832.image priorSource: 9557559!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/26/2023 21:59:00'!
+test10Import
+
+	| inputStream |
+	inputStream := ReadStream on: 'Carlos,Pepe,Sanchez,D,22333444'.
+	self should: [CustomerImporter valueFrom: inputStream into: session] raise: Error - MessageNotUnderstood withExceptionDo: [:anError | self assert: CustomerImporter invalidRecordErrorDescrition equals: anError messageText].! !
+
+!testRun: #ImportTest #test10Import stamp: 'LMR 6/26/2023 21:59:05'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'LMR 6/26/2023 21:59:05'!
+PASSED!
+
+!testRun: #ImportTest #test02Import stamp: 'LMR 6/26/2023 21:59:05'!
+PASSED!
+
+!testRun: #ImportTest #test03Import stamp: 'LMR 6/26/2023 21:59:05'!
+PASSED!
+
+!testRun: #ImportTest #test04Import stamp: 'LMR 6/26/2023 21:59:05'!
+PASSED!
+
+!testRun: #ImportTest #test05Import stamp: 'LMR 6/26/2023 21:59:06'!
+PASSED!
+
+!testRun: #ImportTest #test06Import stamp: 'LMR 6/26/2023 21:59:06'!
+PASSED!
+
+!testRun: #ImportTest #test07Import stamp: 'LMR 6/26/2023 21:59:06'!
+PASSED!
+
+!testRun: #ImportTest #test08Import stamp: 'LMR 6/26/2023 21:59:06'!
+PASSED!
+
+!testRun: #ImportTest #test09Import stamp: 'LMR 6/26/2023 21:59:06'!
+PASSED!
+
+!testRun: #ImportTest #test10Import stamp: 'LMR 6/26/2023 21:59:06'!
+PASSED!
+
+----SNAPSHOT----(26 June 2023 21:59:35) CuisUniversity-5832.image priorSource: 9567886!
+
+----QUIT----(26 June 2023 21:59:46) CuisUniversity-5832.image priorSource: 9569244!
