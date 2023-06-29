@@ -5,8 +5,8 @@ TestCase subclass: #ImportTest
 	poolDictionaries: ''
 	category: 'CustomerImporter'!
 
-!ImportTest methodsFor: 'tests' stamp: 'LMR 6/27/2023 18:58:38'!
-test01ValidImport
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/29/2023 03:29:24'!
+test01ValidInputStreamIsImportedCorrectly
 
 	CustomerImporter valueFrom: self validImportData into: session.
 
@@ -14,96 +14,101 @@ test01ValidImport
 	self assertPepeSanchezWasImportedCorrecty.
 	self assertJuanPerezWasImportedCorrectly ! !
 
-!ImportTest methodsFor: 'tests' stamp: 'LMR 6/27/2023 20:12:47'!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/29/2023 04:18:16'!
 test02CanNotImportNilInput
 
-	self assertThatImportingFrom: nil raisesErrorWithDescription: CustomerImporter nilInputErrorDescription.
-	self assertThatSessionIsEmpty.! !
+	self
+		importingFrom: self nilInputStream
+		raisesErrorWithDescription: CustomerImporter nilInputErrorDescription
+		andAssert: [self assertThatSessionIsEmpty]! !
 
-!ImportTest methodsFor: 'tests' stamp: 'LMR 6/27/2023 20:12:47'!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/29/2023 03:40:46'!
 test03CanNotImportAddressBeforeCustomer
 
-	| inputStream |
-	inputStream := ReadStream on: 'A,San Martin,3322,Olivos,1636,BsAs
-C,Pepe,Sanchez,D,22333444
-A,Maipu,888,Florida,1122,Buenos Aires'.
-	self assertThatImportingFrom: inputStream raisesErrorWithDescription: CustomerImporter firstLineAddressErrorDescription.
-	self assertThatSessionIsEmpty! !
+	self
+		importingFrom: self streamWithAnAddressBeforeCustomers
+		raisesErrorWithDescription: CustomerImporter firstLineAddressErrorDescription
+		andAssert: [self assertThatSessionIsEmpty]! !
 
-!ImportTest methodsFor: 'tests' stamp: 'LMR 6/27/2023 20:12:47'!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/29/2023 04:22:51'!
 test04CanNotImportCustomerWithExtraFields
 
-	| inputStream |
-	inputStream := ReadStream on: 'C,Juan,Perez,C,23-25666777-9
-C,Pepe,San,chez,D,22333444'.
-	self assertThatImportingFrom: inputStream raisesErrorWithDescription: CustomerImporter InvalidAmountOfFieldsErrorDescription.
-	self assertCustomerWithIdentificationType: 'C' number: '23-25666777-9' hasFirstName: 'Juan' lastName: 'Perez'! !
+	self
+		importingFrom: self streamWithExtraCustomerFields
+		raisesErrorWithDescription: CustomerImporter InvalidAmountOfFieldsErrorDescription
+		andAssert: [self assertThatSessionIsEmpty]! !
 
-!ImportTest methodsFor: 'tests' stamp: 'LMR 6/27/2023 20:12:47'!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/29/2023 04:05:17'!
 test05CanNotImportAddressWithExtraFields
 
-	| inputStream pepe |
-	inputStream := ReadStream on: 'C,Pepe,Sanchez,D,22333444
-A,San Ma,rtin,3322,Olivos,1636,BsAs'.
-	self assertThatImportingFrom: inputStream raisesErrorWithDescription: CustomerImporter InvalidAmountOfFieldsErrorDescription.
-	pepe := self assertCustomerWithIdentificationType: 'D' number: '22333444' hasFirstName: 'Pepe' lastName: 'Sanchez'.
-	self assertThatCustomer: pepe hasNoAddressesAtStreetNamed: 'San Ma'.! !
+	self
+		importingFrom: self streamWithExtraAddressFields
+		raisesErrorWithDescription: CustomerImporter InvalidAmountOfFieldsErrorDescription
+		andAssert: [self assertThatOneCustomerWithNoAddressesWasImportedCorrectly]! !
 
-!ImportTest methodsFor: 'tests' stamp: 'LMR 6/27/2023 20:12:47'!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/29/2023 03:42:39'!
 test06CanNotImportLineWithEmptyFields
 
-	| inputStream |
-	inputStream := ReadStream on: 'C,Pepe,,Sanchez,D,22333444'.
-	self assertThatImportingFrom: inputStream raisesErrorWithDescription: CustomerImporter emptyFieldErrorDescription.
-	self assertThatSessionIsEmpty! !
+	self
+		importingFrom: self streamWithAnEmptyField
+		raisesErrorWithDescription: CustomerImporter emptyFieldErrorDescription
+		andAssert: [self assertThatSessionIsEmpty]! !
 
-!ImportTest methodsFor: 'tests' stamp: 'LMR 6/27/2023 20:14:38'!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/29/2023 04:13:06'!
 test07CanNotImportRecordWithInvalidType
 
-	| inputStream |
-	inputStream := ReadStream on: 'J,Pepe,Sanchez,D,22333444'.
-	self assertThatImportingFrom: inputStream raisesErrorWithDescription: CustomerImporter invalidRecordErrorDescrition.
-	self assertThatSessionIsEmpty.
-	
-	inputStream := ReadStream on: 'Carlos,Pepe,Sanchez,D,22333444'.
-	self assertThatImportingFrom: inputStream raisesErrorWithDescription: CustomerImporter invalidRecordErrorDescrition.
-	self assertThatSessionIsEmpty! !
+	self
+		importingFrom: self streamWithInvalidRecordType
+		raisesErrorWithDescription: CustomerImporter invalidRecordErrorDescrition
+		andAssert: [self assertThatSessionIsEmpty]! !
 
-!ImportTest methodsFor: 'tests' stamp: 'LMR 6/27/2023 19:59:39'!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/29/2023 03:43:07'!
 test08ImportingEmptyStreamResultsInEmptySession
 
-	| inputStream |
-	inputStream := ReadStream on: ''.
-	CustomerImporter valueFrom: inputStream into: session.
+	CustomerImporter valueFrom: self emptyStream into: session.
 	self assertThatSessionIsEmpty.! !
 
-!ImportTest methodsFor: 'tests' stamp: 'LMR 6/27/2023 20:12:47'!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/29/2023 03:39:27'!
 test09CanNotImportEmptyLine
 
-	| inputStream |
-	inputStream := ReadStream on: '
-'.
-	self assertThatImportingFrom: inputStream raisesErrorWithDescription: CustomerImporter emptyFieldErrorDescription.
-	self assertThatSessionIsEmpty.! !
+	self
+		importingFrom: self emptyLineStream
+		raisesErrorWithDescription: CustomerImporter emptyFieldErrorDescription
+		andAssert: [self assertThatSessionIsEmpty]! !
 
-!ImportTest methodsFor: 'tests' stamp: 'LMR 6/27/2023 20:14:51'!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/29/2023 04:21:41'!
 test10CanNotImportCustomerWithMissingFields
 
-	| inputStream |
-	inputStream := ReadStream on: 'C,Juan,Perez,C,23-25666777-9
-C,Pepe,Sanchez,D'.
-	self assertThatImportingFrom: inputStream raisesErrorWithDescription: CustomerImporter InvalidAmountOfFieldsErrorDescription.
-	self assertCustomerWithIdentificationType: 'C' number: '23-25666777-9' hasFirstName: 'Juan' lastName: 'Perez'! !
+	self
+		importingFrom: self streamWithMissingCustomerFields
+		raisesErrorWithDescription: CustomerImporter InvalidAmountOfFieldsErrorDescription
+		andAssert: [self assertThatSessionIsEmpty]
+	! !
 
-!ImportTest methodsFor: 'tests' stamp: 'LMR 6/27/2023 20:14:56'!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/29/2023 04:04:53'!
 test11CanNotImportAddressWithMissingFields
 
-	| inputStream pepe |
-	inputStream := ReadStream on: 'C,Pepe,Sanchez,D,22333444
-A,San Martin,3322,Olivos,1636'.
-	self assertThatImportingFrom: inputStream raisesErrorWithDescription: CustomerImporter InvalidAmountOfFieldsErrorDescription.
-	pepe := self assertCustomerWithIdentificationType: 'D' number: '22333444' hasFirstName: 'Pepe' lastName: 'Sanchez'.
-	self assertThatCustomer: pepe hasNoAddressesAtStreetNamed: 'San Ma'! !
+	self
+		importingFrom: self streamWithMissingAddressFields
+		raisesErrorWithDescription: CustomerImporter InvalidAmountOfFieldsErrorDescription
+		andAssert: [self assertThatOneCustomerWithNoAddressesWasImportedCorrectly]
+	! !
+
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/29/2023 04:13:21'!
+test12CanNotImportCustomerWithInvalidRecordType
+
+	self
+		importingFrom: self streamWithInvalidCustomerRecordType
+		raisesErrorWithDescription: CustomerImporter invalidRecordErrorDescrition
+		andAssert: [self assertThatSessionIsEmpty]! !
+
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/29/2023 04:13:24'!
+test13CanNotImportAddressWithInvalidRecordType
+
+	self
+		importingFrom: self streamWithInvalidAddressRecordType
+		raisesErrorWithDescription: CustomerImporter invalidRecordErrorDescrition
+		andAssert: [self assertThatOneCustomerWithNoAddressesWasImportedCorrectly]! !
 
 
 !ImportTest methodsFor: 'assertions' stamp: 'LMR 6/27/2023 18:47:42'!
@@ -162,18 +167,12 @@ assertPepeSanchezWasImportedCorrecty
 
 	! !
 
-!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/27/2023 20:15:33'!
-assertThatCustomer: aCustomer hasNoAddressesAtStreetNamed: streetName 
+!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/29/2023 04:04:53'!
+assertThatOneCustomerWithNoAddressesWasImportedCorrectly
 
-	|bool|
-	bool := false.
-	aCustomer addressAt: streetName ifNone: [bool := true].
-	self assert: bool! !
-
-!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/27/2023 20:12:47'!
-assertThatImportingFrom: inputStream raisesErrorWithDescription: expectedErrorDesciption 
-
-	^ self should: [CustomerImporter valueFrom: inputStream into: session] raise: Error - MessageNotUnderstood withExceptionDo: [:anError | self assert: expectedErrorDesciption equals: anError messageText.]! !
+	| pepe |
+	pepe := self assertCustomerWithIdentificationType: 'D' number: '22333444' hasFirstName: 'Pepe' lastName: 'Sanchez'.
+	self assert: pepe hasNoAddresses! !
 
 !ImportTest methodsFor: 'assertions' stamp: 'LMR 6/27/2023 20:12:36'!
 assertThatSessionIsEmpty
@@ -190,6 +189,11 @@ assertThatThereAreNoAddressesOnSession
 assertThatThereAreNoCustomersOnSession
 
 	^ self assert: (session selectAllOfType: Customer) isEmpty! !
+
+!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/29/2023 03:33:13'!
+importingFrom: inputStream raisesErrorWithDescription: expectedErrorDesciption andAssert: anAssertionBlock  
+
+	^ self should: [CustomerImporter valueFrom: inputStream into: session] raise: Error - MessageNotUnderstood withExceptionDo: [:anError | self assert: expectedErrorDesciption equals: anError messageText. anAssertionBlock value]! !
 
 
 !ImportTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/27/2023 18:47:41'!
@@ -216,6 +220,72 @@ customerWithIdentificationType: anIdType number: anIdNumber
 		ofType: Customer.
 	^(selection) anyOne! !
 
+
+!ImportTest methodsFor: 'test data' stamp: 'LMR 6/29/2023 03:39:12'!
+emptyLineStream
+
+	^ ReadStream on: '
+'! !
+
+!ImportTest methodsFor: 'test data' stamp: 'LMR 6/29/2023 03:43:05'!
+emptyStream
+
+	^ ReadStream on: ''! !
+
+!ImportTest methodsFor: 'test data' stamp: 'LMR 6/29/2023 03:39:55'!
+nilInputStream
+
+	^ nil! !
+
+!ImportTest methodsFor: 'test data' stamp: 'LMR 6/29/2023 03:40:39'!
+streamWithAnAddressBeforeCustomers
+
+	^ ReadStream on: 'A,San Martin,3322,Olivos,1636,BsAs
+C,Pepe,Sanchez,D,22333444
+A,Maipu,888,Florida,1122,Buenos Aires'! !
+
+!ImportTest methodsFor: 'test data' stamp: 'LMR 6/29/2023 03:42:36'!
+streamWithAnEmptyField
+
+	^ ReadStream on: 'C,Pepe,,Sanchez,D,22333444'! !
+
+!ImportTest methodsFor: 'test data' stamp: 'LMR 6/29/2023 03:41:40'!
+streamWithExtraAddressFields
+
+	^ ReadStream on: 'C,Pepe,Sanchez,D,22333444
+A,San Ma,rtin,3322,Olivos,1636,BsAs'! !
+
+!ImportTest methodsFor: 'test data' stamp: 'LMR 6/29/2023 04:22:44'!
+streamWithExtraCustomerFields
+
+	^ ReadStream on: 'C,Pepe,San,chez,D,22333444'! !
+
+!ImportTest methodsFor: 'test data' stamp: 'LMR 6/29/2023 04:11:13'!
+streamWithInvalidAddressRecordType
+
+	^ ReadStream on: 'C,Pepe,Sanchez,D,22333444
+Alem,San Martin,3322,Olivos,1636,BsAs'! !
+
+!ImportTest methodsFor: 'test data' stamp: 'LMR 6/29/2023 04:10:50'!
+streamWithInvalidCustomerRecordType
+
+	^ ReadStream on: 'Carlos,Pepe,Sanchez,D,22333444'! !
+
+!ImportTest methodsFor: 'test data' stamp: 'LMR 6/29/2023 04:09:28'!
+streamWithInvalidRecordType
+
+	^ ReadStream on: 'J,Pepe,Sanchez,D,22333444'! !
+
+!ImportTest methodsFor: 'test data' stamp: 'LMR 6/29/2023 03:44:01'!
+streamWithMissingAddressFields
+
+	^ ReadStream on: 'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636'! !
+
+!ImportTest methodsFor: 'test data' stamp: 'LMR 6/29/2023 04:21:22'!
+streamWithMissingCustomerFields
+
+	^ ReadStream on: 'C,Pepe,Sanchez,D'! !
 
 !ImportTest methodsFor: 'test data' stamp: 'LMR 6/27/2023 18:47:43'!
 validImportData
@@ -337,6 +407,11 @@ addressAt: aStreetName ifNone: aNoneBlock
 addresses
 
 	^ addresses! !
+
+!Customer methodsFor: 'addresses' stamp: 'LMR 6/29/2023 04:01:35'!
+hasNoAddresses
+
+	^ addresses size = 0! !
 
 
 !Customer methodsFor: 'name' stamp: 'LMR 6/27/2023 18:47:37'!
