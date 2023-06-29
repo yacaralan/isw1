@@ -493,21 +493,11 @@ initializeFrom: aReadStream into: aSession
 	readStream := aReadStream.! !
 
 
-!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/27/2023 18:47:39'!
-assertThatRecordHasFieldAmountEqualTo: aFieldAmount
-
-	^ lineFields size = aFieldAmount ifFalse: [self error: self class InvalidAmountOfFieldsErrorDescription]! !
-
 !CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/27/2023 18:47:38'!
 extractFields
 
 	lineFields := line findTokens: $,.
 	self hasEmptyFields ifTrue: [self error: self class emptyFieldErrorDescription].! !
-
-!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/27/2023 18:47:38'!
-hasEmptyFields
-
-	^ lineFields size - 1 ~= (line occurrencesOf: $,)! !
 
 !CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/27/2023 18:47:37'!
 hasNextLine
@@ -515,37 +505,50 @@ hasNextLine
 	line := readStream nextLine.
 	^line notNil! !
 
-!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/27/2023 18:47:39'!
+
+!CustomerImporter methodsFor: 'testing' stamp: 'LMR 6/27/2023 18:47:38'!
+hasEmptyFields
+
+	^ lineFields size - 1 ~= (line occurrencesOf: $,)! !
+
+!CustomerImporter methodsFor: 'testing' stamp: 'LMR 6/27/2023 18:47:38'!
+isAddressRecord
+
+	^lineFields first = 'A'! !
+
+!CustomerImporter methodsFor: 'testing' stamp: 'LMR 6/27/2023 18:47:37'!
+isCustomerRecord
+
+	^lineFields first = 'C'! !
+
+
+!CustomerImporter methodsFor: 'validations' stamp: 'LMR 6/27/2023 18:47:39'!
+assertThatRecordHasFieldAmountEqualTo: aFieldAmount
+
+	^ lineFields size = aFieldAmount ifFalse: [self error: self class InvalidAmountOfFieldsErrorDescription]! !
+
+
+!CustomerImporter methodsFor: 'importing' stamp: 'LMR 6/27/2023 18:47:39'!
 importAddress
 
 	self assertThatRecordHasFieldAmountEqualTo: 6.
 	newCustomer ifNil: [self error: self class firstLineAddressErrorDescription].
 	newCustomer addAddress: (Address fromData: lineFields).! !
 
-!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/27/2023 18:47:39'!
+!CustomerImporter methodsFor: 'importing' stamp: 'LMR 6/27/2023 18:47:39'!
 importCustomer
 
 	self assertThatRecordHasFieldAmountEqualTo: 5.
 	newCustomer := Customer fromData: lineFields.
 	session persist: newCustomer.! !
 
-!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/27/2023 18:47:38'!
+!CustomerImporter methodsFor: 'importing' stamp: 'LMR 6/27/2023 18:47:38'!
 importDataFromCurrentLine
 
 	self extractFields.
 	self isCustomerRecord ifTrue: [ self importCustomer. ^self ].
 	self isAddressRecord ifTrue: [ self importAddress. ^self].
 	self error: self class invalidRecordErrorDescrition.! !
-
-!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/27/2023 18:47:38'!
-isAddressRecord
-
-	^lineFields first = 'A'! !
-
-!CustomerImporter methodsFor: 'aux' stamp: 'LMR 6/27/2023 18:47:37'!
-isCustomerRecord
-
-	^lineFields first = 'C'! !
 
 
 !CustomerImporter methodsFor: 'evaluating' stamp: 'LMR 6/27/2023 18:47:38'!
