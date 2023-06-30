@@ -1,0 +1,1438 @@
+
+
+----QUIT----(30 May 2023 00:05:32) CuisUniversity-5832.image priorSource: 4928100!
+
+----STARTUP---- (30 May 2023 00:05:33) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5832.image!
+
+
+----QUIT----(30 May 2023 00:05:33) CuisUniversity-5832.image priorSource: 9366537!
+
+----STARTUP---- (29 June 2023 20:15:03) as /home/clinux01/Escritorio/linux64/CuisUniversity-5832.image!
+
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 20:16:47'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 20:16:47'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 20:16:47'!
+PASSED!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 20:16:47'!
+PASSED!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 20:16:48'!
+PASSED!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 20:16:48'!
+PASSED!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 20:16:48'!
+PASSED!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 20:16:48'!
+PASSED!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 20:16:48'!
+PASSED!
+
+!classDefinition: #ImportTest category: 'CustomerImporter' stamp: 'LMR 6/29/2023 20:17:55'!
+TestCase subclass: #ImportTest
+	instanceVariableNames: 'session customerSystem'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classDefinition: #PersistentCustomerSystem category: 'CustomerImporter' stamp: 'LMR 6/29/2023 20:18:10'!
+Object subclass: #PersistentCustomerSystem
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!ImportTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/29/2023 20:17:52' prior: 50669842 overrides: 16961394!
+setUp
+	customerSystem := PersistentCustomerSystem new.
+
+	session := DataBaseSession for: (Array with: Address with: Customer).
+	session beginTransaction.
+! !
+!ImportTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/29/2023 20:18:45'!
+session
+	
+	^session! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 20:19:42'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 20:19:42'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 20:19:42'!
+PASSED!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 20:19:42'!
+PASSED!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 20:19:43'!
+PASSED!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 20:19:43'!
+PASSED!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 20:19:43'!
+PASSED!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 20:19:43'!
+PASSED!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 20:19:43'!
+PASSED!
+!ImportTest methodsFor: 'customer' stamp: 'LMR 6/29/2023 20:19:58' prior: 50669853!
+customerWithIdentificationType: anIdType number: anIdNumber
+
+	^ (self session
+		select: [ :aCustomer | aCustomer identificationType = anIdType and: [ aCustomer identificationNumber = anIdNumber ]]
+		ofType: Customer) anyOne! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 20:20:00'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 20:20:00'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 20:20:00'!
+PASSED!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 20:20:00'!
+PASSED!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 20:20:01'!
+PASSED!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 20:20:01'!
+PASSED!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 20:20:01'!
+PASSED!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 20:20:01'!
+PASSED!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 20:20:01'!
+PASSED!
+!ImportTest methodsFor: 'customer' stamp: 'LMR 6/29/2023 20:20:08' prior: 50669863!
+numberOfCustomers
+
+	^ (self session selectAllOfType: Customer) size! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 20:20:09'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 20:20:10'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 20:20:10'!
+PASSED!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 20:20:10'!
+PASSED!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 20:20:10'!
+PASSED!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 20:20:11'!
+PASSED!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 20:20:11'!
+PASSED!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 20:20:11'!
+PASSED!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 20:20:11'!
+PASSED!
+!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/29/2023 20:20:16' prior: 50669828!
+shouldFailImporting: aReadStream messageText: anErrorMessageText asserting: anAssertionBlock
+
+	self
+		should: [ CustomerImporter valueFrom: aReadStream into: self session. ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anErrorMessageText equals: anError messageText.
+			anAssertionBlock value ]
+
+	! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 20:20:19'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 20:20:19'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 20:20:19'!
+PASSED!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 20:20:20'!
+PASSED!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 20:20:20'!
+PASSED!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 20:20:20'!
+PASSED!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 20:20:20'!
+PASSED!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 20:20:21'!
+PASSED!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 20:20:21'!
+PASSED!
+!ImportTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/29/2023 20:20:34' prior: 50669849 overrides: 16961402!
+tearDown
+
+	self session commit.
+	self session close.
+	! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 20:20:36'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 20:20:36'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 20:20:36'!
+PASSED!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 20:20:36'!
+PASSED!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 20:20:37'!
+PASSED!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 20:20:37'!
+PASSED!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 20:20:37'!
+PASSED!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 20:20:37'!
+PASSED!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 20:20:37'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/29/2023 20:20:42' prior: 50669649!
+test01ValidDataIsImportedCorrectly
+
+	CustomerImporter valueFrom: self validImportData into: self session.
+
+	self assertImportedRightNumberOfCustomers.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly ! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 20:20:44'!
+PASSED!
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 20:20:45'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 20:20:45'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 20:20:45'!
+PASSED!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 20:20:45'!
+PASSED!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 20:20:46'!
+PASSED!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 20:20:46'!
+PASSED!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 20:20:46'!
+PASSED!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 20:20:46'!
+PASSED!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 20:20:46'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/29/2023 20:20:50' prior: 50669659!
+test02CanNotImportAddressWithoutCustomer
+
+	self
+		should: [ CustomerImporter valueFrom: self addressWithoutCustomerData into: self session. ]
+		raise: Error - MessageNotUnderstood
+		withMessageText: CustomerImporter canNotImportAddressWithoutCustomerErrorDescription
+
+	! !
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 20:20:52'!
+PASSED!
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 20:20:52'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 20:20:52'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 20:20:53'!
+PASSED!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 20:20:53'!
+PASSED!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 20:20:53'!
+PASSED!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 20:20:54'!
+PASSED!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 20:20:54'!
+PASSED!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 20:20:54'!
+PASSED!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 20:20:54'!
+PASSED!
+!ImportTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/29/2023 20:20:59' prior: 50670346 overrides: 16961394!
+setUp
+	customerSystem := PersistentCustomerSystem new.
+
+	session := DataBaseSession for: (Array with: Address with: Customer).
+	self session beginTransaction.
+! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 20:21:01'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 20:21:01'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 20:21:01'!
+PASSED!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 20:21:01'!
+PASSED!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 20:21:02'!
+PASSED!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 20:21:02'!
+PASSED!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 20:21:02'!
+PASSED!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 20:21:02'!
+PASSED!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 20:21:02'!
+PASSED!
+!ImportTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/29/2023 20:22:01' prior: 50670646 overrides: 16961394!
+setUp
+	customerSystem := PersistentCustomerSystem new.
+
+	customerSystem start.
+	self session beginTransaction.
+! !
+!PersistentCustomerSystem methodsFor: 'category-name' stamp: 'LMR 6/29/2023 20:22:13'!
+start
+	self shouldBeImplemented.! !
+
+!classDefinition: #PersistentCustomerSystem category: 'CustomerImporter' stamp: 'LMR 6/29/2023 20:22:20'!
+Object subclass: #PersistentCustomerSystem
+	instanceVariableNames: 'session'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!PersistentCustomerSystem methodsFor: 'category-name' stamp: 'LMR 6/29/2023 20:22:18' prior: 50670694!
+start
+	
+	session := DataBaseSession for: (Array with: Address with: Customer).! !
+!PersistentCustomerSystem methodsFor: 'nil' stamp: 'LMR 6/29/2023 20:22:53' overrides: 16920235!
+initialize
+
+	session := DataBaseSession for: (Array with: Address with: Customer)! !
+!ImportTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/29/2023 20:23:37' prior: 50670354!
+session
+	
+	^customerSystem session! !
+!PersistentCustomerSystem methodsFor: 'category-name' stamp: 'LMR 6/29/2023 20:23:46'!
+session
+	self shouldBeImplemented.
+	^session! !
+!PersistentCustomerSystem methodsFor: 'category-name' stamp: 'LMR 6/29/2023 20:23:49' prior: 50670723!
+session
+	
+	^session! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 20:23:56'!
+PASSED!
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 20:24:02'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 20:24:02'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 20:24:02'!
+PASSED!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 20:24:03'!
+PASSED!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 20:24:03'!
+PASSED!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 20:24:03'!
+PASSED!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 20:24:03'!
+PASSED!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 20:24:03'!
+PASSED!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 20:24:03'!
+PASSED!
+
+!methodRemoval: PersistentCustomerSystem #initialize stamp: 'LMR 6/29/2023 20:25:13'!
+initialize
+
+	session := DataBaseSession for: (Array with: Address with: Customer)!
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 20:25:21'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 20:25:21'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 20:25:21'!
+PASSED!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 20:25:22'!
+PASSED!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 20:25:22'!
+PASSED!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 20:25:22'!
+PASSED!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 20:25:22'!
+PASSED!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 20:25:22'!
+PASSED!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 20:25:23'!
+PASSED!
+
+!classDefinition: #ImportTest category: 'CustomerImporter' stamp: 'LMR 6/29/2023 20:26:31'!
+TestCase subclass: #ImportTest
+	instanceVariableNames: 'customerSystem'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 20:26:35'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 20:26:35'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 20:26:35'!
+PASSED!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 20:26:35'!
+PASSED!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 20:26:36'!
+PASSED!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 20:26:36'!
+PASSED!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 20:26:36'!
+PASSED!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 20:26:36'!
+PASSED!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 20:26:36'!
+PASSED!
+!ImportTest methodsFor: 'customer' stamp: 'LMR 6/29/2023 20:28:55' prior: 50670390!
+customerWithIdentificationType: anIdType number: anIdNumber
+
+	^ customerSystem customerWithIdentificationType: anIdType number: anIdNumber! !
+!PersistentCustomerSystem methodsFor: 'as yet unclassified' stamp: 'LMR 6/29/2023 20:29:08'!
+customerWithIdentificationType: anIdType number: anIdNumber
+
+	^ (self session
+		select: [ :aCustomer | aCustomer identificationType = anIdType and: [ aCustomer identificationNumber = anIdNumber ]]
+		ofType: Customer) anyOne! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 20:29:15'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 20:29:15'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 20:29:15'!
+PASSED!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 20:29:16'!
+PASSED!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 20:29:16'!
+PASSED!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 20:29:16'!
+PASSED!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 20:29:16'!
+PASSED!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 20:29:16'!
+PASSED!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 20:29:16'!
+PASSED!
+!ImportTest methodsFor: 'customer' stamp: 'LMR 6/29/2023 20:29:36' prior: 50670432!
+numberOfCustomers
+
+	^ customerSystem numberOfCustomers! !
+!PersistentCustomerSystem methodsFor: 'as yet unclassified' stamp: 'LMR 6/29/2023 20:29:44'!
+numberOfCustomers
+
+	^ (self session selectAllOfType: Customer) size! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 20:30:15'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 20:30:16'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 20:30:16'!
+PASSED!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 20:30:16'!
+PASSED!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 20:30:16'!
+PASSED!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 20:30:17'!
+PASSED!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 20:30:17'!
+PASSED!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 20:30:17'!
+PASSED!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 20:30:17'!
+PASSED!
+!ImportTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/29/2023 20:30:54' prior: 50670687 overrides: 16961394!
+setUp
+	customerSystem := PersistentCustomerSystem new.
+
+	customerSystem start.
+	customerSystem beginTransaction.
+! !
+!PersistentCustomerSystem methodsFor: 'as yet unclassified' stamp: 'LMR 6/29/2023 20:31:31'!
+beginTransaction
+
+	self session beginTransaction! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 20:31:45'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 20:31:46'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 20:31:46'!
+PASSED!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 20:31:46'!
+PASSED!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 20:31:46'!
+PASSED!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 20:31:47'!
+PASSED!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 20:31:47'!
+PASSED!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 20:31:47'!
+PASSED!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 20:31:47'!
+PASSED!
+!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/29/2023 20:33:05' prior: 50670469!
+shouldFailImporting: aReadStream messageText: anErrorMessageText asserting: anAssertionBlock
+
+	customerSystem shouldFailImporting: aReadStream messageText: anErrorMessageText asserting: anAssertionBlock
+
+	! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 20:33:06'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 20:33:07'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 20:33:07'!
+ERROR!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 20:33:07'!
+ERROR!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 20:33:07'!
+ERROR!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 20:33:07'!
+ERROR!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 20:33:07'!
+ERROR!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 20:33:07'!
+ERROR!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 20:33:07'!
+ERROR!
+!PersistentCustomerSystem methodsFor: 'as yet unclassified' stamp: 'LMR 6/29/2023 20:33:08'!
+shouldFailImporting: aReadStream messageText: anErrorMessageText asserting: anAssertionBlock
+
+	self
+		should: [ CustomerImporter valueFrom: aReadStream into: self session. ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anErrorMessageText equals: anError messageText.
+			anAssertionBlock value ]! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 20:33:11'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 20:33:11'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 20:33:11'!
+ERROR!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 20:33:11'!
+ERROR!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 20:33:11'!
+ERROR!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 20:33:11'!
+ERROR!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 20:33:11'!
+ERROR!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 20:33:11'!
+ERROR!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 20:33:11'!
+ERROR!
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 20:33:19'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 20:33:20'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 20:33:20'!
+ERROR!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 20:33:20'!
+ERROR!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 20:33:20'!
+ERROR!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 20:33:20'!
+ERROR!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 20:33:20'!
+ERROR!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 20:33:20'!
+ERROR!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 20:33:20'!
+ERROR!
+!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/29/2023 20:20:16' prior: 50670980!
+shouldFailImporting: aReadStream messageText: anErrorMessageText asserting: anAssertionBlock
+
+	self
+		should: [ CustomerImporter valueFrom: aReadStream into: self session. ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anErrorMessageText equals: anError messageText.
+			anAssertionBlock value ]
+
+	! !
+
+!methodRemoval: PersistentCustomerSystem #shouldFailImporting:messageText:asserting: stamp: 'LMR 6/29/2023 20:35:12'!
+shouldFailImporting: aReadStream messageText: anErrorMessageText asserting: anAssertionBlock
+
+	self
+		should: [ CustomerImporter valueFrom: aReadStream into: self session. ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anErrorMessageText equals: anError messageText.
+			anAssertionBlock value ]!
+!PersistentCustomerSystem methodsFor: 'as yet unclassified' stamp: 'LMR 6/29/2023 20:36:24'!
+commit
+
+	self session commit! !
+!ImportTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/29/2023 20:36:50' prior: 50670515 overrides: 16961402!
+tearDown
+
+	customerSystem commit.
+	customerSystem stop.! !
+!PersistentCustomerSystem methodsFor: 'as yet unclassified' stamp: 'LMR 6/29/2023 20:37:04'!
+stop
+
+	self session close! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 20:37:11'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 20:37:11'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 20:37:11'!
+PASSED!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 20:37:12'!
+PASSED!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 20:37:12'!
+PASSED!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 20:37:12'!
+PASSED!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 20:37:12'!
+PASSED!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 20:37:12'!
+PASSED!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 20:37:12'!
+PASSED!
+
+!methodRemoval: ImportTest #session stamp: 'LMR 6/29/2023 20:37:54'!
+session
+	
+	^customerSystem session!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/29/2023 20:37:54' prior: 50670598!
+test02CanNotImportAddressWithoutCustomer
+
+	self
+		should: [ CustomerImporter valueFrom: self addressWithoutCustomerData into: (customerSystem session). ]
+		raise: Error - MessageNotUnderstood
+		withMessageText: CustomerImporter canNotImportAddressWithoutCustomerErrorDescription
+
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/29/2023 20:37:54' prior: 50670552!
+test01ValidDataIsImportedCorrectly
+
+	CustomerImporter valueFrom: self validImportData into: (customerSystem session).
+
+	self assertImportedRightNumberOfCustomers.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly ! !
+!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/29/2023 20:37:54' prior: 50671099!
+shouldFailImporting: aReadStream messageText: anErrorMessageText asserting: anAssertionBlock
+
+	self
+		should: [ CustomerImporter valueFrom: aReadStream into: (customerSystem session). ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anErrorMessageText equals: anError messageText.
+			anAssertionBlock value ]
+
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/29/2023 20:38:09' prior: 50671188!
+test01ValidDataIsImportedCorrectly
+
+	CustomerImporter valueFrom: self validImportData into: customerSystem session.
+
+	self assertImportedRightNumberOfCustomers.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly ! !
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/29/2023 20:38:18' prior: 50671176!
+test02CanNotImportAddressWithoutCustomer
+
+	self
+		should: [ CustomerImporter valueFrom: self addressWithoutCustomerData into: customerSystem session. ]
+		raise: Error - MessageNotUnderstood
+		withMessageText: CustomerImporter canNotImportAddressWithoutCustomerErrorDescription
+
+	! !
+!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/29/2023 20:38:36' prior: 50671199!
+shouldFailImporting: aReadStream messageText: anErrorMessageText asserting: anAssertionBlock
+
+	self
+		should: [ CustomerImporter valueFrom: aReadStream into: customerSystem session. ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anErrorMessageText equals: anError messageText.
+			anAssertionBlock value ]
+
+	! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 20:38:43'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 20:38:44'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 20:38:44'!
+PASSED!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 20:38:44'!
+PASSED!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 20:38:44'!
+PASSED!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 20:38:45'!
+PASSED!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 20:38:45'!
+PASSED!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 20:38:45'!
+PASSED!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 20:38:45'!
+PASSED!
+
+----SNAPSHOT----(29 June 2023 20:39:24) CuisUniversity-5832.image priorSource: 10836494!
+
+!methodRemoval: PersistentCustomerSystem #session stamp: 'LMR 6/29/2023 20:41:34'!
+session
+	
+	^session!
+!PersistentCustomerSystem methodsFor: 'customer' stamp: 'LMR 6/29/2023 20:41:34' prior: 50670898!
+numberOfCustomers
+
+	^ (session selectAllOfType: Customer) size! !
+!PersistentCustomerSystem methodsFor: 'transactions' stamp: 'LMR 6/29/2023 20:41:34' prior: 50670943!
+beginTransaction
+
+	session beginTransaction! !
+!PersistentCustomerSystem methodsFor: 'transactions' stamp: 'LMR 6/29/2023 20:41:34' prior: 50671127!
+commit
+
+	session commit! !
+!PersistentCustomerSystem methodsFor: 'start/stop' stamp: 'LMR 6/29/2023 20:41:34' prior: 50671137!
+stop
+
+	session close! !
+!PersistentCustomerSystem methodsFor: 'customer' stamp: 'LMR 6/29/2023 20:41:34' prior: 50670851!
+customerWithIdentificationType: anIdType number: anIdNumber
+
+	^ (session
+		select: [ :aCustomer | aCustomer identificationType = anIdType and: [ aCustomer identificationNumber = anIdNumber ]]
+		ofType: Customer) anyOne! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 20:41:55'!
+ERROR!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 20:41:55'!
+ERROR!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 20:41:55'!
+ERROR!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 20:41:55'!
+ERROR!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 20:41:55'!
+ERROR!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 20:41:55'!
+ERROR!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 20:41:55'!
+ERROR!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 20:41:55'!
+ERROR!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 20:41:55'!
+ERROR!
+!PersistentCustomerSystem methodsFor: 'nil' stamp: 'LMR 6/29/2023 20:51:27'!
+persist: aCustomer
+
+	session persist: aCustomer! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 20:51:31'!
+ERROR!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 20:51:31'!
+ERROR!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 20:51:31'!
+ERROR!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 20:51:31'!
+ERROR!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 20:51:31'!
+ERROR!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 20:51:31'!
+ERROR!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 20:51:31'!
+ERROR!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 20:51:31'!
+ERROR!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 20:51:31'!
+ERROR!
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/29/2023 20:51:40' prior: 50671213!
+test01ValidDataIsImportedCorrectly
+
+	CustomerImporter valueFrom: self validImportData into: customerSystem.
+
+	self assertImportedRightNumberOfCustomers.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly ! !
+!ImportTest methodsFor: 'tests' stamp: 'LMR 6/29/2023 20:51:48' prior: 50671224!
+test02CanNotImportAddressWithoutCustomer
+
+	self
+		should: [ CustomerImporter valueFrom: self addressWithoutCustomerData into: customerSystem. ]
+		raise: Error - MessageNotUnderstood
+		withMessageText: CustomerImporter canNotImportAddressWithoutCustomerErrorDescription
+
+	! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 20:51:49'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 20:51:50'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 20:51:50'!
+ERROR!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 20:51:50'!
+ERROR!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 20:51:50'!
+ERROR!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 20:51:50'!
+ERROR!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 20:51:50'!
+ERROR!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 20:51:50'!
+ERROR!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 20:51:50'!
+ERROR!
+!ImportTest methodsFor: 'assertions' stamp: 'LMR 6/29/2023 20:52:05' prior: 50671236!
+shouldFailImporting: aReadStream messageText: anErrorMessageText asserting: anAssertionBlock
+
+	self
+		should: [ CustomerImporter valueFrom: aReadStream into: customerSystem. ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anErrorMessageText equals: anError messageText.
+			anAssertionBlock value ]
+
+	! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'LMR 6/29/2023 20:52:27'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'customerSystem readStream newCustomer line record'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'LMR 6/29/2023 20:52:27' prior: 50670058!
+initializeFrom: aReadStream into: aSession
+	customerSystem := aSession.
+	readStream := aReadStream.! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'LMR 6/29/2023 20:52:27' prior: 50670077!
+importCustomer
+
+	self assertValidCustomerRecord.
+
+	newCustomer := Customer new.
+	newCustomer firstName: record second.
+	newCustomer lastName: record third.
+	newCustomer identificationType: record fourth.
+	newCustomer identificationNumber: record fifth.
+	customerSystem persist: newCustomer! !
+!CustomerImporter methodsFor: 'initialization' stamp: 'LMR 6/29/2023 20:52:35' prior: 50671461!
+initializeFrom: aReadStream into: aCustomerSystem
+	customerSystem := aCustomerSystem.
+	readStream := aReadStream.! !
+!CustomerImporter class methodsFor: 'importing' stamp: 'LMR 6/29/2023 20:52:47' prior: 50670166!
+valueFrom: aReadStream into: aCustomerSystem
+
+	^(self from: aReadStream into: aCustomerSystem) value! !
+!CustomerImporter class methodsFor: 'instance creation' stamp: 'LMR 6/29/2023 20:53:02' prior: 50670160!
+from: aReadStream into: aCustomerSystem
+	^self new initializeFrom: aReadStream into: aCustomerSystem! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 20:53:17'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 20:53:17'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 20:53:17'!
+PASSED!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 20:53:17'!
+PASSED!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 20:53:18'!
+PASSED!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 20:53:18'!
+PASSED!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 20:53:18'!
+PASSED!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 20:53:18'!
+PASSED!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 20:53:18'!
+PASSED!
+
+Object subclass: #CustomerSystem
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classDefinition: #CustomerSystem category: 'CustomerImporter' stamp: 'LMR 6/29/2023 20:55:57'!
+Object subclass: #CustomerSystem
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+CustomerSystem subclass: #PersistentCustomerSystem
+	instanceVariableNames: 'session'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classDefinition: #PersistentCustomerSystem category: 'CustomerImporter' stamp: 'LMR 6/29/2023 20:56:05'!
+CustomerSystem subclass: #PersistentCustomerSystem
+	instanceVariableNames: 'session'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerSystem methodsFor: 'start/stop' stamp: 'LMR 6/29/2023 20:57:50'!
+start
+
+	self subclassResponsibility! !
+!CustomerSystem methodsFor: 'start/stop' stamp: 'LMR 6/29/2023 20:57:55'!
+stop
+
+	self subclassResponsibility! !
+!CustomerSystem methodsFor: 'persistance' stamp: 'LMR 6/29/2023 20:58:24'!
+persist: aCustomer
+
+	self subclassResponsibility! !
+!CustomerSystem methodsFor: 'transactions' stamp: 'LMR 6/29/2023 20:58:43'!
+commit
+
+	self subclassResponsibility! !
+!CustomerSystem methodsFor: 'transactions' stamp: 'LMR 6/29/2023 20:58:50'!
+beginTransaction
+
+	self subclassResponsibility! !
+!CustomerSystem methodsFor: 'customer' stamp: 'LMR 6/29/2023 20:59:05'!
+numberOfCustomers
+
+	self subclassResponsibility! !
+!CustomerSystem methodsFor: 'customer' stamp: 'LMR 6/29/2023 20:59:17'!
+customerWithIdentificationType: anIdType number: anIdNumber
+
+	self subclassResponsibility! !
+
+!classDefinition: #TransistentCustomerSystem category: 'CustomerImporter' stamp: 'LMR 6/29/2023 21:03:05'!
+Object subclass: #TransistentCustomerSystem
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!ImportTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/29/2023 21:02:59' prior: 50670936 overrides: 16961394!
+setUp
+	customerSystem := TransistentCustomerSystem new.
+
+	customerSystem start.
+	customerSystem beginTransaction.
+! !
+
+CustomerSystem subclass: #TransistentCustomerSystem
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classDefinition: #TransistentCustomerSystem category: 'CustomerImporter' stamp: 'LMR 6/29/2023 21:03:17'!
+CustomerSystem subclass: #TransistentCustomerSystem
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!TransistentCustomerSystem methodsFor: 'start/stop' stamp: 'LMR 6/29/2023 21:03:34' overrides: 50671558!
+start
+	self shouldBeImplemented.! !
+
+!classDefinition: #TransistentCustomerSystem category: 'CustomerImporter' stamp: 'LMR 6/29/2023 21:04:02'!
+CustomerSystem subclass: #TransistentCustomerSystem
+	instanceVariableNames: 'customers'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!TransistentCustomerSystem methodsFor: 'start/stop' stamp: 'LMR 6/29/2023 21:04:00' prior: 50671618 overrides: 50671558!
+start
+	
+	customers := OrderedCollection new.! !
+!TransistentCustomerSystem methodsFor: 'transactions' stamp: 'LMR 6/29/2023 21:04:11' overrides: 50671574!
+beginTransaction
+	self shouldBeImplemented.! !
+!TransistentCustomerSystem methodsFor: 'transactions' stamp: 'LMR 6/29/2023 21:04:14' prior: 50671637 overrides: 50671574!
+beginTransaction
+	
+	! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 21:04:18'!
+ERROR!
+!TransistentCustomerSystem methodsFor: 'persistance' stamp: 'LMR 6/29/2023 21:04:23' overrides: 50671566!
+persist: aNewCustomer 
+	self shouldBeImplemented.! !
+!TransistentCustomerSystem methodsFor: 'persistance' stamp: 'LMR 6/29/2023 21:04:40' prior: 50671651 overrides: 50671566!
+persist: aNewCustomer 
+	
+	customers add: aNewCustomer! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 21:04:41'!
+ERROR!
+!TransistentCustomerSystem methodsFor: 'customer' stamp: 'LMR 6/29/2023 21:04:47' overrides: 50671578!
+numberOfCustomers
+	self shouldBeImplemented.! !
+!TransistentCustomerSystem methodsFor: 'customer' stamp: 'LMR 6/29/2023 21:04:56' prior: 50671666 overrides: 50671578!
+numberOfCustomers
+	
+	^customers size! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 21:04:57'!
+ERROR!
+!TransistentCustomerSystem methodsFor: 'customer' stamp: 'LMR 6/29/2023 21:05:09' overrides: 50671582!
+customerWithIdentificationType: anIdType number: anIdNumber 
+	self shouldBeImplemented.! !
+!TransistentCustomerSystem methodsFor: 'customer' stamp: 'LMR 6/29/2023 21:06:00' prior: 50671680 overrides: 50671582!
+customerWithIdentificationType: anIdType number: anIdNumber 
+	
+	^customers detect: [ :aCustomer | aCustomer identificationType = anIdType and: [ aCustomer identificationNumber = anIdNumber ]]! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 21:06:01'!
+PASSED!
+!TransistentCustomerSystem methodsFor: 'transactions' stamp: 'LMR 6/29/2023 21:06:17' overrides: 50671570!
+commit
+	self shouldBeImplemented.! !
+!TransistentCustomerSystem methodsFor: 'transactions' stamp: 'LMR 6/29/2023 21:09:34' prior: 50671700 overrides: 50671570!
+commit
+	
+	! !
+!TransistentCustomerSystem methodsFor: 'start/stop' stamp: 'LMR 6/29/2023 21:09:47' overrides: 50671562!
+stop
+	self shouldBeImplemented.! !
+!TransistentCustomerSystem methodsFor: 'start/stop' stamp: 'LMR 6/29/2023 21:09:50' prior: 50671709 overrides: 50671562!
+stop
+	
+	! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 21:10:06'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 21:10:06'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 21:10:06'!
+PASSED!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 21:10:06'!
+PASSED!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 21:10:06'!
+PASSED!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 21:10:06'!
+PASSED!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 21:10:06'!
+PASSED!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 21:10:06'!
+PASSED!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 21:10:06'!
+PASSED!
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 21:10:24'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 21:10:24'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 21:10:24'!
+PASSED!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 21:10:24'!
+PASSED!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 21:10:24'!
+PASSED!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 21:10:24'!
+PASSED!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 21:10:24'!
+PASSED!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 21:10:24'!
+PASSED!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 21:10:24'!
+PASSED!
+
+!classDefinition: #Environment category: 'CustomerImporter' stamp: 'LMR 6/29/2023 21:11:51'!
+Object subclass: #Environment
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!ImportTest methodsFor: 'setUp/tearDown' stamp: 'LMR 6/29/2023 21:11:40' prior: 50671597 overrides: 16961394!
+setUp
+	customerSystem := Environment current createCustomerSystem.
+
+	customerSystem start.
+	customerSystem beginTransaction.
+! !
+!Environment class methodsFor: 'category-name' stamp: 'LMR 6/29/2023 21:12:05'!
+current
+	self shouldBeImplemented.! !
+!Environment class methodsFor: 'category-name' stamp: 'LMR 6/29/2023 21:13:52' prior: 50671796!
+current
+	
+	^self subclasses detect: [:subclass | subclass isCurrent] new! !
+!Environment class methodsFor: 'category-name' stamp: 'LMR 6/29/2023 21:14:16' prior: 50671801!
+current
+	
+	^(self subclasses detect: [:subclass | subclass isCurrent]) new! !
+!Environment class methodsFor: 'category-name' stamp: 'LMR 6/29/2023 21:15:14'!
+isCurrent
+
+	self subclassResponsibility.! !
+
+Environment subclass: #DevelopmentEnvironment
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classDefinition: #DevelopmentEnvironment category: 'CustomerImporter' stamp: 'LMR 6/29/2023 21:16:09'!
+Environment subclass: #DevelopmentEnvironment
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+Environment subclass: #IntegrationEnvironment
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classDefinition: #IntegrationEnvironment category: 'CustomerImporter' stamp: 'LMR 6/29/2023 21:16:50'!
+Environment subclass: #IntegrationEnvironment
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!DevelopmentEnvironment class methodsFor: 'nil' stamp: 'LMR 6/29/2023 21:18:49' overrides: 50671812!
+isCurrent
+
+	^true! !
+!IntegrationEnvironment class methodsFor: 'no messages' stamp: 'LMR 6/29/2023 21:19:01' overrides: 50671812!
+isCurrent
+
+	^false! !
+!Environment methodsFor: 'nil' stamp: 'LMR 6/29/2023 21:19:30'!
+createCustomerSystem
+
+	self subclassResponsibility! !
+!DevelopmentEnvironment methodsFor: 'no messages' stamp: 'LMR 6/29/2023 21:21:46' overrides: 50671850!
+createCustomerSystem
+
+	^self! !
+!IntegrationEnvironment methodsFor: 'no messages' stamp: 'LMR 6/29/2023 21:22:11' overrides: 50671850!
+createCustomerSystem
+
+	^PersistentCustomerSystem new! !
+!DevelopmentEnvironment methodsFor: 'as yet unclassified' stamp: 'LMR 6/29/2023 21:22:23' prior: 50671855 overrides: 50671850!
+createCustomerSystem
+
+	^TransistentCustomerSystem new! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 21:22:37'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 21:22:37'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 21:22:37'!
+PASSED!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 21:22:37'!
+PASSED!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 21:22:37'!
+PASSED!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 21:22:37'!
+PASSED!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 21:22:37'!
+PASSED!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 21:22:37'!
+PASSED!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 21:22:37'!
+PASSED!
+!DevelopmentEnvironment class methodsFor: 'as yet unclassified' stamp: 'LMR 6/29/2023 21:22:43' prior: 50671842 overrides: 50671812!
+isCurrent
+
+	^false! !
+!IntegrationEnvironment class methodsFor: 'as yet unclassified' stamp: 'LMR 6/29/2023 21:22:47' prior: 50671847 overrides: 50671812!
+isCurrent
+
+	^true! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 21:22:52'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 21:22:52'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 21:22:52'!
+PASSED!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 21:22:53'!
+PASSED!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 21:22:53'!
+PASSED!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 21:22:53'!
+PASSED!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 21:22:53'!
+PASSED!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 21:22:53'!
+PASSED!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 21:22:54'!
+PASSED!
+
+----SNAPSHOT----(29 June 2023 21:24:36) CuisUniversity-5832.image priorSource: 10868186!
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 21:43:55'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 21:43:55'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 21:43:55'!
+PASSED!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 21:43:55'!
+PASSED!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 21:43:56'!
+PASSED!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 21:43:56'!
+PASSED!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 21:43:56'!
+PASSED!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 21:43:56'!
+PASSED!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 21:43:56'!
+PASSED!
+!IntegrationEnvironment class methodsFor: 'testing' stamp: 'LMR 6/29/2023 21:44:05' prior: 50671909 overrides: 50671812!
+isCurrent
+
+	^false! !
+!DevelopmentEnvironment class methodsFor: 'testing' stamp: 'LMR 6/29/2023 21:44:09' prior: 50671904 overrides: 50671812!
+isCurrent
+
+	^true! !
+
+!testRun: #ImportTest #test01ValidDataIsImportedCorrectly stamp: 'LMR 6/29/2023 21:44:12'!
+PASSED!
+
+!testRun: #ImportTest #test02CanNotImportAddressWithoutCustomer stamp: 'LMR 6/29/2023 21:44:12'!
+PASSED!
+
+!testRun: #ImportTest #test03DoesNotImportRecordsStartingWithCButMoreCharacters stamp: 'LMR 6/29/2023 21:44:12'!
+PASSED!
+
+!testRun: #ImportTest #test04DoesNotImportRecordsStartingWithAButMoreCharacters stamp: 'LMR 6/29/2023 21:44:12'!
+PASSED!
+
+!testRun: #ImportTest #test05CanNotImportAddressRecordWithLessThanSixFields stamp: 'LMR 6/29/2023 21:44:12'!
+PASSED!
+
+!testRun: #ImportTest #test06CanNotImportAddressRecordWithMoreThanSixFields stamp: 'LMR 6/29/2023 21:44:12'!
+PASSED!
+
+!testRun: #ImportTest #test07CanNotImportCustomerRecordWithLessThanFiveFields stamp: 'LMR 6/29/2023 21:44:12'!
+PASSED!
+
+!testRun: #ImportTest #test08CanNotImportCustomerRecordWithMoreThanFiveFields stamp: 'LMR 6/29/2023 21:44:12'!
+PASSED!
+
+!testRun: #ImportTest #test09CannotImportEmptyLine stamp: 'LMR 6/29/2023 21:44:12'!
+PASSED!
+
+----SNAPSHOT----(29 June 2023 21:44:19) CuisUniversity-5832.image priorSource: 10889391!
+
+----QUIT----(29 June 2023 21:44:22) CuisUniversity-5832.image priorSource: 10891823!
